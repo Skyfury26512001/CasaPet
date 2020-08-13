@@ -36,6 +36,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
                 "psr-4": {
                     "Asm89\\Stack\\": "src/"
                 }
