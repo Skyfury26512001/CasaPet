@@ -14,7 +14,7 @@ class AddForeignToAccountsTable extends Migration
     public function up()
     {
         Schema::table('accounts', function (Blueprint $table) {
-            $table->foreign('Role_id')->references('id')->on('roles');
+            $table->foreign('Role_id')->references('id')->on('roles')->OnDelete("casade");
         });
     }
 
