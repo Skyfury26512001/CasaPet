@@ -17,11 +17,11 @@ class CreatePetsTable extends Migration
             $table->id();
             $table->string('slug');
             $table->string('Name')->nullable();
-            $table->string('Paper')->nullable();
+            $table->string('CertifiedPedigree')->nullable();
             $table->longText('Description');
             $table->string('Species');
             $table->integer('Age');
-            $table->string('Sexual');
+            $table->string('Sex');
             $table->string('Neutered');
             $table->integer('Status');
             $table->timestamps();

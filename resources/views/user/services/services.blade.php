@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('user.layouts.master')
 @section('title')
-    About
+    Service
 @endsection
 @section('specific_css')
     {{--    <link href="{{asset()}}" rel="stylesheet">--}}
