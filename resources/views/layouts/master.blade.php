@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- [endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="We are woof">
+    <meta name="author" content="PetCasa">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- page title -->
     <title>Woof!</title>
     <!--[if lt IE 9] -->

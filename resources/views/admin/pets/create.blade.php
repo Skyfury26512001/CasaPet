@@ -8,15 +8,15 @@
             {
                 cloudName: 'dwarrion',
                 uploadPreset: 'rdjyel16',
-                multiple: false,
+                multiple: true,
                 form: '#product_form',
-                folder: 'PetCasa/UserAvatar',
-                fieldName: 'avatar',
-                thumbnails: '.avatar'
+                folder: 'PetCasa/PetThumbnails',
+                fieldName: 'thumbnails[]',
+                thumbnails: '.thumbnails'
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var thumbnailInput = document.querySelector('input[name="avatar"]');
+                    var thumbnailInput = document.querySelector('input[name="thumbnails"]');
                     thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
                     console.log(thumbnailInput)
                 }
@@ -80,7 +80,7 @@
             <div class="col-lg-6">
                 <div class="card-box">
                     <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
-                    <form action="{{route('admin_account_store')}}" id="product_form" method="POST"
+                    <form action="{{route('admin_pet_store')}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
                         <div class="form-group">
@@ -108,11 +108,11 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="userName">Avatar<span class="text-danger">*</span></label>
+                            <label for="userName">Thumnails<span class="text-danger">*</span></label>
                             <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>
-                            <div class="avatar"></div>
-                            @if ($errors->has('avatar'))
-                                <label class="alert-warning">{{$errors->first('avatar')}}</label>
+                            <div class="thumbnails"></div>
+                            @if ($errors->has('thumbnails'))
+                                <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
                             @endif
                         </div>
                         <div class="form-group">

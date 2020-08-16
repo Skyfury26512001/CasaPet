@@ -28,6 +28,17 @@
                         <li><a href="{{route('admin_account_create')}}">Thêm tài khoản</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-dog"></i>
+                        <span>  Quản lý động vật</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin_pet_list')}}">Danh sách</a></li>
+                        <li><a href="{{route('admin_pet_create')}}">Thêm mới</a></li>
+                    </ul>
+                </li>
 {{--                <li>--}}
 {{--                    <a href="javascript: void(0);">--}}
 {{--                        <i class="fe-sidebar"></i>--}}

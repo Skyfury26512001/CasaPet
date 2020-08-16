@@ -100,6 +100,18 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/deactiveAll', 'AccountController@deactive_multi')->name('admin_account_deactive_multi');
         Route::put('/activeAll', 'AccountController@active_multi')->name('admin_account_active_multi');
     });
+    Route::group(['prefix' => '/pets'], function () {
+        Route::get('/', 'PetController@list')->name('admin_pet_list');
+        Route::get('/create', 'PetController@create')->name('admin_pet_create');
+        Route::post('/store', 'PetController@store')->name('admin_pet_store');
+        Route::get('/edit/{slug}', 'PetController@edit')->name('admin_pet_edit');
+        Route::get('/detail/{slug}', 'PetController@detail')->name('admin_pet_detail');
+        Route::put('/update/{slug}', 'PetController@update')->name('admin_pet_update');
+        Route::put('/deactive/{id}', 'PetController@deactive')->name('admin_pet_deactive');
+        Route::put('/active/{id}', 'PetController@active')->name('admin_pet_active');
+        Route::put('/deactiveAll', 'PetController@deactive_multi')->name('admin_pet_deactive_multi');
+        Route::put('/activeAll', 'PetController@active_multi')->name('admin_pet_active_multi');
+    });
 });
 // login - register : route
 

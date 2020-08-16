@@ -174,9 +174,9 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="header-title">Accounts</h4>
+                            <h4 class="header-title">Pets</h4>
                             <p class="sub-header">
-                                <code>All accounts</code>
+                                <code>All pets</code>
                             </p>
                         </div>
                         <div class="col-9">
@@ -236,9 +236,12 @@
                                         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                             colspan="2" style="width: 24.8px;"
                                             aria-label="ID: activate to sort column ascending">
-                                            Email
+                                            Name
                                         </th>
-                                        <th>AccountName</th>
+                                        <th>Species</th>
+                                        <th>Age</th>
+                                        <th>Sex</th>
+                                        <th>Neutered</th>
                                         <th>Status</th>
                                         <th colspan="3" style="text-align: center">Action</th>
                                     </tr>
