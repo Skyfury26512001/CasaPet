@@ -56,7 +56,7 @@ class AccountController extends Controller
 //        dd($request);
 
         $accounts = Account::query();
-        $condition = [['id' ,'!=', session()->get('current_account')->id],['role_id','<',session()->get('current_account')->Role_id]];
+        $condition = [['id' ,'!=', session()->get('current_account')->id],['role_id','<',session()->get('current_account')->RoleID]];
         if ($request->has('start') && $request->has('end')){
             array_push($condition,['created_at','>',$request->start]);
             array_push($condition,['created_at','<=',$request->end]);
@@ -117,7 +117,7 @@ class AccountController extends Controller
         $account->DateOfBirth = $request->DateOfBirth;
         $account->PhoneNumber = $request->PhoneNumber;
         $account->IDNo = $request->IDNo;
-        $account->Role_id = $request->Role_id;
+        $account->RoleID = $request->RoleID;
         $account->update();
         return redirect(route('admin_account_list'));
     }
