@@ -25,10 +25,13 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::get('/', 'AccountController@list')->name('admin_account_list');
         Route::get('/create', 'AccountController@create')->name('admin_account_create');
         Route::post('/store', 'AccountController@store')->name('admin_account_store');
-//        Route::get('/edit/{slug}', 'AccountController@edit')->name('admin_account_edit');
-//        Route::put('/update/{id}', 'AccountController@update')->name('admin_account_update');
-//        Route::put('/delete/{id}', 'AccountController@delete')->name('admin_account_delete');
-//        Route::put('/deleteAll', 'AccountController@delete_multi')->name('admin_account_delete_multi');
+        Route::get('/edit/{slug}', 'AccountController@edit')->name('admin_account_edit');
+        Route::get('/detail/{slug}', 'AccountController@detail')->name('admin_account_detail');
+        Route::put('/update/{slug}', 'AccountController@update')->name('admin_account_update');
+        Route::put('/deactive/{id}', 'AccountController@deactive')->name('admin_account_deactive');
+        Route::put('/active/{id}', 'AccountController@active')->name('admin_account_active');
+        Route::put('/deactiveAll', 'AccountController@deactive_multi')->name('admin_account_deactive_multi');
+        Route::put('/activeAll', 'AccountController@active_multi')->name('admin_account_active_multi');
     });
 });
 // login - register : route

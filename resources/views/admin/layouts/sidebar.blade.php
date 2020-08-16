@@ -25,7 +25,7 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{route('admin_account_list')}}">Danh sách</a></li>
-                        <li><a href="#">Thêm tài khoản</a></li>
+                        <li><a href="{{route('admin_account_create')}}">Thêm tài khoản</a></li>
                     </ul>
                 </li>
 {{--                <li>--}}

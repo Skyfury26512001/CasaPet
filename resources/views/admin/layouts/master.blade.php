@@ -265,7 +265,7 @@
         <!-- App js -->
         <script src={{asset('assets/admin/')."/js/app.min.js"}}></script>
         <!-- Custom js -->
-        @yield('specify_js')
-
+        @yield('specific_js')
+        <!--End JS -->
     </body>
 </html>

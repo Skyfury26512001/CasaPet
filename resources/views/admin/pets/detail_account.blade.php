@@ -1,63 +1,4 @@
 @extends('admin.layouts.master')
-@section('specific_js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
-    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        var myWidget = cloudinary.createUploadWidget(
-            {
-                cloudName: 'dwarrion',
-                uploadPreset: 'rdjyel16',
-                multiple: false,
-                form: '#product_form',
-                folder: 'PetCasa/UserAvatar',
-                fieldName: 'avatar',
-                thumbnails: '.avatar'
-            }, function (error, result) {
-                if (!error && result && result.event === "success") {
-                    console.log('Done! Here is the image info: ', result.info.url);
-                    var thumbnailInput = document.querySelector('input[name="avatar"]');
-                    thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
-                    console.log(thumbnailInput)
-                }
-            }
-        );
-        $('#upload_widget').click(function () {
-            myWidget.open();
-        })
-
-        // xử lý js trên dynamic content.
-        $('body').on('click', '.cloudinary-delete', function () {
-            var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            // var imgName = splittedImg[splittedImg.length - 1];
-            // imgName = imgName.split('.');
-
-            // console.log($(this).parent());
-            var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
-            // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
-            // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
-            // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
-            // console.log(input);
-            // input.remove()
-            // console.log(input);
-            // console.log("Remove image : " + "sucessful");
-            // let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
-            $(this).parent().remove();
-            console.log($(this).parent())
-            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
-        });
-    </script>
-{{--    <script>--}}
-{{--        ClassicEditor--}}
-{{--            .create(document.querySelector('#editor'))--}}
-{{--            .then(editor => {--}}
-{{--                console.log(editor);--}}
-{{--            })--}}
-{{--            .catch(error => {--}}
-{{--                console.error(error);--}}
-{{--            });--}}
-{{--    </script>--}}
-@endsection
 @section('content')
     <div class="container-fluid">
 
@@ -88,7 +29,7 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
-                            <input type="text" name="FullName" parsley-trigger="change" required=""
+                            <input disabled type="text" name="FullName" parsley-trigger="change" required=""
                                    value="{{$account->FullName}}" class="form-control" id="FullName">
                             @if ($errors->has('FullName'))
                                 <label class="alert-warning">{{$errors->first('FullName')}}</label>
@@ -96,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Email">Email<span class="text-danger">*</span></label>
-                            <input type="text" name="Email" parsley-trigger="change" required=""
+                            <input disabled type="text" name="Email" parsley-trigger="change" required=""
                                    value="{{$account->Email}}" class="form-control" id="Email">
                             @if ($errors->has('Email'))
                                 <label class="alert-warning">{{$errors->first('Email')}}</label>
@@ -104,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label for="userName">Avatar<span class="text-danger">*</span></label>
-                            <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>
+{{--                            <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>--}}
                             <div class="avatar">
                                 <ul class="cloudinary-thumbnails">
                                     <li class="cloudinary-thumbnail active" data-cloudinary="">
@@ -119,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label for="DateOfBirth">Ngày sinh<span class="text-danger">*</span></label>
-                            <input type="date" name="DateOfBirth" parsley-trigger="change" required=""
+                            <input disabled type="date" name="DateOfBirth" parsley-trigger="change" required=""
                                    class="form-control" id="DateOfBirth" value="{{$account->DateOfBirth}}">
                             @if ($errors->has('DateOfBirth'))
                                 <label class="alert-warning">{{$errors->first('DateOfBirth')}}</label>
@@ -127,7 +68,7 @@
                         </div>
                         <div class="form-group">
                             <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
-                            <input type="number" name="PhoneNumber" parsley-trigger="change" required=""
+                            <input disabled type="number" name="PhoneNumber" parsley-trigger="change" required=""
                                     value="{{$account->PhoneNumber}}" class="form-control" id="PhoneNumber">
                             @if ($errors->has('PhoneNumber'))
                                 <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
@@ -135,7 +76,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Address">Địa chỉ <span class="text-danger">*</span></label>
-                            <input type="text" name="Address" parsley-trigger="change" required=""
+                            <input disabled type="text" name="Address" parsley-trigger="change" required=""
                                    value="{{$account->Address}}"class="form-control" id="Address">
                             @if ($errors->has('Address'))
                                 <label class="alert-warning">{{$errors->first('Address')}}</label>
@@ -143,7 +84,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Address">Chứng Minh Thư / Thẻ Căn Cước <span class="text-danger">*</span></label>
-                            <input type="number" name="IDNo" parsley-trigger="change" required=""
+                            <input disabled type="number" name="IDNo" parsley-trigger="change" required=""
                                    value="{{$account->IDNo}}" class="form-control" id="IDNo">
                             @if ($errors->has('IDNo'))
                                 <label class="alert-warning">{{$errors->first('IDNo')}}</label>
@@ -151,7 +92,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Role_id">Quyền<span class="text-danger">*</span></label>
-                            <select name="Role_id">
+                            <select name="Role_id" disabled>
                                 <option value="1" @if ($account->Role_id == 1) checked @endif>User</option>
                                 <option value="2" @if ($account->Role_id == 2) checked @endif>Admin</option>
                                 @if (session()->get('current_account')->Role_id == 3)
@@ -162,14 +103,11 @@
                                 <label class="alert-warning">{{$errors->first('Role_id')}}</label>
                             @endif
                         </div>
-                        <input type="hidden" name="Slug" value="{{$account->Slug}}">
-                        <input type="hidden" name="avatar" data-cloudinary-public-id="{{$account->Avatar}}" value="{{$account->Avatar}}">
+                        <input disabled type="hidden" name="Slug" value="{{$account->Slug}}">
+                        <input disabled type="hidden" name="avatar" data-cloudinary-public-id="{{$account->Avatar}}" value="{{$account->Avatar}}">
                         <div class="form-group text-right mb-0">
-                            <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
-                                Submit
-                            </button>
-                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
-                                Cancel
+                            <button class="btn btn-primary waves-effect waves-light mr-1" type="button">
+                                <a href="{{route('admin_account_edit',$account->Slug)}}" style="color: black">Edit</a>
                             </button>
                         </div>
 
