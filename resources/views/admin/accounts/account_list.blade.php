@@ -240,7 +240,7 @@
                                         </th>
                                         <th>AccountName</th>
                                         <th>Status</th>
-                                        <th colspan="3" style="text-align: center">Action</th>
+                                        <th colspan="4" style="text-align: center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -299,6 +299,13 @@
                                                     <a href="{{route('admin_account_detail',$account->Slug)}}"
                                                        class="btn btn-primary"
                                                        style="float:right">Detail</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{route('admin_account_change_password',$account->Slug)}}"
+                                                       class="btn btn-primary"
+                                                       style="float:right">Đổi mật khẩu</a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -99,6 +99,8 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/active/{id}', 'AccountController@active')->name('admin_account_active');
         Route::put('/deactiveAll', 'AccountController@deactive_multi')->name('admin_account_deactive_multi');
         Route::put('/activeAll', 'AccountController@active_multi')->name('admin_account_active_multi');
+        Route::get('/password/{slug}', 'AccountController@change_password')->name('admin_account_change_password');
+        Route::put('/password/{slug}', 'AccountController@change_passwordP')->name('admin_change_password');
     });
     Route::group(['prefix' => '/pets'], function () {
         Route::get('/', 'PetController@list')->name('admin_pet_list');

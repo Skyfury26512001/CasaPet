@@ -45,16 +45,16 @@
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
     </script>
-{{--    <script>--}}
-{{--        ClassicEditor--}}
-{{--            .create(document.querySelector('#editor'))--}}
-{{--            .then(editor => {--}}
-{{--                console.log(editor);--}}
-{{--            })--}}
-{{--            .catch(error => {--}}
-{{--                console.error(error);--}}
-{{--            });--}}
-{{--    </script>--}}
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -84,80 +84,79 @@
                           class="parsley-examples" novalidate="">
                         @csrf
                         <div class="form-group">
-                            <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
-                            <input type="text" name="FullName" parsley-trigger="change" required=""
-                                   class="form-control" id="FullName">
-                            @if ($errors->has('FullName'))
-                                <label class="alert-warning">{{$errors->first('FullName')}}</label>
+                            <label for="FullName">Tên<span class="text-danger">*</span></label>
+                            <input type="text" name="Name" parsley-trigger="change" required=""
+                                   class="form-control" id="Name">
+                            @if ($errors->has('Name'))
+                                <label class="alert-warning">{{$errors->first('Name')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Password">Mật khẩu<span class="text-danger">*</span></label>
-                            <input type="text" name="Password" parsley-trigger="change" required=""
-                                   class="form-control" id="Password">
-                            @if ($errors->has('Password'))
-                                <label class="alert-warning">{{$errors->first('Password')}}</label>
+                            <label>Giấy tờ khai sinh<span class="text-danger">*</span></label>
+                            <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                                   id="CertifiedPedigreeYes" value="Yes"><label for="CertifiedPedigreeYes">Có</label>
+                            <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                                   id="CertifiedPedigreeNo" value="No" checked><label
+                                    for="CertifiedPedigreeNo">Không</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Mô tả<span class="text-danger">*</span></label>
+                            <textarea id="editor" name="Description" class="form-control"
+                                              placeholder=""></textarea>
+                            @if ($errors->has('Description'))
+                                <label class="alert-warning">{{$errors->first('Description')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Email">Email<span class="text-danger">*</span></label>
-                            <input type="text" name="Email" parsley-trigger="change" required=""
-                                   class="form-control" id="Email">
-                            @if ($errors->has('Email'))
-                                <label class="alert-warning">{{$errors->first('Email')}}</label>
+                            <label for="Species">Loài<span class="text-danger">*</span></label>
+                            <input type="text" name="Species" parsley-trigger="change" required=""
+                                   class="form-control" id="Species">
+                            @if ($errors->has('Species'))
+                                <label class="alert-warning">{{$errors->first('Species')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="SpeciesSort">Giống<span class="text-danger">*</span></label>
+                            <input type="text" name="SpeciesSort" parsley-trigger="change" required=""
+                                   class="form-control" id="SpeciesSort">
+                            @if ($errors->has('SpeciesSort'))
+                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Age">Tuổi<span class="text-danger">*</span></label>
+                            <input type="text" name="Age" parsley-trigger="change" required=""
+                                   class="form-control" id="Age">
+                            @if ($errors->has('Age'))
+                                <label class="alert-warning">{{$errors->first('Age')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="userName">Thumnails<span class="text-danger">*</span></label>
-                            <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
                             <div class="thumbnails"></div>
                             @if ($errors->has('thumbnails'))
                                 <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="DateOfBirth">Ngày sinh<span class="text-danger">*</span></label>
-                            <input type="date" name="DateOfBirth" parsley-trigger="change" required=""
-                                   class="form-control" id="DateOfBirth">
-                            @if ($errors->has('DateOfBirth'))
-                                <label class="alert-warning">{{$errors->first('DateOfBirth')}}</label>
+                            <label>Giới tính<span class="text-danger">*</span></label>
+                            <input type="radio" name="Sex" parsley-trigger="change" required=""
+                                   id="SexMale" value="Male"><label for="SexMale">Đực</label>
+                            <input type="radio" name="Sex" parsley-trigger="change" required=""
+                                   id="SexFemale" value="Female"><label for="SexFemale">Cái</label>
+                            @if ($errors->has('Sex'))
+                                <label class="alert-warning">{{$errors->first('Sex')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
-                            <input type="number" name="PhoneNumber" parsley-trigger="change" required=""
-                                   class="form-control" id="PhoneNumber">
-                            @if ($errors->has('PhoneNumber'))
-                                <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Address">Địa chỉ <span class="text-danger">*</span></label>
-                            <input type="text" name="Address" parsley-trigger="change" required=""
-                                   class="form-control" id="Address">
-                            @if ($errors->has('Address'))
-                                <label class="alert-warning">{{$errors->first('Address')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Address">Chứng Minh Thư / Thẻ Căn Cước <span class="text-danger">*</span></label>
-                            <input type="number" name="IDNo" parsley-trigger="change" required=""
-                                   class="form-control" id="IDNo">
-                            @if ($errors->has('IDNo'))
-                                <label class="alert-warning">{{$errors->first('IDNo')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Role_id">Quyền<span class="text-danger">*</span></label>
-                            <select name="Role_id">
-                                <option value="1">User</option>
-                                <option value="2">Admin</option>
-                                @if (session()->get('current_account')->Role_id == 'superadmin')
-                                    <option value="3">SuperAdmin</option>
-                                @endif
-                            </select>
-                            @if ($errors->has('Role_id'))
-                                <label class="alert-warning">{{$errors->first('Role_id')}}</label>
+                            <label>Triệt sản<span class="text-danger">*</span></label>
+                            <input type="radio" name="Neutered" parsley-trigger="change" required=""
+                                   id="NeuteredYes" value="Yes"><label for="NeuteredYes">Có</label>
+                            <input type="radio" name="Neutered" parsley-trigger="change" required=""
+                                   id="NeuteredNo" value="No"><label for="NeuteredNo">Không</label>
+                            @if ($errors->has('Neutered'))
+                                <label class="alert-warning">{{$errors->first('Neutered')}}</label>
                             @endif
                         </div>
                         <div class="form-group text-right mb-0">

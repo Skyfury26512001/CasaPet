@@ -19,8 +19,9 @@ class CreatePetsTable extends Migration
             $table->string('Name');
             $table->string('CertifiedPedigree')->nullable();
             $table->longText('Description');
-            $table->string('Species')->nullable();
-            $table->integer('Age');
+            $table->string('SpeciesSort');
+            $table->string('Species');
+            $table->string('Age');
             $table->string('Sex');
             $table->string('Neutered');
             $table->integer('Status');
