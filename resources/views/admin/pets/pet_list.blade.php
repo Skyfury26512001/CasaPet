@@ -36,11 +36,11 @@
                 if (allVals.length <= 0) {
                     alert("Please select row.");
                 } else {
-                    var check = confirm("Are you sure you want to deactive this account?");
+                    var check = confirm("Are you sure you want to deactive this pet?");
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_account_deactive_multi')}}',
+                            url: '{{route('admin_pet_deactive_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -51,7 +51,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_account_list')}}';
+                                    window.location = '{{route('admin_pet_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -86,7 +86,7 @@
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_account_active_multi')}}',
+                            url: '{{route('admin_pet_active_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -97,7 +97,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_account_list')}}';
+                                    window.location = '{{route('admin_pet_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -180,7 +180,7 @@
                             </p>
                         </div>
                         <div class="col-9">
-                            <form action="{{route('admin_account_list')}}" method="GET" style="display: flex">
+                            <form action="{{route('admin_pet_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
                                     <select name="orderBy">
@@ -213,7 +213,7 @@
                         <div class="col-8">
                             <div class="row">
                                 <div class="offset-8 col-3">
-                                    <form class="app-search" action="{{route('admin_account_list')}}">
+                                    <form class="app-search" action="{{route('admin_pet_list')}}">
                                         <div class="app-search-box">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" name="keyword"
@@ -248,48 +248,48 @@
                                     </thead>
                                     <tbody>
                                     @csrf
-                                    {{--                            {{dd($accounts)}}--}}
-                                    @foreach($accounts as $account)
-                                        {{--                                {{dd($account)}}--}}
+                                    {{--                            {{dd($pets)}}--}}
+                                    @foreach($pets as $pet)
+                                        {{--                                {{dd($pet)}}--}}
                                         <tr>
                                             <td colspan="1" style="vertical-align: middle;">
                                                 <div class="checkbox checkbox-primary">
                                                     <input class="checkbox_list" id="" type="checkbox"
-                                                           style="opacity: 1" name="ids[]" value="{{$account->id}}">
+                                                           style="opacity: 1" name="ids[]" value="{{$pet->id}}">
                                                 </div>
                                             </td>
-                                            <td>{{$account->Email}}</td>
+                                            <td>{{$pet->Name}}</td>
                                             <td></td>
-                                            <td>{{$account->FullName}}</td>
+                                            <td>{{$pet->Species}}</td>
                                             <td>
-                                                @if ($account->Status == 1)
+                                                @if ($pet->Status == 1)
                                                     Active
-                                                @elseif ($account->Status == 0)
+                                                @elseif ($pet->Status == 0)
                                                     Deactive
                                                 @else
                                                     Unknown
                                                 @endif</td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_account_edit',$account->Slug)}}"
+                                                    <a href="{{route('admin_pet_edit',$pet->Slug)}}"
                                                        class="btn btn-primary"
                                                        style="float:right">Edit</a>
                                                 </div>
                                             </td>
-                                            @if ($account->Status == 1)
+                                            @if ($pet->Status == 1)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_account_deactive',$account->id)}}"
+                                                        <form action="{{route('admin_pet_deactive',$pet->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
                                                             <button class="btn btn-primary btn-table"> Deactive</button>
                                                         </form>
                                                     </div>
                                                 </td>
-                                            @elseif ($account->Status == 0)
+                                            @elseif ($pet->Status == 0)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_account_active',$account->id)}}"
+                                                        <form action="{{route('admin_pet_active',$pet->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
                                                             <button class="btn btn-primary btn-table"> Active</button>
@@ -299,7 +299,7 @@
                                             @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_account_detail',$account->Slug)}}"
+                                                    <a href="{{route('admin_pet_detail',$pet->Slug)}}"
                                                        class="btn btn-primary"
                                                        style="float:right">Detail</a>
                                                 </div>
@@ -311,7 +311,7 @@
                             </div>
                             <div style="margin-top: 1%">
                                 <div class="row">
-                                    <div class="col-5"> {{ $accounts->links() }}</div>
+                                    <div class="col-5"> {{ $pets->links() }}</div>
                                     <div class="col-6">
                                         <button class="btn btn-primary" style="float: right;margin-left: 5%;"
                                                 id="deactive_all"> Deactive All

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
@@ -33,8 +34,9 @@ class AccountController extends Controller
     }
 
     public function loginP(Request $request){
-        $condition = ['email' => $request->email, 'status' => "1",];
+        $condition = ['email' => $request->email, 'Status' => "1",];
         $account = Account::where($condition)->get()->first();
+//        dd($request->email);
         if (isset($account)){
             $PasswordHash = $account->PasswordHash;
             $Salt = $account->Salt;
@@ -85,7 +87,7 @@ class AccountController extends Controller
         $Salt = generateRandomString(5);
         $account['Salt'] = $Salt;
         $password = $account['Password'];
-        $PasswordHash = md5($Salt.$password);
+        $PasswordHash = md5($password.$Salt);
         $account['PasswordHash'] = $PasswordHash;
         $slug_begin = generateRandomString(8);
         $Slug = to_slug($slug_begin.' '.$account['FullName']);
@@ -138,7 +140,6 @@ class AccountController extends Controller
          Account::whereIn('id', $ids_array)->update(['status' => 0]);
         return response()->json(['success'=>"Account Deleted successfully."]);
     }
-
     public function active_multi(Request $request){
         $ids_array = new Array_();
         $ids = $request->ids;
@@ -148,4 +149,20 @@ class AccountController extends Controller
         return response()->json(['success'=>"Account Active successfully."]);
     }
 
+    public function change_password($slug){
+        $account = Account::where('Slug','=',$slug)->get()->first();
+//        dd($account);
+        return view('admin.accounts.change_pass',compact('account'));
+    }
+
+    public function change_passwordP(Request $request){
+        $request->validate(['newPassword'=>'required'],['newPassword.required'=>'Vui lòng nhập mật khẩu mới']);
+        $account = Account::where('Slug','=',$request->Slug)->first();
+//        dd($account);
+        $account->Salt = generateRandomString(5);
+        $account->PasswordHash = md5($request->newPassword.$account->Salt);
+//        dd($account);
+        $account->update();
+        return redirect(route('admin_account_list'));
+    }
 }
