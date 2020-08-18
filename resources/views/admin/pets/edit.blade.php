@@ -8,17 +8,19 @@
             {
                 cloudName: 'dwarrion',
                 uploadPreset: 'rdjyel16',
-                multiple: false,
+                multiple: true,
                 form: '#product_form',
-                folder: 'PetCasa/UserAvatar',
-                fieldName: 'avatar',
-                thumbnails: '.avatar'
+                folder: 'PetCasa/PetThumbnails',
+                fieldName: 'thumbnails[]',
+                thumbnails: '.thumbnails'
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var thumbnailInput = document.querySelector('input[name="avatar"]');
-                    thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
-                    console.log(thumbnailInput)
+                    var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
+                    for (let i = 0; i < arrayThumnailInputs.length; i++) {
+                        arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
+                    }
+                    console.log(arrayThumnailInputs)
                 }
             }
         );
@@ -28,12 +30,12 @@
 
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
-            var splittedImg = $(this).parent().find('img').attr('src').split('/');
+            // var splittedImg = $(this).parent().find('img').attr('src').split('/');
             // var imgName = splittedImg[splittedImg.length - 1];
             // imgName = imgName.split('.');
-
+            // $(this).parent().remove();
             // console.log($(this).parent());
-            var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
+            // var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
             // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
             // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
             // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
@@ -41,22 +43,27 @@
             // input.remove()
             // console.log(input);
             // console.log("Remove image : " + "sucessful");
+             console.log($(this).parent())
+            console.log($(this).parent().attr('data-cloudinary'))
+            var publicId = $(this).parent().attr('data-cloudinary');
+             $(this).parent().remove();
             // let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
-            $(this).parent().remove();
-            console.log($(this).parent())
-            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
+            $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
     </script>
-{{--    <script>--}}
-{{--        ClassicEditor--}}
-{{--            .create(document.querySelector('#editor'))--}}
-{{--            .then(editor => {--}}
-{{--                console.log(editor);--}}
-{{--            })--}}
-{{--            .catch(error => {--}}
-{{--                console.error(error);--}}
-{{--            });--}}
-{{--    </script>--}}
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                {{--editor.setData('{{$pet->Description}}', function () {--}}
+                {{--    this.checkDirty();  // true--}}
+                {{--});--}}
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    </script>
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -82,88 +89,110 @@
             <div class="col-lg-6">
                 <div class="card-box">
                     <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
-                    <form action="{{route('admin_account_update',$account->Slug)}}" id="product_form" method="POST"
+                    <form action="{{route('admin_pet_update',$pet->Slug)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
-                        @method('PUT')
                         <div class="form-group">
-                            <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
-                            <input type="text" name="FullName" parsley-trigger="change" required=""
-                                   value="{{$account->FullName}}" class="form-control" id="FullName">
-                            @if ($errors->has('FullName'))
-                                <label class="alert-warning">{{$errors->first('FullName')}}</label>
+                            <label for="FullName">Tên<span class="text-danger">*</span></label>
+                            <input type="text" name="Name" parsley-trigger="change" required=""
+                                   value="{{$pet->Name}}" class="form-control" id="Name">
+                            @if ($errors->has('Name'))
+                                <label class="alert-warning">{{$errors->first('Name')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Email">Email<span class="text-danger">*</span></label>
-                            <input type="text" name="Email" parsley-trigger="change" required=""
-                                   value="{{$account->Email}}" class="form-control" id="Email">
-                            @if ($errors->has('Email'))
-                                <label class="alert-warning">{{$errors->first('Email')}}</label>
+                            <label>Giấy tờ khai sinh<span class="text-danger">*</span></label>
+                            <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                                   id="CertifiedPedigreeYes" value="Có"
+                                   @if ($pet->CertifiedPedigree == "Có") checked @endif><label
+                                    for="CertifiedPedigreeYes">Có</label>
+                            <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                                   id="CertifiedPedigreeNo" value="Không"
+                                   @if ($pet->CertifiedPedigree == "Không") checked @endif><label
+                                    for="CertifiedPedigreeNo">Không</label>
+                            @if ($errors->has('CertifiedPedigree'))
+                                <label class="alert-warning">{{$errors->first('CertifiedPedigree')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="userName">Avatar<span class="text-danger">*</span></label>
-                            <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>
-                            <div class="avatar">
+                            <label for="Description">Mô tả<span class="text-danger">*</span></label>
+                            <textarea id="editor" name="Description" class="form-control"
+                                      value="{{$pet->Description}}" placeholder="">{{$pet->Description}}</textarea>
+                            @if ($errors->has('Description'))
+                                <label class="alert-warning">{{$errors->first('Description')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
+                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
+                                <option value="Chó" @if ($pet->SpeciesSort == "Chó") selected @endif>Chó</option>
+                                <option value="Mèo" @if ($pet->SpeciesSort == "Mèo") selected @endif>Mèo</option>
+                                <option value="Vịt" @if ($pet->SpeciesSort == "Vịt") selected @endif>Vịt</option>
+                            </select>
+                            @if ($errors->has('SpeciesSort'))
+                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Species">Giống<span class="text-danger">*</span></label>
+                            <input type="text" name="Species" parsley-trigger="change" required=""
+                                   class="form-control" id="Species" value="{{$pet->Species}}">
+                            @if ($errors->has('Species'))
+                                <label class="alert-warning">{{$errors->first('Species')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Age">Tuổi<span class="text-danger">*</span></label>
+                            <input type="text" name="Age" parsley-trigger="change" required=""
+                                   class="form-control" id="Age" value="{{$pet->Age}}">
+                            @if ($errors->has('Age'))
+                                <label class="alert-warning">{{$errors->first('Age')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="userName">Thumnails<span class="text-danger">*</span></label>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                            <div class="thumbnails">
                                 <ul class="cloudinary-thumbnails">
-                                    <li class="cloudinary-thumbnail active" data-cloudinary="">
-                                        <img src="{{$account->Avatar600x600}}" style="width: 300px;height: 300px">
-                                        <a href="#" class="cloudinary-delete">x</a>
-                                    </li>
+                                    @foreach($pet->ArrayThumbnails450x450 as $thumbnail)
+                                        <li class="cloudinary-thumbnail active" data-cloudinary="{{$thumbnail}}">
+                                            <img src="{{$thumbnail}}" style="width: 300px;height: 300px">
+                                            <a href="#" class="cloudinary-delete">x</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
-                            @if ($errors->has('avatar'))
-                                <label class="alert-warning">{{$errors->first('avatar')}}</label>
+                            @if ($errors->has('thumbnails'))
+                                <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="DateOfBirth">Ngày sinh<span class="text-danger">*</span></label>
-                            <input type="date" name="DateOfBirth" parsley-trigger="change" required=""
-                                   class="form-control" id="DateOfBirth" value="{{$account->DateOfBirth}}">
-                            @if ($errors->has('DateOfBirth'))
-                                <label class="alert-warning">{{$errors->first('DateOfBirth')}}</label>
+                            <label>Giới tính<span class="text-danger">*</span></label>
+                            <input type="radio" name="Sex" parsley-trigger="change" required=""
+                                   id="SexMale" value="Đực" @if ($pet->Sex == "Đực") checked @endif><label
+                                    for="SexMale">Đực</label>
+                            <input type="radio" name="Sex" parsley-trigger="change" required=""
+                                   id="SexFemale" value="Cái" @if ($pet->Sex == "Cái") checked @endif><label
+                                    for="SexFemale">Cái</label>
+                            @if ($errors->has('Sex'))
+                                <label class="alert-warning">{{$errors->first('Sex')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
-                            <input type="number" name="PhoneNumber" parsley-trigger="change" required=""
-                                    value="{{$account->PhoneNumber}}" class="form-control" id="PhoneNumber">
-                            @if ($errors->has('PhoneNumber'))
-                                <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
+                            <label>Triệt sản<span class="text-danger">*</span></label>
+                            <input type="radio" name="Neutered" parsley-trigger="change" required=""
+                                   id="NeuteredYes" value="Yes" @if ($pet->Neutered == "Yes") checked @endif><label
+                                    for="NeuteredYes">Đã triệt sản</label>
+                            <input type="radio" name="Neutered" parsley-trigger="change" required=""
+                                   id="NeuteredNo" value="No" @if ($pet->Neutered == "No") checked @endif><label
+                                    for="NeuteredNo">Chưa triệt sản</label>
+                            @if ($errors->has('Neutered'))
+                                <label class="alert-warning">{{$errors->first('Neutered')}}</label>
                             @endif
                         </div>
-                        <div class="form-group">
-                            <label for="Address">Địa chỉ <span class="text-danger">*</span></label>
-                            <input type="text" name="Address" parsley-trigger="change" required=""
-                                   value="{{$account->Address}}"class="form-control" id="Address">
-                            @if ($errors->has('Address'))
-                                <label class="alert-warning">{{$errors->first('Address')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Address">Chứng Minh Thư / Thẻ Căn Cước <span class="text-danger">*</span></label>
-                            <input type="number" name="IDNo" parsley-trigger="change" required=""
-                                   value="{{$account->IDNo}}" class="form-control" id="IDNo">
-                            @if ($errors->has('IDNo'))
-                                <label class="alert-warning">{{$errors->first('IDNo')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Role_id">Quyền<span class="text-danger">*</span></label>
-                            <select name="Role_id">
-                                <option value="1" @if ($account->Role_id == 1) checked @endif>User</option>
-                                <option value="2" @if ($account->Role_id == 2) checked @endif>Admin</option>
-                                @if (session()->get('current_account')->Role_id == 3)
-                                    <option value="3" @if ($account->Role_id == 3) checked @endif>SuperAdmin</option>
-                                @endif
-                            </select>
-                            @if ($errors->has('Role_id'))
-                                <label class="alert-warning">{{$errors->first('Role_id')}}</label>
-                            @endif
-                        </div>
-                        <input type="hidden" name="Slug" value="{{$account->Slug}}">
-                        <input type="hidden" name="avatar" data-cloudinary-public-id="{{$account->Avatar}}" value="{{$account->Avatar}}">
+                        @foreach($pet->ArrayThumbnails450x450 as $thumbnail)
+                            <input type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}" value="{{$thumbnail}}">
+                        @endforeach
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit

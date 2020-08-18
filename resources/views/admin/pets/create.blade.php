@@ -16,9 +16,11 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var thumbnailInput = document.querySelector('input[name="thumbnails"]');
-                    thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
-                    console.log(thumbnailInput)
+                    var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
+                    for (let i = 0; i < arrayThumnailInputs.length; i++) {
+                        arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
+                    }
+                    console.log(arrayThumnailInputs)
                 }
             }
         );
@@ -94,10 +96,13 @@
                         <div class="form-group">
                             <label>Giấy tờ khai sinh<span class="text-danger">*</span></label>
                             <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
-                                   id="CertifiedPedigreeYes" value="Yes"><label for="CertifiedPedigreeYes">Có</label>
+                                   id="CertifiedPedigreeYes" value="Có"><label for="CertifiedPedigreeYes">Có</label>
                             <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
-                                   id="CertifiedPedigreeNo" value="No" checked><label
+                                   id="CertifiedPedigreeNo" value="Không" checked><label
                                     for="CertifiedPedigreeNo">Không</label>
+                            @if ($errors->has('CertifiedPedigree'))
+                                <label class="alert-warning">{{$errors->first('CertifiedPedigree')}}</label>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="Description">Mô tả<span class="text-danger">*</span></label>
@@ -108,19 +113,22 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Species">Loài<span class="text-danger">*</span></label>
+                            <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
+                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
+                                <option value="Chó">Chó</option>
+                                <option value="Mèo">Mèo</option>
+                                <option value="Vịt">Vịt</option>
+                            </select>
+                            @if ($errors->has('SpeciesSort'))
+                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Species">Giống<span class="text-danger">*</span></label>
                             <input type="text" name="Species" parsley-trigger="change" required=""
                                    class="form-control" id="Species">
                             @if ($errors->has('Species'))
                                 <label class="alert-warning">{{$errors->first('Species')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="SpeciesSort">Giống<span class="text-danger">*</span></label>
-                            <input type="text" name="SpeciesSort" parsley-trigger="change" required=""
-                                   class="form-control" id="SpeciesSort">
-                            @if ($errors->has('SpeciesSort'))
-                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
@@ -142,9 +150,9 @@
                         <div class="form-group">
                             <label>Giới tính<span class="text-danger">*</span></label>
                             <input type="radio" name="Sex" parsley-trigger="change" required=""
-                                   id="SexMale" value="Male"><label for="SexMale">Đực</label>
+                                   id="SexMale" value="Đực"><label for="SexMale">Đực</label>
                             <input type="radio" name="Sex" parsley-trigger="change" required=""
-                                   id="SexFemale" value="Female"><label for="SexFemale">Cái</label>
+                                   id="SexFemale" value="Cái"><label for="SexFemale">Cái</label>
                             @if ($errors->has('Sex'))
                                 <label class="alert-warning">{{$errors->first('Sex')}}</label>
                             @endif

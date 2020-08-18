@@ -19,47 +19,50 @@ class PetSeeder extends Seeder
             Pet::query()->truncate();
             Schema::enableForeignKeyConstraints();
         }
-
-        Pet::create(array(
-                'Slug' => md5("admin"."12345"),
+        $pets = array(
+            array(
+                'Slug' => md5("admin"."123458"),
                 'Name' => 'Cute',
-                'CertifiedPedigree' => 'No',
+                'CertifiedPedigree' => 'Không',
                 'Description' => 'Lông dài, màu trắng,chân dài',
                 'SpeciesSort' => 'Chó',
                 'Species' => 'Chó Đốm',
+                'Thumbnails' => '',
                 'Age' => '14',
-                'Sex' => '08454280124123',
+                'Sex' => 'Đực',
                 'Neutered' => 'Yes',
                 'Status' => 1,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ),
-            array('Slug' => md5("admin"."12345"),
-                'Name' => 'Cute',
-                'CertifiedPedigree' => 'No',
+            array('Slug' => md5("admin"."123457"),
+                'Name' => 'Cute 2',
+                'CertifiedPedigree' => 'Không',
                 'Description' => 'Lông ngắn, màu nâu,mắt 2 màu',
                 'SpeciesSort' => 'Chó',
                 'Species' => 'Chó Phốc',
+                'Thumbnails' => '',
                 'Age' => '14',
-                'Sex' => '08454280124123',
+                'Sex' => 'Đực',
                 'Neutered' => 'Yes',
                 'Status' => 1,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
-                ),
-            array('Slug' => md5("admin"."12345"),
-                'Name' => 'Cute',
-                'CertifiedPedigree' => 'No',
+            ),
+            array('Slug' => md5("admin"."123456"),
+                'Name' => 'Cute 3',
+                'CertifiedPedigree' => 'Không',
                 'Description' => 'Lông dài, màu trắng,chân dài',
-                'SpeciesSort' => 'Chó',
-                'Species' => 'Chó Đốm',
+                'SpeciesSort' => 'Chó ',
+                'Species' => 'Chó Corgi',
+                'Thumbnails' => '',
                 'Age' => '14',
-                'Sex' => '08454280124123',
+                'Sex' => 'Cái',
                 'Neutered' => 'Yes',
                 'Status' => 1,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
-                )
-        );
+                ));
+        Pet::insert($pets);
     }
 }
