@@ -18,6 +18,7 @@ class CreatePetsTable extends Migration
             $table->string('Slug');
             $table->string('Name');
             $table->string('CertifiedPedigree')->nullable();
+            $table->text('Thumbnails');
             $table->longText('Description');
             $table->string('SpeciesSort');
             $table->string('Species');

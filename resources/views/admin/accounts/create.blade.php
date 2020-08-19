@@ -16,7 +16,7 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var thumbnailInput = document.querySelector('input[name="avatar"]');
+                    var thumbnailInput = document.querySelectorAll('input[name="avatar"]');
                     thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
                     console.log(thumbnailInput)
                 }

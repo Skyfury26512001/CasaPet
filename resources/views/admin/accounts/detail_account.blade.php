@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card-box">
-                    <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
+                    <h4 class="header-title">Xem thông tin cá nhân : </h4>
                     <form action="{{route('admin_account_update',$account->Slug)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf

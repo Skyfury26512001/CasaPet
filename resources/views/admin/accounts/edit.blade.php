@@ -39,12 +39,13 @@
             // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
             // console.log(input);
             // input.remove()
-            // console.log(input);
+            //
             // console.log("Remove image : " + "sucessful");
             // let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
+            var X = "{{$account->Avatar}}";
+            $(`input[data-cloudinary-public-id="${X}"]`).remove();
             $(this).parent().remove();
             console.log($(this).parent())
-            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
         });
     </script>
 {{--    <script>--}}
@@ -107,7 +108,7 @@
                             <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>
                             <div class="avatar">
                                 <ul class="cloudinary-thumbnails">
-                                    <li class="cloudinary-thumbnail active" data-cloudinary="">
+                                    <li class="cloudinary-thumbnail active" data-cloudinary="{{$account->Avatar}}">
                                         <img src="{{$account->Avatar600x600}}" style="width: 300px;height: 300px">
                                         <a href="#" class="cloudinary-delete">x</a>
                                     </li>
@@ -168,9 +169,9 @@
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit
                             </button>
-                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
+                            <a type="reset" class="btn btn-secondary waves-effect waves-light" href="{{route('admin_account_list')}}">
                                 Cancel
-                            </button>
+                            </a>
                         </div>
 
                     </form>

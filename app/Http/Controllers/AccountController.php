@@ -58,7 +58,7 @@ class AccountController extends Controller
 //        dd($request);
 
         $accounts = Account::query();
-        $condition = [['id' ,'!=', session()->get('current_account')->id],['role_id','<',session()->get('current_account')->Role_id]];
+        $condition = [['id' ,'!=', session()->get('current_account')->id],['role_id','<',session()->get('current_account')->RoleID]];
         if ($request->has('start') && $request->has('end')){
             array_push($condition,['created_at','>',$request->start]);
             array_push($condition,['created_at','<=',$request->end]);
@@ -72,7 +72,7 @@ class AccountController extends Controller
         if ($request->has('orderBy')){
             $accounts->orderBy('created_at',$request->orderBy);
         }
-        $accounts = $accounts->where($condition)->paginate(5);
+        $accounts = $accounts->where($condition)->paginate(5)->appends($request->query());
 //        dd($accounts);
         return view('admin.accounts.account_list',compact('accounts'));
     }
@@ -82,7 +82,7 @@ class AccountController extends Controller
     }
 
     public function store(RegisterRequest $request){
-//        dd($request);
+
         $account = $request->all();
         $Salt = generateRandomString(5);
         $account['Salt'] = $Salt;
@@ -96,7 +96,7 @@ class AccountController extends Controller
         $account['Avatar'] = $request->avatar;
 //        dd($account);
         Account::create($account);
-        dd('success');
+        return redirect(route('admin_account_list'));
     }
 
     public function edit($slug){
@@ -120,14 +120,11 @@ class AccountController extends Controller
         $account->PhoneNumber = $request->PhoneNumber;
         $account->IDNo = $request->IDNo;
         $account->Role_id = $request->Role_id;
+//        dd($request);
         $account->update();
         return redirect(route('admin_account_list'));
     }
-    public function active(Request $request){
-        $id = $request->id;
-        Account::where('id','=',$id)->update(['status' => 1]);
-        return redirect(route('admin_account_list'));
-    }
+
     public function deactive(Request $request){
         $id = $request->id;
         Account::where('id','=',$id)->update(['status' => 0]);
@@ -139,6 +136,11 @@ class AccountController extends Controller
         $ids_array = explode(',', $ids);
          Account::whereIn('id', $ids_array)->update(['status' => 0]);
         return response()->json(['success'=>"Account Deleted successfully."]);
+    }
+    public function active(Request $request){
+        $id = $request->id;
+        Account::where('id','=',$id)->update(['status' => 1]);
+        return redirect(route('admin_account_list'));
     }
     public function active_multi(Request $request){
         $ids_array = new Array_();
