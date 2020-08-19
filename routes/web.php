@@ -56,10 +56,6 @@ Route::get('/pet_care', function () {
 
 
 /* 3.Blog */
-Route::get('/timeline', function () {
-    return view('user.blog.timeline');
-});
-
 Route::get('/news', function () {
     return view('user.blog.news');
 });
