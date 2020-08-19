@@ -34,7 +34,7 @@ class AccountController extends Controller
     }
 
     public function loginP(Request $request){
-        $condition = ['email' => $request->email, 'Status' => "1",];
+        $condition = ['Email' => $request->email, 'Status' => "1",];
         $account = Account::where($condition)->get()->first();
 //        dd($request->email);
         if (isset($account)){
