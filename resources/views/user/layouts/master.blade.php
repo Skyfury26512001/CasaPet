@@ -122,15 +122,7 @@
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/news" id="gallery-dropdown"
-                               data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Blog
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="gallery-dropdown">
-                                <a class="dropdown-item" href="/timeline">Tra cứu Timeline</a>
-                                <a class="dropdown-item" href="/news">Tin tức mới</a>
-                            </div>
+                            <a class="nav-link" href="/news">Tin tức</a>
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">

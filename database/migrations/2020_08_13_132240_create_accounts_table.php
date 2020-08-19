@@ -26,7 +26,7 @@ class CreateAccountsTable extends Migration
             $table->string('PhoneNumber');
             $table->string('Address');
             $table->string('Status');
-            $table->unsignedBigInteger('RoleID');
+            $table->unsignedBigInteger('Role_id');
             $table->timestamps();
         });
     }
