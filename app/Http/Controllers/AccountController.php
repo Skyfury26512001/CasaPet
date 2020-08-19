@@ -12,7 +12,7 @@ use phpDocumentor\Reflection\Types\Array_;
 class AccountController extends Controller
 {
     public function login(){
-        return view('users.login');
+        return view('user.users.login');
     }
     public function registerP(Request $request){
         $account = new Account();

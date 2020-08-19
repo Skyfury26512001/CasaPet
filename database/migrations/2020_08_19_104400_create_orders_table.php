@@ -15,6 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('OrderType');
+            $table->string('Fullname');
+            $table->string('PhoneNumber');
+            $table->string('Email');
+            $table->unsignedBigInteger('PetId');
+            $table->integer('Status');  // 0 - Chưa xử lý ; 1 - Từ chối ; 2 - Đồng ý ;
             $table->timestamps();
         });
     }

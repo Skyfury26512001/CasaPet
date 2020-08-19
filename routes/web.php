@@ -24,7 +24,7 @@ Route::get('/', function () {
 /* Error */
 Route::get('/error', function () {
     return view('user.error');
-});
+})->name('404');
 
 
 /* 1.Services */

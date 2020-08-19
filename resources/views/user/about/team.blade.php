@@ -149,7 +149,7 @@
         <div class="container block-padding">
             <div class="row"
                  style="color: white">
-                <div class="col-sm" style="height: 30px">
+                <div class="col-sm">
                     <h6 style="color: white">Nhiệm vụ của chúng tôi</h6>
                     <p>Sứ mệnh của chúng tôi là cải thiện phúc lợi của động vật bằng cách chống lại sự tàn ác đối
                         với
@@ -162,7 +162,7 @@
                         thương
                         hơn.</p>
                 </div>
-                <div class="col-sm" style="height: 30px">
+                <div class="col-sm">
                     <h6 style="color: white">Mục tiêu của chúng tôi</h6>
                     <p>Mục tiêu của chúng tôi là ngăn chặn hành vi tàn ác đối với động vật, cải thiện phúc lợi của
                         các
@@ -172,7 +172,7 @@
                         bốn
                         chân của chúng ta.</p>
                 </div>
-                <div class="col-sm" style="height: 30px">
+                <div class="col-sm">
                     <h6 style="color: white">Bạn có thể giúp chúng tôi</h6>
                     <p>
                     <ul>

@@ -50,6 +50,28 @@
                         <li><a href="{{route('admin_contract_create')}}">Thêm mới</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class=" mdi mdi-file-document-box-check-outline"></i>
+                        <span>  Quản lý yêu cầu</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin_contract_list')}}">Danh sách</a></li>
+                        <li><a href="{{route('admin_contract_create')}}">Thêm mới</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class=" mdi mdi-file-document-box-check-outline"></i>
+                        <span>  Quản lý hợp đồng</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin_contract_list')}}">Danh sách</a></li>
+                        <li><a href="{{route('admin_contract_create')}}">Thêm mới</a></li>
+                    </ul>
+                </li>
 {{--                <li>--}}
 {{--                    <a href="javascript: void(0);">--}}
 {{--                        <i class="fe-sidebar"></i>--}}
