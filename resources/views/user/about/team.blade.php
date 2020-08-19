@@ -147,33 +147,40 @@
     <!-- Section Call to action -->
     <div id="call-to-action">
         <div class="container block-padding">
-            <div
-                style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 50px; color: white">
-                <div class="col-sm-4" style="min-width: 100%">
+            <div class="row"
+                 style="color: white">
+                <div class="col-sm" style="height: 30px">
                     <h6 style="color: white">Nhiệm vụ của chúng tôi</h6>
-                    <p>Sứ mệnh của chúng tôi là cải thiện phúc lợi của động vật bằng cách chống lại sự tàn ác đối với
-                        động vật và tình trạng quá tải về vật nuôi thông qua giáo dục. Chúng tôi cố gắng truyền cảm hứng
+                    <p>Sứ mệnh của chúng tôi là cải thiện phúc lợi của động vật bằng cách chống lại sự tàn ác đối
+                        với
+                        động vật và tình trạng quá tải về vật nuôi thông qua giáo dục. Chúng tôi cố gắng truyền cảm
+                        hứng
                         về sự đồng cảm và trách nhiệm đối với vật nuôi. Lý tưởng nhất là cả cộng đồng và các nhóm sẽ
-                        đứng lên, lên tiếng và hành động để cải thiện quyền động vật. Trao quyền cho giới trẻ để tạo ra
-                        sự khác biệt làm tăng tiềm năng tạo ra một thế giới thêm sự quan tâm và nhiều tình yêu thương
+                        đứng lên, lên tiếng và hành động để cải thiện quyền động vật. Trao quyền cho giới trẻ để tạo
+                        ra
+                        sự khác biệt làm tăng tiềm năng tạo ra một thế giới thêm sự quan tâm và nhiều tình yêu
+                        thương
                         hơn.</p>
                 </div>
-                <div class="col-sm-4" style="min-width: 100%">
+                <div class="col-sm" style="height: 30px">
                     <h6 style="color: white">Mục tiêu của chúng tôi</h6>
-                    <p>Mục tiêu của chúng tôi là ngăn chặn hành vi tàn ác đối với động vật, cải thiện phúc lợi của các
+                    <p>Mục tiêu của chúng tôi là ngăn chặn hành vi tàn ác đối với động vật, cải thiện phúc lợi của
+                        các
                         loài động vật và mang lại sự thay đổi rất cần thiết, lâu dài: từ nạn nhân trở thành
                         thành viên có giá trị của cộng đồng. Woof! tin rằng con người phải lên tiếng bảo
-                        vệ những loài động vật này và hành động để tuyên truyền cách để đối xử với những người bạn bốn
+                        vệ những loài động vật này và hành động để tuyên truyền cách để đối xử với những người bạn
+                        bốn
                         chân của chúng ta.</p>
                 </div>
-                <div class="col-sm-4" style="min-width: 100%">
+                <div class="col-sm" style="height: 30px">
                     <h6 style="color: white">Bạn có thể giúp chúng tôi</h6>
                     <p>
                     <ul>
                         <li>Tăng tốc thời gian phục hồi và sức khỏe tinh thần của các bé bằng cách trở thành một nhà
                             nuôi dưỡng.
                         </li>
-                        <li>Nhận thức được về những đau khổ khủng khiếp hàng ngày xảy ra trong việc buôn bán thịt chó và
+                        <li>Nhận thức được về những đau khổ khủng khiếp hàng ngày xảy ra trong việc buôn bán thịt
+                            chó và
                             mèo ở chợ.
                         </li>
                         <li>Tình nguyện dành thời gian của bạn.</li>
@@ -181,10 +188,9 @@
                     </ul>
                     </p>
                 </div>
-                <!-- /col-md-12 -->
             </div>
+            <!-- /row -->
         </div>
-        <!--/row -->
     </div>
     <!--/call-to-action -->
 @endsection
