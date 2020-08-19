@@ -114,6 +114,18 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/deactiveAll', 'PetController@deactive_multi')->name('admin_pet_deactive_multi');
         Route::put('/activeAll', 'PetController@active_multi')->name('admin_pet_active_multi');
     });
+    Route::group(['prefix' => '/contracts'], function () {
+        Route::get('/', 'ContractController@list')->name('admin_contract_list');
+        Route::get('/create', 'ContractController@create')->name('admin_contract_create');
+        Route::post('/store', 'ContractController@store')->name('admin_contract_store');
+        Route::get('/edit/{slug}', 'ContractController@edit')->name('admin_contract_edit');
+        Route::get('/detail/{slug}', 'ContractController@detail')->name('admin_contract_detail');
+        Route::put('/update/{slug}', 'ContractController@update')->name('admin_contract_update');
+        Route::put('/deactive/{id}', 'ContractController@deactive')->name('admin_contract_deactive');
+        Route::put('/active/{id}', 'ContractController@active')->name('admin_contract_active');
+        Route::put('/deactiveAll', 'ContractController@deactive_multi')->name('admin_contract_deactive_multi');
+        Route::put('/activeAll', 'ContractController@active_multi')->name('admin_contract_active_multi');
+    });
 });
 // login - register : route
 

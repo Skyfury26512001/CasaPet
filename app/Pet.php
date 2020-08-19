@@ -24,4 +24,21 @@ class Pet extends Model
         }
         return $list_photos;
     }
+    public function getArrayThumbnailsAttribute(){
+        if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
+            return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
+        }
+        $list_photos = array();
+        $single_thumb = explode(',', $this->Thumbnails);
+        foreach ($single_thumb as $single) {
+            if (strlen($single) > 0) {
+                array_push($list_photos, $single);
+            }
+        }
+        return $list_photos;
+    }
+
+    public function getLinkThumbnailAttribute($id_thumbnail){
+        return $id_thumbnail.self::$link;
+    }
 }

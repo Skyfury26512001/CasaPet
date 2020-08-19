@@ -169,9 +169,9 @@
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit
                             </button>
-                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
+                            <a type="reset" class="btn btn-secondary waves-effect waves-light" href="{{route('admin_account_list')}}">
                                 Cancel
-                            </button>
+                            </a>
                         </div>
 
                     </form>
