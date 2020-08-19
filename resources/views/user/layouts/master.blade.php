@@ -156,6 +156,18 @@
                                 Donate
                             </a>
                         </li>
+                        <!-- menu item -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">
+                                Đăng nhập
+                            </a>
+                        </li>
+                        <!-- menu item -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">
+                                Đăng ký
+                            </a>
+                        </li>
                     </ul>
                     <!--ul -->
                 </div>

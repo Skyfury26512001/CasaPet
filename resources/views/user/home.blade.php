@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('user.layouts.master')
 @section('title')
     Home
 @endsection
@@ -785,7 +785,8 @@
         </div>
         <!--/row -->
     </div>
-    <!--/call-to-action --><!-- Section Adopt -->
+    <!--/call-to-action -->
+    <!-- Section Adopt -->
     <section id="adopt" class="paws-house-bg1 bg-light">
         <div class="container ">
             <div class="section-heading text-center">

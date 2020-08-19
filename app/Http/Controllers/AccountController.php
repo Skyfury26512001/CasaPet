@@ -58,7 +58,7 @@ class AccountController extends Controller
 //        dd($request);
 
         $accounts = Account::query();
-        $condition = [['id' ,'!=', session()->get('current_account')->id],['role_id','<',session()->get('current_account')->Role_id]];
+        $condition = [['id' ,'!=', session()->get('current_account')->id],['role_id','<',session()->get('current_account')->RoleID]];
         if ($request->has('start') && $request->has('end')){
             array_push($condition,['created_at','>',$request->start]);
             array_push($condition,['created_at','<=',$request->end]);
