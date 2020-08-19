@@ -17,14 +17,14 @@
         <div class="jumbo-heading">
             <!-- section-heading -->
             <div class="section-heading" data-aos="zoom-in">
-                <h1>Contact Us</h1>
+                <h1>Liên hệ</h1>
             </div>
             <!-- /section-heading -->
             <!-- Breadcrumbs -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
                 </ol>
             </nav>
         </div>
@@ -36,32 +36,32 @@
             <div class="row">
                 <!-- contact-info-->
                 <div class="contact-info col-lg-5">
-                    <h4>Send us a message!</h4>
+                    <h4>Gửi thư cho Woof!</h4>
                     <!-- Form Starts -->
                     <div id="contact_form">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Name<span class="required">*</span></label>
+                                    <label>Tên<span class="required">*</span></label>
                                     <input type="text" name="name" class="form-control input-field" required="">
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Email Adress <span class="required">*</span></label>
+                                    <label>Email<span class="required">*</span></label>
                                     <input type="email" name="email" class="form-control input-field" required="">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>Subject</label>
+                                    <label>Chủ đề</label>
                                     <input type="text" name="subject" class="form-control input-field">
                                 </div>
                                 <div class="col-md-12">
-                                    <label>Message<span class="required">*</span></label>
+                                    <label>Tin nhắn<span class="required">*</span></label>
                                     <textarea name="message" id="message" class="textarea-field form-control" rows="3"
                                               required=""></textarea>
                                 </div>
                             </div>
-                            <button type="submit" id="submit_btn" value="Submit" class="btn btn-primary">Send message
+                            <button type="submit" id="submit_btn" value="Submit" class="btn btn-primary">Gửi
                             </button>
                         </div>
                         <!-- /form-group-->
@@ -75,9 +75,9 @@
                     <div class="contact-info text-light ">
                         <!-- contact-info-->
                         <div class="text-light">
-                            <h5>Information </h5>
-                            <p>Mei te apeirian omittantur reformidans, duo in appetere interesset concludaturque. Est
-                                eruditi erroribus liberavisse in.
+                            <h5>Thông tin liên lạc khác</h5>
+                            <p>Nếu bạn có bất kỳ vấn đề gì cần trao đổi hãy liên hệ với chúng tôi qua email và sđt hay
+                                cần trao đổi trực tiếp thì theo địa chỉ dưới đây.
                             </p>
                             <!-- contact icons-->
                             <ul class="list-unstyled mt-5 list-contact">
