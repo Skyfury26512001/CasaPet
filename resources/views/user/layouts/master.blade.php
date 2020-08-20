@@ -39,8 +39,8 @@
     <!-- Custom CSS -->
     <style>
         .fb_dialog_content>iframe {
-            bottom: 100px;
-            right: 24px;
+            bottom: 100px!important;
+            right: 24px!important;
         }
     </style>
 </head>
