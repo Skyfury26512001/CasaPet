@@ -36,6 +36,13 @@
 
     <!-- SPECIFIC CSS -->
     @yield('specific_css')
+    <!-- Custom CSS -->
+    <style>
+        .fb_dialog_content>iframe {
+            bottom: 100px;
+            right: 24px;
+        }
+    </style>
 </head>
 
 <!-- ==== body starts ==== -->
