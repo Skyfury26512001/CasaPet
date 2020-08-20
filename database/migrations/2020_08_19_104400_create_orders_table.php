@@ -16,10 +16,11 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('OrderType');
-            $table->string('Fullname');
+            $table->string('FullName');
             $table->string('PhoneNumber');
             $table->string('Email');
             $table->unsignedBigInteger('PetId');
+            $table->string('IDNo');
             $table->integer('Status');  // 0 - Chưa xử lý ; 1 - Từ chối ; 2 - Đồng ý ;
             $table->timestamps();
         });
@@ -32,6 +33,8 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('orders');
+        Schema::enableForeignKeyConstraints();
     }
 }

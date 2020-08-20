@@ -25,8 +25,10 @@ class AddForeignToAccountsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('accounts', function (Blueprint $table) {
             $table->dropForeign('accounts_Role_id_foreign'); // Drop foreign key 'user_id' from 'posts' table
         });
+        Schema::enableForeignKeyConstraints();
     }
 }

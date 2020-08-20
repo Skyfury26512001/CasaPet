@@ -29,6 +29,6 @@ class ContractController extends Controller
             $contracts->orderBy('created_at', $orderBy);
         }
         $contracts = $contracts->where($condition)->paginate(5)->appends(request()->query());
-        return view('admin.contracts.contract_list', compact('contracts'));
+        return view('admin.contracts.list', compact('contracts'));
     }
 }

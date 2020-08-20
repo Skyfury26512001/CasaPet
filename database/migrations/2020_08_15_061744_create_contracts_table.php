@@ -17,7 +17,6 @@ class CreateContractsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('Order_id');
             $table->string('Content');
-            $table->string('ContractTime');
             $table->string('ContractDateStart');
             $table->string('ContractDateEnd');
             $table->integer('Status'); // 0 : Chưa bắt đầu ; 1 : Đang thực hiện ; 2 : Kết thúc

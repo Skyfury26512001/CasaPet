@@ -37,10 +37,12 @@ class AccountController extends Controller
         $condition = ['Email' => $request->email, 'Status' => "1",];
         $account = Account::where($condition)->get()->first();
 //        dd($request->email);
+//        dd($account);
         if (isset($account)){
             $PasswordHash = $account->PasswordHash;
             $Salt = $account->Salt;
             $passIn = md5($request->password.$Salt);
+
             if ($PasswordHash == $passIn){
                 session_start();
                 $account_session = $request->session();
@@ -56,9 +58,9 @@ class AccountController extends Controller
 
     public function list(Request $request){
 //        dd($request);
-
+        $current_role = session()->get('current_account')->Role_id;
         $accounts = Account::query();
-        $condition = [['id' ,'!=', session()->get('current_account')->id],['role_id','<',session()->get('current_account')->Rold_id]];
+        $condition = [['id' ,'!=', session()->get('current_account')->id],['Role_id','<',$current_role]];
         if ($request->has('start') && $request->has('end')){
             array_push($condition,['created_at','>',$request->start]);
             array_push($condition,['created_at','<=',$request->end]);

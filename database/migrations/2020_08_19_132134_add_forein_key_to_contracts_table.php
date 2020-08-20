@@ -25,8 +25,10 @@ class AddForeinKeyToContractsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('contracts', function (Blueprint $table) {
             //
         });
+        Schema::enableForeignKeyConstraints();
     }
 }

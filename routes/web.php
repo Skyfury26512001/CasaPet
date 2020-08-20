@@ -115,13 +115,25 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::get('/', 'ContractController@list')->name('admin_contract_list');
         Route::get('/create', 'ContractController@create')->name('admin_contract_create');
         Route::post('/store', 'ContractController@store')->name('admin_contract_store');
-        Route::get('/edit/{slug}', 'ContractController@edit')->name('admin_contract_edit');
-        Route::get('/detail/{slug}', 'ContractController@detail')->name('admin_contract_detail');
-        Route::put('/update/{slug}', 'ContractController@update')->name('admin_contract_update');
-        Route::put('/deactive/{id}', 'ContractController@deactive')->name('admin_contract_deactive');
-        Route::put('/active/{id}', 'ContractController@active')->name('admin_contract_active');
-        Route::put('/deactiveAll', 'ContractController@deactive_multi')->name('admin_contract_deactive_multi');
-        Route::put('/activeAll', 'ContractController@active_multi')->name('admin_contract_active_multi');
+        Route::get('/edit/{id}', 'ContractController@edit')->name('admin_contract_edit');
+        Route::get('/detail/{id}', 'ContractController@detail')->name('admin_contract_detail');
+        Route::put('/update/{id}', 'ContractController@update')->name('admin_contract_update');
+        Route::put('/deactive/{id}', 'ContractController@end')->name('admin_contract_end');
+        Route::put('/active/{id}', 'ContractController@start')->name('admin_contract_start');
+//        Route::put('/deactiveAll', 'ContractController@deactive_multi')->name('admin_contract_deactive_multi');
+//        Route::put('/activeAll', 'ContractController@active_multi')->name('admin_contract_active_multi');
+    });
+    Route::group(['prefix' => '/orders'], function () {
+        Route::get('/', 'OrderController@list')->name('admin_order_list');
+        Route::get('/create', 'OrderController@create')->name('admin_order_create');
+        Route::post('/store', 'OrderController@store')->name('admin_order_store');
+        Route::get('/edit/{id}', 'OrderController@edit')->name('admin_order_edit');
+        Route::get('/detail/{id}', 'OrderController@detail')->name('admin_order_detail');
+        Route::put('/update/{id}', 'OrderController@update')->name('admin_order_update');
+        Route::post('/acept/{id}', 'OrderController@acept')->name('admin_order_acept');
+        Route::post('/decline/{id}', 'OrderController@decline')->name('admin_order_decline');
+//        Route::put('/deactiveAll', 'OrderController@deactive_multi')->name('admin_order_deactive_multi');
+//        Route::put('/activeAll', 'OrderController@active_multi')->name('admin_order_active_multi');
     });
 });
 // login - register : route
