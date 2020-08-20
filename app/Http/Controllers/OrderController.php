@@ -67,27 +67,34 @@ class OrderController extends Controller
 
     public function edit($id, Request $request)
     {
-        $order = Order::where('id', '=', $id)->first();
-        $pet   = Pet::find($order->PetId);
-        return view('admin.orders.edit', compact('order', 'pet'));
+        $order_cur = Order::find($id);
+        if (isset($order_cur) && $order_cur != null) {
+            $order = Order::where('id', '=', $id)->first();
+            $pet   = Pet::find($order->PetId);
+            return view('admin.orders.edit', compact('order', 'pet'));
+        }
+        return redirect(route('admin_404'));
     }
 
     public function acept($id)
     {
-        $order_cur= Order::find($id);
-        DB::transaction(function () use ($order_cur,$id){
-            $order_cur->Status = 2;
-            $order_cur->update();
-            $pet = Pet::find($order_cur->PetId);
-            Order::where('id', '!=', $id)->where('PetId', $pet->id)->update(['Status' => 1]);
-            $contract = new Contract();
-            $contract->Order_id = $order_cur->id;
-            $contract->Content = "Xác nhận hợp đồng của : $order_cur->FullName nhận nuôi $pet->Name ! Yêu cầu $order_cur->FullName phải chụp ảnh đăng thông tin gửi lên page !";
-            $contract->ContractDateStart = Carbon::now()->addDays(7)->toDateString();
-            $contract->ContractDateEnd = Carbon::now()->addDays(372)->toDateString();
-            $contract->Status = 0;
-            $contract->save();
-        });
-        return redirect(route('admin_order_list'));
+        $order_cur = Order::find($id);
+        if (isset($order_cur) && $order_cur != null) {
+            DB::transaction(function () use ($order_cur, $id) {
+                $order_cur->Status = 2;
+                $order_cur->update();
+                $pet = Pet::find($order_cur->PetId);
+                Order::where('id', '!=', $id)->where('PetId', $pet->id)->update(['Status' => 1]);
+                $contract                    = new Contract();
+                $contract->Order_id          = $order_cur->id;
+                $contract->Content           = "Xác nhận hợp đồng của : $order_cur->FullName nhận nuôi $pet->Name ! Yêu cầu $order_cur->FullName phải chụp ảnh đăng thông tin gửi lên page !";
+                $contract->ContractDateStart = Carbon::now()->addDays(7)->toDateString();
+                $contract->ContractDateEnd   = Carbon::now()->addDays(372)->toDateString();
+                $contract->Status            = 0;
+                $contract->save();
+            });
+            return redirect(route('admin_order_list'));
+        }
+        return redirect(route('admin_404'));
     }
 }

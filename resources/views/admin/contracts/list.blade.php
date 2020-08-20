@@ -24,98 +24,98 @@
     {{--            $(".parsley-examples").parsley()--}}
     {{--        });--}}
     {{--    </script>--}}
-{{--    <script>--}}
-{{--        $(document).ready(function () {--}}
-{{--            $("#deactive_all").on('click', function (e) {--}}
-{{--                console.log('123');--}}
-{{--                var allVals = [];--}}
-{{--                $(".checkbox_list:checked").each(function () {--}}
-{{--                    allVals.push($(this).val());--}}
-{{--                    console.log(allVals);--}}
-{{--                });--}}
-{{--                if (allVals.length <= 0) {--}}
-{{--                    alert("Please select row.");--}}
-{{--                } else {--}}
-{{--                    var check = confirm("Are you sure you want to deactive this contract?");--}}
-{{--                    if (check == true) {--}}
-{{--                        var join_selected_values = allVals.join(",");--}}
-{{--                        $.ajax({--}}
-{{--                            url: '{{route('admin_contract_deactive_multi')}}',--}}
-{{--                            type: 'PUT',--}}
-{{--                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
-{{--                            data: 'ids=' + join_selected_values,--}}
-{{--                            success: function (data) {--}}
-{{--                                if (data['success']) {--}}
-{{--                                    $(".sub_chk:checked").each(function () {--}}
-{{--                                        $(this).parents("tr").remove();--}}
-{{--                                    });--}}
-{{--                                    alert(data['success']);--}}
-{{--                                    // alert("Accounts Deleted Success");--}}
-{{--                                    window.location = '{{route('admin_contract_list')}}';--}}
-{{--                                } else if (data['error']) {--}}
-{{--                                    console.log(data['error']);--}}
-{{--                                } else {--}}
-{{--                                    alert('Whoops Something went wrong!!');--}}
-{{--                                }--}}
-{{--                            },--}}
-{{--                            error: function (data) {--}}
-{{--                                alert(data.responseText);--}}
-{{--                            }--}}
-{{--                        });--}}
-{{--                        $.each(allVals, function (index, value) {--}}
-{{--                            $('table tr').filter("[data-row-id='" + value + "']").remove();--}}
-{{--                        });--}}
-{{--                    }--}}
-{{--                }--}}
-{{--            })--}}
-{{--        });--}}
-{{--    </script>--}}
-{{--    <script>--}}
-{{--        $(document).ready(function () {--}}
-{{--            $("#active_all").on('click', function (e) {--}}
-{{--                console.log('123');--}}
-{{--                var allVals = [];--}}
-{{--                $(".checkbox_list:checked").each(function () {--}}
-{{--                    allVals.push($(this).val());--}}
-{{--                    console.log(allVals);--}}
-{{--                });--}}
-{{--                if (allVals.length <= 0) {--}}
-{{--                    alert("Please select row.");--}}
-{{--                } else {--}}
-{{--                    var check = confirm("Are you sure you want to active this row?");--}}
-{{--                    if (check == true) {--}}
-{{--                        var join_selected_values = allVals.join(",");--}}
-{{--                        $.ajax({--}}
-{{--                            url: '{{route('admin_contract_active_multi')}}',--}}
-{{--                            type: 'PUT',--}}
-{{--                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
-{{--                            data: 'ids=' + join_selected_values,--}}
-{{--                            success: function (data) {--}}
-{{--                                if (data['success']) {--}}
-{{--                                    $(".sub_chk:checked").each(function () {--}}
-{{--                                        $(this).parents("tr").remove();--}}
-{{--                                    });--}}
-{{--                                    alert(data['success']);--}}
-{{--                                    // alert("Accounts Deleted Success");--}}
-{{--                                    window.location = '{{route('admin_contract_list')}}';--}}
-{{--                                } else if (data['error']) {--}}
-{{--                                    console.log(data['error']);--}}
-{{--                                } else {--}}
-{{--                                    alert('Whoops Something went wrong!!');--}}
-{{--                                }--}}
-{{--                            },--}}
-{{--                            error: function (data) {--}}
-{{--                                alert(data.responseText);--}}
-{{--                            }--}}
-{{--                        });--}}
-{{--                        $.each(allVals, function (index, value) {--}}
-{{--                            $('table tr').filter("[data-row-id='" + value + "']").remove();--}}
-{{--                        });--}}
-{{--                    }--}}
-{{--                }--}}
-{{--            })--}}
-{{--        });--}}
-{{--    </script>--}}
+    {{--    <script>--}}
+    {{--        $(document).ready(function () {--}}
+    {{--            $("#deactive_all").on('click', function (e) {--}}
+    {{--                console.log('123');--}}
+    {{--                var allVals = [];--}}
+    {{--                $(".checkbox_list:checked").each(function () {--}}
+    {{--                    allVals.push($(this).val());--}}
+    {{--                    console.log(allVals);--}}
+    {{--                });--}}
+    {{--                if (allVals.length <= 0) {--}}
+    {{--                    alert("Please select row.");--}}
+    {{--                } else {--}}
+    {{--                    var check = confirm("Are you sure you want to deactive this contract?");--}}
+    {{--                    if (check == true) {--}}
+    {{--                        var join_selected_values = allVals.join(",");--}}
+    {{--                        $.ajax({--}}
+    {{--                            url: '{{route('admin_contract_deactive_multi')}}',--}}
+    {{--                            type: 'PUT',--}}
+    {{--                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
+    {{--                            data: 'ids=' + join_selected_values,--}}
+    {{--                            success: function (data) {--}}
+    {{--                                if (data['success']) {--}}
+    {{--                                    $(".sub_chk:checked").each(function () {--}}
+    {{--                                        $(this).parents("tr").remove();--}}
+    {{--                                    });--}}
+    {{--                                    alert(data['success']);--}}
+    {{--                                    // alert("Accounts Deleted Success");--}}
+    {{--                                    window.location = '{{route('admin_contract_list')}}';--}}
+    {{--                                } else if (data['error']) {--}}
+    {{--                                    console.log(data['error']);--}}
+    {{--                                } else {--}}
+    {{--                                    alert('Whoops Something went wrong!!');--}}
+    {{--                                }--}}
+    {{--                            },--}}
+    {{--                            error: function (data) {--}}
+    {{--                                alert(data.responseText);--}}
+    {{--                            }--}}
+    {{--                        });--}}
+    {{--                        $.each(allVals, function (index, value) {--}}
+    {{--                            $('table tr').filter("[data-row-id='" + value + "']").remove();--}}
+    {{--                        });--}}
+    {{--                    }--}}
+    {{--                }--}}
+    {{--            })--}}
+    {{--        });--}}
+    {{--    </script>--}}
+    {{--    <script>--}}
+    {{--        $(document).ready(function () {--}}
+    {{--            $("#active_all").on('click', function (e) {--}}
+    {{--                console.log('123');--}}
+    {{--                var allVals = [];--}}
+    {{--                $(".checkbox_list:checked").each(function () {--}}
+    {{--                    allVals.push($(this).val());--}}
+    {{--                    console.log(allVals);--}}
+    {{--                });--}}
+    {{--                if (allVals.length <= 0) {--}}
+    {{--                    alert("Please select row.");--}}
+    {{--                } else {--}}
+    {{--                    var check = confirm("Are you sure you want to active this row?");--}}
+    {{--                    if (check == true) {--}}
+    {{--                        var join_selected_values = allVals.join(",");--}}
+    {{--                        $.ajax({--}}
+    {{--                            url: '{{route('admin_contract_active_multi')}}',--}}
+    {{--                            type: 'PUT',--}}
+    {{--                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
+    {{--                            data: 'ids=' + join_selected_values,--}}
+    {{--                            success: function (data) {--}}
+    {{--                                if (data['success']) {--}}
+    {{--                                    $(".sub_chk:checked").each(function () {--}}
+    {{--                                        $(this).parents("tr").remove();--}}
+    {{--                                    });--}}
+    {{--                                    alert(data['success']);--}}
+    {{--                                    // alert("Accounts Deleted Success");--}}
+    {{--                                    window.location = '{{route('admin_contract_list')}}';--}}
+    {{--                                } else if (data['error']) {--}}
+    {{--                                    console.log(data['error']);--}}
+    {{--                                } else {--}}
+    {{--                                    alert('Whoops Something went wrong!!');--}}
+    {{--                                }--}}
+    {{--                            },--}}
+    {{--                            error: function (data) {--}}
+    {{--                                alert(data.responseText);--}}
+    {{--                            }--}}
+    {{--                        });--}}
+    {{--                        $.each(allVals, function (index, value) {--}}
+    {{--                            $('table tr').filter("[data-row-id='" + value + "']").remove();--}}
+    {{--                        });--}}
+    {{--                    }--}}
+    {{--                }--}}
+    {{--            })--}}
+    {{--        });--}}
+    {{--    </script>--}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -262,15 +262,15 @@
                                             @elseif ($contract->Status == 2)
                                                 <td style="color: mediumspringgreen"> Kết thúc</td>
                                             @else
-                                                <td style="color: red"> Unknown</td>
+                                                <td style="color: red"> Unknown Status</td>
                                             @endif
-                                            <td>
-                                                <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_contract_edit',$contract->id)}}"
-                                                       class="btn btn-primary"
-                                                       style="float:right">Edit</a>
-                                                </div>
-                                            </td>
+{{--                                            <td>--}}
+{{--                                                <div class="d-flex justify-content-center">--}}
+{{--                                                    <a href="{{route('admin_contract_edit',$contract->id)}}"--}}
+{{--                                                       class="btn btn-primary"--}}
+{{--                                                       style="float:right">Edit</a>--}}
+{{--                                                </div>--}}
+{{--                                            </td>--}}
                                             @if ($contract->Status == 1)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
@@ -291,6 +291,16 @@
                                                         </form>
                                                     </div>
                                                 </td>
+                                            @elseif ($contract->Status == 2)
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a action="#"
+                                                              method="POST">
+                                                            @csrf @method('PUT')
+                                                            <button disabled class="btn btn-primary btn-table">End</button>
+                                                        </a>
+                                                    </div>
+                                                </td>
                                             @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
@@ -307,13 +317,13 @@
                             <div style="margin-top: 1%">
                                 <div class="row">
                                     <div class="col-5"> {{ $contracts->links() }}</div>
-{{--                                    <div class="col-6">--}}
-{{--                                        <button class="btn btn-primary" style="float: right;margin-left: 5%;"--}}
-{{--                                                id="deactive_all"> Deactive All--}}
-{{--                                        </button>--}}
-{{--                                        <button class="btn btn-primary" style="float: right" id="active_all"> Active All--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="col-6">--}}
+                                    {{--                                        <button class="btn btn-primary" style="float: right;margin-left: 5%;"--}}
+                                    {{--                                                id="deactive_all"> Deactive All--}}
+                                    {{--                                        </button>--}}
+                                    {{--                                        <button class="btn btn-primary" style="float: right" id="active_all"> Active All--}}
+                                    {{--                                        </button>--}}
+                                    {{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
