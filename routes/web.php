@@ -149,3 +149,7 @@ Route::post('/regist', 'AccountController@registP');
 Route::get('checking_page', function () {
     return view('session_checking');
 });
+/* 7.Time Line */
+Route::get('/timeline', function () {
+    return view('timeline');
+});
