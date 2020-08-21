@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     protected static $link = 'https://res.cloudinary.com/dwarrion/image/upload/' ;
-    public $fillable = ['FullName','Email','PasswordHash','DateOfBirth','PhoneNumber','Address','IDNo','Slug','Avatar','Salt','Status','Role_id'];
+    public $fillable = ['FullName','Email','PasswordHash','DateOfBirth','PhoneNumber','Address','IDNo','Slug','Avatar','Salt','Status','RoleID'];
+
+
     public function role(){
         return $this->belongsTo(Role::class,'Role_id','id');
     }

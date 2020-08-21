@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignToAccountsTable extends Migration
+class AddForeinKeyToContractsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddForeignToAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::table('accounts', function (Blueprint $table) {
-            $table->foreign('Role_id')->references('id')->on('roles')->OnDelete("casade");
+        Schema::table('contracts', function (Blueprint $table) {
+            $table->foreign('Order_id')->references('id')->on('orders')->onDelete('cascade');
         });
     }
 
@@ -26,8 +26,8 @@ class AddForeignToAccountsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::table('accounts', function (Blueprint $table) {
-            $table->dropForeign('accounts_Role_id_foreign'); // Drop foreign key 'user_id' from 'posts' table
+        Schema::table('contracts', function (Blueprint $table) {
+            //
         });
         Schema::enableForeignKeyConstraints();
     }

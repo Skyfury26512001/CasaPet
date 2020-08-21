@@ -19,7 +19,6 @@ class PetSeeder extends Seeder
             Pet::query()->truncate();
             Schema::enableForeignKeyConstraints();
         }
-
         $pets = array(
             array('Slug' => 'cho_soc_32',
                 'Name' => 'Chó Sóc',
