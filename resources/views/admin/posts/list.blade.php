@@ -36,11 +36,11 @@
     {{--                if (allVals.length <= 0) {--}}
     {{--                    alert("Please select row.");--}}
     {{--                } else {--}}
-    {{--                    var check = confirm("Are you sure you want to deactive this contract?");--}}
+    {{--                    var check = confirm("Are you sure you want to deactive this order?");--}}
     {{--                    if (check == true) {--}}
     {{--                        var join_selected_values = allVals.join(",");--}}
     {{--                        $.ajax({--}}
-    {{--                            url: '{{route('admin_contract_deactive_multi')}}',--}}
+    {{--                            url: '{{route('admin_order_deactive_multi')}}',--}}
     {{--                            type: 'PUT',--}}
     {{--                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
     {{--                            data: 'ids=' + join_selected_values,--}}
@@ -51,7 +51,7 @@
     {{--                                    });--}}
     {{--                                    alert(data['success']);--}}
     {{--                                    // alert("Accounts Deleted Success");--}}
-    {{--                                    window.location = '{{route('admin_contract_list')}}';--}}
+    {{--                                    window.location = '{{route('admin_order_list')}}';--}}
     {{--                                } else if (data['error']) {--}}
     {{--                                    console.log(data['error']);--}}
     {{--                                } else {--}}
@@ -86,7 +86,7 @@
     {{--                    if (check == true) {--}}
     {{--                        var join_selected_values = allVals.join(",");--}}
     {{--                        $.ajax({--}}
-    {{--                            url: '{{route('admin_contract_active_multi')}}',--}}
+    {{--                            url: '{{route('admin_order_active_multi')}}',--}}
     {{--                            type: 'PUT',--}}
     {{--                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
     {{--                            data: 'ids=' + join_selected_values,--}}
@@ -97,7 +97,7 @@
     {{--                                    });--}}
     {{--                                    alert(data['success']);--}}
     {{--                                    // alert("Accounts Deleted Success");--}}
-    {{--                                    window.location = '{{route('admin_contract_list')}}';--}}
+    {{--                                    window.location = '{{route('admin_order_list')}}';--}}
     {{--                                } else if (data['error']) {--}}
     {{--                                    console.log(data['error']);--}}
     {{--                                } else {--}}
@@ -174,25 +174,48 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="header-title">Pets</h4>
+                            <h4 class="header-title">Accounts</h4>
                             <p class="sub-header">
-                                <code>All contracts</code>
+                                <code>All orders</code>
                             </p>
                         </div>
+                        {{--                        {{dd( Request::get('Status'))}}--}}
                         <div class="col-9">
-                            <form action="{{route('admin_contract_list')}}" method="GET" style="display: flex">
+                            <form action="{{route('admin_order_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
                                     <select name="orderBy">
-                                        <option value="ASC">Tăng dần</option>
-                                        <option value="DESC">Giảm dần</option>
+                                        <option value="ASC"
+                                                @if (Request::get('orderBy') == "ASC")
+                                                selected
+                                                @endif>Tăng dần
+                                        </option>
+                                        <option value="DESC"
+                                                @if (Request::get('orderBy') == "DESC")
+                                                selected
+                                                @endif>Giảm dần
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-filter">
                                     Lọc theo trạng thái
                                     <select name="Status">
-                                        <option value="1">Active</option>
-                                        <option value="0">Deactive</option>
+                                        <option value="1"
+                                                @if (Request::get('Status') == "1")
+                                                selected
+                                                @endif>Từ chối
+                                        </option>
+                                        <option value="0"
+                                                @if (Request::get('Status') == "0")
+                                                selected
+                                                @endif>Chưa xử lý
+                                        </option>
+                                        <option value="2"
+                                                @if (Request::get('Status') == "2")
+                                                selected
+                                                @endif>
+                                            Chấp thuận
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-filter" style="width:250px;">
@@ -210,10 +233,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-8">
                             <div class="row">
                                 <div class="offset-8 col-3">
-                                    <form class="app-search" action="{{route('admin_contract_list')}}">
+                                    <form class="app-search" action="{{route('admin_order_list')}}">
                                         <div class="app-search-box">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" name="keyword"
@@ -233,82 +256,101 @@
                                     <thead>
                                     <tr>
                                         <th></th>
+                                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                            style="width: 24.8px;"
+                                            aria-label="ID: activate to sort column ascending">
+                                            Email
+                                        </th>
                                         <th>OrderID</th>
-                                        <th>DateStart</th>
-                                        <th>DateEnd</th>
+                                        <th>OrderType</th>
+                                        <th>Name</th>
+                                        <th>PetID</th>
                                         <th>Status</th>
-                                        <th colspan="3" style="text-align: center">Action</th>
+                                        <th>Ngày gửi</th>
+                                        <th>Ngày xử lý</th>
+                                        <th colspan="4" style="text-align: center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @csrf
-                                    {{--                            {{dd($contracts)}}--}}
-                                    @foreach($contracts as $contract)
-                                        {{--                                {{dd($contract)}}--}}
+                                    {{--                            {{dd($orders)}}--}}
+                                    @foreach($orders as $order)
+                                        {{--                                {{dd($order)}}--}}
                                         <tr>
-                                            <td colspan="" style="vertical-align: middle;">
+                                            <td colspan="1" style="vertical-align: middle;">
                                                 <div class="checkbox checkbox-primary">
                                                     <input class="checkbox_list" id="" type="checkbox"
-                                                           style="opacity: 1" name="ids[]" value="{{$contract->id}}">
+                                                           style="opacity: 1" name="ids[]" value="{{$order->id}}">
                                                 </div>
                                             </td>
-                                            <td>{{$contract->Order_id}}</td>
-                                            <td>{{$contract->ContractDateStart}}</td>
-                                            <td>{{$contract->ContractDateEnd}}</td>
-                                            @if ($contract->Status == 0)
-                                                <td style="color: gold"> Chưa bắt đầu</td>
-                                            @elseif ($contract->Status == 1)
-                                                <td style="color: gray"> Đang hoạt động</td>
-                                            @elseif ($contract->Status == 2)
-                                                <td style="color: mediumspringgreen"> Kết thúc</td>
+                                            <td>{{$order->Email}}</td>
+                                            <td>{{$order->id}}</td>
+                                            <td>{{$order->OrderType}}</td>
+                                            <td>{{$order->FullName}}</td>
+                                            <td>{{$order->PetId}}</td>
+                                            @if ($order->Status == 0)
+                                                <td style="color: red"> Chưa xử lý</td>
+                                            @elseif ($order->Status == 1)
+                                                <td style="color: gray"> Từ chối</td>
+                                            @elseif ($order->Status == 2)
+                                                <td style="color: mediumspringgreen"> Chấp thuận</td>
                                             @else
-                                                <td style="color: red"> Unknown Status</td>
-                                            @endif
-{{--                                            <td>--}}
-{{--                                                <div class="d-flex justify-content-center">--}}
-{{--                                                    <a href="{{route('admin_contract_edit',$contract->id)}}"--}}
-{{--                                                       class="btn btn-primary"--}}
-{{--                                                       style="float:right">Edit</a>--}}
-{{--                                                </div>--}}
-{{--                                            </td>--}}
-                                            @if ($contract->Status == 1)
-                                                <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_contract_end',$contract->id)}}"
-                                                              method="POST">
-                                                            @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table"> End</button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            @elseif ($contract->Status == 0)
-                                                <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_contract_start',$contract->id)}}"
-                                                              method="POST">
-                                                            @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Start</button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            @elseif ($contract->Status == 2)
-                                                <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <a action="#"
-                                                              method="POST">
-                                                            @csrf @method('PUT')
-                                                            <button disabled class="btn btn-primary btn-table">End</button>
-                                                        </a>
-                                                    </div>
-                                                </td>
+                                                <td style="color: red"> Unknown</td>
                                             @endif
                                             <td>
+                                                {{$order->created_at}}
+                                            </td>
+                                            <td>
+                                                @if ($order->updated_at == $order->created_at)
+                                                    Chưa có thay đổi
+                                                @else
+                                                    {{$order->updated_at}}
+                                                @endif
+                                            </td>
+                                            <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_contract_detail',$contract->id)}}"
+                                                    <a href="{{route('admin_order_edit',$order->id)}}"
                                                        class="btn btn-primary"
-                                                       style="float:right">Detail</a>
+                                                       style="float:right">Action</a>
                                                 </div>
                                             </td>
+                                            {{--                                            @if ($order->Status == 1)--}}
+                                            {{--                                                <td>--}}
+                                            {{--                                                    <div class="d-flex justify-content-center">--}}
+                                            {{--                                                        <form action="{{route('admin_order_deactive',$order->id)}}"--}}
+                                            {{--                                                              method="POST">--}}
+                                            {{--                                                            @csrf @method('PUT')--}}
+                                            {{--                                                            <button class="btn btn-primary btn-table"> Deactive</button>--}}
+                                            {{--                                                        </form>--}}
+                                            {{--                                                    </div>--}}
+                                            {{--                                                </td>--}}
+                                            {{--                                            @elseif ($order->Status == 0)--}}
+                                            {{--                                                <td>--}}
+                                            {{--                                                    <div class="d-flex justify-content-center">--}}
+                                            {{--                                                        <form action="{{route('admin_order_active',$order->id)}}"--}}
+                                            {{--                                                              method="POST">--}}
+                                            {{--                                                            @csrf @method('PUT')--}}
+                                            {{--                                                            <button class="btn btn-primary btn-table"> Active</button>--}}
+                                            {{--                                                        </form>--}}
+                                            {{--                                                    </div>--}}
+                                            {{--                                                </td>--}}
+                                            {{--                                            @endif--}}
+                                            {{--                                            <td>--}}
+                                            {{--                                                <div class="d-flex justify-content-center">--}}
+                                            {{--                                                    <form action="{{route('admin_order_active',$order->id)}}"--}}
+                                            {{--                                                          method="POST">--}}
+                                            {{--                                                        @csrf @method('PUT')--}}
+                                            {{--                                                        <button class="btn btn-primary btn-table"> Acept</button>--}}
+                                            {{--                                                    </form>--}}
+                                            {{--                                                </div>--}}
+                                            {{--                                            </td>--}}
+                                            {{--                                            <td>--}}
+                                            {{--                                                <div class="d-flex justify-content-center">--}}
+                                            {{--                                                    <a href="{{route('admin_order_detail',$order->id)}}"--}}
+                                            {{--                                                       class="btn btn-primary"--}}
+                                            {{--                                                       style="float:right">Detail</a>--}}
+                                            {{--                                                </div>--}}
+                                            {{--                                            </td>--}}
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -316,7 +358,7 @@
                             </div>
                             <div style="margin-top: 1%">
                                 <div class="row">
-                                    <div class="col-5"> {{ $contracts->links() }}</div>
+                                    <div class="col-5"> {{ $orders->links() }}</div>
                                     {{--                                    <div class="col-6">--}}
                                     {{--                                        <button class="btn btn-primary" style="float: right;margin-left: 5%;"--}}
                                     {{--                                                id="deactive_all"> Deactive All--}}

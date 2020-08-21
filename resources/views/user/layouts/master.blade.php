@@ -36,10 +36,44 @@
 
     <!-- SPECIFIC CSS -->
     @yield('specific_css')
+    <!-- Custom CSS -->
+    <style>
+        .fb_dialog_content>iframe {
+            bottom: 100px!important;
+            right: 24px!important;
+        }
+    </style>
 </head>
 
 <!-- ==== body starts ==== -->
 <body id="top">
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v8.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="107245207763414"
+     theme_color="#F9BE4F"
+     logged_in_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?"
+     logged_out_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?">
+</div>
 <!-- Preloader -->
 <div id="preloader">
     <div class="spinner">
@@ -226,6 +260,32 @@
         <a href="#top" class="back-to-top"><i class="fa fa-angle-up"></i></a>
     </div>
     <!--page-scroll-->
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml            : true,
+                version          : 'v8.0'
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="107245207763414"
+         theme_color="#ff7e29"
+         logged_in_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?"
+         logged_out_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?">
+    </div>
 </footer>
 <!-- footer-->
 <!-- Bootstrap core & Jquery -->

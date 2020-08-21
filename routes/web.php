@@ -84,7 +84,9 @@ Route::get('/donation', function () {
 // admin : route
 
 Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () {
+
     Route::get('/', 'AdminController@dashboard')->name('admin');
+    Route::get('/404',function(){ return view('admin.404-admin');})->name('admin_404');
     Route::group(['prefix' => '/accounts'], function () {
         Route::get('/', 'AccountController@list')->name('admin_account_list');
         Route::get('/create', 'AccountController@create')->name('admin_account_create');
@@ -115,9 +117,9 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::get('/', 'ContractController@list')->name('admin_contract_list');
         Route::get('/create', 'ContractController@create')->name('admin_contract_create');
         Route::post('/store', 'ContractController@store')->name('admin_contract_store');
-        Route::get('/edit/{id}', 'ContractController@edit')->name('admin_contract_edit');
+//        Route::get('/edit/{id}', 'ContractController@edit')->name('admin_contract_edit');
         Route::get('/detail/{id}', 'ContractController@detail')->name('admin_contract_detail');
-        Route::put('/update/{id}', 'ContractController@update')->name('admin_contract_update');
+//        Route::put('/update/{id}', 'ContractController@update')->name('admin_contract_update');
         Route::put('/deactive/{id}', 'ContractController@end')->name('admin_contract_end');
         Route::put('/active/{id}', 'ContractController@start')->name('admin_contract_start');
 //        Route::put('/deactiveAll', 'ContractController@deactive_multi')->name('admin_contract_deactive_multi');
@@ -146,4 +148,8 @@ Route::post('/regist', 'AccountController@registP');
 // test : route
 Route::get('checking_page', function () {
     return view('session_checking');
+});
+/* 7.Time Line */
+Route::get('/timeline', function () {
+    return view('timeline');
 });
