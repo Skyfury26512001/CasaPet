@@ -1028,7 +1028,9 @@
     <!-- /Section ends -->
     <!-- /page -->
     <div id="paypal-button-container"></div>
-<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+@endsection
+@section('specific_js')
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
   paypal.Buttons({
       style: {
