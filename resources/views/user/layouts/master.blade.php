@@ -36,10 +36,44 @@
 
     <!-- SPECIFIC CSS -->
     @yield('specific_css')
+    <!-- Custom CSS -->
+    <style>
+        .fb_dialog_content>iframe {
+            bottom: 100px!important;
+            right: 24px!important;
+        }
+    </style>
 </head>
 
 <!-- ==== body starts ==== -->
 <body id="top">
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v8.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="107245207763414"
+     theme_color="#F9BE4F"
+     logged_in_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?"
+     logged_out_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?">
+</div>
 <!-- Preloader -->
 <div id="preloader">
     <div class="spinner">
@@ -125,15 +159,7 @@
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/news" id="gallery-dropdown"
-                               data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Blog
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="gallery-dropdown">
-                                <a class="dropdown-item" href="/timeline">Tra cứu Timeline</a>
-                                <a class="dropdown-item" href="/news">Tin tức mới</a>
-                            </div>
+                            <a class="nav-link" href="/news">Tin tức</a>
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
@@ -154,6 +180,18 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/donation">
                                 Donate
+                            </a>
+                        </li>
+                        <!-- menu item -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">
+                                Đăng nhập
+                            </a>
+                        </li>
+                        <!-- menu item -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">
+                                Đăng ký
                             </a>
                         </li>
                     </ul>

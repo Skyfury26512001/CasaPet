@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContractsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('Order_id');
+            $table->string('Name');
+            $table->string('Email');
             $table->string('Content');
-            $table->string('ContractDateStart');
-            $table->string('ContractDateEnd');
-            $table->integer('Status'); // 0 : Chưa bắt đầu ; 1 : Đang thực hiện ; 2 : Kết thúc
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('contacts');
     }
 }

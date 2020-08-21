@@ -13,81 +13,80 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//USER
+// user : route
+
 /* Home */
 Route::get('/', function () {
-    return view('home');
+    return view('user.home');
 })->name('home');
 
 
 /* Error */
 Route::get('/error', function () {
-    return view('error');
-});
+    return view('user.error');
+})->name('404');
 
 
 /* 1.Services */
 Route::get('/services', function () {
-    return view('services.services');
+    return view('user.services.services');
 });
 
 Route::get('/rescue', function () {
-    return view('services.rescue');
+    return view('user.services.rescue');
 });
 
 Route::get('/adoption', function () {
-    return view('services.adoption');
+    return view('user.services.adoption');
 });
 
 Route::get('/concession', function () {
-    return view('services.concession');
+    return view('user.services.concession');
 });
 
 
 /* 2.Store */
 Route::get('/shop', function () {
-    return view('store.shop');
+    return view('user.store.shop');
 });
 
 Route::get('/pet_care', function () {
-    return view('store.pet_care');
+    return view('user.store.pet_care');
 });
 
 
 /* 3.Blog */
-Route::get('/timeline', function () {
-    return view('blog.timeline');
-});
-
 Route::get('/news', function () {
-    return view('blog.news');
+    return view('user.blog.news');
 });
 
 
 /* 4.About */
 Route::get('/about', function () {
-    return view('about.about');
+    return view('user.about.about');
 });
 
 Route::get('/team', function () {
-    return view('about.team');
+    return view('user.about.team');
 });
 
 
 /* 5.Contact */
 Route::get('/contact', function () {
-    return view('contact.contact');
+    return view('user.contact.contact');
 });
 
 /* 6.Donation */
 Route::get('/donation', function () {
-    return view('donation.donation');
+    return view('user.donation.donation');
 });
 
 // admin : route
 
 Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () {
-    Route::get('/','AdminController@dashboard')->name('admin');
+
+    Route::get('/', 'AdminController@dashboard')->name('admin');
+    Route::get('/404',function(){ return view('admin.404-admin');})->name('admin_404');
     Route::group(['prefix' => '/accounts'], function () {
         Route::get('/', 'AccountController@list')->name('admin_account_list');
         Route::get('/create', 'AccountController@create')->name('admin_account_create');
@@ -114,13 +113,37 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/deactiveAll', 'PetController@deactive_multi')->name('admin_pet_deactive_multi');
         Route::put('/activeAll', 'PetController@active_multi')->name('admin_pet_active_multi');
     });
+    Route::group(['prefix' => '/contracts'], function () {
+        Route::get('/', 'ContractController@list')->name('admin_contract_list');
+        Route::get('/create', 'ContractController@create')->name('admin_contract_create');
+        Route::post('/store', 'ContractController@store')->name('admin_contract_store');
+//        Route::get('/edit/{id}', 'ContractController@edit')->name('admin_contract_edit');
+        Route::get('/detail/{id}', 'ContractController@detail')->name('admin_contract_detail');
+//        Route::put('/update/{id}', 'ContractController@update')->name('admin_contract_update');
+        Route::put('/deactive/{id}', 'ContractController@end')->name('admin_contract_end');
+        Route::put('/active/{id}', 'ContractController@start')->name('admin_contract_start');
+//        Route::put('/deactiveAll', 'ContractController@deactive_multi')->name('admin_contract_deactive_multi');
+//        Route::put('/activeAll', 'ContractController@active_multi')->name('admin_contract_active_multi');
+    });
+    Route::group(['prefix' => '/orders'], function () {
+        Route::get('/', 'OrderController@list')->name('admin_order_list');
+        Route::get('/create', 'OrderController@create')->name('admin_order_create');
+        Route::post('/store', 'OrderController@store')->name('admin_order_store');
+        Route::get('/edit/{id}', 'OrderController@edit')->name('admin_order_edit');
+        Route::get('/detail/{id}', 'OrderController@detail')->name('admin_order_detail');
+        Route::put('/update/{id}', 'OrderController@update')->name('admin_order_update');
+        Route::post('/acept/{id}', 'OrderController@acept')->name('admin_order_acept');
+        Route::post('/decline/{id}', 'OrderController@decline')->name('admin_order_decline');
+//        Route::put('/deactiveAll', 'OrderController@deactive_multi')->name('admin_order_deactive_multi');
+//        Route::put('/activeAll', 'OrderController@active_multi')->name('admin_order_active_multi');
+    });
 });
 // login - register : route
 
-Route::get('/login','AccountController@login')->name('login');
-Route::post('/login','AccountController@loginP')->name('loginP');
-Route::get('/regist','AccountController@regist');
-Route::post('/regist','AccountController@registP');
+Route::get('/login', 'AccountController@login')->name('login');
+Route::post('/login', 'AccountController@loginP')->name('loginP');
+Route::get('/regist', 'AccountController@regist');
+Route::post('/regist', 'AccountController@registP');
 
 // test : route
 Route::get('checking_page', function () {

@@ -184,15 +184,31 @@
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
                                     <select name="orderBy">
-                                        <option value="ASC">Tăng dần</option>
-                                        <option value="DESC">Giảm dần</option>
+                                        <option value="ASC"
+                                                @if (Request::get('orderBy') == "ASC")
+                                                selected
+                                                @endif>Tăng dần
+                                        </option>
+                                        <option value="DESC"
+                                                @if (Request::get('orderBy') == "DESC")
+                                                selected
+                                                @endif>Giảm dần
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-filter">
                                     Lọc theo trạng thái
                                     <select name="Status">
-                                        <option value="1">Active</option>
-                                        <option value="0">Deactive</option>
+                                        <option value="1"
+                                                @if (Request::get('Status') == "1")
+                                                selected
+                                                @endif>Active
+                                        </option>
+                                        <option value="0"
+                                                @if (Request::get('Status') == "0")
+                                                selected
+                                                @endif>Deactive
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-filter" style="width:250px;">
@@ -239,6 +255,7 @@
                                             Name
                                         </th>
                                         <th>Species</th>
+                                        <th>SpeciesSort</th>
                                         <th>Age</th>
                                         <th>Sex</th>
                                         <th>Neutered</th>
@@ -261,6 +278,10 @@
                                             <td>{{$pet->Name}}</td>
                                             <td></td>
                                             <td>{{$pet->Species}}</td>
+                                            <td>{{$pet->SpeciesSort}}</td>
+                                            <td>{{$pet->Age}}</td>
+                                            <td>{{$pet->Sex}}</td>
+                                            <td>{{$pet->Neutered}}</td>
                                             <td>
                                                 @if ($pet->Status == 1)
                                                     Active
