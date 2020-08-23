@@ -19,7 +19,9 @@ class PetController extends Controller
             array_push($condition, ['created_at', '<=', $request->end]);
         }
         if ($request->has('Status')) {
-            array_push($condition, ['Status', '=', $request->Status]);
+            if($request->Status != "All"){
+                array_push($condition, ['Status', '=', $request->Status]);
+            }
         }
         if ($request->has('keyword')) {
             array_push($condition, ['Name', 'Like', '%' . $request->keyword . '%']);

@@ -147,7 +147,7 @@
     <section id="services" class="cat-bg3">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Our Services</h2>
+                <h2>Dịch vụ của PetsCasa</h2>
             </div>
             <!-- /Section-heading -->
             <div class="container block-padding pt-0">
@@ -485,7 +485,7 @@
     <section id="gallery" class="dog-bg1 bg-light pb-0">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Thành Viên Woof!</h2>
+                <h2>Thành Viên PetsCasa</h2>
             </div>
             <!-- /Section-heading -->
         </div>
@@ -657,7 +657,7 @@
     <section id="team" class="cat-bg1">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Đội Ngũ Nhân Viên Woof!</h2>
+                <h2>Đội Ngũ Nhân Viên PetsCasa</h2>
             </div>
             <!-- /Section-heading -->
             <div class="container">
@@ -665,11 +665,12 @@
                     <!-- Team member -->
                     <figure class="col-lg-12 team-style2">
                         <!-- image -->
-                        <img src="{{asset('assets/user/img/team/team1.jpg')}}" alt="" class="img-fluid"/>
+                        <img
+                            src="https://res.cloudinary.com/dwarrion/image/upload/v1597768112/PetCasa/TeamPage/4_ebsvyh.jpg"
+                            alt="" class="img-fluid"/>
                         <figcaption>
                             <!-- social icons -->
                             <div class="icons">
-                                <a href="#"><i class="fa fa-envelope"></i></a>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
@@ -685,11 +686,12 @@
                     <!-- Team member -->
                     <figure class="col-lg-12 team-style2">
                         <!-- image -->
-                        <img src="{{asset('assets/user/img/team/team2.jpg')}}" alt="" class="img-fluid"/>
+                        <img
+                            src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_2015,w_1511/v1597768714/PetCasa/TeamPage/5_yvbsvu.jpg"
+                            alt="" class="img-fluid"/>
                         <figcaption>
                             <!-- social icons -->
                             <div class="icons">
-                                <a href="#"><i class="fa fa-envelope"></i></a>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
@@ -705,11 +707,12 @@
                     <!-- Team member -->
                     <figure class="col-lg-12 team-style2">
                         <!-- image -->
-                        <img src="{{asset('assets/user/img/team/team3.jpg')}}" alt="" class="img-fluid"/>
+                        <img
+                            src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_2015,w_1511/v1597768557/PetCasa/TeamPage/1_txbfni.jpg"
+                            alt="" class="img-fluid"/>
                         <figcaption>
                             <!-- social icons -->
                             <div class="icons">
-                                <a href="#"><i class="fa fa-envelope"></i></a>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
@@ -725,11 +728,12 @@
                     <!-- Team member -->
                     <figure class="col-lg-12 team-style2">
                         <!-- image -->
-                        <img src="{{asset('assets/user/img/team/team4.jpg')}}" alt="" class="img-fluid"/>
+                        <img
+                            src="https://res.cloudinary.com/dwarrion/image/upload/v1597768113/PetCasa/TeamPage/2_frbpn1.jpg"
+                            alt="" class="img-fluid"/>
                         <figcaption>
                             <!-- social icons -->
                             <div class="icons">
-                                <a href="#"><i class="fa fa-envelope"></i></a>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
@@ -745,11 +749,12 @@
                     <!-- Team member -->
                     <figure class="col-lg-12 team-style2">
                         <!-- image -->
-                        <img src="{{asset('assets/user/img/team/team5.jpg')}}" alt="" class="img-fluid"/>
+                        <img
+                            src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_2015,w_1511/v1597768112/PetCasa/TeamPage/3_rzxzu7.jpg"
+                            alt="" class="img-fluid"/>
                         <figcaption>
                             <!-- social icons -->
                             <div class="icons">
-                                <a href="#"><i class="fa fa-envelope"></i></a>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
@@ -773,10 +778,8 @@
     <!-- Section Call to action -->
     <div id="call-to-action">
         <div class="container block-padding">
-            <div class="col-lg-6 offset-lg-6 bg-primary text-light card text-center">
-                <h4>Nhận tin mới nhất từ Woof!</h4>
-                <p>Ultricies a,interdum donec eget metus auguen u Fusce mollis imperdiet interdum donec eget metus
-                    auguen unc vel lorem.</p>
+            <div class="col-lg-6 offset-lg-6 text-light card text-center" style="background-color: unset">
+                <h4>Nhận tin mới nhất từ PetsCasa</h4>
                 <!-- Form -->
                 <div id="mc_embed_signup">
                     <!-- your form address in the line bellow -->
@@ -821,8 +824,7 @@
             <!-- /Section-heading -->
             <div class="col-lg-10 offset-lg-1 text-center">
                 <h3>Tìm một người bạn mới</h3>
-                <p>Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet
-                    magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.</p>
+                <p>Bạn đã sẵn sàng?</p>
             </div>
             <!-- First row: Adopt a pet -->
             <div class="row mt-5">
@@ -961,7 +963,8 @@
                 <div class="contact-info col-lg-5 card bg-light-custom">
                     <h4>Feedback</h4>
                     <!-- Form Starts -->
-                    <div id="contact_form">
+                    <form action="{{route('send_contact_mail')}}" id="contact_form" method="POST">
+                        @csrf
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
@@ -975,8 +978,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
+                                    <label>Chủ đề</label>
+                                    <input type="text" name="subject" class="form-control input-field">
+                                </div>
+                                <div class="col-md-12">
                                     <label>Feedback<span class="required">*</span></label>
-                                    <textarea name="message" id="message" class="textarea-field form-control" rows="5"
+                                    <textarea name="contact_message" id="message" class="textarea-field form-control"
+                                              rows="5"
                                               required=""></textarea>
                                 </div>
                             </div>
@@ -985,7 +993,7 @@
                         </div>
                         <!-- Contact results -->
                         <div id="contact_results"></div>
-                    </div>
+                    </form>
                 </div>
                 <div class="col-lg-7">
                     <!-- map-->

@@ -191,8 +191,21 @@
                                 <div class="form-filter">
                                     Lọc theo trạng thái
                                     <select name="Status">
-                                        <option value="1">Active</option>
-                                        <option value="0">Deactive</option>
+                                        <option value="All"
+                                                @if (Request::get('Status') == "All")
+                                                selected
+                                                @endif>All
+                                        </option>
+                                        <option value="1"
+                                                @if (Request::get('Status') == "1")
+                                                selected
+                                                @endif>Hoạt động
+                                        </option>
+                                        <option value="0"
+                                                @if (Request::get('Status') == "0")
+                                                selected
+                                                @endif>Không hoạt động
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-filter" style="width:250px;">

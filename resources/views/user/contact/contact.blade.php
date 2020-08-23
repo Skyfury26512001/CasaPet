@@ -3,12 +3,15 @@
     Contact
 @endsection
 @section('specific_css')
-    <link href="{{asset('assets/user/styles/maincolors.css')}}" rel="stylesheet">
     <link href="{{asset('assets/user/css/custom.css')}}" rel="stylesheet">
 @endsection
 @section('specific_js')
-    <!-- Open map -->
+    <!-- Open Map -->
     <script src="{{asset('assets/user/js/map.js')}}"></script>
+    <!-- Contact Form Script -->
+    <script src="{{asset('assets/user/js/contact.js')}}"></script>
+    <!-- Send Mail -->
+    <script src="{{asset('assets/user/php/sendmail.php')}}"></script>
 @endsection
 @section('content')
     <!-- ==== Page Content ==== -->
@@ -36,9 +39,10 @@
             <div class="row">
                 <!-- contact-info-->
                 <div class="contact-info col-lg-5">
-                    <h4>Gửi thư cho Woof!</h4>
+                    <h4>Gửi thư cho PetsCasa</h4>
                     <!-- Form Starts -->
-                    <div id="contact_form">
+                    <form action="{{route('send_contact_mail')}}" id="contact_form" method="POST">
+                        @csrf
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
@@ -57,7 +61,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label>Tin nhắn<span class="required">*</span></label>
-                                    <textarea name="message" id="message" class="textarea-field form-control" rows="3"
+                                    <textarea name="contact_message" id="message" class="textarea-field form-control"
+                                              rows="3"
                                               required=""></textarea>
                                 </div>
                             </div>
@@ -67,7 +72,7 @@
                         <!-- /form-group-->
                         <!-- Contact results -->
                         <div id="contact_results"></div>
-                    </div>
+                    </form>
                     <!-- /contact)form-->
                 </div>
                 <!-- /contact-info-->
@@ -82,7 +87,7 @@
                             <!-- contact icons-->
                             <ul class="list-unstyled mt-5 list-contact">
                                 <li class="h7"><i class="fa fa-envelope margin-icon"></i><a
-                                        href="mailto:email@yoursite.com">t1908e@gmail.com</a></li>
+                                        href="mailto:t1908e@gmail.com">t1908e@gmail.com</a></li>
                                 <li class="h7"><i class="fa fa-phone margin-icon"></i>(123) 456-789</li>
                                 <li class="h7"><i class="fa fa-map-marker margin-icon"></i>8 Tôn Thất Thuyết - Hà Nội
                                 </li>

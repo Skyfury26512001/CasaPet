@@ -88,7 +88,7 @@
                         <div class="form-group">
                             <label for="FullName">Tên<span class="text-danger">*</span></label>
                             <input type="text" name="Name" parsley-trigger="change" required=""
-                                   class="form-control" id="Name">
+                                   class="form-control" id="Name" value="{{old('Name')}}">
                             @if ($errors->has('Name'))
                                 <label class="alert-warning">{{$errors->first('Name')}}</label>
                             @endif
@@ -126,7 +126,7 @@
                         <div class="form-group">
                             <label for="Species">Giống<span class="text-danger">*</span></label>
                             <input type="text" name="Species" parsley-trigger="change" required=""
-                                   class="form-control" id="Species">
+                                   class="form-control" id="Species" value="{{old('Species')}}">
                             @if ($errors->has('Species'))
                                 <label class="alert-warning">{{$errors->first('Species')}}</label>
                             @endif
@@ -134,7 +134,7 @@
                         <div class="form-group">
                             <label for="Age">Tuổi<span class="text-danger">*</span></label>
                             <input type="text" name="Age" parsley-trigger="change" required=""
-                                   class="form-control" id="Age">
+                                   class="form-control" id="Age" value="{{old('Age')}}">
                             @if ($errors->has('Age'))
                                 <label class="alert-warning">{{$errors->first('Age')}}</label>
                             @endif
