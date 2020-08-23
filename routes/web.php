@@ -21,11 +21,18 @@ Route::get('/', function () {
 })->name('home');
 
 
-/* Error */
+/* Sub Pages */
 Route::get('/error', function () {
-    return view('user.error');
+    return view('user.sub_pages.error');
 });
 
+Route::get('/success', function () {
+    return view('user.sub_pages.success');
+})->name('success');
+
+Route::get('/get_involved', function () {
+    return view('user.sub_pages.get_involved');
+});
 
 /* 1.Services */
 Route::get('/services', function () {
@@ -38,6 +45,10 @@ Route::get('/rescue', function () {
 
 Route::get('/adoption', function () {
     return view('user.services.adoption');
+});
+
+Route::get('/adoption_detail', function () {
+    return view('user.services.adoption_detail');
 });
 
 Route::get('/concession', function () {
@@ -74,11 +85,25 @@ Route::get('/team', function () {
 /* 5.Contact */
 Route::get('/contact', function () {
     return view('user.contact.contact');
-});
+})->name('contact');
+
+Route::get('/mail_send', 'SendMailController@sendMail');
+
+Route::post('/mail_send_post', 'SendMailController@sendMail')->name('send_contact_mail');
 
 /* 6.Donation */
 Route::get('/donation', function () {
     return view('user.donation.donation');
+});
+
+/* 7.Login-Register */
+Route::get('/login_register', function () {
+    return view('user.login_register');
+});
+
+/* 8.Faq */
+Route::get('/donate_guide', function () {
+    return view('user.donation.donate_guide');
 });
 
 // admin : route
@@ -126,10 +151,10 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
 });
 // login - register : route
 
-Route::get('/login', 'AccountController@login')->name('login');
-Route::post('/login', 'AccountController@loginP')->name('loginP');
-Route::get('/regist', 'AccountController@regist');
-Route::post('/regist', 'AccountController@registP');
+//Route::get('/login', 'AccountController@login')->name('login');
+//Route::post('/login', 'AccountController@loginP')->name('loginP');
+//Route::get('/regist', 'AccountController@regist');
+//Route::post('/regist', 'AccountController@registP');
 
 // test : route
 Route::get('checking_page', function () {

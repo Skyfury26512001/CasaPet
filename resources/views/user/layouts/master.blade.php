@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- page title -->
-    <title>Woof!</title>
+    <title>PetsCasa</title>
     <!--[if lt IE 9] -->
     <script src={{asset('assets/user/js/respond.js')}}></script>
     <!-- [endif]-->
@@ -32,7 +32,7 @@
     <!-- plugins CSS -->
     <link href={{asset('assets/user/css/plugins.css')}} rel="stylesheet">
     <!-- Colors CSS -->
-    <link href={{asset('assets/user/styles/maincolors.css')}} rel="stylesheet">
+    <link href={{asset('assets/user/styles/dogwalker.css')}} rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
     @yield('specific_css')
@@ -58,7 +58,7 @@
                         <!-- Start Contact Info -->
                         <ul class="contact-details float-left">
                             <li><i class="fa fa-map-marker"></i>8 Tôn Thất Thuyết - Hà Nội</li>
-                            <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">t1908e@gmail.com</a>
+                            <li><i class="fa fa-envelope"></i><a href="mailto:t1908e@gmail.com">t1908e@gmail.com</a>
                             </li>
                             <li><i class="fa fa-phone"></i>(123) 456-789</li>
                         </ul>
@@ -84,7 +84,7 @@
             <div class="container ">
                 <!-- logo -->
                 <a class="navbar-brand" href="/">
-                    <i class="flaticon-dog-20"></i><span>Woof!</span>
+                    <i class="flaticon-dog-20"></i><span>PetsCasa</span>
                 </a>
                 <!-- Navbartoggler -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -119,8 +119,8 @@
                                 Cửa hàng
                             </a>
                             <div class="dropdown-menu" aria-labelledby="adopt-dropdown">
-                                <a class="dropdown-item" href="/shop">Đồ dùng thú cưng</a>
-                                <a class="dropdown-item" href="/pet_service">Chăm sóc thú cưng</a>
+                                <a class="dropdown-item" href="#">Đồ dùng thú cưng</a>
+                                <a class="dropdown-item" href="#">Chăm sóc thú cưng</a>
                             </div>
                         </li>
                         <!-- menu item -->
@@ -150,14 +150,8 @@
                         </li>
                         <!-- menu item -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">
-                                Đăng nhập
-                            </a>
-                        </li>
-                        <!-- menu item -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">
-                                Đăng ký
+                            <a class="nav-link" href="/login_register">
+                                Đăng nhập/Đăng ký
                             </a>
                         </li>
                     </ul>
@@ -183,9 +177,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <a class="navbar-brand" href="/"><i class="flaticon-dog-20"></i><span>Woof!</span></a>
-                <p class="mt-3">Cras enim wisi elit aenean, amet eros curabitur. Wisi ad eget ipsum metus sociis Cras
-                    enim wisi elit aenean.</p>
+                <a class="navbar-brand" href="/"><i class="flaticon-dog-20"></i><span>PetsCasa</span></a>
+                <p class="mt-3">Nhóm trẻ tình nguyện viên Việt Nam và quốc tế, hoạt động vì tình yêu chó mèo.</p>
             </div>
             <!-- col-lg -->
             <div class="col-lg-3">
@@ -199,14 +192,11 @@
             </div>
             <!-- col-lg -->
             <div class="col-lg-3">
-                <h6><i class="far fa-clock margin-icon"></i>Giờ làm việc</h6>
-                <span style="color:#F9575C;">Dịch vụ cứ hộ 24/7</span>
-                <br>
-                <span>Dịch vụ khác:</span>
+                <h6><i class="far fa-clock margin-icon"></i>Đường dẫn nhanh</h6>
                 <ul class="list-unstyled">
-                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mở cửa 9am - 10pm</li>
-                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ngày lễ - Đóng</li>
-                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cuối tuần - Đóng</li>
+                    <li><a href="/login_register">Đăng nhập hoặc đăng ký</a></li>
+                    <li><a href="/adoption">Nhận nuôi</a></li>
+                    <li><a href="/donate_guide">Nhận nuôi ảo</a></li>
                 </ul>
                 <!--ul -->
             </div>
