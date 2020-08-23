@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Account;
-use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
@@ -47,7 +46,6 @@ class AccountController extends Controller
             $PasswordHash = $account->PasswordHash;
             $Salt         = $account->Salt;
             $passIn       = md5($request->password . $Salt);
-
             if ($PasswordHash == $passIn) {
                 session_start();
                 $account_session = $request->session();
@@ -158,6 +156,7 @@ class AccountController extends Controller
         }
         return redirect(route('admin_404'));
     }
+
 
     public function deactive_multi(Request $request)
     {

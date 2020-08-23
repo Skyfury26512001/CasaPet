@@ -1,6 +1,6 @@
 @extends('user.layouts.master')
 @section('title')
-    About
+    Team
 @endsection
 @section('specific_css')
     {{--    <link href="{{asset()}}" rel="stylesheet">--}}
@@ -12,7 +12,7 @@
         <div class="jumbo-heading">
             <!-- section-heading -->
             <div class="section-heading" data-aos="zoom-in">
-                <h1>Woof! Team</h1>
+                <h1>PetsCasa Team</h1>
             </div>
             <!-- /section-heading -->
             <!-- Breadcrumbs -->
@@ -146,12 +146,12 @@
 
     <!-- Section Call to action -->
     <div id="call-to-action">
-        <div class="container block-padding">
-            <div class="row"
-                 style="color: white">
-                <div class="col-sm">
+        <div class="container" style="padding: 100px 0 50px 0">
+            <div class="row" style="color: white">
+                <div class="col-md" style="padding: 0 50px 0 50px">
                     <h6 style="color: white">Nhiệm vụ của chúng tôi</h6>
-                    <p>Sứ mệnh của chúng tôi là cải thiện phúc lợi của động vật bằng cách chống lại sự tàn ác đối
+                    <p style="line-height: 2">Sứ mệnh của chúng tôi là cải thiện phúc lợi của động vật bằng cách chống
+                        lại sự tàn ác đối
                         với
                         động vật và tình trạng quá tải về vật nuôi thông qua giáo dục. Chúng tôi cố gắng truyền cảm
                         hứng
@@ -162,20 +162,21 @@
                         thương
                         hơn.</p>
                 </div>
-                <div class="col-sm">
+                <div class="col-md" style="padding: 0 30px 0 50px">
                     <h6 style="color: white">Mục tiêu của chúng tôi</h6>
-                    <p>Mục tiêu của chúng tôi là ngăn chặn hành vi tàn ác đối với động vật, cải thiện phúc lợi của
+                    <p style="line-height: 2">Mục tiêu của chúng tôi là ngăn chặn hành vi tàn ác đối với động vật, cải
+                        thiện phúc lợi của
                         các
                         loài động vật và mang lại sự thay đổi rất cần thiết, lâu dài: từ nạn nhân trở thành
-                        thành viên có giá trị của cộng đồng. Woof! tin rằng con người phải lên tiếng bảo
+                        thành viên có giá trị của cộng đồng. PetsCasa tin rằng con người phải lên tiếng bảo
                         vệ những loài động vật này và hành động để tuyên truyền cách để đối xử với những người bạn
                         bốn
                         chân của chúng ta.</p>
                 </div>
-                <div class="col-sm">
+                <div class="col-md" style="padding: 0 50px 0 30px">
                     <h6 style="color: white">Bạn có thể giúp chúng tôi</h6>
                     <p>
-                    <ul>
+                    <ul style="line-height: 2">
                         <li>Tăng tốc thời gian phục hồi và sức khỏe tinh thần của các bé bằng cách trở thành một nhà
                             nuôi dưỡng.
                         </li>
