@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
 {
+//    protected $redirectRoute = "admin_404";
     /**
      * Determine if the user is authorized to make this request.
      *

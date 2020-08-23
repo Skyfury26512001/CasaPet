@@ -7,6 +7,7 @@ use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use phpDocumentor\Reflection\Types\Array_;
 
 class AccountController extends Controller
@@ -71,7 +72,9 @@ class AccountController extends Controller
             array_push($condition, ['created_at', '<=', $request->end]);
         }
         if ($request->has('Status')) {
-            array_push($condition, ['Status', '=', $request->Status]);
+            if ($request->Status != "All") {
+                array_push($condition, ['Status', '=', $request->Status]);
+            }
         }
         if ($request->has('keyword')) {
             array_push($condition, ['Email', 'Like', '%' . $request->keyword . '%']);
@@ -91,7 +94,6 @@ class AccountController extends Controller
 
     public function store(RegisterRequest $request)
     {
-
         $account                 = $request->all();
         $Salt                    = generateRandomString(5);
         $account['Salt']         = $Salt;
@@ -103,6 +105,7 @@ class AccountController extends Controller
         $account['Slug']         = $Slug;
         $account['Status']       = 1;
         $account['Avatar']       = $request->avatar;
+        $account['Role_id']      = $request->Role_id;
 //        dd($account);
         Account::create($account);
         return redirect(route('admin_account_list'));
@@ -146,9 +149,9 @@ class AccountController extends Controller
         return redirect(route('admin_404'));
     }
 
-    public function deactive(Request $request)
+    public function deactive($id)
     {
-        $id = $request->id;
+        $account = Account::find($id);
         if (isset($account) && $account != null) {
             Account::where('id', '=', $id)->update(['status' => 0]);
             return redirect(route('admin_account_list'));
@@ -216,5 +219,11 @@ class AccountController extends Controller
         }
 //        dd($account);
         return view('admin.404-admin');
+    }
+
+    public function logOut()
+    {
+        Session::forget('current_account');
+        return redirect('/');
     }
 }

@@ -97,7 +97,7 @@
                         <div class="form-group">
                             <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
                             <input type="text" name="FullName" parsley-trigger="change" required=""
-                                   class="form-control" id="FullName">
+                                   class="form-control" id="FullName" value="{{old('FullName')}}">
                             @if ($errors->has('FullName'))
                                 <label class="alert-warning">{{$errors->first('FullName')}}</label>
                             @endif
@@ -105,7 +105,7 @@
                         <div class="form-group">
                             <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
                             <input type="number" name="PhoneNumber" parsley-trigger="change" required=""
-                                   class="form-control" id="PhoneNumber">
+                                   class="form-control" id="PhoneNumber" value="{{old('PhoneNumber')}}">
                             @if ($errors->has('PhoneNumber'))
                                 <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
                             @endif
@@ -113,7 +113,7 @@
                         <div class="form-group">
                             <label for="Email">Email<span class="text-danger">*</span></label>
                             <input type="text" name="Email" parsley-trigger="change" required=""
-                                   class="form-control" id="Email">
+                                   class="form-control" id="Email" value="{{old('Email')}}">
                             @if ($errors->has('Email'))
                                 <label class="alert-warning">{{$errors->first('Email')}}</label>
                             @endif
@@ -132,7 +132,7 @@
                         <div class="form-group">
                             <label for="IDNo">Chứng minh nhân dân / Thẻ căn cước<span class="text-danger">*</span></label>
                             <input type="text" name="IDNo" parsley-trigger="change" required=""
-                                   class="form-control" id="IDNo">
+                                   class="form-control" id="IDNo" value="{{old('IDNo')}}">
                             @if ($errors->has('IDNo'))
                                 <label class="alert-warning">{{$errors->first('IDNo')}}</label>
                             @endif

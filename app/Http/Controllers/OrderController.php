@@ -8,7 +8,6 @@ use App\Pet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use function Sodium\add;
 
 class OrderController extends Controller
 {
@@ -23,7 +22,9 @@ class OrderController extends Controller
             array_push($condition, ['created_at', '<=', $request->end]);
         }
         if ($request->has('Status')) {
-            array_push($condition, ['Status', '=', $request->Status]);
+            if($request->Status != "All"){
+                array_push($condition, ['Status', '=', $request->Status]);
+            }
         }
         if ($request->has('keyword')) {
             array_push($condition, ['Email', 'Like', '%' . $request->keyword . '%']);
@@ -46,7 +47,6 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request);
         $request->validate([
             'OrderType'   => 'required',
             'FullName'    => 'required',
@@ -55,13 +55,9 @@ class OrderController extends Controller
             'PetId'       => 'required',
             'IDNo'        => 'required',
         ]);
-//        dd($request);
         $order           = $request->all();
         $order['Status'] = 0;
-//        dd($request->thumbnails);
-//        dd($order);
         Order::create($order);
-//        dd($order);
         return redirect(route('admin_order_list'));
     }
 

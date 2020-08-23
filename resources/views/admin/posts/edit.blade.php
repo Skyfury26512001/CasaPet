@@ -45,16 +45,16 @@
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
     </script>
-    {{--    <script>--}}
-    {{--        ClassicEditor--}}
-    {{--            .create(document.querySelector('#editor'))--}}
-    {{--            .then(editor => {--}}
-    {{--                console.log(editor);--}}
-    {{--            })--}}
-    {{--            .catch(error => {--}}
-    {{--                console.error(error);--}}
-    {{--            });--}}
-    {{--    </script>--}}
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -79,97 +79,66 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card-box">
-                    <h4 class="header-title">Chi tiết yêu cầu : </h4>
-                    <div id="product_form" method="POST"
-                         class="parsley-examples" novalidate="">
+                    <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
+                    <form action="{{route('admin_post_update',$post->id)}}" id="product_form" method="POST"
+                          class="parsley-examples" novalidate="">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
-                            <label>Loại yêu cầu<span class="text-danger">*</span></label>
-                            <input disabled type="radio" name="OrderType" parsley-trigger="change" required=""
-                                   id="OrderTypeYes" value="Nhận nuôi" @if ($order->OrderType == "Nhận nuôi")
-                                   checked
-                                    @endif><label for="OrderTypeYes">Nhận nuôi</label>
-                            <input disabled type="radio" name="OrderType" parsley-trigger="change" required=""
-                                   id="OrderTypeNo" value="Gửi nuôi" @if ($order->OrderType == "Gửi nuôi")
-                                   checked
-                                    @endif><label
-                                    for="OrderTypeNo">Gửi nuôi</label>
-                            @if ($errors->has('OrderType'))
-                                <label class="alert-warning">{{$errors->first('OrderType')}}</label>
+                            <label for="Title">Tiêu đề<span class="text-danger">*</span></label>
+                            <input type="text" name="Title" parsley-trigger="change" required=""
+                                   class="form-control" id="Title" value="{{$post->Title   }}">
+                            @if ($errors->has('Title'))
+                                <label class="alert-warning">{{$errors->first('Title')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
-                            <input disabled type="text" name="FullName" parsley-trigger="change" required=""
-                                   value="{{$order->FullName}}" class="form-control" id="FullName">
-                            @if ($errors->has('FullName'))
-                                <label class="alert-warning">{{$errors->first('FullName')}}</label>
+                            <label for="Content">Mô tả<span class="text-danger">*</span></label>
+                            <textarea id="editor" name="Content" class="form-control"
+                                      placeholder="">{{$post->Content}}</textarea>
+                            @if ($errors->has('Content'))
+                                <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
-                            <input disabled type="number" name="PhoneNumber" parsley-trigger="change" required=""
-                                   value="{{$order->PhoneNumber}}" class="form-control" id="PhoneNumber">
-                            @if ($errors->has('PhoneNumber'))
-                                <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
+                            <label for="Account_id">AccountId<span class="text-danger">*</span></label>
+                            <input list="account" name="Account_id" value="{{$account->id}}"/>
+                            <datalist id="account">
+                                @foreach ($account_list as $account)
+                                <option value="{{$account->id}}"  selected>{{$account->FullName}}</option>
+                                @endforeach
+                            </datalist>
+                            @if ($errors->has('Account_id'))
+                                <label class="alert-warning">{{$errors->first('Account_id')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Email">Email<span class="text-danger">*</span></label>
-                            <input disabled type="text" name="Email" parsley-trigger="change" required=""
-                                   value="{{$order->Email}}" class="form-control" id="Email">
-                            @if ($errors->has('Email'))
-                                <label class="alert-warning">{{$errors->first('Email')}}</label>
+                            <label for="Pet_id">PetID<span class="text-danger">*</span></label>
+                            <input list="pet" name="Pet_id" value="{{$pet->id}}"/>
+                            <datalist id="pet">
+                                @foreach ($pet_list as $pet)
+                                <option value="{{$pet->id}}">{{$pet->Name}}</option>
+                                @endforeach
+                            </datalist>
+                            @if ($errors->has('Pet_id'))
+                                <label class="alert-warning">{{$errors->first('Pet_id')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="PetId">Loài<span class="text-danger">*</span></label>
-                            <select disabled name="PetId" class="form-control" id="PetId" required="">
-                                <option value="{{$pet->id}}" @if ($order->PetId == $pet->id)
-                                        selected
-                                    @endif>{{$pet->Name}} | Id : {{$pet->Slug}}</option>
-                            </select>
-                            @if ($errors->has('PetId'))
-                                <label class="alert-warning">{{$errors->first('PetId')}}</label>
-                            @endif
+                            <label for="Status">Status<span class="text-danger">*</span></label>
+                            <select name="Status">
+                                if($request->Status != "All"){array_push($condition, ['Status', '=', $request->Status]);}
                         </div>
-                        <div class="form-group">
-                            <label for="IDNo">Chứng minh nhân dân / Thẻ căn cước<span
-                                        class="text-danger">*</span></label>
-                            <input disabled type="text" name="IDNo" parsley-trigger="change" required=""
-                                   value="{{$order->IDNo}}" class="form-control" id="IDNo">
-                            @if ($errors->has('IDNo'))
-                                <label class="alert-warning">{{$errors->first('IDNo')}}</label>
-                            @endif
+                        <div class="form-group text-right mb-0">
+                            <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
+                                Cancel
+                            </button>
                         </div>
-                        @if ($order->Status == 0)
-                            <div class="form-group text-right mb-0">
-                                <div class="form-group" style="display: flex">
-                                    <form action="{{route('admin_order_acept',$order->id)}}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-primary waves-effect waves-light mr-1"
-                                                href="{{route('admin_order_acept',$order->id)}}">
-                                            Chấp nhận
-                                        </button>
-                                    </form>
 
-                                    <form action="{{route('admin_order_decline',$order->id)}}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-secondary waves-effect waves-light"
-                                                href="{{route('admin_order_decline',$order->id)}}">
-                                            Từ chối
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        @else
-                                <a class="btn btn-primary waves-effect waves-light mr-1"
-                                        href="{{route('admin_order_list')}}">
-                                    Trở lại danh sách
-                                </a>
-                        @endif
-                    </div>
-
+                    </form>
                 </div> <!-- end card-box -->
             </div>
             <!-- end row -->

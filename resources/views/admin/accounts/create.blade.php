@@ -86,15 +86,15 @@
                         <div class="form-group">
                             <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
                             <input type="text" name="FullName" parsley-trigger="change" required=""
-                                   class="form-control" id="FullName">
+                                   class="form-control" id="FullName" value="{{old('FullName')}}">
                             @if ($errors->has('FullName'))
                                 <label class="alert-warning">{{$errors->first('FullName')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="Password">Mật khẩu<span class="text-danger">*</span></label>
-                            <input type="text" name="Password" parsley-trigger="change" required=""
-                                   class="form-control" id="Password">
+                            <input type="password" name="Password" parsley-trigger="change" required=""
+                                   class="form-control" id="Password" value="{{old('Password')}}">
                             @if ($errors->has('Password'))
                                 <label class="alert-warning">{{$errors->first('Password')}}</label>
                             @endif
@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <label for="Email">Email<span class="text-danger">*</span></label>
                             <input type="text" name="Email" parsley-trigger="change" required=""
-                                   class="form-control" id="Email">
+                                   class="form-control" id="Email" value="{{old('Email')}}">
                             @if ($errors->has('Email'))
                                 <label class="alert-warning">{{$errors->first('Email')}}</label>
                             @endif
@@ -118,7 +118,7 @@
                         <div class="form-group">
                             <label for="DateOfBirth">Ngày sinh<span class="text-danger">*</span></label>
                             <input type="date" name="DateOfBirth" parsley-trigger="change" required=""
-                                   class="form-control" id="DateOfBirth">
+                                   class="form-control" id="DateOfBirth" value="{{old('DateOfBirth')}}">
                             @if ($errors->has('DateOfBirth'))
                                 <label class="alert-warning">{{$errors->first('DateOfBirth')}}</label>
                             @endif
@@ -126,7 +126,7 @@
                         <div class="form-group">
                             <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
                             <input type="number" name="PhoneNumber" parsley-trigger="change" required=""
-                                   class="form-control" id="PhoneNumber">
+                                   class="form-control" id="PhoneNumber" value="{{old('PhoneNumber')}}">
                             @if ($errors->has('PhoneNumber'))
                                 <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
                             @endif
@@ -134,15 +134,15 @@
                         <div class="form-group">
                             <label for="Address">Địa chỉ <span class="text-danger">*</span></label>
                             <input type="text" name="Address" parsley-trigger="change" required=""
-                                   class="form-control" id="Address">
+                                   class="form-control" id="Address" value="{{old('Address')}}">
                             @if ($errors->has('Address'))
                                 <label class="alert-warning">{{$errors->first('Address')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Address">Chứng Minh Thư / Thẻ Căn Cước <span class="text-danger">*</span></label>
+                            <label for="IDNo">Chứng Minh Thư / Thẻ Căn Cước <span class="text-danger">*</span></label>
                             <input type="number" name="IDNo" parsley-trigger="change" required=""
-                                   class="form-control" id="IDNo">
+                                   class="form-control" id="IDNo" value="{{old('IDNo')}}">
                             @if ($errors->has('IDNo'))
                                 <label class="alert-warning">{{$errors->first('IDNo')}}</label>
                             @endif

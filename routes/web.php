@@ -81,11 +81,14 @@ Route::get('/donation', function () {
     return view('user.donation.donation');
 });
 
+/* Logout  */
+Route::get('/logOut','AccountController@logOut')->name('logOut');
+
 // admin : route
 
 Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () {
 
-    Route::get('/', 'AdminController@dashboard')->name('admin');
+    Route::get('/', 'AdminController@dashboard')->name('admin_home');
     Route::get('/404',function(){ return view('admin.404-admin');})->name('admin_404');
     Route::group(['prefix' => '/accounts'], function () {
         Route::get('/', 'AccountController@list')->name('admin_account_list');
@@ -136,6 +139,18 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::post('/decline/{id}', 'OrderController@decline')->name('admin_order_decline');
 //        Route::put('/deactiveAll', 'OrderController@deactive_multi')->name('admin_order_deactive_multi');
 //        Route::put('/activeAll', 'OrderController@active_multi')->name('admin_order_active_multi');
+    });
+    Route::group(['prefix' => '/posts'], function () {
+        Route::get('/', 'PostController@list')->name('admin_post_list');
+        Route::get('/create', 'PostController@create')->name('admin_post_create');
+        Route::post('/store', 'PostController@store')->name('admin_post_store');
+        Route::get('/edit/{slug}', 'PostController@edit')->name('admin_post_edit');
+        Route::get('/detail/{slug}', 'PostController@detail')->name('admin_post_detail');
+        Route::put('/update/{slug}', 'PostController@update')->name('admin_post_update');
+        Route::put('/deactive/{id}', 'PostController@deactive')->name('admin_post_deactive');
+        Route::put('/active/{id}', 'PostController@active')->name('admin_post_active');
+        Route::put('/deactiveAll', 'PostController@deactive_multi')->name('admin_post_deactive_multi');
+        Route::put('/activeAll', 'PostController@active_multi')->name('admin_post_active_multi');
     });
 });
 // login - register : route
