@@ -2,17 +2,7 @@
 @section('title')
     Home
 @endsection
-@section('specific_css')
-    <link href={{asset('assets/user/vendor/layerslider/css/layerslider.css')}} rel="stylesheet">
-    <link href={{asset('assets/user/style/maincolors.css')}} rel="stylesheet">
-@endsection
 @section('specific_js')
-    <!-- GreenSock -->
-    <script src={{asset('assets/user/vendor/layerslider/js/greensock.js')}}></script>
-    <!-- LayerSlider script files -->
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.transitions.js')}}></script>
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js')}}></script>
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.load.js')}}></script>
     <!-- Open Street maps -->
     <script src={{asset('assets/user/js/map.js')}}></script>
     <!-- Mailchimp script -->

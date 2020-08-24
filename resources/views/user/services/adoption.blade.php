@@ -2,7 +2,16 @@
 @section('title')
     Adoption
 @endsection
-@section('specific_js')
+@section('specific_css')
+    <style>
+        #call-to-action {
+            background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598031376/PetCasa/DonateGuidePage/dog_xwspka.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+        }
+    </style>
 @endsection
 @section('content')
     <!-- ==== Page Content ==== -->
@@ -32,26 +41,16 @@
                     <hr class="small-divider left">
                     <p class="mt-4 text-justify">
                         Trước khi quyết định nhận nuôi bé chó hay mèo nào, bạn hãy tự hỏi bản thân rằng mình đã sẵn sàng
-                        để
-                        chịu trách nhiệm cả đời cho bé chưa, cả về tài chính, nơi ở cũng như tinh thần. Việc nhận nuôi
-                        cần
-                        được sự đồng thuận lớn từ bản thân bạn cũng như gia đình và những người liên quan. Xin cân nhắc
-                        kỹ
-                        trước khi liên hệ với PetsCasa về việc nhận nuôi.<br><br>Bạn đã sẵn sàng? Hãy thực hiện các bước
-                        sau
-                        đây nhé:<br><br>1️⃣ Tìm hiểu về thú cưng bạn muốn nhận nuôi trên trang web của PetsCasa.<br>2️⃣
-                        Liên hệ
-                        với Tình nguyện viên phụ trách bé để tìm hiểu thêm về bé.<br>3️⃣ Điền đơn đăng ký nhận nuôi
-                        online.
-                        <br>4️⃣ Chuẩn bị cơ sở vật chất và đóng tiền vía để đón bé về. <br>5️⃣ Thường xuyên cập nhật về
-                        tình
-                        hình của bé (2 tháng 1 lần liên tục trong 1 năm), đặc biệt là khi có sự cố để được tư vấn kịp
-                        thời.<br><br>❗ Lưu ý:<br>- Tiền vía mỗi bé sẽ khác nhau tùy thuộc vào tình trạng của bé khi cứu
-                        cũng
-                        như các dịch vụ y tế (tiêm phòng, triệt sản) đã thực hiện. <br>- Tiền vía dùng để trả các khoản
-                        chi
-                        về y tế trước đây cho bé, cũng như để hỗ trợ chi phí chăm sóc, nuôi dưỡng các bé khác tại nhà
-                        chung.<br>-
+                        để chịu trách nhiệm cả đời cho bé chưa, cả về tài chính, nơi ở cũng như tinh thần. Việc nhận
+                        nuôi cần được sự đồng thuận lớn từ bản thân bạn cũng như gia đình và những người liên quan. Xin
+                        cân nhắc kỹ trước khi liên hệ với PetsCasa về việc nhận nuôi.<br><br>Bạn đã sẵn sàng? Hãy thực
+                        hiện các bước sau đây nhé:<br><br>1️⃣ Tìm hiểu về thú cưng bạn muốn nhận nuôi trên trang web của
+                        PetsCasa.<br>2️⃣ Cập nhập đẩy đủ thông tin trên hồ sơ cá nhân.<br>3️⃣ Chuẩn bị cơ sở vật chất và
+                        đóng tiền vía để đón bé về. <br>4️⃣ Cập nhập thông tin (có ảnh) của bé 2 tháng 1 lần trong 1 năm
+                        sau khi nhận bé về.<br>5️⃣ Khi có sự cố cần liên hệ ngay để được tư vấn kịp thời.<br><br>❗ Lưu
+                        ý:<br>- Tiền vía mỗi bé sẽ khác nhau tùy thuộc vào tình trạng của bé khi cứu cũng như các dịch
+                        vụ y tế (tiêm phòng, triệt sản) đã thực hiện. <br>- Tiền vía dùng để trả các khoản chi về y tế
+                        trước đây cho bé, cũng như để hỗ trợ chi phí chăm sóc, nuôi dưỡng các bé khác tại nhà chung.<br>-
                         Trường hợp không nuôi được tiếp cần trả lại cho Nhóm, không tự ý đem cho người khác.<br><br>🐕&zwj;🦺
                         Nếu bạn chỉ có thể chăm sóc tạm thời (foster), tham khảo thông tin tại mục Tình nguyện.<br><br>🐈
                         Tìm hiểu thêm về chương trình Nhận nuôi Ảo ở banner cuối trang này.

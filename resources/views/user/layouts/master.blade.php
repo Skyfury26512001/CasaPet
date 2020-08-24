@@ -33,14 +33,16 @@
     <link href={{asset('assets/user/css/plugins.css')}} rel="stylesheet">
     <!-- Colors CSS -->
     <link href={{asset('assets/user/styles/dogwalker.css')}} rel="stylesheet">
+    <!-- Layer Slider -->
+    <link href={{asset('assets/user/vendor/layerslider/css/layerslider.css')}} rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
-    @yield('specific_css')
-    <!-- Custom CSS -->
+@yield('specific_css')
+<!-- Custom CSS -->
     <style>
-        .fb_dialog_content>iframe {
-            bottom: 100px!important;
-            right: 24px!important;
+        .fb_dialog_content > iframe {
+            bottom: 100px !important;
+            right: 24px !important;
         }
     </style>
 </head>
@@ -144,6 +146,7 @@
                                 <a class="dropdown-item" href="/rescue">Cứu hộ chó mèo</a>
                                 <a class="dropdown-item" href="/adoption">Nhận nuôi thú cưng</a>
                                 <a class="dropdown-item" href="/concession">Nhượng thú cưng</a>
+                                <a class="dropdown-item" href="/volunteer">Tình nguyện</a>
                             </div>
                         </li>
                         <!-- menu item -->
@@ -253,17 +256,18 @@
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             FB.init({
-                xfbml            : true,
-                version          : 'v8.0'
+                xfbml: true,
+                version: 'v8.0'
             });
         };
 
-        (function(d, s, id) {
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
+            js = d.createElement(s);
+            js.id = id;
             js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
@@ -286,6 +290,12 @@
 <script src={{asset('assets/user/js/plugins.js')}}></script>
 <!-- Prefix free -->
 <script src={{asset('assets/user/js/prefixfree.min.js')}}></script>
+<!-- GreenSock -->
+<script src={{asset('assets/user/vendor/layerslider/js/greensock.js')}}></script>
+<!-- LayerSlider script files -->
+<script src={{asset('assets/user/vendor/layerslider/js/layerslider.transitions.js')}}></script>
+<script src={{asset('assets/user/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js')}}></script>
+<script src={{asset('assets/user/vendor/layerslider/js/layerslider.load.js')}}></script>
 <!-- SPECIFIC SCRIPTS -->
 @yield('specific_js')
 </body>

@@ -3,8 +3,6 @@
     Donate Guide
 @endsection
 @section('specific_css')
-{{--    <link href="{{asset('assets/user/styles/maincolors.css')}}" rel="stylesheet">--}}
-    <link href={{asset('assets/user/vendor/layerslider/css/layerslider.css')}} rel="stylesheet">
     <style>
         #call-to-action {
             background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598031376/PetCasa/DonateGuidePage/dog_xwspka.jpg);
@@ -14,14 +12,6 @@
             background-size: cover !important;
         }
     </style>
-@endsection
-@section('specific_js')
-    <!-- GreenSock -->
-    <script src={{asset('assets/user/vendor/layerslider/js/greensock.js')}}></script>
-    <!-- LayerSlider script files -->
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.transitions.js')}}></script>
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js')}}></script>
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.load.js')}}></script>
 @endsection
 @section('content')
     <!-- ==== Page Content ==== -->
