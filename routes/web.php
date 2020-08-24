@@ -113,11 +113,6 @@ Route::get('/donate_guide', function () {
     return view('user.donation.donate_guide');
 });
 
-/* 7.Login-Register */
-Route::get('/login_register', function () {
-    return view('user.login_register');
-});
-
 
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pet extends Model
 {
     protected $guarded = [];
-    public $fillable = ['Name','Slug','Description','SpeciesSort','Species','Age','Sex','Neutered','Status','CertifiedPedigree','Thumbnails'];
+    public $fillable = ['Name','Slug','Description','Breed','Vaccinated','Species','Age','Sex','Neutered','Status','CertifiedPedigree','Thumbnails'];
 
     protected static $link = 'https://res.cloudinary.com/dwarrion/image/upload/' ;
 

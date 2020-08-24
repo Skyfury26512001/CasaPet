@@ -260,10 +260,11 @@
                                             Name
                                         </th>
                                         <th>Species</th>
-                                        <th>SpeciesSort</th>
+                                        <th>Breed</th>
                                         <th>Age</th>
                                         <th>Sex</th>
                                         <th>Neutered</th>
+                                        <th>Vaccinated</th>
                                         <th>Status</th>
                                         <th colspan="3" style="text-align: center">Action</th>
                                     </tr>
@@ -283,10 +284,11 @@
                                             <td>{{$pet->Name}}</td>
                                             <td></td>
                                             <td>{{$pet->Species}}</td>
-                                            <td>{{$pet->SpeciesSort}}</td>
+                                            <td>{{$pet->Breed}}</td>
                                             <td>{{$pet->Age}}</td>
                                             <td>{{$pet->Sex}}</td>
                                             <td>{{$pet->Neutered}}</td>
+                                            <td>{{$pet->Vaccinated}}</td>
                                             <td>
                                                 @if ($pet->Status == 1)
                                                     Active
