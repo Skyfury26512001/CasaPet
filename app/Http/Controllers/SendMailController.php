@@ -11,7 +11,7 @@ class SendMailController extends Controller
     {
         $data = array('name' => "$request->name", 'contact_message' => "$request->contact_message", 'transaction' => 'as');
         Mail::send('user.contact.email', $data, function ($message) use ($request) {
-            $message->to('t1908e@gmail.com', 'Tutorials Point')->subject("$request->subject");
+            $message->to('petscasavn@gmail.com', 'Tutorials Point')->subject("$request->subject");
             $message->from("$request->email", "$request->name");
         });
         return redirect(route('success'));

@@ -20,8 +20,9 @@ class CreatePetsTable extends Migration
             $table->string('CertifiedPedigree')->nullable();
             $table->text('Thumbnails');
             $table->longText('Description');
-            $table->string('SpeciesSort');
             $table->string('Species');
+            $table->string('Breed');
+            $table->string('Vaccinated');
             $table->string('Age');
             $table->string('Sex');
             $table->string('Neutered');
