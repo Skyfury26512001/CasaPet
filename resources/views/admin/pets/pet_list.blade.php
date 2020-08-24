@@ -256,10 +256,10 @@
                                         </th>
                                         <th>Species</th>
                                         <th>SpeciesSort</th>
-                                        <th>Age</th>
-                                        <th>Sex</th>
-                                        <th>Neutered</th>
-                                        <th>Status</th>
+                                        <th>Tuổi</th>
+                                        <th>Giới Tính</th>
+                                        <th>Triệt sản</th>
+                                        <th>Tình trạng</th>
                                         <th colspan="3" style="text-align: center">Action</th>
                                     </tr>
                                     </thead>
