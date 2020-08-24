@@ -200,6 +200,11 @@
                                 <div class="form-filter">
                                     Lọc theo trạng thái
                                     <select name="Status">
+                                        <option value="All"
+                                                @if (Request::get('Status') == "All")
+                                                selected
+                                                @endif>All
+                                        </option>
                                         <option value="1"
                                                 @if (Request::get('Status') == "1")
                                                 selected

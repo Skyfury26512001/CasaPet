@@ -16,12 +16,13 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('Title');
+            $table->string('Slug');
             $table->string('Content');
             $table->unsignedBigInteger('Pet_id');
             $table->foreign('Pet_id')->references('id')->on('pets')->onDelete('cascade');
             $table->unsignedBigInteger('Account_id');
             $table->foreign('Account_id')->references('id')->on('pets')->onDelete('cascade');
-            $table->integer('Status');
+            $table->integer('Status'); // 0 : Deactive , 1 : Active
             $table->timestamps();
         });
     }

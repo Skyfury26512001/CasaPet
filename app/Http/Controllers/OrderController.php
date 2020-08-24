@@ -8,7 +8,6 @@ use App\Pet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use function Sodium\add;
 
 class OrderController extends Controller
 {
@@ -23,7 +22,9 @@ class OrderController extends Controller
             array_push($condition, ['created_at', '<=', $request->end]);
         }
         if ($request->has('Status')) {
-            array_push($condition, ['Status', '=', $request->Status]);
+            if($request->Status != "All"){
+                array_push($condition, ['Status', '=', $request->Status]);
+            }
         }
         if ($request->has('keyword')) {
             array_push($condition, ['Email', 'Like', '%' . $request->keyword . '%']);
@@ -46,7 +47,6 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request);
         $request->validate([
             'OrderType'   => 'required',
             'FullName'    => 'required',
@@ -55,13 +55,9 @@ class OrderController extends Controller
             'PetId'       => 'required',
             'IDNo'        => 'required',
         ]);
-//        dd($request);
         $order           = $request->all();
         $order['Status'] = 0;
-//        dd($request->thumbnails);
-//        dd($order);
         Order::create($order);
-//        dd($order);
         return redirect(route('admin_order_list'));
     }
 
@@ -93,6 +89,29 @@ class OrderController extends Controller
                 $contract->Status            = 0;
                 $contract->save();
             });
+            return redirect(route('admin_order_list'));
+        }
+        return redirect(route('admin_404'));
+    }
+    public function decline($id)
+    {
+        $order_cur = Order::find($id);
+        if (isset($order_cur) && $order_cur != null) {
+            Order::where('id', '=', $id)->update(['Status' => 1]);
+//            dd(123);
+//            DB::transaction(function () use ($order_cur, $id) {
+//                $order_cur->Status = 2;
+//                $order_cur->update();
+//                $pet = Pet::find($order_cur->PetId);
+//                Order::where('id', '!=', $id)->where('PetId', $pet->id)->update(['Status' => 1]);
+//                $contract                    = new Contract();
+//                $contract->Order_id          = $order_cur->id;
+//                $contract->Content           = "Xác nhận hợp đồng của : $order_cur->FullName nhận nuôi $pet->Name ! Yêu cầu $order_cur->FullName phải chụp ảnh đăng thông tin gửi lên page !";
+//                $contract->ContractDateStart = Carbon::now()->addDays(7)->toDateString();
+//                $contract->ContractDateEnd   = Carbon::now()->addDays(372)->toDateString();
+//                $contract->Status            = 0;
+//                $contract->save();
+//            });
             return redirect(route('admin_order_list'));
         }
         return redirect(route('admin_404'));

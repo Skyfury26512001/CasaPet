@@ -21,11 +21,18 @@ Route::get('/', function () {
 })->name('home');
 
 
-/* Error */
+/* Sub Pages */
 Route::get('/error', function () {
-    return view('user.error');
-})->name('404');
+    return view('user.sub_pages.error');
+});
 
+Route::get('/success', function () {
+    return view('user.sub_pages.success');
+})->name('success');
+
+Route::get('/get_involved', function () {
+    return view('user.sub_pages.get_involved');
+});
 
 /* 1.Services */
 Route::get('/services', function () {
@@ -38,6 +45,10 @@ Route::get('/rescue', function () {
 
 Route::get('/adoption', function () {
     return view('user.services.adoption');
+});
+
+Route::get('/adoption/adoption_detail', function () {
+    return view('user.services.adoption_detail');
 });
 
 Route::get('/concession', function () {
@@ -74,19 +85,51 @@ Route::get('/team', function () {
 /* 5.Contact */
 Route::get('/contact', function () {
     return view('user.contact.contact');
-});
+})->name('contact');
+
+Route::get('/mail_send', 'SendMailController@sendMail');
+
+Route::post('/mail_send_post', 'SendMailController@sendMail')->name('send_contact_mail');
 
 /* 6.Donation */
 Route::get('/donation', function () {
     return view('user.donation.donation');
 });
 
+/* 7.Login-Register */
+
+Route::get('/login_register', function () {
+    return view('user.login_register');
+})->name('login_register');
+
+Route::post('/login', 'AccountController@loginP')->name('loginP');
+Route::post('/register', 'AccountController@registerP')->name('register');
+
+/* 8.Faq */
+
+Route::post('/donation', 'DonationController@store')->name('donation');
+
+Route::get('/donate_guide', function () {
+    return view('user.donation.donate_guide');
+});
+
+/* 7.Login-Register */
+Route::get('/login_register', function () {
+    return view('user.login_register');
+});
+
+
+//Route::get('/regist', 'AccountController@regist');
+//Route::post('/regist', 'AccountController@registP');
+
 // admin : route
 
 Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () {
 
-    Route::get('/', 'AdminController@dashboard')->name('admin');
-    Route::get('/404',function(){ return view('admin.404-admin');})->name('admin_404');
+    Route::get('/', 'AdminController@dashboard')->name('admin_home');
+    Route::get('/404', function () {
+        return view('admin.404-admin');
+    })->name('admin_404');
     Route::group(['prefix' => '/accounts'], function () {
         Route::get('/', 'AccountController@list')->name('admin_account_list');
         Route::get('/create', 'AccountController@create')->name('admin_account_create');
@@ -137,18 +180,30 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
 //        Route::put('/deactiveAll', 'OrderController@deactive_multi')->name('admin_order_deactive_multi');
 //        Route::put('/activeAll', 'OrderController@active_multi')->name('admin_order_active_multi');
     });
+    Route::group(['prefix' => '/posts'], function () {
+        Route::get('/', 'PostController@list')->name('admin_post_list');
+        Route::get('/create', 'PostController@create')->name('admin_post_create');
+        Route::post('/store', 'PostController@store')->name('admin_post_store');
+        Route::get('/edit/{slug}', 'PostController@edit')->name('admin_post_edit');
+        Route::get('/detail/{slug}', 'PostController@detail')->name('admin_post_detail');
+        Route::put('/update/{slug}', 'PostController@update')->name('admin_post_update');
+        Route::put('/deactive/{id}', 'PostController@deactive')->name('admin_post_deactive');
+        Route::put('/active/{id}', 'PostController@active')->name('admin_post_active');
+        Route::put('/deactiveAll', 'PostController@deactive_multi')->name('admin_post_deactive_multi');
+        Route::put('/activeAll', 'PostController@active_multi')->name('admin_post_active_multi');
+    });
 });
-// login - register : route
 
-Route::get('/login', 'AccountController@login')->name('login');
-Route::post('/login', 'AccountController@loginP')->name('loginP');
-Route::get('/regist', 'AccountController@regist');
-Route::post('/regist', 'AccountController@registP');
 
 // test : route
 Route::get('checking_page', function () {
     return view('session_checking');
 });
+
+/* Logout  */
+Route::get('/logOut', 'AccountController@logOut')->name('logOut');
+
+
 /* 7.Time Line */
 Route::get('/timeline', function () {
     return view('timeline');

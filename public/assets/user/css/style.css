@@ -552,7 +552,7 @@ ul.social-list li a i {
 }
 
 .testimonial .testimonial-title {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .testimonial .testimonial-review span {
@@ -627,7 +627,6 @@ ul.social-list li a i {
 
 /* call to action */
 #call-to-action {
-    height: 500px;
     background-attachment: fixed !important;
     background-size: cover !important;
     background: url('https://res.cloudinary.com/dwarrion/image/upload/v1597767578/PetCasa/TeamPage/team_cover_xf0zyq.jpg');
@@ -637,7 +636,7 @@ ul.social-list li a i {
 /* team style 1 */
 .team-style1 {
     margin-bottom: 10px;
-    padding: 10px 0px 0px;
+    padding: 10px 0 0;
     border-radius: 20px;
 }
 
@@ -1027,18 +1026,21 @@ figure.team-style3:hover a:nth-child(3) i {
 }
 
 .comment {
-    padding: 30px 0px;
+    padding: 30px 0;
     border-bottom: 1px dotted;
 }
 
 .comment:last-child {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 /*=========================== Footer ============================ */
 footer {
+    background-image: url("https://res.cloudinary.com/dwarrion/image/upload/v1597942378/PetCasa/pattern1_u1zohq.png");
+    background-position: center bottom;
+    background-repeat: repeat-x;
     color: #fff;
-    padding: 80px 0px;
+    padding: 35px 0;
     border-top: 5px double #ffffff;
 }
 
@@ -1053,7 +1055,7 @@ footer .navbar-brand span {
 .credits p {
     font-weight: 700;
     font-size: 13px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     text-align: center;
 }
 
@@ -1305,7 +1307,7 @@ ul.social-media i {
     border: 0;
     border: 2px solid;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+    /*border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;*/
 }
 
 .form-control input {
@@ -1331,7 +1333,7 @@ blockquote {
 }
 
 blockquote footer {
-    padding: 0px;
+    padding: 0;
     background: transparent !important;
     color: inherit;
 }
@@ -1528,8 +1530,8 @@ a .card-title:hover {
 /* section */
 section {
     background: #fff;
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 
 .no-padding {
@@ -1550,6 +1552,26 @@ section {
     bottom: -20px;
     z-index: 0;
     text-shadow: 0px 4px 17px rgba(255, 255, 255, 0.6);
+}
+
+.section-heading-1:after {
+    content: "\f126";
+    z-index: 0;
+    font-family: "flaticon";
+    font-size: 20px;
+    z-index: 0;
+    transform: rotate(20deg);
+    opacity: .7;
+    display: block;
+    color: #48A06A;
+}
+
+.section-heading-1 {
+    margin-bottom: 20px;
+}
+
+.aos-animate {
+    margin-bottom: unset;
 }
 
 /* custom ul */
@@ -1618,7 +1640,7 @@ ul.custom li:before {
 /* Jumbotron */
 .jumbotron {
     height: 400px;
-    background-image: url(https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_400/v1597770140/PetCasa/TeamPage/team_cover_2_cj9izc.jpg);
+    background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1597943946/PetCasa/TeamPage/cover_vnid26.jpg);
     background-size: cover;
     margin-bottom: 0px;
     position: relative;
@@ -1972,6 +1994,17 @@ ul.custom li:before {
         font-size: 40px;
     }
 
+    .section-heading:after {
+        content: "";
+        z-index: 0;
+        font-family: "flaticon";
+        font-size: 20px;
+        z-index: 0;
+        transform: rotate(20deg);
+        opacity: .5;
+        display: block;
+    }
+
     /* owl carousel navigation on top */
     .owl-nav {
         margin: 0 auto;
@@ -2046,7 +2079,7 @@ ul.custom li:before {
 
     .bottom-block-padding {
         padding-top: 40px;
-        padding-bottom: 0px;
+        padding-bottom: 0;
     }
 
     .mt-5, .my-5 {
@@ -2062,7 +2095,7 @@ ul.custom li:before {
     }
 
     #call-to-action {
-        padding: 80px 0px;
+        padding: 80px 0;
     }
 
     .ls-outline .ls-nav-prev, .ls-outline .ls-nav-next {
@@ -2254,4 +2287,14 @@ ul.custom li:before {
     .dog-bg3:before, .cat-bg1:before {
         right: 18%
     }
+}
+
+/**/
+.adoption-online-bg {
+    background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598008706/PetCasa/AdoptionPage/adoption_c86lyd.jpg);
+    height: 400px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
