@@ -27,7 +27,7 @@ class OrderSeeder extends Seeder
                 'Email' => 'nguyenVanTai@gmail.com', // Email
                 'PetId' => 1,      // ID con pet
                 'IDNo' => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
-                'Status' => 0,      // trạng thái  0 - > Chưa xử lý ; 1 - Chưa xử lý ; 2 - Đã xử lý
+                'Status' => 0,      // trạng thái  // 0 - Chưa xử lý ; 1 - Từ chối ; 2 - Đồng ý ;
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ),
