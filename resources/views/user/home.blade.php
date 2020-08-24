@@ -2,17 +2,7 @@
 @section('title')
     Home
 @endsection
-@section('specific_css')
-    <link href={{asset('assets/user/vendor/layerslider/css/layerslider.css')}} rel="stylesheet">
-    <link href={{asset('assets/user/style/maincolors.css')}} rel="stylesheet">
-@endsection
 @section('specific_js')
-    <!-- GreenSock -->
-    <script src={{asset('assets/user/vendor/layerslider/js/greensock.js')}}></script>
-    <!-- LayerSlider script files -->
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.transitions.js')}}></script>
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js')}}></script>
-    <script src={{asset('assets/user/vendor/layerslider/js/layerslider.load.js')}}></script>
     <!-- Open Street maps -->
     <script src={{asset('assets/user/js/map.js')}}></script>
     <!-- Mailchimp script -->
@@ -21,32 +11,6 @@
     <script src={{asset('assets/user/js/counter.js"')}}></script>
     <!-- Contact Form script -->
     <script src={{asset('assets/user/js/contact.js')}}></script>
-        <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
-<script>
-  paypal.Buttons({
-      style: {
-          shape: 'pill',
-          color: 'black',
-          layout: 'horizontal',
-          label: 'paypal',
-
-      },
-      createOrder: function(data, actions) {
-          return actions.order.create({
-              purchase_units: [{
-                  amount: {
-                      value: ''
-                  }
-              }]
-          });
-      },
-      onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-              alert('Transaction completed by ' + details.payer.name.given_name + '!');
-          });
-      }
-  }).render('#paypal-button-container');
-</script>
 @endsection
 @section('content')
     <!-- ==== Slider ==== -->

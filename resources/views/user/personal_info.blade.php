@@ -1,12 +1,9 @@
 @extends('user.layouts.master')
 @section('title')
-    Service
+    Get Involved
 @endsection
 @section('specific_css')
-    {{--    <link href="{{asset()}}" rel="stylesheet">--}}
 @endsection
 @section('content')
-    <!-- ==== Page Content ==== -->
 
-    <!-- /page -->
 @endsection

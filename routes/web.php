@@ -47,7 +47,7 @@ Route::get('/adoption', function () {
     return view('user.services.adoption');
 });
 
-Route::get('/adoption_detail', function () {
+Route::get('/adoption/adoption_detail', function () {
     return view('user.services.adoption_detail');
 });
 
@@ -97,22 +97,39 @@ Route::get('/donation', function () {
 });
 
 /* 7.Login-Register */
+
 Route::get('/login_register', function () {
     return view('user.login_register');
-});
+})->name('login_register');
+
+Route::post('/login', 'AccountController@loginP')->name('loginP');
+Route::post('/register', 'AccountController@registerP')->name('register');
 
 /* 8.Faq */
+
+Route::post('/donation', 'DonationController@store')->name('donation');
+
 Route::get('/donate_guide', function () {
     return view('user.donation.donate_guide');
 });
 
+/* 7.Login-Register */
+Route::get('/login_register', function () {
+    return view('user.login_register');
+});
+
+
+//Route::get('/regist', 'AccountController@regist');
+//Route::post('/regist', 'AccountController@registP');
 
 // admin : route
 
 Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () {
 
     Route::get('/', 'AdminController@dashboard')->name('admin_home');
-    Route::get('/404',function(){ return view('admin.404-admin');})->name('admin_404');
+    Route::get('/404', function () {
+        return view('admin.404-admin');
+    })->name('admin_404');
     Route::group(['prefix' => '/accounts'], function () {
         Route::get('/', 'AccountController@list')->name('admin_account_list');
         Route::get('/create', 'AccountController@create')->name('admin_account_create');
@@ -176,12 +193,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/activeAll', 'PostController@active_multi')->name('admin_post_active_multi');
     });
 });
-// login - register : route
 
-//Route::get('/login', 'AccountController@login')->name('login');
-//Route::post('/login', 'AccountController@loginP')->name('loginP');
-//Route::get('/regist', 'AccountController@regist');
-//Route::post('/regist', 'AccountController@registP');
 
 // test : route
 Route::get('checking_page', function () {
@@ -189,7 +201,7 @@ Route::get('checking_page', function () {
 });
 
 /* Logout  */
-Route::get('/logOut','AccountController@logOut')->name('logOut');
+Route::get('/logOut', 'AccountController@logOut')->name('logOut');
 
 
 /* 7.Time Line */
