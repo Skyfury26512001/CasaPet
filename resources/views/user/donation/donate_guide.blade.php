@@ -3,7 +3,7 @@
     Donate Guide
 @endsection
 @section('specific_css')
-    <link href="{{asset('assets/user/styles/maincolors.css')}}" rel="stylesheet">
+{{--    <link href="{{asset('assets/user/styles/maincolors.css')}}" rel="stylesheet">--}}
     <link href={{asset('assets/user/vendor/layerslider/css/layerslider.css')}} rel="stylesheet">
     <style>
         #call-to-action {

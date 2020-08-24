@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script
-        src="https://kit.fontawesome.com/64d58efce2.js"
-        crossorigin="anonymous"
+            src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="{{asset('assets/user/css/login_register.css')}}"/>
     <link href={{asset('assets/user/fonts/flaticon/flaticon.css')}} rel="stylesheet" type="text/css">
@@ -16,15 +16,17 @@
     <div class="bg_cover"></div>
     <div class="forms-container">
         <div class="signin-signup">
-            <form action="#" class="sign-in-form">
+            <form action="{{route('loginP')}}" class="sign-in-form" method="POST">
+                @csrf
+                @method('POST')
                 <h2 class="title">ĐĂNG NHẬP</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username"/>
+                    <input type="text" placeholder="Email" name="EmailLogin"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password"/>
+                    <input type="password" placeholder="Password" name="PasswordLogin"/>
                 </div>
                 <input type="submit" value="Gửi" class="btn solid"/>
                 <p class="social-text">Đăng nhập bằng: </p>
@@ -37,38 +39,48 @@
                     </a>
                 </div>
             </form>
-            <form action="#" class="sign-up-form">
+            <form action="{{route('register')}}" class="sign-up-form" method="POST">
+                @csrf
                 <h2 class="title" style="background-color: coral; border: 1px solid #F9575C">ĐĂNG KÝ</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username"/>
+
+                    <input type="text" placeholder="@if ($errors->first('FullName') != "") {{$errors->first('FullName')}} @else Họ và Tên @endif" name="FullName"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email"/>
+                    <input type="email" placeholder="@if ($errors->first('Email') != "") {{$errors->first('Email')}} @else Email @endif" name="Email"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="text" placeholder="Phone Number"/>
+                    <input type="text" placeholder="@if ($errors->first('PhoneNumber') != "") {{$errors->first('PhoneNumber')}} @else Số điện thoại @endif" name="PhoneNumber"/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-home"></i>
+                    <input type="text" placeholder="@if ($errors->first('Address') != "") {{$errors->first('Address')}} @else Địa chỉ @endif" name="Address"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-birthday-cake"></i>
-                    <input type="text" placeholder="dd/mm/yy"/>
+                    <input type="date" placeholder="@if ($errors->first('DateOfBirth') != "") {{$errors->first('DateOfBirth')}} @else dd/mm/yy @endif"  name="DateOfBirth"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password"/>
+                    <input type="password" placeholder="@if ($errors->first('Password') != "") {{$errors->first('Password')}} @else Mật khẩu @endif" name="Password"/>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-id-card"></i>
+                    <input type="number" placeholder="@if ($errors->first('IDNo') != "") {{$errors->first('IDNo')}} @else Chứng minh Thư / Thẻ căn cước @endif" name="IDNo"/>
                 </div>
                 <input type="submit" class="btn" value="Gửi" style="background-color: coral"/>
-                <p class="social-text">Đăng ký với: </p>
-                <div class="social-media">
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-google"></i>
-                    </a>
-                </div>
+                {{--                <p class="social-text">Đăng ký với: </p>--}}
+                {{--                <div class="social-media">--}}
+                {{--                    <a href="#" class="social-icon">--}}
+                {{--                        <i class="fab fa-facebook-f"></i>--}}
+                {{--                    </a>--}}
+                {{--                    <a href="#" class="social-icon">--}}
+                {{--                        <i class="fab fa-google"></i>--}}
+                {{--                    </a>--}}
+                {{--                </div>--}}
             </form>
         </div>
     </div>
@@ -83,8 +95,8 @@
                 </button>
             </div>
             <img
-                src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
-                class="image" alt="">
+                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
+                    class="image" alt="">
         </div>
         <div class="panel right-panel">
             <div class="content">
@@ -97,8 +109,8 @@
                 </button>
             </div>
             <img
-                src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
-                class="image" alt=""/>
+                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
+                    class="image" alt=""/>
         </div>
     </div>
 </div>

@@ -99,13 +99,19 @@ Route::get('/donation', function () {
 /* 7.Login-Register */
 Route::get('/login_register', function () {
     return view('user.login_register');
-});
+})->name('login_register');
 
+Route::post('/login', 'AccountController@loginP')->name('loginP');
+Route::post('/register', 'AccountController@registerP')->name('register');
 /* 8.Faq */
 Route::get('/donate_guide', function () {
     return view('user.donation.donate_guide');
 });
 
+
+
+//Route::get('/regist', 'AccountController@regist');
+//Route::post('/regist', 'AccountController@registP');
 
 // admin : route
 
@@ -176,12 +182,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/activeAll', 'PostController@active_multi')->name('admin_post_active_multi');
     });
 });
-// login - register : route
 
-//Route::get('/login', 'AccountController@login')->name('login');
-//Route::post('/login', 'AccountController@loginP')->name('loginP');
-//Route::get('/regist', 'AccountController@regist');
-//Route::post('/regist', 'AccountController@registP');
 
 // test : route
 Route::get('checking_page', function () {

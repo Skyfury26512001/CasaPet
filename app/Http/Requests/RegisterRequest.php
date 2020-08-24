@@ -25,13 +25,13 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+//        dd($this->request);
         return [
             'FullName' => 'required',
             'Email' => 'required|email',
             'Password' => 'required|min:6',
-            'avatar' => 'required',
             'Address' => 'required|min:2',
-            'DateOfBirth' => 'required|min:6',
+            'DateOfBirth' => 'required',
             'PhoneNumber' => 'required|mobile_vn',
             'IDNo' => 'required|id_vn',
         ];

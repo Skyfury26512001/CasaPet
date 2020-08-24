@@ -22,7 +22,7 @@ class CreateAccountsTable extends Migration
             $table->string('FullName');
             $table->date('DateOfBirth');
             $table->string('IDNo');
-            $table->string('Avatar');
+            $table->string('Avatar')->nullable();
             $table->string('PhoneNumber');
             $table->string('Address');
             $table->string('Status');

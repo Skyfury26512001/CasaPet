@@ -54,7 +54,7 @@ class Handler extends ExceptionHandler
         $statusCode = $exception->getStatusCode();
         switch ($statusCode) {
                 case '404':
-                return response()->view('user.error');
+                return response()->view('user.sub_pages.error');
             }
         }
         return parent::render($request, $exception);

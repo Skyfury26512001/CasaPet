@@ -6,7 +6,9 @@ use App\Account;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 use phpDocumentor\Reflection\Types\Array_;
 
 class AccountController extends Controller
@@ -16,36 +18,56 @@ class AccountController extends Controller
         return view('user.users.login');
     }
 
-    public function registerP(Request $request)
+    public function registerP(RegisterRequest $request)
     {
-        $account                 = new Account();
-        $account->email          = $request->email;
-        $account->passwordHash   = md5($request->password . $request->firstName);
-        $account->salt           = $request->firstName;
-        $account->fullName       = $request->lastName . ' ' . $request->firstName;
-        $account->phoneNumber    = $request->phone;
-        $account->email_verified = 'unverified';
-        $account->status         = 1;
-        $account->city_id        = $request->city;
-        $account->sex            = $request->sex;
-        $account->birthDate      = $request->birthDate;
-        $account->roles();
-        $account->save();
-        $currentId = $account->id;
-        $account->roles()->sync($currentId);
-        return redirect('/login');
+        DB::transaction(function () use ($request) {
+            $account                 = $request->all();
+            $Salt                    = generateRandomString(5);
+            $account['Salt']         = $Salt;
+            $password                = $account['Password'];
+            $PasswordHash            = md5($password . $Salt);
+            $account['PasswordHash'] = $PasswordHash;
+            $slug_begin              = generateRandomString(8);
+            $Slug                    = to_slug($slug_begin . ' ' . $account['FullName']);
+            $account['Slug']         = $Slug;
+            $account['Status']       = 1;
+            if ($request->has('Avatar')) {
+                $account['Avatar'] = $request->avatar;
+            }
+            if ($request->has('Role_id')) {
+                $account['Role_id'] = $request->Role_id;
+            } else {
+                $account['Role_id'] = 3;
+            }
+            Account::create($account);
+            $content = "Cảm ơn đã xử dụng dịch vụ của chúng tôi ! :3 Mãi yêu :3 !";
+            $data = array('name' => "$request->FullName", 'contact_message' => "$content", 'transaction' => 'as');
+            Mail::send('user.contact.email', $data, function ($message) use ($request) {
+                $message->to("$request->Email", "$request->FullName")->subject('Tạo mới tài khoản thành công');
+                $message->from("t1908@gmail.com", "PetsCasa");
+            });
+            $contentTele =  "\n + Tài khoản mới được tạo : $request->Email " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Số nhận diện : $request->IDNo";
+            $contentTeleSend = urlencode("Yêu cầu mới \n- Từ: Petcasa \n- Tiêu đề: Tạo mới tài khoản \n- Nội dung: ".$contentTele);
+//            dd($contentTeleSend);
+            $roomId = -1001421358819;
+            $bot_token = "bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI";
+//            $url = "https://api.telegram.org/bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI/sendMessage?chat_id=-1001421358819&text='Xin Chào'";
+            $url = "https://api.telegram.org/$bot_token/sendMessage?chat_id=$roomId&text=$contentTeleSend";
+            $urldone = file_get_contents($url);
+            return redirect(route('login_register'));
+        });
+
+        return redirect('/login_register');
     }
 
     public function loginP(Request $request)
     {
-        $condition = ['Email' => $request->email, 'Status' => "1",];
+        $condition = ['Email' => $request->EmailLogin, 'Status' => "1",];
         $account   = Account::where($condition)->get()->first();
-//        dd($request->email);
-//        dd($account);
         if (isset($account)) {
             $PasswordHash = $account->PasswordHash;
             $Salt         = $account->Salt;
-            $passIn       = md5($request->password . $Salt);
+            $passIn       = md5($request->PasswordLogin . $Salt);
             if ($PasswordHash == $passIn) {
                 session_start();
                 $account_session = $request->session();
@@ -53,9 +75,9 @@ class AccountController extends Controller
                 $account_session->put('current_account', $account);
                 return redirect('/admin');
             }
-            return redirect(route('login'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
+            return redirect(route('login_register'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
         } else {
-            return redirect(route('login'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
+            return redirect(route('login_register'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
         }
     }
 
@@ -92,6 +114,7 @@ class AccountController extends Controller
 
     public function store(RegisterRequest $request)
     {
+//        dd($request);
         $account                 = $request->all();
         $Salt                    = generateRandomString(5);
         $account['Salt']         = $Salt;
@@ -102,9 +125,14 @@ class AccountController extends Controller
         $Slug                    = to_slug($slug_begin . ' ' . $account['FullName']);
         $account['Slug']         = $Slug;
         $account['Status']       = 1;
-        $account['Avatar']       = $request->avatar;
-        $account['Role_id']      = $request->Role_id;
-//        dd($account);
+        if ($request->has('Avatar')) {
+            $account['Avatar'] = $request->avatar;
+        }
+        if ($request->has('Role_id')) {
+            $account['Role_id'] = $request->Role_id;
+        } else {
+            $account['Role_id'] = 3;
+        }
         Account::create($account);
         return redirect(route('admin_account_list'));
     }
