@@ -55,6 +55,7 @@
         ClassicEditor
             .create(document.querySelector('#editor'))
             .then(editor => {
+                editor.isReadOnly = true;
                 {{--editor.setData('{{$pet->Description}}', function () {--}}
                 {{--    this.checkDirty();  // true--}}
                 {{--});--}}
@@ -62,7 +63,11 @@
             .catch(error => {
                 console.error(error);
             });
-
+    </script>
+    <script>
+        $( "#btn-deactive" ).click(function() {
+              $( "#deactive_form" ).submit();
+            });
     </script>
 @endsection
 @section('content')
@@ -88,7 +93,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card-box">
-                    <h4 class="header-title">Xem thông tin cá nhân : </h4>
+                    <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
                     <form action="{{route('admin_pet_update',$pet->Slug)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
@@ -124,22 +129,22 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
-                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
-                                <option value="Chó" @if ($pet->SpeciesSort == "Chó") selected @endif>Chó</option>
-                                <option value="Mèo" @if ($pet->SpeciesSort == "Mèo") selected @endif>Mèo</option>
-                                <option value="Vịt" @if ($pet->SpeciesSort == "Vịt") selected @endif>Vịt</option>
+                            <label for="Species">Loài<span class="text-danger">*</span></label>
+                            <select name="Species" class="form-control" id="Species" required="" disabled>
+                                <option value="Chó" @if ($pet->Species == "Chó") selected @endif>Chó</option>
+                                <option value="Mèo" @if ($pet->Species == "Mèo") selected @endif>Mèo</option>
+                                <option value="Vịt" @if ($pet->Species == "Vịt") selected @endif>Vịt</option>
                             </select>
-                            @if ($errors->has('SpeciesSort'))
-                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
+                            @if ($errors->has('Species'))
+                                <label class="alert-warning">{{$errors->first('Species')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Species">Giống<span class="text-danger">*</span></label>
-                            <input disabled type="text" name="Species" parsley-trigger="change" required=""
-                                   class="form-control" id="Species" value="{{$pet->Species}}">
-                            @if ($errors->has('Species'))
-                                <label class="alert-warning">{{$errors->first('Species')}}</label>
+                            <label for="Breed">Giống<span class="text-danger">*</span></label>
+                            <input disabled type="text" name="Breed" parsley-trigger="change" required=""
+                                   class="form-control" id="Breed" value="{{$pet->Breed}}">
+                            @if ($errors->has('Breed'))
+                                <label class="alert-warning">{{$errors->first('Breed')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
@@ -152,7 +157,7 @@
                         </div>
                         <div class="form-group">
                             <label for="userName">Thumnails<span class="text-danger">*</span></label>
-                            <button disabled type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
                             <div class="thumbnails">
                                 <ul class="cloudinary-thumbnails">
                                     @foreach($pet->ArrayThumbnails450x450 as $thumbnail)
@@ -191,18 +196,30 @@
                                 <label class="alert-warning">{{$errors->first('Neutered')}}</label>
                             @endif
                         </div>
+                        <div class="form-group">
+                            <label>Tiêm phòng<span class="text-danger">*</span></label>
+                            <input disabled type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedYes" value="Có" @if ($pet->Vaccinated == "Có") checked @endif><label
+                                    for="VaccinatedYes">Đã tiêm phòng</label>
+                            <input disabled type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedNo" value="Không" @if ($pet->Vaccinated == "Không") checked @endif><label
+                                    for="VaccinatedNo">Chưa tiêm phòng</label>
+                            @if ($errors->has('Vaccinated'))
+                                <label class="alert-warning">{{$errors->first('Vaccinated')}}</label>
+                            @endif
+                        </div>
                         @foreach($pet->ArrayThumbnails as $thumbnail)
                             <input disabled type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}" value="{{$thumbnail}}">
                         @endforeach
                         <div class="form-group text-right mb-0">
-                            <a class="btn btn-primary waves-effect waves-light mr-1" href="{{route('admin_pet_edit',$pet->Slug)}}">
-                                Sửa
-                            </a>
-                            <a type="reset" class="btn btn-secondary waves-effect waves-light" href="{{route('admin_pet_list')}}">
-                                Trở lại danh sách
-                            </a>
+                            <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
+                                Submit
+                            </button>
+                            <button class="btn btn-secondary btn-table" id="btn-deactive"> Deactive</button>
                         </div>
-
+                    </form>
+                <form id="deactive_form" action="{{route('admin_pet_deactive',$pet->id)}}"method="POST">
+                                @csrf @method('PUT')
                     </form>
                 </div> <!-- end card-box -->
             </div>
