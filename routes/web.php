@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 // user : route
 
 /* Home */
-Route::get('/', function () {
-    return view('user.home');
-})->name('home');
+Route::get('/','PageController@home')->name('home');
 
 
 /* Sub Pages */
@@ -186,6 +184,18 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/active/{id}', 'PostController@active')->name('admin_post_active');
         Route::put('/deactiveAll', 'PostController@deactive_multi')->name('admin_post_deactive_multi');
         Route::put('/activeAll', 'PostController@active_multi')->name('admin_post_active_multi');
+    });
+    Route::group(['prefix' => '/reports'], function () {
+        Route::get('/', 'ReportController@list')->name('admin_report_list');
+        Route::get('/create', 'ReportController@create')->name('admin_report_create');
+        Route::post('/store', 'ReportController@store')->name('admin_report_store');
+        Route::get('/edit/{slug}', 'ReportController@edit')->name('admin_report_edit');
+        Route::get('/detail/{slug}', 'ReportController@detail')->name('admin_report_detail');
+        Route::put('/update/{slug}', 'ReportController@update')->name('admin_report_update');
+        Route::put('/deactive/{id}', 'ReportController@deactive')->name('admin_report_deactive');
+        Route::put('/active/{id}', 'ReportController@active')->name('admin_report_active');
+        Route::put('/deactiveAll', 'ReportController@deactive_multi')->name('admin_report_deactive_multi');
+        Route::put('/activeAll', 'ReportController@active_multi')->name('admin_report_active_multi');
     });
 });
 

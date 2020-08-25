@@ -24,6 +24,7 @@ class Pet extends Model
         }
         return $list_photos;
     }
+
     public function getArrayThumbnailsAttribute(){
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
@@ -36,6 +37,13 @@ class Pet extends Model
             }
         }
         return $list_photos;
+    }
+
+    public function getFirstThumbnailAttribute(){
+        $thumbnail[] = explode(',', $this->Thumbnails);
+        foreach ($thumbnail as $thumbnailValue) {
+            return self::$link.'c_scale,h_800,w_800/' . $thumbnailValue[0];
+        }
     }
 
     public function getLinkThumbnailAttribute($id_thumbnail){

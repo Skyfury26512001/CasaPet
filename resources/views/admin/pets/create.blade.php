@@ -2,7 +2,6 @@
 @section('specific_js')
     <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget(
             {
