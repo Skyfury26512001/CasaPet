@@ -70,6 +70,17 @@
                         <li><a href="{{route('admin_post_create')}}">Thêm mới</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-view-compact"></i>
+                        <span>  Quản lý báo cáo</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin_report_list')}}">Danh sách</a></li>
+                        <li><a href="{{route('admin_report_create')}}">Thêm mới</a></li>
+                    </ul>
+                </li>
                 {{--                <li>--}}
                 {{--                    <a href="javascript: void(0);">--}}
                 {{--                        <i class="fe-sidebar"></i>--}}

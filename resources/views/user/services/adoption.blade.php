@@ -129,18 +129,18 @@
 
             <div class="col-6 col-sm-4 col-md-4 col-lg-4">
                 <div class="form-group">
-                    <label>Triệt sản</label>
+                    <label>Kiểu</label>
                     <select id="sterilizations" class="form-control">
                         <option value="">Tất cả</option>
-                        <option value="1">Có</option>
-                        <option value="2">Không</option>
+                        <option value="1">Những vật nuôi chủ cũ có mong muốn nhượng lại</option>
+                        <option value="2">Những vật nuôi được PetsCasa cứu hộ</option>
                     </select>
                 </div>
             </div>
 
             <div class="col-6 col-sm-4 col-md-4 col-lg-4">
                 <div class="form-group">
-                    <label>Màu</label>
+                    <label>Giống</label>
                     <select id="color" class="form-control">
                         <option value="">Tất cả</option>
                         <option value="8">Đen</option>

@@ -143,23 +143,23 @@
                                 Dịch vụ
                             </a>
                             <div class="dropdown-menu" aria-labelledby="services-dropdown">
-                                <a class="dropdown-item" href="/rescue">Cứu hộ chó mèo</a>
-                                <a class="dropdown-item" href="/adoption">Nhận nuôi thú cưng</a>
-                                <a class="dropdown-item" href="/concession">Nhượng thú cưng</a>
-                                <a class="dropdown-item" href="/volunteer">Tình nguyện</a>
+                                <a class="dropdown-item" href="{{route('rescue_form')}}">Cứu hộ chó mèo</a>
+                                <a class="dropdown-item" href="{{route('adoption')}}">Nhận nuôi thú cưng</a>
+                                <a class="dropdown-item" href="{{route('concession_form')}}">Nhượng thú cưng</a>
+                                <a class="dropdown-item" href="{{route('volunteer')}}">Tình nguyện</a>
                             </div>
                         </li>
                         <!-- menu item -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/store" id="adopt-dropdown" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                Cửa hàng
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="adopt-dropdown">
-                                <a class="dropdown-item" href="#">Đồ dùng thú cưng</a>
-                                <a class="dropdown-item" href="#">Chăm sóc thú cưng</a>
-                            </div>
-                        </li>
+{{--                        <li class="nav-item dropdown">--}}
+                    {{--                            <a class="nav-link dropdown-toggle" href="/store" id="adopt-dropdown" data-toggle="dropdown"--}}
+                    {{--                               aria-haspopup="true" aria-expanded="false">--}}
+                    {{--                                Cửa hàng--}}
+                    {{--                            </a>--}}
+                    {{--                            <div class="dropdown-menu" aria-labelledby="adopt-dropdown">--}}
+                    {{--                                <a class="dropdown-item" href="#">Đồ dùng thú cưng</a>--}}
+                    {{--                                <a class="dropdown-item" href="#">Chăm sóc thú cưng</a>--}}
+                    {{--                            </div>--}}
+                    {{--                        </li>--}}
                         <!-- menu item -->
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="/news">Tin tức</a>
