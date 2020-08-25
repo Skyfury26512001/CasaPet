@@ -16,8 +16,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="/adoption">Nhận nuôi</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/adoption/adoption_detail">Chi
+                    <li class="breadcrumb-item"><a href="{{route('adoption')}}">Nhận nuôi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('adoption_detail')}}">Chi
                             tiết</a></li>
                 </ol>
             </nav>
@@ -89,7 +89,8 @@
                             <p class="font-weight-bold">Fluffy là một con chó rất ngọt ngào và năng động, bé đã sẵn
                                 sàng cho một ngôi nhà mới!</p>
                             <!-- button -->
-                            <a href="#" class="btn btn-primary " data-aos="zoom-in">Nhận nuôi ngay!</a>
+                            <a href="{{route('adoption_form')}}" class="btn btn-primary " data-aos="zoom-in">Nhận nuôi
+                                ngay!</a>
                         </div>
                         <!-- /col-md -->
                     </div>
@@ -101,12 +102,10 @@
                             <li class="list-inline-item">Thân thiện với những chú chó khác</li>
                             <li class="list-inline-item">Thân thiện với trẻ em</li>
                         </ul>
-                        <p>Elit uasi quidem minus id omnis a nibh fusce mollis imperdie tlorem ipuset phas ellus ac
-                            sodales Lorem ipsum dolor Phas ellus
-                            ac sodales felis tiam non metus. lorem ipsum dolor sit amet, consectetur adipisicing elit
-                            uasi quidem minus id omnis a nibh fusce mollis imperdie tlorem ipuset campas fincas
+                        <p>
+                            <!-- Description -->
                         </p>
-                        <p class="custom-link"><a href="/adoption">« Quay lại danh sách nhận nuôi</a></p>
+                        <p class="custom-link"><a href="{{route('adoption')}}">« Quay lại danh sách nhận nuôi</a></p>
                     </div>
                     <!-- /col-md-->
                 </div>
@@ -126,7 +125,7 @@
             </div>
             <div
                 class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
-                <a href="/get_involed" class="btn btn-primary"
+                <a href="{{route('get_involed')}}" class="btn btn-primary"
                    aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
             </div>
         </div>

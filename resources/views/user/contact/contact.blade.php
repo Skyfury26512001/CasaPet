@@ -20,7 +20,7 @@
         <div class="jumbo-heading">
             <!-- section-heading -->
             <div class="section-heading" data-aos="zoom-in">
-                <h1>Liên hệ</h1>
+                <h1>Liên Hệ</h1>
             </div>
             <!-- /section-heading -->
             <!-- Breadcrumbs -->
@@ -47,17 +47,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Tên<span class="required">*</span></label>
-                                    <input type="text" name="name" class="form-control input-field" required="">
+                                    <input type="text" name="name" class="form-control input-field" required=""
+                                           autocomplete="off">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Email<span class="required">*</span></label>
-                                    <input type="email" name="email" class="form-control input-field" required="">
+                                    <input type="email" name="email" class="form-control input-field" required=""
+                                           autocomplete="off">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <label>Chủ đề</label>
-                                    <input type="text" name="subject" class="form-control input-field">
+                                    <input type="text" name="subject" class="form-control input-field"
+                                           autocomplete="off">
                                 </div>
                                 <div class="col-md-12">
                                     <label>Tin nhắn<span class="required">*</span></label>

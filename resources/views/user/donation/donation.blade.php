@@ -9,7 +9,7 @@
         }
 
         .custom-1 {
-            padding-top: 50px;
+            padding-top: 80px;
             align-content: center;
         }
 

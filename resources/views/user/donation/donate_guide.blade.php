@@ -20,7 +20,7 @@
         <div class="jumbo-heading">
             <!-- section-heading -->
             <div class="section-heading" data-aos="zoom-in">
-                <h1>Nhận nuôi ảo</h1>
+                <h1>Nhận Nuôi Ảo</h1>
             </div>
             <!-- /section-heading -->
             <nav aria-label="breadcrumb">

@@ -22,7 +22,7 @@ Route::get('/','PageController@home')->name('home');
 /* Sub Pages */
 Route::get('/error', function () {
     return view('user.sub_pages.error');
-});
+})->name('error');
 
 Route::get('/success', function () {
     return view('user.sub_pages.success');
@@ -30,29 +30,40 @@ Route::get('/success', function () {
 
 Route::get('/get_involved', function () {
     return view('user.sub_pages.get_involved');
-});
+})->name('get_involed');
 
 /* 1.Services */
 Route::get('/services', function () {
     return view('user.services.services');
 });
 
-Route::get('/rescue', function () {
-    return view('user.services.rescue');
-});
+Route::get('/rescue_form', function () {
+    return view('user.services.rescue_form');
+})->name('rescue_form');
 
 Route::get('/adoption', function () {
     return view('user.services.adoption');
-});
+})->name('adoption');
 
 Route::get('/adoption/adoption_detail', function () {
     return view('user.services.adoption_detail');
-});
+})->name('adoption_detail');
+
+Route::get('/adopt_form', function () {
+    return view('user.services.adopt_form');
+})->name('adoption_form');
 
 Route::get('/concession', function () {
     return view('user.services.concession');
-});
+})->name('concession');
 
+Route::get('/concession_form', function () {
+    return view('user.services.concession_form');
+})->name('concession_form');
+
+Route::get('/volunteer', function () {
+    return view('user.services.volunteer');
+})->name('volunteer');
 
 /* 2.Store */
 Route::get('/shop', function () {
@@ -67,17 +78,17 @@ Route::get('/pet_care', function () {
 /* 3.Blog */
 Route::get('/news', function () {
     return view('user.blog.news');
-});
+})->name('news');
 
 
 /* 4.About */
 Route::get('/about', function () {
     return view('user.about.about');
-});
+})->name('about');
 
 Route::get('/team', function () {
     return view('user.about.team');
-});
+})->name('team');
 
 
 /* 5.Contact */
@@ -92,7 +103,7 @@ Route::post('/mail_send_post', 'SendMailController@sendMail')->name('send_contac
 /* 6.Donation */
 Route::get('/donation', function () {
     return view('user.donation.donation');
-});
+})->name('get_donation');
 
 /* 7.Login-Register */
 
@@ -102,18 +113,20 @@ Route::get('/login_register', function () {
 
 Route::post('/login', 'AccountController@loginP')->name('loginP');
 Route::post('/register', 'AccountController@registerP')->name('register');
-
 /* 8.Faq */
 
 Route::post('/donation', 'DonationController@store')->name('donation');
 
 Route::get('/donate_guide', function () {
     return view('user.donation.donate_guide');
-});
+})->name('donate_guide');
 
 
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
+
+
+
 
 // admin : route
 
