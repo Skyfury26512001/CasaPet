@@ -1,6 +1,6 @@
 @extends('user.layouts.master')
 @section('title')
-    Get Involved
+    Personal Info
 @endsection
 @section('specific_css')
 @endsection
