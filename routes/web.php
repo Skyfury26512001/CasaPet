@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // user : route
 
 /* Home */
-Route::get('/','PageController@home')->name('home');
+Route::get('/', 'PageController@home')->name('home');
 
 
 /* Sub Pages */
@@ -105,6 +105,12 @@ Route::get('/donation', function () {
     return view('user.donation.donation');
 })->name('get_donation');
 
+Route::post('/donation', 'DonationController@store')->name('donation');
+
+Route::get('/foster', function () {
+    return view('user.foster');
+})->name('foster');
+
 /* 7.Login-Register */
 
 Route::get('/login_register', function () {
@@ -113,19 +119,13 @@ Route::get('/login_register', function () {
 
 Route::post('/login', 'AccountController@loginP')->name('loginP');
 Route::post('/register', 'AccountController@registerP')->name('register');
-/* 8.Faq */
 
-Route::post('/donation', 'DonationController@store')->name('donation');
+Route::get('/personal_info', 'PersonalInfoController@account_data')->name('personal_info');
 
-Route::get('/donate_guide', function () {
-    return view('user.donation.donate_guide');
-})->name('donate_guide');
-
+Route::post('/personal_info_update', 'PersonalInfoController@account_update')->name('personal_info_update');
 
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
-
-
 
 
 // admin : route

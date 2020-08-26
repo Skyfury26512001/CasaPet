@@ -469,146 +469,25 @@
         <!-- /ul -->
         <!-- Gallery -->
         <div id="gallery-isotope" class="mt-5">
-            @foreach($pets as $pet)
-                <!-- Image 1 -->
-            <div class="{{$pet->Species}} col-lg-3 col-sm-6 col-md-6">
-                <div class="isotope-item">
-                    <div class="gallery-thumb">
-                        <img class="img-fluid" src="{{$pet->FirstThumbnail}}" alt="">
-                        <a href=""
-                           title="{{$pet->name}}">
-                            <span class="overlay-mask"></span>
-                        </a>
+        @foreach($pets as $pet)
+            <!-- Image 1 -->
+                <div class="{{$pet->Species}} col-lg-3 col-sm-6 col-md-6">
+                    <div class="isotope-item">
+                        <div class="gallery-thumb">
+                            <img class="img-fluid" src="{{$pet->FirstThumbnail}}" alt="">
+                            <a href=""
+                               title="{{$pet->name}}">
+                                <span class="overlay-mask"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
         <!-- /gallery-isotope-->
     </section>
     <!-- / Section Ends -->
-    <!-- Section team -->
-    <section id="team" class="cat-bg1">
-        <div class="container">
-            <div class="section-heading text-center">
-                <h2>Đội Ngũ Nhân Viên PetsCasa</h2>
-            </div>
-            <!-- /Section-heading -->
-            <div class="container">
-                <div id="owl-team2" class="owl-carousel owl-theme mt-5">
-                    <!-- Team member -->
-                    <figure class="col-lg-12 team-style2">
-                        <!-- image -->
-                        <img
-                            src="https://res.cloudinary.com/dwarrion/image/upload/v1597768112/PetCasa/TeamPage/4_ebsvyh.jpg"
-                            alt="" class="img-fluid"/>
-                        <figcaption>
-                            <!-- social icons -->
-                            <div class="icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </figcaption>
-                        <!-- name -->
-                        <div class="name">
-                            <h4>Hưng</h4>
-                            <h6>Trainer</h6>
-                        </div>
-                        <!-- /name -->
-                    </figure>
-                    <!-- /figure- -->
-                    <!-- Team member -->
-                    <figure class="col-lg-12 team-style2">
-                        <!-- image -->
-                        <img
-                            src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_2015,w_1511/v1597768714/PetCasa/TeamPage/5_yvbsvu.jpg"
-                            alt="" class="img-fluid"/>
-                        <figcaption>
-                            <!-- social icons -->
-                            <div class="icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </figcaption>
-                        <!-- name -->
-                        <div class="name">
-                            <h4>Hoàng</h4>
-                            <h6>Pet Expert</h6>
-                        </div>
-                        <!-- /name -->
-                    </figure>
-                    <!-- /figure- -->
-                    <!-- Team member -->
-                    <figure class="col-lg-12 team-style2">
-                        <!-- image -->
-                        <img
-                            src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_2015,w_1511/v1597768557/PetCasa/TeamPage/1_txbfni.jpg"
-                            alt="" class="img-fluid"/>
-                        <figcaption>
-                            <!-- social icons -->
-                            <div class="icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </figcaption>
-                        <!-- name -->
-                        <div class="name">
-                            <h4>Dương</h4>
-                            <h6>Veterinarian</h6>
-                        </div>
-                        <!-- /name -->
-                    </figure>
-                    <!-- /figure- -->
-                    <!-- Team member -->
-                    <figure class="col-lg-12 team-style2">
-                        <!-- image -->
-                        <img
-                            src="https://res.cloudinary.com/dwarrion/image/upload/v1597768113/PetCasa/TeamPage/2_frbpn1.jpg"
-                            alt="" class="img-fluid"/>
-                        <figcaption>
-                            <!-- social icons -->
-                            <div class="icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </figcaption>
-                        <!-- name -->
-                        <div class="name">
-                            <h4>Khánh</h4>
-                            <h6>Veterinarian</h6>
-                        </div>
-                        <!-- /name -->
-                    </figure>
-                    <!-- /figure- -->
-                    <!-- Team member -->
-                    <figure class="col-lg-12 team-style2">
-                        <!-- image -->
-                        <img
-                            src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_2015,w_1511/v1597768112/PetCasa/TeamPage/3_rzxzu7.jpg"
-                            alt="" class="img-fluid"/>
-                        <figcaption>
-                            <!-- social icons -->
-                            <div class="icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </figcaption>
-                        <!-- name -->
-                        <div class="name">
-                            <h4>Linh</h4>
-                            <h6>Animal Caretaker</h6>
-                        </div>
-                        <!-- /name -->
-                    </figure>
-                    <!-- /figure- -->
-                </div>
-                <!-- /owl-team2 -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /container -->
-    </section>
-    <!-- / Section Ends -->
+
     <!-- Section Call to action -->
     <div id="call-to-action">
         <div class="container block-padding">
@@ -665,30 +544,31 @@
                 <!-- Pet  -->
                 @foreach($pet_4 as $pet)
                     <div class="adopt-card col-md-6 col-xl-3 res-margin">
-                    <div class="card bg-light-custom">
-                        <div class="thumbnail text-center">
-                            <!-- Image -->
-                            <img src="{{$pet->FirstThumbnail}}"
-                                 class="border-irregular1 img-fluid" alt="">
-                            <!-- Name -->
-                            <div class="caption-adoption">
-                                <h6 class="adoption-header">{{$pet->Name}}</h6>
-                                <!-- List -->
-                                <ul class="list-unstyled">
-                                    <li><strong>Giới tính: </strong> {{$pet->Sex}}</li>
-                                    <li><strong>Triệt sản: </strong> @if ($pet->Neutered == "Yes") Đã triệt sản @elseif ($pet->Neutered == "No") Chưa triệt sản @endif</li>
-                                    <li><strong>Tuổi: </strong>{{$pet->Age}}</li>
-                                </ul>
-                                <!-- Buttons -->
-                                <div class="text-center">
-                                    <a href="/adoption/adoption_detail" class="btn btn-primary">Chi tiết</a>
+                        <div class="card bg-light-custom">
+                            <div class="thumbnail text-center">
+                                <!-- Image -->
+                                <img src="{{$pet->FirstThumbnail}}"
+                                     class="border-irregular1 img-fluid" alt="">
+                                <!-- Name -->
+                                <div class="caption-adoption">
+                                    <h6 class="adoption-header">{{$pet->Name}}</h6>
+                                    <!-- List -->
+                                    <ul class="list-unstyled">
+                                        <li><strong>Giới tính: </strong> {{$pet->Sex}}</li>
+                                        <li><strong>Triệt sản: </strong> @if ($pet->Neutered == "Yes") Đã triệt
+                                            sản @elseif ($pet->Neutered == "No") Chưa triệt sản @endif</li>
+                                        <li><strong>Tuổi: </strong>{{$pet->Age}}</li>
+                                    </ul>
+                                    <!-- Buttons -->
+                                    <div class="text-center">
+                                        <a href="/adoption/adoption_detail" class="btn btn-primary">Chi tiết</a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- /thumbnail -->
                         </div>
-                        <!-- /thumbnail -->
+                        <!-- /card -->
                     </div>
-                    <!-- /card -->
-                </div>
                 @endforeach
             </div>
             <!-- /row -->

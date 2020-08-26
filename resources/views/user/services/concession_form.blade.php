@@ -82,6 +82,13 @@
                 <form class="form-group" method="POST" action="{{route('donation')}}">
                     @csrf
                     <div class="row">
+                        <div class="col-md-12">
+                            <p style="color: darkred">*PetsCasa sẽ giúp tìm một tổ ấm mới cho bé nhà bạn. Hãy điền
+                                đầy
+                                đủ thông tin trong
+                                form dưới đây. Sau khi hoàn thành ấn gửi sẽ có nhân viên của PetsCasa gọi điện xác nhận
+                                vã hỗ trợ bạn.</p>
+                        </div>
                         <div class="col-md-6">
                             <label>Loại đơn<span class="require"></span></label>
                             <input type="text" name="ordertype" class="form-control input-field" value="Gửi nuôi"

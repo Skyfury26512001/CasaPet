@@ -45,16 +45,16 @@
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
     </script>
-{{--    <script>--}}
-{{--        ClassicEditor--}}
-{{--            .create(document.querySelector('#editor'))--}}
-{{--            .then(editor => {--}}
-{{--                console.log(editor);--}}
-{{--            })--}}
-{{--            .catch(error => {--}}
-{{--                console.error(error);--}}
-{{--            });--}}
-{{--    </script>--}}
+    {{--    <script>--}}
+    {{--        ClassicEditor--}}
+    {{--            .create(document.querySelector('#editor'))--}}
+    {{--            .then(editor => {--}}
+    {{--                console.log(editor);--}}
+    {{--            })--}}
+    {{--            .catch(error => {--}}
+    {{--                console.error(error);--}}
+    {{--            });--}}
+    {{--    </script>--}}
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -109,7 +109,7 @@
                         </div>
                         <div class="form-group">
                             <label for="userName">Avatar<span class="text-danger">*</span></label>
-                            <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
                             <div class="avatar"></div>
                             @if ($errors->has('avatar'))
                                 <label class="alert-warning">{{$errors->first('avatar')}}</label>

@@ -1,6 +1,6 @@
 @extends('user.layouts.master')
 @section('title')
-    Resuce Form
+    Rescue Form
 @endsection
 @section('specific_css')
     <style>

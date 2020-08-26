@@ -44,6 +44,11 @@
             bottom: 100px !important;
             right: 24px !important;
         }
+
+        .login-image {
+            border-radius: 50%;
+            height: 40px;
+        }
     </style>
 </head>
 
@@ -150,7 +155,7 @@
                             </div>
                         </li>
                         <!-- menu item -->
-{{--                        <li class="nav-item dropdown">--}}
+                    {{--                        <li class="nav-item dropdown">--}}
                     {{--                            <a class="nav-link dropdown-toggle" href="/store" id="adopt-dropdown" data-toggle="dropdown"--}}
                     {{--                               aria-haspopup="true" aria-expanded="false">--}}
                     {{--                                Cửa hàng--}}
@@ -160,7 +165,7 @@
                     {{--                                <a class="dropdown-item" href="#">Chăm sóc thú cưng</a>--}}
                     {{--                            </div>--}}
                     {{--                        </li>--}}
-                        <!-- menu item -->
+                    <!-- menu item -->
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="/news">Tin tức</a>
                         </li>
@@ -186,11 +191,20 @@
                             </a>
                         </li>
                         <!-- menu item -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login_register">
-                                Đăng nhập/Đăng ký
-                            </a>
-                        </li>
+                    @php
+                        $current_account = session()->get('current_account');
+                    @endphp
+                    <!-- menu item -->
+                        @if(isset($current_account) && $current_account != null)
+                            <img class="login-image" src="{{$current_account->Avatar128x128}}"
+                                 alt=""> {{$current_account->FullName}}
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login_register">
+                                    Đăng nhập/Đăng ký
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                     <!--ul -->
                 </div>
