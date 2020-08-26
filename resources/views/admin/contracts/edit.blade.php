@@ -129,7 +129,7 @@
                         </div>
                         <div class="form-group">
                             <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
-                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
+                            <select class="form-control select-form-control" name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
                                 <option value="Chó" @if ($pet->SpeciesSort == "Chó") selected @endif>Chó</option>
                                 <option value="Mèo" @if ($pet->SpeciesSort == "Mèo") selected @endif>Mèo</option>
                                 <option value="Vịt" @if ($pet->SpeciesSort == "Vịt") selected @endif>Vịt</option>

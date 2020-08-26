@@ -183,14 +183,14 @@
                             <form action="{{route('admin_post_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
-                                    <select name="orderBy">
+                                    <select class="form-control select-form-control" name="orderBy">
                                         <option value="ASC">Tăng dần</option>
                                         <option value="DESC">Giảm dần</option>
                                     </select>
                                 </div>
                                 <div class="form-filter">
                                     Lọc theo trạng thái
-                                    <select name="Status">
+                                    <select class="form-control select-form-control" name="Status">
                                         <option value="All"
                                                 @if (Request::get('Status') == "All")
                                                 selected

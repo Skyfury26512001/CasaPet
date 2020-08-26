@@ -66,28 +66,27 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active">Quản lý tài khoản</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý thú nuôi</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Quản lý tài khoản</h4>
+                    <h4 class="page-title">Quản lý thú nuôi</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card-box">
-                    <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
+                    <h4 class="header-title">Thêm mới thú nuôi : </h4>
                     <form action="{{route('admin_pet_store')}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
                         <div class="form-group">
                             <label for="FullName">Tên<span class="text-danger">*</span></label>
                             <input type="text" name="Name" parsley-trigger="change" required=""
-                                   class="form-control" id="Name" value="{{old('Name')}}">
+                                   class="form-control" id="Name" value="{{old('Name')}}" style="width: 20%">
                             @if ($errors->has('Name'))
                                 <label class="alert-warning">{{$errors->first('Name')}}</label>
                             @endif
@@ -113,7 +112,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Species">Loài<span class="text-danger">*</span></label>
-                            <select name="Species" class="form-control" id="Species" required="">
+                            <select class="form-control select-form-control" name="Species" class="form-control" id="Species" required="" style="width: 10%">
                                 <option value="Chó">Chó</option>
                                 <option value="Mèo">Mèo</option>
                                 <option value="Vịt">Vịt</option>
@@ -125,7 +124,7 @@
                         <div class="form-group">
                             <label for="Breed">Giống<span class="text-danger">*</span></label>
                             <input type="text" name="Breed" parsley-trigger="change" required=""
-                                   class="form-control" id="Breed" value="{{old('Breed')}}">
+                                   class="form-control" id="Breed" value="{{old('Breed')}}" style="width: 20%">
                             @if ($errors->has('Breed'))
                                 <label class="alert-warning">{{$errors->first('Breed')}}</label>
                             @endif
@@ -133,7 +132,7 @@
                         <div class="form-group">
                             <label for="Age">Tuổi<span class="text-danger">*</span></label>
                             <input type="text" name="Age" parsley-trigger="change" required=""
-                                   class="form-control" id="Age" value="{{old('Age')}}">
+                                   class="form-control" id="Age" value="{{old('Age')}}" style="width: 20%">
                             @if ($errors->has('Age'))
                                 <label class="alert-warning">{{$errors->first('Age')}}</label>
                             @endif
@@ -178,11 +177,11 @@
                         </div>
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
-                                Submit
+                                Thêm
                             </button>
-                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
-                                Cancel
-                            </button>
+                            <a href="{{route('admin_pet_list')}}" class="btn btn-secondary waves-effect waves-light">
+                                Trở lại danh sách
+                            </a>
                         </div>
 
                     </form>

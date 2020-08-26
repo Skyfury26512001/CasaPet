@@ -186,17 +186,17 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
 //        Route::put('/deactiveAll', 'OrderController@deactive_multi')->name('admin_order_deactive_multi');
 //        Route::put('/activeAll', 'OrderController@active_multi')->name('admin_order_active_multi');
     });
-    Route::group(['prefix' => '/posts'], function () {
-        Route::get('/', 'PostController@list')->name('admin_post_list');
-        Route::get('/create', 'PostController@create')->name('admin_post_create');
-        Route::post('/store', 'PostController@store')->name('admin_post_store');
-        Route::get('/edit/{slug}', 'PostController@edit')->name('admin_post_edit');
-        Route::get('/detail/{slug}', 'PostController@detail')->name('admin_post_detail');
-        Route::put('/update/{slug}', 'PostController@update')->name('admin_post_update');
-        Route::put('/deactive/{id}', 'PostController@deactive')->name('admin_post_deactive');
-        Route::put('/active/{id}', 'PostController@active')->name('admin_post_active');
-        Route::put('/deactiveAll', 'PostController@deactive_multi')->name('admin_post_deactive_multi');
-        Route::put('/activeAll', 'PostController@active_multi')->name('admin_post_active_multi');
+    Route::group(['prefix' => '/news'], function () {
+        Route::get('/', 'NewController@list')->name('admin_new_list');
+        Route::get('/create', 'NewController@create')->name('admin_new_create');
+        Route::post('/store', 'NewController@store')->name('admin_new_store');
+        Route::get('/edit/{slug}', 'NewController@edit')->name('admin_new_edit');
+        Route::get('/detail/{slug}', 'NewController@detail')->name('admin_new_detail');
+        Route::put('/update/{slug}', 'NewController@update')->name('admin_new_update');
+        Route::put('/deactive/{id}', 'NewController@deactive')->name('admin_new_deactive');
+        Route::put('/active/{id}', 'NewController@active')->name('admin_new_active');
+        Route::put('/deactiveAll', 'NewController@deactive_multi')->name('admin_new_deactive_multi');
+        Route::put('/activeAll', 'NewController@active_multi')->name('admin_new_active_multi');
     });
     Route::group(['prefix' => '/reports'], function () {
         Route::get('/', 'ReportController@list')->name('admin_report_list');
@@ -205,10 +205,11 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::get('/edit/{slug}', 'ReportController@edit')->name('admin_report_edit');
         Route::get('/detail/{slug}', 'ReportController@detail')->name('admin_report_detail');
         Route::put('/update/{slug}', 'ReportController@update')->name('admin_report_update');
-        Route::put('/deactive/{id}', 'ReportController@deactive')->name('admin_report_deactive');
-        Route::put('/active/{id}', 'ReportController@active')->name('admin_report_active');
-        Route::put('/deactiveAll', 'ReportController@deactive_multi')->name('admin_report_deactive_multi');
-        Route::put('/activeAll', 'ReportController@active_multi')->name('admin_report_active_multi');
+        Route::put('/handle/{id}', 'ReportController@handle')->name('admin_report_handle');
+        Route::put('/done/{id}', 'ReportController@done')->name('admin_report_done');
+        Route::put('/aceptAll', 'ReportController@acept_multi')->name('admin_report_acept_multi');
+        Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
+        Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
     });
 });
 

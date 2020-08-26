@@ -28,3 +28,6 @@
     margin: 10px!important;
     align-self: center;
 }
+.ck.ck-reset.ck-editor.ck-rounded-corners {
+    width: 50%;
+}

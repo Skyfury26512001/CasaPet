@@ -66,8 +66,8 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{route('admin_post_list')}}">Danh sách</a></li>
-                        <li><a href="{{route('admin_post_create')}}">Thêm mới</a></li>
+                        <li><a href="{{route('admin_new_list')}}">Danh sách</a></li>
+                        <li><a href="{{route('admin_new_create')}}">Thêm mới</a></li>
                     </ul>
                 </li>
                 <li>

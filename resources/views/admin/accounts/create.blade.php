@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card-box">
-                    <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
+                    <h4 class="header-title">Thêm mới tài khoản : </h4>
                     <form action="{{route('admin_account_store')}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
@@ -149,7 +149,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Role_id">Quyền<span class="text-danger">*</span></label>
-                            <select name="Role_id">
+                            <select class="form-control select-form-control" name="Role_id">
                                 <option value="1">User</option>
                                 <option value="2">Admin</option>
                                 @if (session()->get('current_account')->Role_id == 'superadmin')

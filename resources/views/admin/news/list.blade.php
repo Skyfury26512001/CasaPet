@@ -36,11 +36,11 @@
                 if (allVals.length <= 0) {
                     alert("Please select row.");
                 } else {
-                    var check = confirm("Are you sure you want to deactive this pet?");
+                    var check = confirm("Are you sure you want to deactive this new?");
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_pet_deactive_multi')}}',
+                            url: '{{route('admin_new_deactive_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -51,7 +51,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_pet_list')}}';
+                                    window.location = '{{route('admin_new_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -86,7 +86,7 @@
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_pet_active_multi')}}',
+                            url: '{{route('admin_new_active_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -97,7 +97,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_pet_list')}}';
+                                    window.location = '{{route('admin_new_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -158,11 +158,12 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
-                            <li class="breadcrumb-item active">Quản lý thú nuôi</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                            <li class="breadcrumb-item active">Basic Tables</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Quản lý thú nuôi</h4>
+                    <h4 class="page-title">Basic Tables</h4>
                 </div>
             </div>
         </div>
@@ -173,26 +174,18 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="header-title">Thú nuôi</h4>
+                            <h4 class="header-title">Pets</h4>
                             <p class="sub-header">
-                                <code></code>
+                                <code>All news</code>
                             </p>
                         </div>
                         <div class="col-9">
-                            <form action="{{route('admin_pet_list')}}" method="GET" style="display: flex">
+                            <form action="{{route('admin_new_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
                                     <select class="form-control select-form-control" name="orderBy">
-                                        <option value="ASC"
-                                                @if (Request::get('orderBy') == "ASC")
-                                                selected
-                                                @endif>Tăng dần
-                                        </option>
-                                        <option value="DESC"
-                                                @if (Request::get('orderBy') == "DESC")
-                                                selected
-                                                @endif>Giảm dần
-                                        </option>
+                                        <option value="ASC">Tăng dần</option>
+                                        <option value="DESC">Giảm dần</option>
                                     </select>
                                 </div>
                                 <div class="form-filter">
@@ -216,7 +209,6 @@
                                     </select>
                                 </div>
                                 <div class="form-filter" style="width:250px;">
-                                    Trong khoảng :
                                     <div id="reportrange"
                                          style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%"
                                          name="Date">
@@ -226,18 +218,15 @@
                                     <input type="hidden" name="start">
                                     <input type="hidden" name="end">
                                 </div>
-                                <div class="form-filter">
-                                    <br>
-                                    <button class="btn btn-secondary btn-custom"> Lọc</button>
-                                </div>
+                                <button class="btn btn-secondary btn-custom"> Lọc</button>
                             </form>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <div class="row card-box">
+                        <div class="col-10">
+                            <div class="row">
                                 <div class="offset-8 col-3">
-                                    <form class="app-search" action="{{route('admin_pet_list')}}">
+                                    <form class="app-search" action="{{route('admin_new_list')}}">
                                         <div class="app-search-box">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" name="keyword"
@@ -251,105 +240,72 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-1">
-                                    <a class="btn btn-primary" href="{{route('admin_report_list')}}">
-                                        Reset
-                                    </a>
-                                </div>
                             </div>
                             <div class="">
                                 <table class="table table-hover mb-0">
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                            colspan="2" style="width: 24.8px;"
-                                            aria-label="ID: activate to sort column ascending">
-                                            Tên
-                                        </th>
-                                        <th>Loài</th>
-                                        <th>Giống</th>
-                                        <th>Tuổi</th>
-                                        <th>Giới tính</th>
-                                        <th>Triệt sản</th>
-                                        <th>Vaccinated</th>
+                                        <th>ID</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Nội dung</th>
                                         <th>Trạng thái</th>
                                         <th colspan="3" style="text-align: center">Hành động</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @csrf
-                                    {{--                            {{dd($pets)}}--}}
-                                    @foreach($pets as $pet)
-                                        {{--                                {{dd($pet)}}--}}
+                                    {{--                            {{dd($news)}}--}}
+                                    @foreach($news as $new)
+                                        {{--                                {{dd($new)}}--}}
                                         <tr>
-                                            <td colspan="1" style="vertical-align: middle;">
+                                            <td colspan="" style="vertical-align: middle;">
                                                 <div class="checkbox checkbox-primary">
                                                     <input class="checkbox_list" id="" type="checkbox"
-                                                           style="opacity: 1" name="ids[]" value="{{$pet->id}}">
+                                                           style="opacity: 1" name="ids[]" value="{{$new->id}}">
                                                 </div>
                                             </td>
-                                            <td>{{$pet->Name}}</td>
-                                            <td></td>
-                                            <td>{{$pet->Species}}</td>
-                                            <td>{{$pet->Breed}}</td>
-                                            <td>{{$pet->Age}}</td>
-                                            <td>{{$pet->Sex}}</td>
-                                            <td>{{$pet->Neutered}}</td>
-                                            <td>{{$pet->Vaccinated}}</td>
-                                            <td>
-                                                @if ($pet->Status == 1)
-                                                    Hoạt động
-                                                @elseif ($pet->Status == 0)
-                                                    Không hoạt động
-                                                @elseif ($pet->Status == 2)
-                                                    Đã gửi nuôi
-                                                @else
-                                                    Không rõ
-                                                @endif</td>
+                                            <td>{{$new->id}}</td>
+                                            <td>{{$new->Title}}</td>
+                                            <td>{!!$new->Content  !!}</td>
+                                            @if ($new->Status == 0)
+                                                <td style="color: gray">Không hoạt động</td>
+                                            @elseif ($new->Status == 1)
+                                                <td style="color: mediumspringgreen"> Đang hoạt động</td>
+                                            @else
+                                                <td style="color: red"> Unknown Status</td>
+                                            @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_pet_edit',$pet->Slug)}}"
+                                                    <a href="{{route('admin_new_edit',$new->id)}}"
                                                        class="btn btn-primary"
                                                        style="float:right">Sửa</a>
                                                 </div>
                                             </td>
-                                            @if ($pet->Status == 0)
+                                            @if ($new->Status == 0)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_pet_active',$pet->id)}}"
+                                                        <form action="{{route('admin_new_active',$new->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Kích hoạt</button>
+                                                            <button class="btn btn-primary btn-table">Active</button>
                                                         </form>
                                                     </div>
                                                 </td>
-                                            @elseif ($pet->Status == 1)
+                                            @elseif ($new->Status == 1)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_pet_deactive',$pet->id)}}"
+                                                        <form action="{{route('admin_new_deactive',$new->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Hủy</button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            @elseif ($pet->Status == 2)
-                                                <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_pet_active',$pet->id)}}"
-                                                              method="POST">
-                                                            @csrf @method('PUT')
-                                                            <button disabled class="btn btn-primary btn-table"
-                                                                    style="width: 100%">Đã chuyển
-                                                            </button>
+                                                            <button class="btn btn-primary btn-table">Deactive</button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_pet_detail',$pet->Slug)}}"
+                                                    <a href="{{route('admin_new_detail',$new->id)}}"
                                                        class="btn btn-primary"
                                                        style="float:right">Chi tiết</a>
                                                 </div>
@@ -361,13 +317,12 @@
                             </div>
                             <div style="margin-top: 1%">
                                 <div class="row">
-                                    <div class="col-5"> {{ $pets->links() }}</div>
+                                    <div class="col-5"> {{ $news->links() }}</div>
                                     <div class="col-6">
                                         <button class="btn btn-primary" style="float: right;margin-left: 5%;"
-                                                id="deactive_all"> Hủy tất cả
+                                                id="deactive_all"> Deactive All
                                         </button>
-                                        <button class="btn btn-primary" style="float: right" id="active_all"> Kích hoạt
-                                            tất cả
+                                        <button class="btn btn-primary" style="float: right" id="active_all"> Active All
                                         </button>
                                     </div>
                                 </div>
