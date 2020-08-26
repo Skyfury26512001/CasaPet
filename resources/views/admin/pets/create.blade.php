@@ -29,19 +29,6 @@
 
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
-            // var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            // var imgName = splittedImg[splittedImg.length - 1];
-            // imgName = imgName.split('.');
-            // $(this).parent().remove();
-            // console.log($(this).parent());
-            // var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
-            // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
-            // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
-            // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
-            // console.log(input);
-            // input.remove()
-            // console.log(input);
-            // console.log("Remove image : " + "sucessful");
             let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });

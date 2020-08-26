@@ -29,10 +29,10 @@
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
             var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
-             console.log(imgName);
+            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
+            console.log(imgName);
             var publicId = $(this).parent().attr('data-cloudinary');
-             $(this).parent().remove();
+            $(this).parent().remove();
             $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
         });
     </script>
@@ -68,58 +68,55 @@
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card-box">
                     <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
-                    <form action="{{route('admin_post_update',$post->id)}}" id="product_form" method="POST"
+                    <form action="{{route('admin_new_update',$new->id)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="Title">Tiêu đề<span class="text-danger">*</span></label>
                             <input type="text" name="Title" parsley-trigger="change" required=""
-                                   class="form-control" id="Title" value="{{$post->Title   }}">
+                                   class="form-control" id="Title" value="{{$new->Title   }}">
                             @if ($errors->has('Title'))
                                 <label class="alert-warning">{{$errors->first('Title')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="userName">Thumnails<span class="text-danger">*</span></label>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                            <div class="thumbnails">
+                                <ul class="cloudinary-thumbnails">
+                                    @foreach($new->ArrayThumbnails450x450 as $thumbnail)
+                                        <li class="cloudinary-thumbnail active" data-cloudinary="{{$thumbnail}}">
+                                            <img src="{{$thumbnail}}" style="width: 300px;height: 300px">
+                                            <a href="#" class="cloudinary-delete">x</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @if ($errors->has('thumbnails'))
+                                <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label for="Content">Mô tả<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
-                                      placeholder="">{{$post->Content}}</textarea>
+                                      placeholder="">{{$new->Content}}</textarea>
                             @if ($errors->has('Content'))
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
-                        <div class="form-group">
-                            <label for="Account_id">AccountId<span class="text-danger">*</span></label>
-                            <input list="account" name="Account_id" value="{{$account->id}}"/>
-                            <datalist id="account">
-                                @foreach ($account_list as $account)
-                                <option value="{{$account->id}}"  selected>{{$account->FullName}}</option>
-                                @endforeach
-                            </datalist>
-                            @if ($errors->has('Account_id'))
-                                <label class="alert-warning">{{$errors->first('Account_id')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Pet_id">PetID<span class="text-danger">*</span></label>
-                            <input list="pet" name="Pet_id" value="{{$pet->id}}"/>
-                            <datalist id="pet">
-                                @foreach ($pet_list as $pet)
-                                <option value="{{$pet->id}}">{{$pet->Name}}</option>
-                                @endforeach
-                            </datalist>
-                            @if ($errors->has('Pet_id'))
-                                <label class="alert-warning">{{$errors->first('Pet_id')}}</label>
-                            @endif
-                        </div>
+
                         <div class="form-group">
                             <label for="Status">Status<span class="text-danger">*</span></label>
-                            <select class="form-control select-form-control" name="Status">
-                                if($request->Status != "All"){array_push($condition, ['Status', '=', $request->Status]);}
                         </div>
+
+                        @foreach($new->ArrayThumbnails as $thumbnail)
+                            <input type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}"
+                                   value="{{$thumbnail}}">
+                        @endforeach
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit

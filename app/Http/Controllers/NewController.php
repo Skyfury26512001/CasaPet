@@ -10,7 +10,6 @@ class NewController extends Controller
     public function list(Request $request)
     {
 
-        $current_role = session()->get('current_account')->Role_id;
         $news         = News::query();
         $condition    = [];
         if ($request->has('start') && $request->has('end')) {
@@ -29,6 +28,7 @@ class NewController extends Controller
             $news->orderBy('created_at', $request->orderBy);
         }
         $news = $news->where($condition)->paginate(5)->appends($request->query());
+//        dd($news);
         return view('admin.news.list', compact('news'));
     }
 
@@ -45,7 +45,6 @@ class NewController extends Controller
                 'Content'    => 'required',
                 'Author'     => 'required',
                 'thumbnails' => 'required',
-                'Status'     => 'required',
             ]
         );
         dd($request);
@@ -69,15 +68,12 @@ class NewController extends Controller
     public function edit($id)
     {
         $new     = News::find($id);
-        $account = Account::find($new->Account_id);
-        $pet     = Pet::find($new->Pet_id);
-
-        $account_list = Account::all();
-        $pet_list     = Pet::all();
 //        dd($pet);
-        if (isset($account) && isset($new) && isset($pet)) {
-            return view('admin.news.edit', compact('account', 'new', 'pet', 'account_list', 'pet_list'));
+
+        if (isset($new)) {
+            return view('admin.news.edit', compact('new'));
         }
+
         return redirect(route('admin_404'));
     }
 

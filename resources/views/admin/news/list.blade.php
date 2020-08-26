@@ -223,7 +223,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-12">
                             <div class="row">
                                 <div class="offset-8 col-3">
                                     <form class="app-search" action="{{route('admin_new_list')}}">
@@ -266,8 +266,10 @@
                                                 </div>
                                             </td>
                                             <td>{{$new->id}}</td>
-                                            <td>{{$new->Title}}</td>
-                                            <td>{!!$new->Content  !!}</td>
+                                            <td><div class="ellipsis">{{$new->Title}}</div></td>
+                                            <td>
+                                                <div class="ellipsis">{!!$new->Content  !!}</div>
+                                            </td>
                                             @if ($new->Status == 0)
                                                 <td style="color: gray">Không hoạt động</td>
                                             @elseif ($new->Status == 1)
@@ -288,7 +290,7 @@
                                                         <form action="{{route('admin_new_active',$new->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Active</button>
+                                                            <button class="btn btn-primary btn-table">Kích hoạt</button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -298,7 +300,7 @@
                                                         <form action="{{route('admin_new_deactive',$new->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Deactive</button>
+                                                            <button class="btn btn-primary btn-table">Hủy</button>
                                                         </form>
                                                     </div>
                                                 </td>
