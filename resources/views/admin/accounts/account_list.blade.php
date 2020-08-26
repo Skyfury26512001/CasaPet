@@ -259,8 +259,8 @@
                                             aria-label="ID: activate to sort column ascending">
                                             Email
                                         </th>
-                                        <th>AccountName</th>
-                                        <th>Status</th>
+                                        <th>Tài khoản</th>
+                                        <th>Trạng Thái</th>
                                         <th colspan="4" style="text-align: center">Action</th>
                                     </tr>
                                     </thead>

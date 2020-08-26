@@ -1,6 +1,6 @@
 $(document).ready(function() {
     checkDisplay();
-  
+
   $(window).on('resize scroll', function() {
     checkDisplay();
   });
@@ -23,7 +23,7 @@ function checkDisplay(){
           },
           complete: function() {
             $this.text(this.countNum);
-            //alert('finished');
+            // alert('finished');
           }
         });
       }
