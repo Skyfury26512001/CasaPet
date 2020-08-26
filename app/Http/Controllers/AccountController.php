@@ -57,7 +57,7 @@ class AccountController extends Controller
             return redirect(route('login_register'));
         });
 
-        return redirect('/login_register');
+        return redirect(route('login_register'));
     }
 
     public function loginP(Request $request)

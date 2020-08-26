@@ -36,11 +36,11 @@
                 if (allVals.length <= 0) {
                     alert("Please select row.");
                 } else {
-                    var check = confirm("Are you sure you want to deactive this pet?");
+                    var check = confirm("Are you sure you want to deactive this report?");
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_pet_deactive_multi')}}',
+                            url: '{{route('admin_report_deactive_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -51,7 +51,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_pet_list')}}';
+                                    window.location = '{{route('admin_report_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -86,7 +86,7 @@
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_pet_active_multi')}}',
+                            url: '{{route('admin_report_active_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -97,7 +97,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_pet_list')}}';
+                                    window.location = '{{route('admin_report_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -176,24 +176,16 @@
                         <div class="col-3">
                             <h4 class="header-title">Pets</h4>
                             <p class="sub-header">
-                                <code>All pets</code>
+                                <code>All reports</code>
                             </p>
                         </div>
                         <div class="col-9">
-                            <form action="{{route('admin_pet_list')}}" method="GET" style="display: flex">
+                            <form action="{{route('admin_report_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
                                     <select name="orderBy">
-                                        <option value="ASC"
-                                                @if (Request::get('orderBy') == "ASC")
-                                                selected
-                                                @endif>Tăng dần
-                                        </option>
-                                        <option value="DESC"
-                                                @if (Request::get('orderBy') == "DESC")
-                                                selected
-                                                @endif>Giảm dần
-                                        </option>
+                                        <option value="ASC">Tăng dần</option>
+                                        <option value="DESC">Giảm dần</option>
                                     </select>
                                 </div>
                                 <div class="form-filter">
@@ -231,10 +223,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-10">
                             <div class="row">
                                 <div class="offset-8 col-3">
-                                    <form class="app-search" action="{{route('admin_pet_list')}}">
+                                    <form class="app-search" action="{{route('admin_report_list')}}">
                                         <div class="app-search-box">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" name="keyword"
@@ -254,90 +246,68 @@
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                            colspan="2" style="width: 24.8px;"
-                                            aria-label="ID: activate to sort column ascending">
-                                            Name
-                                        </th>
-                                        <th>Species</th>
-<<<<<<< HEAD
-                                        <th>SpeciesSort</th>
-                                        <th>Tuổi</th>
-                                        <th>Giới Tính</th>
-                                        <th>Triệt sản</th>
-                                        <th>Tình trạng</th>
-=======
-                                        <th>Breed</th>
-                                        <th>Age</th>
-                                        <th>Sex</th>
-                                        <th>Neutered</th>
-                                        <th>Vaccinated</th>
-                                        <th>Status</th>
->>>>>>> 16e56c166146e65b38c74ba6834df15c301d21fa
-                                        <th colspan="3" style="text-align: center">Action</th>
+                                        <th>ID</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Nội dung</th>
+                                        <th>Trạng thái</th>
+                                        <th colspan="3" style="text-align: center">Hành động</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @csrf
-                                    {{--                            {{dd($pets)}}--}}
-                                    @foreach($pets as $pet)
-                                        {{--                                {{dd($pet)}}--}}
+                                    {{--                            {{dd($reports)}}--}}
+                                    @foreach($reports as $report)
+                                        {{--                                {{dd($report)}}--}}
                                         <tr>
-                                            <td colspan="1" style="vertical-align: middle;">
+                                            <td colspan="" style="vertical-align: middle;">
                                                 <div class="checkbox checkbox-primary">
                                                     <input class="checkbox_list" id="" type="checkbox"
-                                                           style="opacity: 1" name="ids[]" value="{{$pet->id}}">
+                                                           style="opacity: 1" name="ids[]" value="{{$report->id}}">
                                                 </div>
                                             </td>
-                                            <td>{{$pet->Name}}</td>
-                                            <td></td>
-                                            <td>{{$pet->Species}}</td>
-                                            <td>{{$pet->Breed}}</td>
-                                            <td>{{$pet->Age}}</td>
-                                            <td>{{$pet->Sex}}</td>
-                                            <td>{{$pet->Neutered}}</td>
-                                            <td>{{$pet->Vaccinated}}</td>
-                                            <td>
-                                                @if ($pet->Status == 1)
-                                                    Active
-                                                @elseif ($pet->Status == 0)
-                                                    Deactive
-                                                @else
-                                                    Unknown
-                                                @endif</td>
+                                            <td>{{$report->id}}</td>
+                                            <td>{{$report->Title}}</td>
+                                            <td>{!!$report->Content  !!}</td>
+                                            @if ($report->Status == 0)
+                                                <td style="color: gray">Không hoạt động</td>
+                                            @elseif ($report->Status == 1)
+                                                <td style="color: mediumspringgreen"> Đang hoạt động</td>
+                                            @else
+                                                <td style="color: red"> Unknown Status</td>
+                                            @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_pet_edit',$pet->Slug)}}"
+                                                    <a href="{{route('admin_report_edit',$report->id)}}"
                                                        class="btn btn-primary"
-                                                       style="float:right">Edit</a>
+                                                       style="float:right">Sửa</a>
                                                 </div>
                                             </td>
-                                            @if ($pet->Status == 1)
+                                            @if ($report->Status == 0)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_pet_deactive',$pet->id)}}"
+                                                        <form action="{{route('admin_report_active',$report->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table"> Deactive</button>
+                                                            <button class="btn btn-primary btn-table">Active</button>
                                                         </form>
                                                     </div>
                                                 </td>
-                                            @elseif ($pet->Status == 0)
+                                            @elseif ($report->Status == 1)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_pet_active',$pet->id)}}"
+                                                        <form action="{{route('admin_report_deactive',$report->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table"> Active</button>
+                                                            <button class="btn btn-primary btn-table">Deactive</button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_pet_detail',$pet->Slug)}}"
+                                                    <a href="{{route('admin_report_detail',$report->id)}}"
                                                        class="btn btn-primary"
-                                                       style="float:right">Detail</a>
+                                                       style="float:right">Chi tiết</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -347,7 +317,7 @@
                             </div>
                             <div style="margin-top: 1%">
                                 <div class="row">
-                                    <div class="col-5"> {{ $pets->links() }}</div>
+                                    <div class="col-5"> {{ $reports->links() }}</div>
                                     <div class="col-6">
                                         <button class="btn btn-primary" style="float: right;margin-left: 5%;"
                                                 id="deactive_all"> Deactive All

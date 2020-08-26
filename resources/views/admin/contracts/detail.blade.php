@@ -55,6 +55,7 @@
         ClassicEditor
             .create(document.querySelector('#editor'))
             .then(editor => {
+                editor.isReadOnly = true;
                 {{--editor.setData('{{$contract->Description}}', function () {--}}
                 {{--    this.checkDirty();  // true--}}
                 {{--});--}}

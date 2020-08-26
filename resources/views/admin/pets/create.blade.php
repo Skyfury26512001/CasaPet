@@ -2,7 +2,6 @@
 @section('specific_js')
     <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget(
             {
@@ -113,22 +112,22 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
-                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
+                            <label for="Species">Loài<span class="text-danger">*</span></label>
+                            <select name="Species" class="form-control" id="Species" required="">
                                 <option value="Chó">Chó</option>
                                 <option value="Mèo">Mèo</option>
                                 <option value="Vịt">Vịt</option>
                             </select>
-                            @if ($errors->has('SpeciesSort'))
-                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
+                            @if ($errors->has('Species'))
+                                <label class="alert-warning">{{$errors->first('Species')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Species">Giống<span class="text-danger">*</span></label>
-                            <input type="text" name="Species" parsley-trigger="change" required=""
-                                   class="form-control" id="Species" value="{{old('Species')}}">
-                            @if ($errors->has('Species'))
-                                <label class="alert-warning">{{$errors->first('Species')}}</label>
+                            <label for="Breed">Giống<span class="text-danger">*</span></label>
+                            <input type="text" name="Breed" parsley-trigger="change" required=""
+                                   class="form-control" id="Breed" value="{{old('Breed')}}">
+                            @if ($errors->has('Breed'))
+                                <label class="alert-warning">{{$errors->first('Breed')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
@@ -165,6 +164,16 @@
                                    id="NeuteredNo" value="No"><label for="NeuteredNo">Không</label>
                             @if ($errors->has('Neutered'))
                                 <label class="alert-warning">{{$errors->first('Neutered')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Tiêm phòng<span class="text-danger">*</span></label>
+                            <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedYes" value="Có"><label for="VaccinatedYes">Có</label>
+                            <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedNo" value="Không"><label for="VaccinatedNo">Không</label>
+                            @if ($errors->has('Vaccinated'))
+                                <label class="alert-warning">{{$errors->first('Vaccinated')}}</label>
                             @endif
                         </div>
                         <div class="form-group text-right mb-0">
