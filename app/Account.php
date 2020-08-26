@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     protected static $link = 'https://res.cloudinary.com/dwarrion/image/upload/' ;
-    public $fillable = ['FullName','Email','PasswordHash','DateOfBirth','PhoneNumber','Address','IDNo','Slug','Avatar','Salt','Status','RoleID'];
+    public $fillable = ['FullName','Email','PasswordHash','DateOfBirth','PhoneNumber','Address','IDNo','Slug','Avatar','Salt','Status','Role_id'];
 
 
     public function role(){
@@ -15,6 +15,9 @@ class Account extends Model
     }
 
     public function getAvatar600x600Attribute(){
-        return self::$link.'c_scale,h_279,w_412/'.$this->Avatar;
+        return self::$link.'c_scale,h_600,w_600/'.$this->Avatar;
+    }
+    public function getAvatar128x128Attribute(){
+        return self::$link.'c_scale,h_128,w_128/'.$this->Avatar;
     }
 }

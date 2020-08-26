@@ -17,6 +17,7 @@
         <link href={{asset("assets/admin/css/icons.min.css")}} rel="stylesheet" type="text/css" />
         <link href={{asset("assets/admin/css/app.min.css")}} rel="stylesheet" type="text/css"  id="app-stylesheet" />
         <link href={{asset("assets/admin/css/custom.css")}} rel="stylesheet" type="text/css"  id="app-stylesheet" />
+        <link href={{asset("assets/admin/css/custom_admin.css")}} rel="stylesheet" type="text/css"  id="app-stylesheet" />
         @yield('specific_css')
     </head>
                 <!-- Topbar Start -->
@@ -148,9 +149,9 @@
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="/assets/admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            <img src="{{session()->get('current_account')->Avatar128x128}}" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
-                                Maxine K  <i class="mdi mdi-chevron-down"></i>
+                                {{session()->get('current_account')->FullName}}  <i class="mdi mdi-chevron-down"></i>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -180,7 +181,7 @@
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a href="{{route('logOut')}}" class="dropdown-item notify-item">
                                 <i class="fe-log-out"></i>
                                 <span>Logout</span>
                             </a>
@@ -245,9 +246,7 @@
         </div>
         <footer class="footer"></footer>
     </div>
-        <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-            <i class="mdi mdi-settings-outline mdi-spin"></i> &nbsp; View Style
-        </a>
+
  <!-- Vendor js -->
         <script src={{asset('assets/admin/')."/js/vendor.min.js"}}></script>
 

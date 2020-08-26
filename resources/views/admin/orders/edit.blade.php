@@ -124,7 +124,7 @@
                         </div>
                         <div class="form-group">
                             <label for="PetId">Loài<span class="text-danger">*</span></label>
-                            <select disabled name="PetId" class="form-control" id="PetId" required="">
+                            <select class="form-control select-form-control" disabled name="PetId" class="form-control" id="PetId" required="">
                                 <option value="{{$pet->id}}" @if ($order->PetId == $pet->id)
                                         selected
                                     @endif>{{$pet->Name}} | Id : {{$pet->Slug}}</option>

@@ -29,7 +29,7 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Throwable  $exception
+     * @param \Throwable $exception
      * @return void
      *
      * @throws \Exception
@@ -42,8 +42,8 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Throwable $exception
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws \Throwable
@@ -51,10 +51,10 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if ($this->isHttpException($exception)) {
-        $statusCode = $exception->getStatusCode();
-        switch ($statusCode) {
+            $statusCode = $exception->getStatusCode();
+            switch ($statusCode) {
                 case '404':
-                return response()->view('user.error');
+                    return response()->view('user.sub_pages.error');
             }
         }
         return parent::render($request, $exception);

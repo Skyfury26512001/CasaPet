@@ -19,7 +19,9 @@ class PetController extends Controller
             array_push($condition, ['created_at', '<=', $request->end]);
         }
         if ($request->has('Status')) {
-            array_push($condition, ['Status', '=', $request->Status]);
+            if($request->Status != "All"){
+                array_push($condition, ['Status', '=', $request->Status]);
+            }
         }
         if ($request->has('keyword')) {
             array_push($condition, ['Name', 'Like', '%' . $request->keyword . '%']);
@@ -46,11 +48,12 @@ class PetController extends Controller
             'CertifiedPedigree' => 'required',
             'Description'       => 'required',
             'Species'           => 'required',
-            'SpeciesSort'       => 'required',
+            'Breed'             => 'required',
             'Age'               => 'required',
             'thumbnails'        => 'required',
             'Sex'               => 'required',
             'Neutered'          => 'required',
+            'Vaccinated'        => 'required',
         ]);
         $pet               = $request->all();
         $slug_begin        = generateRandomString(8);
@@ -85,9 +88,10 @@ class PetController extends Controller
         $pet['Name']              = $request->Name;
         $pet['CertifiedPedigree'] = $request->CertifiedPedigree;
         $pet['Description']       = $request->Description;
-        $pet['SpeciesSort']       = $request->SpeciesSort;
+        $pet['Breed']       = $request->Breed;
         $pet['Species']           = $request->Species;
         $pet['Age']               = $request->Age;
+        $pet['Vaccinated']               = $request->Vaccinated;
         if ($request->has('thumbnails')) {
             $pet['Thumbnails'] = null;
             foreach ($request->thumbnails as $thumb) {

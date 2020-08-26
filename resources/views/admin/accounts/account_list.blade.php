@@ -158,12 +158,11 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Basic Tables</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý tài khoản</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Basic Tables</h4>
+                    <h4 class="page-title">Quản lý tài khoản</h4>
                 </div>
             </div>
         </div>
@@ -174,16 +173,16 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="header-title">Accounts</h4>
+                            <h4 class="header-title">Danh sách tài khoản</h4>
                             <p class="sub-header">
-                                <code>All accounts</code>
+                                <code></code>
                             </p>
                         </div>
                         <div class="col-9">
                             <form action="{{route('admin_account_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
-                                    <select name="orderBy">
+                                    <select class="form-control select-form-control" name="orderBy">
                                         <option value="ASC"
                                                 @if (Request::get('orderBy') == "ASC")
                                                 selected
@@ -198,20 +197,26 @@
                                 </div>
                                 <div class="form-filter">
                                     Lọc theo trạng thái
-                                    <select name="Status">
+                                    <select class="form-control select-form-control" name="Status">
+                                        <option value="All"
+                                                @if (Request::get('Status') == "All")
+                                                selected
+                                                @endif>All
+                                        </option>
                                         <option value="1"
                                                 @if (Request::get('Status') == "1")
                                                 selected
-                                                @endif>Active
+                                                @endif>Hoạt động
                                         </option>
                                         <option value="0"
                                                 @if (Request::get('Status') == "0")
                                                 selected
-                                                @endif>Deactive
+                                                @endif>Không hoạt động
                                         </option>
                                     </select>
                                 </div>
                                 <div class="form-filter" style="width:250px;">
+                                    Trong khoảng :
                                     <div id="reportrange"
                                          style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%"
                                          name="Date">
@@ -221,13 +226,16 @@
                                     <input type="hidden" name="start">
                                     <input type="hidden" name="end">
                                 </div>
-                                <button class="btn btn-secondary btn-custom"> Lọc</button>
+                                <div class="form-filter">
+                                    <br>
+                                    <button class="btn btn-secondary btn-custom"> Lọc</button>
+                                </div>
                             </form>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
-                            <div class="row">
+                        <div class="col-12">
+                            <div class="row card-box">
                                 <div class="offset-8 col-3">
                                     <form class="app-search" action="{{route('admin_account_list')}}">
                                         <div class="app-search-box">
@@ -243,6 +251,11 @@
                                         </div>
                                     </form>
                                 </div>
+                                <div class="col-1">
+                                    <a class="btn btn-primary" href="{{route('admin_report_list')}}">
+                                            Reset
+                                        </a>
+                                </div>
                             </div>
                             <div class="">
                                 <table class="table table-hover mb-0">
@@ -254,9 +267,9 @@
                                             aria-label="ID: activate to sort column ascending">
                                             Email
                                         </th>
-                                        <th>AccountName</th>
-                                        <th>Status</th>
-                                        <th colspan="4" style="text-align: center">Action</th>
+                                        <th>Tên tài khoản</th>
+                                        <th>Trạng thái</th>
+                                        <th colspan="4" style="text-align: center">Hành động</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -276,17 +289,17 @@
                                             <td>{{$account->FullName}}</td>
                                             <td>
                                                 @if ($account->Status == 1)
-                                                    Active
+                                                    Hoạt động
                                                 @elseif ($account->Status == 0)
-                                                    Deactive
+                                                    Không hoạt động
                                                 @else
-                                                    Unknown
+                                                    Không rõ
                                                 @endif</td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{route('admin_account_edit',$account->Slug)}}"
                                                        class="btn btn-primary"
-                                                       style="float:right">Edit</a>
+                                                       style="float:right">Sửa</a>
                                                 </div>
                                             </td>
                                             @if ($account->Status == 1)
@@ -295,7 +308,7 @@
                                                         <form action="{{route('admin_account_deactive',$account->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table"> Deactive</button>
+                                                            <button class="btn btn-primary btn-table">Chặn</button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -305,7 +318,7 @@
                                                         <form action="{{route('admin_account_active',$account->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table"> Active</button>
+                                                            <button class="btn btn-primary btn-table"> Kích hoạt</button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -314,7 +327,7 @@
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{route('admin_account_detail',$account->Slug)}}"
                                                        class="btn btn-primary"
-                                                       style="float:right">Detail</a>
+                                                       style="float:right">Chi tiết</a>
                                                 </div>
                                             </td>
                                             <td>
@@ -334,9 +347,9 @@
                                     <div class="col-5"> {{ $accounts->links() }}</div>
                                     <div class="col-6">
                                         <button class="btn btn-primary" style="float: right;margin-left: 5%;"
-                                                id="deactive_all"> Deactive All
+                                                id="deactive_all"> Chặn tất cả
                                         </button>
-                                        <button class="btn btn-primary" style="float: right" id="active_all"> Active All
+                                        <button class="btn btn-primary" style="float: right" id="active_all"> Kích hoạt tất cả
                                         </button>
                                     </div>
                                 </div>

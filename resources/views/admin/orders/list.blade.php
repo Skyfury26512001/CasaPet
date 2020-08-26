@@ -184,7 +184,7 @@
                             <form action="{{route('admin_order_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
-                                    <select name="orderBy">
+                                    <select class="form-control select-form-control" name="orderBy">
                                         <option value="ASC"
                                                 @if (Request::get('orderBy') == "ASC")
                                                 selected
@@ -199,7 +199,12 @@
                                 </div>
                                 <div class="form-filter">
                                     Lọc theo trạng thái
-                                    <select name="Status">
+                                    <select class="form-control select-form-control" name="Status">
+                                        <option value="All"
+                                                @if (Request::get('Status') == "All")
+                                                selected
+                                                @endif>All
+                                        </option>
                                         <option value="1"
                                                 @if (Request::get('Status') == "1")
                                                 selected

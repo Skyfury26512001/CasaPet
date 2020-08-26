@@ -78,21 +78,20 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active">Quản lý tài khoản</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý thú nuôi</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Quản lý tài khoản</h4>
+                    <h4 class="page-title">Quản lý thú nuôi</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card-box">
-                    <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
+                    <h4 class="header-title">Chỉnh sửa thông tin thú nuôi : </h4>
                     <form action="{{route('admin_pet_update',$pet->Slug)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
@@ -100,7 +99,7 @@
                         <div class="form-group">
                             <label for="FullName">Tên<span class="text-danger">*</span></label>
                             <input type="text" name="Name" parsley-trigger="change" required=""
-                                   value="{{$pet->Name}}" class="form-control" id="Name">
+                                   value="{{$pet->Name}}" class="form-control" id="Name" style="width: 20%">
                             @if ($errors->has('Name'))
                                 <label class="alert-warning">{{$errors->first('Name')}}</label>
                             @endif
@@ -128,28 +127,28 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
-                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
-                                <option value="Chó" @if ($pet->SpeciesSort == "Chó") selected @endif>Chó</option>
-                                <option value="Mèo" @if ($pet->SpeciesSort == "Mèo") selected @endif>Mèo</option>
-                                <option value="Vịt" @if ($pet->SpeciesSort == "Vịt") selected @endif>Vịt</option>
+                            <label for="Species">Loài<span class="text-danger">*</span></label>
+                            <select class="form-control select-form-control" name="Species" class="form-control" id="Species" required="" style="width: 10%">
+                                <option value="Chó" @if ($pet->Species == "Chó") selected @endif>Chó</option>
+                                <option value="Mèo" @if ($pet->Species == "Mèo") selected @endif>Mèo</option>
+                                <option value="Vịt" @if ($pet->Species == "Vịt") selected @endif>Vịt</option>
                             </select>
-                            @if ($errors->has('SpeciesSort'))
-                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Species">Giống<span class="text-danger">*</span></label>
-                            <input type="text" name="Species" parsley-trigger="change" required=""
-                                   class="form-control" id="Species" value="{{$pet->Species}}">
                             @if ($errors->has('Species'))
                                 <label class="alert-warning">{{$errors->first('Species')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="Breed">Giống<span class="text-danger">*</span></label>
+                            <input type="text" name="Breed" parsley-trigger="change" required=""
+                                   class="form-control" id="Breed" value="{{$pet->Breed}}" style="width: 20%">
+                            @if ($errors->has('Breed'))
+                                <label class="alert-warning">{{$errors->first('Breed')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label for="Age">Tuổi<span class="text-danger">*</span></label>
                             <input type="text" name="Age" parsley-trigger="change" required=""
-                                   class="form-control" id="Age" value="{{$pet->Age}}">
+                                   class="form-control" id="Age" value="{{$pet->Age}}" style="width: 20%">
                             @if ($errors->has('Age'))
                                 <label class="alert-warning">{{$errors->first('Age')}}</label>
                             @endif
@@ -195,14 +194,26 @@
                                 <label class="alert-warning">{{$errors->first('Neutered')}}</label>
                             @endif
                         </div>
+                        <div class="form-group">
+                            <label>Tiêm phòng<span class="text-danger">*</span></label>
+                            <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedYes" value="Có" @if ($pet->Vaccinated == "Có") checked @endif><label
+                                    for="VaccinatedYes">Đã tiêm phòng</label>
+                            <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedNo" value="Không" @if ($pet->Vaccinated == "Không") checked @endif><label
+                                    for="VaccinatedNo">Chưa tiêm phòng</label>
+                            @if ($errors->has('Vaccinated'))
+                                <label class="alert-warning">{{$errors->first('Vaccinated')}}</label>
+                            @endif
+                        </div>
                         @foreach($pet->ArrayThumbnails as $thumbnail)
                             <input type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}" value="{{$thumbnail}}">
                         @endforeach
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
-                                Submit
+                                Cập nhật
                             </button>
-                            <button class="btn btn-secondary btn-table" id="btn-deactive"> Deactive</button>
+                            <button class="btn btn-secondary btn-table" id="btn-deactive"> Hủy kích hoạt</button>
                         </div>
                     </form>
                 <form id="deactive_form" action="{{route('admin_pet_deactive',$pet->id)}}"method="POST">

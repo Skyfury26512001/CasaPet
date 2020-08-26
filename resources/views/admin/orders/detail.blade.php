@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Role_id">Quyền<span class="text-danger">*</span></label>
-                            <select name="Role_id" disabled>
+                            <select class="form-control select-form-control select-form-control" name="Role_id" disabled>
                                 <option value="1" @if ($account->Role_id == 1) checked @endif>User</option>
                                 <option value="2" @if ($account->Role_id == 2) checked @endif>Admin</option>
                                 @if (session()->get('current_account')->Role_id == 3)

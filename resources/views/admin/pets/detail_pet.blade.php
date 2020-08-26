@@ -35,7 +35,7 @@
             // imgName = imgName.split('.');
             // $(this).parent().remove();
             // console.log($(this).parent());
-            var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
+            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
             // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
             // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
             // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
@@ -43,10 +43,10 @@
             // input.remove()
             // console.log(input);
             // console.log("Remove image : " + "sucessful");
-             console.log(imgName)
+            console.log(imgName)
             // console.log($(this).parent().attr('data-cloudinary'))
             var publicId = $(this).parent().attr('data-cloudinary');
-             $(this).parent().remove();
+            $(this).parent().remove();
             // let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
         });
@@ -55,14 +55,16 @@
         ClassicEditor
             .create(document.querySelector('#editor'))
             .then(editor => {
-                {{--editor.setData('{{$pet->Description}}', function () {--}}
-                {{--    this.checkDirty();  // true--}}
-                {{--});--}}
+                editor.isReadOnly = true;
             })
             .catch(error => {
                 console.error(error);
             });
-
+    </script>
+    <script>
+        $("#btn-deactive").click(function () {
+            $("#deactive_form").submit();
+        });
     </script>
 @endsection
 @section('content')
@@ -74,40 +76,39 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active">Quản lý tài khoản</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý thú nuôi</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Quản lý tài khoản</h4>
+                    <h4 class="page-title">Quản lý thú nuôi</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card-box">
-                    <h4 class="header-title">Xem thông tin cá nhân : </h4>
-                    <form action="{{route('admin_pet_update',$pet->Slug)}}" id="product_form" method="POST"
+                    <h4 class="header-title">Chỉnh sửa thông tin thú nuôi : </h4>
+                    <div id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="FullName">Tên<span class="text-danger">*</span></label>
                             <input disabled type="text" name="Name" parsley-trigger="change" required=""
-                                   value="{{$pet->Name}}" class="form-control" id="Name">
+                                   value="{{$pet->Name}}" class="form-control" id="Name" style="width: 20%">
                             @if ($errors->has('Name'))
                                 <label class="alert-warning">{{$errors->first('Name')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
                             <label>Giấy tờ khai sinh<span class="text-danger">*</span></label>
-                            <input disabled type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                            <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
                                    id="CertifiedPedigreeYes" value="Có"
                                    @if ($pet->CertifiedPedigree == "Có") checked @endif><label
                                     for="CertifiedPedigreeYes">Có</label>
-                            <input disabled type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                            <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
                                    id="CertifiedPedigreeNo" value="Không"
                                    @if ($pet->CertifiedPedigree == "Không") checked @endif><label
                                     for="CertifiedPedigreeNo">Không</label>
@@ -124,28 +125,29 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
-                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
-                                <option value="Chó" @if ($pet->SpeciesSort == "Chó") selected @endif>Chó</option>
-                                <option value="Mèo" @if ($pet->SpeciesSort == "Mèo") selected @endif>Mèo</option>
-                                <option value="Vịt" @if ($pet->SpeciesSort == "Vịt") selected @endif>Vịt</option>
+                            <label for="Species">Loài<span class="text-danger">*</span></label>
+                            <select disabled class="form-control select-form-control" name="Species"
+                                    class="form-control" id="Species" required="" style="width: 10%">
+                                <option value="Chó" @if ($pet->Species == "Chó") selected @endif>Chó</option>
+                                <option value="Mèo" @if ($pet->Species == "Mèo") selected @endif>Mèo</option>
+                                <option value="Vịt" @if ($pet->Species == "Vịt") selected @endif>Vịt</option>
                             </select>
-                            @if ($errors->has('SpeciesSort'))
-                                <label class="alert-warning">{{$errors->first('SpeciesSort')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Species">Giống<span class="text-danger">*</span></label>
-                            <input disabled type="text" name="Species" parsley-trigger="change" required=""
-                                   class="form-control" id="Species" value="{{$pet->Species}}">
                             @if ($errors->has('Species'))
                                 <label class="alert-warning">{{$errors->first('Species')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
+                            <label for="Breed">Giống<span class="text-danger">*</span></label>
+                            <input disabled type="text" name="Breed" parsley-trigger="change" required=""
+                                   class="form-control" id="Breed" value="{{$pet->Breed}}" style="width: 20%">
+                            @if ($errors->has('Breed'))
+                                <label class="alert-warning">{{$errors->first('Breed')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label for="Age">Tuổi<span class="text-danger">*</span></label>
                             <input disabled type="text" name="Age" parsley-trigger="change" required=""
-                                   class="form-control" id="Age" value="{{$pet->Age}}">
+                                   class="form-control" id="Age" value="{{$pet->Age}}" style="width: 20%">
                             @if ($errors->has('Age'))
                                 <label class="alert-warning">{{$errors->first('Age')}}</label>
                             @endif
@@ -169,10 +171,10 @@
                         </div>
                         <div class="form-group">
                             <label>Giới tính<span class="text-danger">*</span></label>
-                            <input disabled type="radio" name="Sex" parsley-trigger="change" required=""
+                            <input type="radio" name="Sex" parsley-trigger="change" required=""
                                    id="SexMale" value="Đực" @if ($pet->Sex == "Đực") checked @endif><label
                                     for="SexMale">Đực</label>
-                            <input disabled type="radio" name="Sex" parsley-trigger="change" required=""
+                            <input type="radio" name="Sex" parsley-trigger="change" required=""
                                    id="SexFemale" value="Cái" @if ($pet->Sex == "Cái") checked @endif><label
                                     for="SexFemale">Cái</label>
                             @if ($errors->has('Sex'))
@@ -181,29 +183,40 @@
                         </div>
                         <div class="form-group">
                             <label>Triệt sản<span class="text-danger">*</span></label>
-                            <input disabled type="radio" name="Neutered" parsley-trigger="change" required=""
+                            <input type="radio" name="Neutered" parsley-trigger="change" required=""
                                    id="NeuteredYes" value="Yes" @if ($pet->Neutered == "Yes") checked @endif><label
                                     for="NeuteredYes">Đã triệt sản</label>
-                            <input disabled type="radio" name="Neutered" parsley-trigger="change" required=""
+                            <input type="radio" name="Neutered" parsley-trigger="change" required=""
                                    id="NeuteredNo" value="No" @if ($pet->Neutered == "No") checked @endif><label
                                     for="NeuteredNo">Chưa triệt sản</label>
                             @if ($errors->has('Neutered'))
                                 <label class="alert-warning">{{$errors->first('Neutered')}}</label>
                             @endif
                         </div>
+                        <div class="form-group">
+                            <label>Tiêm phòng<span class="text-danger">*</span></label>
+                            <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedYes" value="Có" @if ($pet->Vaccinated == "Có") checked @endif><label
+                                    for="VaccinatedYes">Đã tiêm phòng</label>
+                            <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                   id="VaccinatedNo" value="Không"
+                                   @if ($pet->Vaccinated == "Không") checked @endif><label
+                                    for="VaccinatedNo">Chưa tiêm phòng</label>
+                            @if ($errors->has('Vaccinated'))
+                                <label class="alert-warning">{{$errors->first('Vaccinated')}}</label>
+                            @endif
+                        </div>
                         @foreach($pet->ArrayThumbnails as $thumbnail)
-                            <input disabled type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}" value="{{$thumbnail}}">
+                            <input type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}"
+                                   value="{{$thumbnail}}">
                         @endforeach
                         <div class="form-group text-right mb-0">
-                            <a class="btn btn-primary waves-effect waves-light mr-1" href="{{route('admin_pet_edit',$pet->Slug)}}">
+                            <a class="btn btn-primary waves-effect waves-light mr-1" href="{{route('admin_pet_edit',$pet->Slug)}}" type="submit" >
                                 Sửa
                             </a>
-                            <a type="reset" class="btn btn-secondary waves-effect waves-light" href="{{route('admin_pet_list')}}">
-                                Trở lại danh sách
-                            </a>
+                            <a class="btn btn-secondary waves-effect waves-light mr-1" href="{{route('admin_account_list')}}" style="color: yellow">Trở lại danh sách</a>
                         </div>
-
-                    </form>
+                    </div>
                 </div> <!-- end card-box -->
             </div>
             <!-- end row -->

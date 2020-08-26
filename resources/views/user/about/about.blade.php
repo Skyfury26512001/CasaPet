@@ -9,13 +9,13 @@
         <div class="jumbo-heading">
             <!-- section-heading -->
             <div class="section-heading" data-aos="zoom-in">
-                <h1>About Woof!</h1>
+                <h1>About PetsCasa</h1>
             </div>
             <!-- /section-heading -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/about">About Woof!</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="/about">About PetsCasa</a></li>
                 </ol>
             </nav>
         </div>
@@ -35,10 +35,10 @@
                 <!--/col-lg-->
                 <div class="col-lg-7 res-margin">
                     <h3>Cam kết của chúng tôi để chấm dứt sự đau khổ của động vật.</h3>
-                    <p>Woof! được thành lập tại Hà Nội, Việt Nam bởi Avenger Team, những người nhận thấy sự cần thiết về
-                        giáo dục động vật trong khu vực. Woof! phục vụ cộng đồng bằng cách cung cấp sự an toàn, điều trị
+                    <p>PetsCasa được thành lập tại Hà Nội, Việt Nam bởi Avenger Team, những người nhận thấy sự cần thiết về
+                        giáo dục động vật trong khu vực. PetsCasa phục vụ cộng đồng bằng cách cung cấp sự an toàn, điều trị
                         y tế và phục hồi chức năng để giúp những bé chó và mèo hoang tìm được những gia đình thực sự .
-                        Bên cạnh đó, Woof! còn cung cấp dịch vụ, tiện ích cho thú cưng của bạn. Chúng tôi cũng làm việc
+                        Bên cạnh đó, PetsCasa còn cung cấp dịch vụ, tiện ích cho thú cưng của bạn. Chúng tôi cũng làm việc
                         với các đối tác khác và ngành thú y để cải thiện việc chăm sóc các bé.</p>
                     <p><strong>Create happiness. Save lives.</strong></p>
                 </div>
@@ -48,7 +48,7 @@
             <div class="row mt-5">
                 <div class="col-lg-7">
                     <h4>Chúng tôi giúp cải thiện chất lượng cuộc sống của động vật</h4>
-                    <p>Woof! là một tổ chức từ thiện phúc lợi động vật với tầm nhìn về một tương lai nơi mọi
+                    <p>PetsCasa là một tổ chức từ thiện phúc lợi động vật với tầm nhìn về một tương lai nơi mọi
                         vật nuôi đều được an toàn, được tôn trọng và yêu thương.</p>
                     <p>Nhóm của chúng tôi và các tình nguyện viên hiện đang làm việc trong các nhóm chính sau:</p>
                     <ul class="custom pl-0">
@@ -107,7 +107,7 @@
                             <div class="card-header" id="headingThree" role="tablist" data-toggle="collapse"
                                  data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 <h6 class="mb-0">
-                                    Đối tác và những người ủng hộ của Woof!
+                                    Đối tác và những người ủng hộ của PetsCasa
                                 </h6>
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
@@ -134,9 +134,9 @@
             <div class="container block-padding">
                 <div class="col-lg-6 offset-lg-6 bg-primary text-light card text-center"
                      style="background-color: unset !important;">
-                    <h4>Nhận tin mới nhất từ Woof!</h4>
-                    <p>Những thông tin mới nhất về chương trình và dịch vụ bên Woof! sẽ được cập nhập cho bạn thường
-                        xuyên. Cám ơn vì đã tin tưởng Woof! &nbsp;<i class="fa fa-heart" aria-hidden="true"
+                    <h4>Nhận tin mới nhất từ PetsCasa</h4>
+                    <p>Những thông tin mới nhất về chương trình và dịch vụ bên PetsCasa sẽ được cập nhập cho bạn thường
+                        xuyên. Cám ơn vì đã tin tưởng PetsCasa &nbsp;<i class="fa fa-heart" aria-hidden="true"
                                                                      style="color: #F9575C"></i></p>
                     <!-- Form -->
                     <div id="mc_embed_signup">
@@ -179,7 +179,7 @@
                     <div class="col-xl-6">
                         <h4>Trẻ em có thể thay đổi tương lai cho động vật</h4>
                         <ul class="custom pl-0">
-                            <li>Woof! chống lại sự tàn ác của động vật thông qua Chương trình Giáo dục
+                            <li>PetsCasa chống lại sự tàn ác của động vật thông qua Chương trình Giáo dục
                                 Cộng đồng dành cho người học ở mọi lứa tuổi. Chúng tôi tin rằng việc nâng cao nhận thức
                                 trong thế hệ trẻ, đồng thời vun đắp mối quan hệ giữa vật nuôi và mọi người, dẫn đến cách
                                 đối xử nhân đạo cho tất cả mọi người.
