@@ -2,7 +2,7 @@
 Template Name: Woof!
 Dog Walker scheme
 /*
- 
+
 /* Green */
 .badge-default,.bg-secondary, .btn-primary, .back-to-top i:hover, .alert-secondary, .badge-secondary, .nav-pills .nav-link.active,.nav-pills .nav-link:hover,.nav-pills .nav-link:focus, .nav-pills .show>.nav-link,.list-group-item.active,figure.team-style2 figcaption .icons i, .page-link:hover, .page-link.active, .team-style1 .social, .nav-item:focus, .navbar .nav-item:hover, .navbar .nav-item .active,.nav-link:focus,.owl-prev i:hover, .owl-next i:hover,.navbar .nav-item.active {
     background:#48A06A!important;
@@ -19,7 +19,7 @@ Dog Walker scheme
     background-color:#333!important ;
 }
 .blog-card .post-info:before,.color1,a:hover,a:focus, .dog-elements:after, .cat-elements:after, .bg-secondary a,.header-text:before,ul.social-media li:hover i{
-    color:#333 ;
+    color:#ffffff ;
 }
  .dropdown-menu:before {
     border-bottom-color: #333;

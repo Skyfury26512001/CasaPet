@@ -90,4 +90,10 @@
             </div>
         </div>
     </div>
+    <div class="boder-footer"></div>
+    <div class="facebook-comment">
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0&appId=642535080010535&autoLogAppEvents=1" nonce="FNf81OrP"></script>
+        <div class="fb-comments" data-href="{{Request::url()}}" data-numposts="5" data-width=""></div>
+    </div>
 @endsection

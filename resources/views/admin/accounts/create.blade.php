@@ -108,7 +108,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="userName">Avatar<span class="text-danger">*</span></label>
+                            <label for="userName">Hình Đại Diện<span class="text-danger">*</span></label>
                             <button type="button" id="upload_widget" class="btn-primary btn">Upload </button>
                             <div class="avatar"></div>
                             @if ($errors->has('avatar'))

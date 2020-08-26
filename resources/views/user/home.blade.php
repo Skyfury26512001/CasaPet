@@ -237,7 +237,7 @@
                             </div>
                             <!-- service content -->
                             <div class="service-content">
-                                <h6>Training</h6>
+                                <h6>Huấn luyện</h6>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.
                                 </p>
@@ -263,7 +263,7 @@
                     <img src="{{asset('assets/user/img/blurbimg.png')}}" class="img-fluid blurb-img" alt=""/>
                 </div>
                 <div class="col-xl-4" data-aos="fade-down">
-                    <h2 class="res-margin">Join our club</h2>
+                    <h2 class="res-margin">Tham gia câu lạc bộ</h2>
                     <p class="featured-text">Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh
                         hendrerit id.
                         In aliquet magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum.
@@ -371,7 +371,7 @@
         </div>
         <!-- /block-padding -->
         <div class="container bottom-block-padding">
-            <h3 class="text-center">What our clients say</h3>
+            <h3 class="text-center">Nhận xét của khách hàng</h3>
             <div class="col-md-12">
                 <div id="owl-testimonial" class="owl-carousel owl-theme">
                     <!-- testimonial -->
