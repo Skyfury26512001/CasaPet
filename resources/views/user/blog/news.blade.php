@@ -56,54 +56,6 @@
                         <!--card-footer -->
                     </div>
                     <!-- /card blog-card -->
-                    <!-- Blog Post -->
-                    <div class="card blog-card">
-                        <div class="post-info  border-irregular2 text-muted">
-                            January 1, 2018 by
-                            <a href="#">Lila Smith</a> / <a href="#"><i class="fas fa-comment margin-icon"></i>10
-                                comments</a>
-                        </div>
-                        <a href="blog-single.html">
-                            <!-- image -->
-                            <img class="card-img-top img-fluid" src="img/blog.jpg" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a href="blog-single.html">
-                                <h3 class="card-title">What are the most nutritious cat foods?</h3>
-                            </a>
-                            <!-- excerpt -->
-                            <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita
-                                corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a href="blog-single.html" class="btn btn-primary">Read More &rarr;</a>
-                        </div>
-                        <!--card-footer -->
-                    </div>
-                    <!-- /card blog-card -->
-                    <!-- Blog Post -->
-                    <div class="card blog-card">
-                        <div class="post-info  border-irregular2 text-muted">
-                            January 1, 2018 by
-                            <a href="#">Lila Smith</a> / <a href="#"><i class="fas fa-comment margin-icon"></i>10
-                                comments</a>
-                        </div>
-                        <a href="blog-single.html">
-                            <!-- image -->
-                            <img class="card-img-top img-fluid" src="img/blog.jpg" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a href="blog-single.html">
-                                <h3 class="card-title">The friendliest dog breeds for families</h3>
-                            </a>
-                            <!-- excerpt -->
-                            <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita
-                                corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a href="blog-single.html" class="btn btn-primary">Read More &rarr;</a>
-                        </div>
-                        <!--card-footer -->
-                    </div>
-                    <!-- /card blog-card -->
                     <div class="col-md-12 mt-5">
                         <!-- pagination -->
                         <nav aria-label="pagination">

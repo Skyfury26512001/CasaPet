@@ -4,14 +4,9 @@
 @endsection
 @section('specific_css')
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
 @endsection
 @section('specific_js')
-    <script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4',
-            format: 'dd-mm-yyyy'
-        });
-    </script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget(
@@ -41,21 +36,15 @@
 
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
-            // var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            // var imgName = splittedImg[splittedImg.length - 1];
-            // imgName = imgName.split('.');
-            // $(this).parent().remove();
-            // console.log($(this).parent());
-            // var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
-            // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
-            // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
-            // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
-            // console.log(input);
-            // input.remove()
-            // console.log(input);
-            // console.log("Remove image : " + "sucessful");
             let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
+        });
+    </script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'dd/mm/yyyy'
         });
     </script>
 @endsection
@@ -118,7 +107,7 @@
                                             </svg>
                                         </div>
 
-                                        <div class="userpage-sidebar-menu-entry__text">
+                                        <div class="userpage-sidebar-menu-entry__text" style="color: #48A06A">
                                             Tài khoản của tôi
                                         </div>
                                     </a></div>
@@ -216,12 +205,13 @@
                                         <div class="input-with-label__wrapper birthday-choose">
                                             <div class="input-with-label__label"><label>Ngày sinh</label></div>
                                             <div class="input-with-label__content">
-                                                <input id="datepicker" width="90%"
+                                                <input id="datepicker" width="50%"
                                                        value="{{date("d-m-Y", strtotime($current_account->DateOfBirth))}}"
                                                        name="DateOfBirth"/>
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="Slug" value="{{$current_account->Slug}}">
                                     <input type="hidden" name="avatar"
                                            data-cloudinary-public-id="{{$current_account->Avatar}}"
                                            value="{{$current_account->Avatar}}">

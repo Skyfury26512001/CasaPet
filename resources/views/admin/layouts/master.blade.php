@@ -17,6 +17,7 @@
         <link href={{asset("assets/admin/css/icons.min.css")}} rel="stylesheet" type="text/css" />
         <link href={{asset("assets/admin/css/app.min.css")}} rel="stylesheet" type="text/css"  id="app-stylesheet" />
         <link href={{asset("assets/admin/css/custom.css")}} rel="stylesheet" type="text/css"  id="app-stylesheet" />
+        <link href={{asset("assets/admin/css/custom_admin.css")}} rel="stylesheet" type="text/css"  id="app-stylesheet" />
         @yield('specific_css')
     </head>
                 <!-- Topbar Start -->
@@ -245,9 +246,7 @@
         </div>
         <footer class="footer"></footer>
     </div>
-        <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-            <i class="mdi mdi-settings-outline mdi-spin"></i> &nbsp; View Style
-        </a>
+
  <!-- Vendor js -->
         <script src={{asset('assets/admin/')."/js/vendor.min.js"}}></script>
 

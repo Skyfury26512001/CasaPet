@@ -34,7 +34,7 @@ img {
      width: 80%;
      margin: auto;
      height: 1px;
-     background: green;
+     background: #F9BE4F;
  }
 
 
@@ -45,7 +45,7 @@ img {
      width: 80%;
      margin: auto;
      height: 1px;
-     background: green;
+     background: #F9BE4F;
  }
 
 .timeline .year span.year--end :after {
@@ -66,7 +66,7 @@ img {
 .timeline .days .events {
     position: relative;
     float: left;
-    border-right: 1px solid green;
+    border-right: 1px solid #F9BE4F;
     padding: 30px;
     text-align: right;
     width: 50%;}
@@ -76,7 +76,7 @@ img {
      width: 40%;
      display: inline-block;
      height: 1px;
-     background: green;
+     background: #F9BE4F;
 
      position: absolute;
      right: 0;
@@ -86,7 +86,7 @@ img {
     width: 40%;
     display: inline-block;
     height: 1px;
-    background: green;
+    background: #F9BE4F;
 
     position: absolute;
     /*right: 0;*/
@@ -100,7 +100,7 @@ img {
     padding: 30px;
     text-align: left;
 
-    color: green;
+    color: #F9BE4F;
     font-size: 24px;
     white-space: nowrap;
 }
@@ -122,7 +122,7 @@ img {
     bottom: 0;
     right: 0;
     padding: 20px;
-    background: red;
+    background: #F9BE4F;
     color: #fff;
 }
 
@@ -132,10 +132,10 @@ img {
     width: calc(50% + 1px);
     float: right;
     border-right: 0;
-    border-left: 1px solid green;
+    border-left: 1px solid #F9BE4F;
     text-align: left;}
 
-.timeline .days .day:nth-child(odd) .events :after {
+.timeline .days .day:nth-child(odd) .events:after {
      right: auto;
      left: 0;
  }
@@ -157,5 +157,15 @@ img {
 .timeline .days .day:nth-child(odd) .events .day__img .caption {
     right: auto;
     left: 0;
+}
+
+.facebook-comment{
+    text-align: center;
+}
+.boder-footer{
+    border: 1px solid black;
+    margin: 10px 0;
+    width: 50%;
+    margin: auto;
 }
 

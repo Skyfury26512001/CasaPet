@@ -26,7 +26,7 @@
     {{--    </script>--}}
     <script>
         $(document).ready(function () {
-            $("#deactive_all").on('click', function (e) {
+            $("#acept_all").on('click', function (e) {
                 console.log('123');
                 var allVals = [];
                 $(".checkbox_list:checked").each(function () {
@@ -40,7 +40,7 @@
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_report_deactive_multi')}}',
+                            url: '{{route('admin_report_acept_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -72,7 +72,53 @@
     </script>
     <script>
         $(document).ready(function () {
-            $("#active_all").on('click', function (e) {
+            $("#done_all").on('click', function (e) {
+                console.log('123');
+                var allVals = [];
+                $(".checkbox_list:checked").each(function () {
+                    allVals.push($(this).val());
+                    console.log(allVals);
+                });
+                if (allVals.length <= 0) {
+                    alert("Please select row.");
+                } else {
+                    var check = confirm("Are you sure you want to deactive this report?");
+                    if (check == true) {
+                        var join_selected_values = allVals.join(",");
+                        $.ajax({
+                            url: '{{route('admin_report_done_multi')}}',
+                            type: 'PUT',
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: 'ids=' + join_selected_values,
+                            success: function (data) {
+                                if (data['success']) {
+                                    $(".sub_chk:checked").each(function () {
+                                        $(this).parents("tr").remove();
+                                    });
+                                    alert(data['success']);
+                                    // alert("Accounts Deleted Success");
+                                    window.location = '{{route('admin_report_list')}}';
+                                } else if (data['error']) {
+                                    console.log(data['error']);
+                                } else {
+                                    alert('Whoops Something went wrong!!');
+                                }
+                            },
+                            error: function (data) {
+                                alert(data.responseText);
+                            }
+                        });
+                        $.each(allVals, function (index, value) {
+                            $('table tr').filter("[data-row-id='" + value + "']").remove();
+                        });
+                    }
+                }
+            })
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#decline_all").on('click', function (e) {
                 console.log('123');
                 var allVals = [];
                 $(".checkbox_list:checked").each(function () {
@@ -86,7 +132,7 @@
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_report_active_multi')}}',
+                            url: '{{route('admin_report_decline_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -158,12 +204,11 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Basic Tables</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý báo cáo</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Basic Tables</h4>
+                    <h4 class="page-title">Quản lý báo cáo</h4>
                 </div>
             </div>
         </div>
@@ -174,23 +219,25 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="header-title">Pets</h4>
+                            <h4 class="header-title">Danh sách báo cáo</h4>
                             <p class="sub-header">
-                                <code>All reports</code>
+                                <code></code>
                             </p>
                         </div>
                         <div class="col-9">
-                            <form action="{{route('admin_report_list')}}" method="GET" style="display: flex">
+                            <form action="{{route('admin_report_list')}}" method="GET"
+                                  style="display: flex;float: right">
                                 <div class="form-filter">
-                                    Lọc theo ngày tạo
-                                    <select name="orderBy">
+                                    Sắp xếp theo :
+                                    <select class="form-control select-form-control" class="form-control"
+                                            name="orderBy">
                                         <option value="ASC">Tăng dần</option>
                                         <option value="DESC">Giảm dần</option>
                                     </select>
                                 </div>
                                 <div class="form-filter">
-                                    Lọc theo trạng thái
-                                    <select name="Status">
+                                    Lọc theo trạng thái :
+                                    <select class="form-control select-form-control" class="form-control" name="Status">
                                         <option value="All"
                                                 @if (Request::get('Status') == "All")
                                                 selected
@@ -209,7 +256,8 @@
                                     </select>
                                 </div>
                                 <div class="form-filter" style="width:250px;">
-                                    <div id="reportrange"
+                                    Trong khoảng :
+                                    <div id="reportrange" class="form-control"
                                          style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%"
                                          name="Date">
                                         <i class="fa fa-calendar"></i>&nbsp;
@@ -218,13 +266,16 @@
                                     <input type="hidden" name="start">
                                     <input type="hidden" name="end">
                                 </div>
-                                <button class="btn btn-secondary btn-custom"> Lọc</button>
+                                <div class="form-filter">
+                                    <br>
+                                    <button class="btn btn-secondary btn-custom"> Lọc</button>
+                                </div>
                             </form>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-10">
-                            <div class="row">
+                        <div class="col-12">
+                            <div class="row card-box">
                                 <div class="offset-8 col-3">
                                     <form class="app-search" action="{{route('admin_report_list')}}">
                                         <div class="app-search-box">
@@ -240,6 +291,11 @@
                                         </div>
                                     </form>
                                 </div>
+                                <div class="col-1">
+                                    <a class="btn btn-primary" href="{{route('admin_report_list')}}">
+                                            Reset
+                                        </a>
+                                </div>
                             </div>
                             <div class="">
                                 <table class="table table-hover mb-0">
@@ -247,7 +303,9 @@
                                     <tr>
                                         <th></th>
                                         <th>ID</th>
-                                        <th>Tiêu đề</th>
+                                        <th>Họ và Tên</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số điện thoại</th>
                                         <th>Nội dung</th>
                                         <th>Trạng thái</th>
                                         <th colspan="3" style="text-align: center">Hành động</th>
@@ -266,12 +324,18 @@
                                                 </div>
                                             </td>
                                             <td>{{$report->id}}</td>
-                                            <td>{{$report->Title}}</td>
-                                            <td>{!!$report->Content  !!}</td>
+                                            <td>{{$report->FullName}}</td>
+                                            <td>{{$report->Address}}</td>
+                                            <td>{{$report->PhoneNumber}}</td>
+                                            <td>{{$report->Content}}</td>
                                             @if ($report->Status == 0)
-                                                <td style="color: gray">Không hoạt động</td>
+                                                <td style="color: blueviolet">Chưa xử lý</td>
                                             @elseif ($report->Status == 1)
-                                                <td style="color: mediumspringgreen"> Đang hoạt động</td>
+                                                <td style="color: darkblue"> Đang xử lý</td>
+                                            @elseif ($report->Status == 2)
+                                                <td style="color: mediumspringgreen"> Đã xử lý</td>
+                                            @elseif ($report->Status == 3)
+                                                <td style="color: #a01522"> Từ chối</td>
                                             @else
                                                 <td style="color: red"> Unknown Status</td>
                                             @endif
@@ -285,21 +349,47 @@
                                             @if ($report->Status == 0)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_report_active',$report->id)}}"
+                                                        <form action="{{route('admin_report_handle',$report->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Active</button>
+                                                            <button class="btn btn-primary btn-table">Nhận</button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             @elseif ($report->Status == 1)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_report_deactive',$report->id)}}"
+                                                        <form action="{{route('admin_report_done',$report->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Deactive</button>
+                                                            <button class="btn btn-primary btn-table">Kết thúc</button>
                                                         </form>
+                                                    </div>
+                                                </td>
+                                            @elseif ($report->Status == 2)
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="btn btn-primary btn-table" disabled
+                                                                style="color: yellow">Đã xong
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            @elseif ($report->Status == 3)
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <form action="{{route('admin_report_handle',$report->id)}}"
+                                                              method="POST">
+                                                            @csrf @method('PUT')
+                                                            <button class="btn btn-primary btn-table">Nhận</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="btn btn-primary btn-table" disabled
+                                                                style="color: yellow">Unknown
+                                                        </button>
                                                     </div>
                                                 </td>
                                             @endif
@@ -319,11 +409,15 @@
                                 <div class="row">
                                     <div class="col-5"> {{ $reports->links() }}</div>
                                     <div class="col-6">
-                                        <button class="btn btn-primary" style="float: right;margin-left: 5%;"
-                                                id="deactive_all"> Deactive All
+                                        <button class="btn btn-primary" style="float: right;margin-left: 3%;"
+                                                id="acept_all"> Chấp nhận
                                         </button>
-                                        <button class="btn btn-primary" style="float: right" id="active_all"> Active All
+                                        <button class="btn btn-primary" style="float: right;margin-left: 3%;"
+                                                id="done_all"> Hoàn thành
                                         </button>
+                                        <button class="btn btn-primary" style="float: right" id="decline_all"> Từ chối
+                                        </button>
+
                                     </div>
                                 </div>
                             </div>

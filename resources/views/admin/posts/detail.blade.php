@@ -117,7 +117,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Status">Status<span class="text-danger">*</span></label>
-                            <select name="Status" disabled>
+                            <select class="form-control select-form-control" name="Status" disabled>
                                 if($request->Status != "All"){array_push($condition, ['Status', '=', $request->Status]);}
                         </div>
                         <div class="form-group text-right mb-0">

@@ -7,30 +7,25 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use phpDocumentor\Reflection\Types\Array_;
 
 class AccountController extends Controller
 {
-    public function login()
-    {
-        return view('user.users.login');
-    }
-
     public function registerP(RegisterRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $account                 = $request->all();
-            $Salt                    = generateRandomString(5);
-            $account['Salt']         = $Salt;
-            $password                = $account['Password'];
-            $PasswordHash            = md5($password . $Salt);
+            $account = $request->all();
+            $Salt = generateRandomString(5);
+            $account['Salt'] = $Salt;
+            $password = $account['Password'];
+            $PasswordHash = md5($password . $Salt);
             $account['PasswordHash'] = $PasswordHash;
-            $slug_begin              = generateRandomString(8);
-            $Slug                    = to_slug($slug_begin . ' ' . $account['FullName']);
-            $account['Slug']         = $Slug;
-            $account['Status']       = 1;
+            $slug_begin = generateRandomString(8);
+            $Slug = to_slug($slug_begin . ' ' . $account['FullName']);
+            $account['Slug'] = $Slug;
+            $account['Status'] = 1;
             if ($request->has('Avatar')) {
                 $account['Avatar'] = $request->avatar;
             }
@@ -46,8 +41,8 @@ class AccountController extends Controller
                 $message->to("$request->Email", "$request->FullName")->subject('Tạo mới tài khoản thành công');
                 $message->from("t1908@gmail.com", "PetsCasa");
             });
-            $contentTele =  "\n + Tài khoản mới được tạo : $request->Email " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Số nhận diện : $request->IDNo";
-            $contentTeleSend = urlencode("Yêu cầu mới \n- Từ: Petcasa \n- Tiêu đề: Tạo mới tài khoản \n- Nội dung: ".$contentTele);
+            $contentTele = "\n + Tài khoản mới được tạo : $request->Email " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Số nhận diện : $request->IDNo";
+            $contentTeleSend = urlencode("Yêu cầu mới \n- Từ: Petcasa \n- Tiêu đề: Tạo mới tài khoản \n- Nội dung: " . $contentTele);
 //            dd($contentTeleSend);
             $roomId = -1001421358819;
             $bot_token = "bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI";
@@ -63,11 +58,11 @@ class AccountController extends Controller
     public function loginP(Request $request)
     {
         $condition = ['Email' => $request->EmailLogin, 'Status' => "1",];
-        $account   = Account::where($condition)->get()->first();
+        $account = Account::where($condition)->get()->first();
         if (isset($account)) {
             $PasswordHash = $account->PasswordHash;
-            $Salt         = $account->Salt;
-            $passIn       = md5($request->PasswordLogin . $Salt);
+            $Salt = $account->Salt;
+            $passIn = md5($request->PasswordLogin . $Salt);
             if ($PasswordHash == $passIn) {
                 session_start();
                 $account_session = $request->session();
@@ -85,8 +80,8 @@ class AccountController extends Controller
     {
 //        dd($request);
         $current_role = session()->get('current_account')->Role_id;
-        $accounts     = Account::query();
-        $condition    = [['id', '!=', session()->get('current_account')->id], ['Role_id', '<', $current_role]];
+        $accounts = Account::query();
+        $condition = [['id', '!=', session()->get('current_account')->id], ['Role_id', '<', $current_role]];
         if ($request->has('start') && $request->has('end')) {
             array_push($condition, ['created_at', '>', $request->start]);
             array_push($condition, ['created_at', '<=', $request->end]);
@@ -115,16 +110,16 @@ class AccountController extends Controller
     public function store(RegisterRequest $request)
     {
 //        dd($request);
-        $account                 = $request->all();
-        $Salt                    = generateRandomString(5);
-        $account['Salt']         = $Salt;
-        $password                = $account['Password'];
-        $PasswordHash            = md5($password . $Salt);
+        $account = $request->all();
+        $Salt = generateRandomString(5);
+        $account['Salt'] = $Salt;
+        $password = $account['Password'];
+        $PasswordHash = md5($password . $Salt);
         $account['PasswordHash'] = $PasswordHash;
-        $slug_begin              = generateRandomString(8);
-        $Slug                    = to_slug($slug_begin . ' ' . $account['FullName']);
-        $account['Slug']         = $Slug;
-        $account['Status']       = 1;
+        $slug_begin = generateRandomString(8);
+        $Slug = to_slug($slug_begin . ' ' . $account['FullName']);
+        $account['Slug'] = $Slug;
+        $account['Status'] = 1;
         if ($request->has('Avatar')) {
             $account['Avatar'] = $request->avatar;
         }
@@ -140,7 +135,7 @@ class AccountController extends Controller
     public function edit($slug)
     {
         $account_cur = session()->get('current_account');
-        $account     = Account::where('Slug', '=', $slug)->where('id', '!=', $account_cur->id)->first();
+        $account = Account::where('Slug', '=', $slug)->where('id', '!=', $account_cur->id)->first();
         if (isset($account) && $account != null) {
             return view('admin.accounts.edit', compact('account'));
         }
@@ -150,7 +145,7 @@ class AccountController extends Controller
     public function detail($slug)
     {
         $account_cur = session()->get('current_account');
-        $account     = Account::where('Slug', '=', $slug)->where('id', '!=', $account_cur->id)->first();
+        $account = Account::where('Slug', '=', $slug)->where('id', '!=', $account_cur->id)->first();
         if (isset($account) && $account != null) {
             return view('admin.accounts.detail_account', compact('account'));
         }
@@ -161,14 +156,14 @@ class AccountController extends Controller
     {
         $account = Account::where('Slug', '=', $slug)->first();
         if (isset($account) && $account != null) {
-            $account->FullName    = $request->FullName;
-            $account->Address     = $request->Address;
-            $account->Email       = $request->Email;
-            $account->Avatar      = $request->avatar;
+            $account->FullName = $request->FullName;
+            $account->Address = $request->Address;
+            $account->Email = $request->Email;
+            $account->Avatar = $request->avatar;
             $account->DateOfBirth = $request->DateOfBirth;
             $account->PhoneNumber = $request->PhoneNumber;
-            $account->IDNo        = $request->IDNo;
-            $account->Role_id     = $request->Role_id;
+            $account->IDNo = $request->IDNo;
+            $account->Role_id = $request->Role_id;
             $account->update();
             return redirect(route('admin_account_list'));
         }
@@ -189,7 +184,7 @@ class AccountController extends Controller
     public function deactive_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
         if (isset($ids_array) && $ids_array != null) {
             Account::whereIn('id', $ids_array)->update(['status' => 0]);
@@ -200,7 +195,7 @@ class AccountController extends Controller
 
     public function active(Request $request)
     {
-        $id      = $request->id;
+        $id = $request->id;
         $account = Account::find($id);
         if (isset($account) && $account != null) {
             Account::where('id', '=', $id)->update(['status' => 1]);
@@ -212,7 +207,7 @@ class AccountController extends Controller
     public function active_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
 //        return response()->json(['success'=>$ids_array]);
         if (isset($ids_array) && $ids_array != null) {
@@ -238,7 +233,7 @@ class AccountController extends Controller
         $account = Account::where('Slug', '=', $request->Slug)->first();
 //        dd($account);
         if (isset($account) && $account != null) {
-            $account->Salt         = generateRandomString(5);
+            $account->Salt = generateRandomString(5);
             $account->PasswordHash = md5($request->newPassword . $account->Salt);
 //        dd($account);
             $account->update();

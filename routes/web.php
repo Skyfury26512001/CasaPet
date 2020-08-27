@@ -35,7 +35,7 @@ Route::get('/get_involved', function () {
 /* 1.Services */
 Route::get('/services', function () {
     return view('user.services.services');
-});
+})->name('services');
 
 Route::get('/rescue_form', function () {
     return view('user.services.rescue_form');
@@ -76,9 +76,7 @@ Route::get('/pet_care', function () {
 
 
 /* 3.Blog */
-Route::get('/news', function () {
-    return view('user.blog.news');
-})->name('news');
+Route::get('/news', 'BlogController@news_list_data')->name('news');
 
 
 /* 4.About */
@@ -118,6 +116,9 @@ Route::get('/login_register', function () {
 })->name('login_register');
 
 Route::post('/login', 'AccountController@loginP')->name('loginP');
+
+Route::post('/logout', 'AccountController@logOut')->name('logout');
+
 Route::post('/register', 'AccountController@registerP')->name('register');
 
 Route::get('/personal_info', 'PersonalInfoController@account_data')->name('personal_info');
@@ -186,17 +187,17 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
 //        Route::put('/deactiveAll', 'OrderController@deactive_multi')->name('admin_order_deactive_multi');
 //        Route::put('/activeAll', 'OrderController@active_multi')->name('admin_order_active_multi');
     });
-    Route::group(['prefix' => '/posts'], function () {
-        Route::get('/', 'PostController@list')->name('admin_post_list');
-        Route::get('/create', 'PostController@create')->name('admin_post_create');
-        Route::post('/store', 'PostController@store')->name('admin_post_store');
-        Route::get('/edit/{slug}', 'PostController@edit')->name('admin_post_edit');
-        Route::get('/detail/{slug}', 'PostController@detail')->name('admin_post_detail');
-        Route::put('/update/{slug}', 'PostController@update')->name('admin_post_update');
-        Route::put('/deactive/{id}', 'PostController@deactive')->name('admin_post_deactive');
-        Route::put('/active/{id}', 'PostController@active')->name('admin_post_active');
-        Route::put('/deactiveAll', 'PostController@deactive_multi')->name('admin_post_deactive_multi');
-        Route::put('/activeAll', 'PostController@active_multi')->name('admin_post_active_multi');
+    Route::group(['prefix' => '/news'], function () {
+        Route::get('/', 'NewController@list')->name('admin_new_list');
+        Route::get('/create', 'NewController@create')->name('admin_new_create');
+        Route::post('/store', 'NewController@store')->name('admin_new_store');
+        Route::get('/edit/{slug}', 'NewController@edit')->name('admin_new_edit');
+        Route::get('/detail/{slug}', 'NewController@detail')->name('admin_new_detail');
+        Route::put('/update/{slug}', 'NewController@update')->name('admin_new_update');
+        Route::put('/deactive/{id}', 'NewController@deactive')->name('admin_new_deactive');
+        Route::put('/active/{id}', 'NewController@active')->name('admin_new_active');
+        Route::put('/deactiveAll', 'NewController@deactive_multi')->name('admin_new_deactive_multi');
+        Route::put('/activeAll', 'NewController@active_multi')->name('admin_new_active_multi');
     });
     Route::group(['prefix' => '/reports'], function () {
         Route::get('/', 'ReportController@list')->name('admin_report_list');
@@ -205,10 +206,11 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::get('/edit/{slug}', 'ReportController@edit')->name('admin_report_edit');
         Route::get('/detail/{slug}', 'ReportController@detail')->name('admin_report_detail');
         Route::put('/update/{slug}', 'ReportController@update')->name('admin_report_update');
-        Route::put('/deactive/{id}', 'ReportController@deactive')->name('admin_report_deactive');
-        Route::put('/active/{id}', 'ReportController@active')->name('admin_report_active');
-        Route::put('/deactiveAll', 'ReportController@deactive_multi')->name('admin_report_deactive_multi');
-        Route::put('/activeAll', 'ReportController@active_multi')->name('admin_report_active_multi');
+        Route::put('/handle/{id}', 'ReportController@handle')->name('admin_report_handle');
+        Route::put('/done/{id}', 'ReportController@done')->name('admin_report_done');
+        Route::put('/aceptAll', 'ReportController@acept_multi')->name('admin_report_acept_multi');
+        Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
+        Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
     });
 });
 
@@ -218,11 +220,16 @@ Route::get('checking_page', function () {
     return view('session_checking');
 });
 
-/* Logout  */
+/* Admin Login */
+Route::get('/admin_login', function () {
+    return view('admin.login_register');
+})->name('login');
+
+/* Admin Logout */
 Route::get('/logOut', 'AccountController@logOut')->name('logOut');
 
 
-/* 7.Time Line */
+/* Timeline */
 Route::get('/timeline', function () {
     return view('timeline');
 });

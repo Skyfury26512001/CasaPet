@@ -120,7 +120,7 @@
                         </div>
                         <div class="form-group">
                             <label for="PetId">Tên chó : Mã chó <span class="text-danger">*</span></label>
-                            <select name="PetId" class="form-control" id="PetId" required="">
+                            <select class="form-control select-form-control" name="PetId" class="form-control" id="PetId" required="">
                                 @foreach($pets as $pet)
                                     <option value="{{$pet->id}}" >{{$pet->Name}} | Id : {{$pet->Slug}}</option>
                                 @endforeach

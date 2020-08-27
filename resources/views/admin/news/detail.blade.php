@@ -10,7 +10,7 @@
                 uploadPreset: 'rdjyel16',
                 multiple: false,
                 form: '#product_form',
-                folder: 'PetCasa/PostThumbnails',
+                folder: 'PetCasa/UserAvatar',
                 fieldName: 'avatar',
                 thumbnails: '.avatar'
             }, function (error, result) {
@@ -49,6 +49,7 @@
         ClassicEditor
             .create(document.querySelector('#editor'))
             .then(editor => {
+                editor.isReadOnly = true;
                 console.log(editor);
             })
             .catch(error => {
@@ -80,59 +81,56 @@
             <div class="col-lg-6">
                 <div class="card-box">
                     <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
-                    <form action="{{route('admin_post_store')}}" id="product_form" method="POST"
-                          class="parsley-examples" novalidate="">
+                    <div id="product_form" method="POST"
+                         class="parsley-examples" novalidate="">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="Title">Tiêu đề<span class="text-danger">*</span></label>
-                            <input type="text" name="Title" parsley-trigger="change" required=""
-                                   class="form-control" id="Title" value="{{old('Title')}}">
+                            <input disabled type="text" name="Title" parsley-trigger="change" required=""
+                                   class="form-control" id="Title" value="{{$post->Title}}">
                             @if ($errors->has('Title'))
                                 <label class="alert-warning">{{$errors->first('Title')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Content" >Mô tả<span class="text-danger">*</span></label>
+                            <label for="Content">Mô tả<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
-                                      placeholder="" >{{old('Content')}}</textarea>
+                                      placeholder="" disabled>{{$post->Content}}</textarea>
                             @if ($errors->has('Content'))
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Account_id" value="{{old('Account_id')}}">AccountId<span class="text-danger">*</span></label>
-                            <input list="account" name="Account_id" value="{{old('Account_id')}}"/>
-                            <datalist id="account">
-                                @foreach ($accounts as $account)
-                                <option value="{{$account->id}}">{{$account->FullName}}</option>
-                                @endforeach
-                            </datalist>
+                            <label for="Account_id">AccountId<span class="text-danger">*</span></label>
+                            <input disabled list="account" name="Account_id" value="{{$account->id}}"/>
                             @if ($errors->has('Account_id'))
                                 <label class="alert-warning">{{$errors->first('Account_id')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="Pet_id">PetID<span class="text-danger">*</span></label>
-                            <input list="pet" name="Pet_id" value="{{old('Pet_id')}}"/>
-                            <datalist id="pet">
-                                @foreach ($pets as $pet)
-                                <option value="{{$pet->id}}">{{$pet->Name}}</option>
-                                @endforeach
-                            </datalist>
+                            <input disabled list="pet" name="Pet_id" value="{{$pet->id}}"/>
                             @if ($errors->has('Pet_id'))
                                 <label class="alert-warning">{{$errors->first('Pet_id')}}</label>
                             @endif
                         </div>
+                        <div class="form-group">
+                            <label for="Status">Status<span class="text-danger">*</span></label>
+                            <select class="form-control select-form-control" name="Status" disabled></select>
+                            if($request->Status != "All"){array_push($condition, ['Status', '=', $request->Status]);}
+                        </div>
                         <div class="form-group text-right mb-0">
-                            <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
-                                Submit
-                            </button>
-                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
-                                Cancel
-                            </button>
+                            <a class="btn btn-primary waves-effect waves-light mr-1"
+                               href="{{route('admin_post_edit',$post->id)}}">
+                                Sửa
+                            </a>
+                            <a href="{{route('admin_post_list')}}" class="btn btn-secondary waves-effect waves-light">
+                                Trở lại danh sách
+                            </a>
                         </div>
 
-                    </form>
+                    </div>
                 </div> <!-- end card-box -->
             </div>
             <!-- end row -->

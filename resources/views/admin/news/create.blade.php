@@ -10,7 +10,7 @@
                 uploadPreset: 'rdjyel16',
                 multiple: true,
                 form: '#product_form',
-                folder: 'PetCasa/ReportThumbnails',
+                folder: 'PetCasa/PetThumbnails',
                 fieldName: 'thumbnails[]',
                 thumbnails: '.thumbnails'
             }, function (error, result) {
@@ -30,6 +30,19 @@
 
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
+            // var splittedImg = $(this).parent().find('img').attr('src').split('/');
+            // var imgName = splittedImg[splittedImg.length - 1];
+            // imgName = imgName.split('.');
+            // $(this).parent().remove();
+            // console.log($(this).parent());
+            // var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
+            // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
+            // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
+            // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
+            // console.log(input);
+            // input.remove()
+            // console.log(input);
+            // console.log("Remove image : " + "sucessful");
             let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
@@ -55,10 +68,10 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
-                            <li class="breadcrumb-item active">Quản lý báo cáo</li>
+                            <li class="breadcrumb-item active">Quản lý bài viết</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Quản lý báo cáo</h4>
+                    <h4 class="page-title">Quản lý tin tức</h4>
                 </div>
             </div>
         </div>
@@ -67,45 +80,36 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-box">
-                    <h4 class="header-title">Thêm mới báo cáo : </h4>
-                    <form action="{{route('admin_report_store')}}" id="product_form" method="POST"
+                    <h4 class="header-title">Thêm mới tin tức : </h4>
+                    <form action="{{route('admin_new_store')}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
                         <div class="form-group">
-                            <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
-                            <input type="text" name="FullName" parsley-trigger="change" required=""
-                                   class="form-control" id="FullName" value="" style="width: 30%;">
-                            @if ($errors->has('FullName'))
-                                <label class="alert-warning">{{$errors->first('FullName')}}</label>
+                            <label for="Title">Tiêu đề<span class="text-danger">*</span></label>
+                            <input type="text" name="Title" parsley-trigger="change" required=""
+                                   class="form-control" id="Title" value="{{old('Title')}}">
+                            @if ($errors->has('Title'))
+                                <label class="alert-warning">{{$errors->first('Title')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Address">Địa chỉ <span class="text-danger">*</span></label>
-                            <input type="text" name="Address" parsley-trigger="change" required=""
-                                   class="form-control" id="Address" value="" style="width: 45%;">
-                            @if ($errors->has('Address'))
-                                <label class="alert-warning">{{$errors->first('Address')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
-                            <input type="text" name="PhoneNumber" parsley-trigger="change" required=""
-                                   class="form-control" id="PhoneNumber" value=""
-                                   style="width: 10%;">
-                            @if ($errors->has('PhoneNumber'))
-                                <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="Content">Mô tả<span class="text-danger">*</span></label>
+                            <label for="Content">Nội dung bài viết :<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
-                                      placeholder=""></textarea>
+                                      placeholder="" >{{old('Content')}}</textarea>
                             @if ($errors->has('Content'))
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="userName">Thumnails<span class="text-danger">*</span></label>
+                            <label for="Author">Tác giả<span class="text-danger">*</span></label>
+                            <input type="text" name="Author" parsley-trigger="change" required=""
+                                   class="form-control" id="Author" value="{{old('Author')}}">
+                            @if ($errors->has('Author'))
+                                <label class="alert-warning">{{$errors->first('Author')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="userName">Ảnh<span class="text-danger">*</span></label>
                             <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
                             <div class="thumbnails"></div>
                             @if ($errors->has('thumbnails'))
@@ -116,9 +120,9 @@
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit
                             </button>
-                            <a class="btn btn-secondary waves-effect waves-light" href="{{route('admin_report_list')}}">
-                                Hủy
-                            </a>
+                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
+                                Cancel
+                            </button>
                         </div>
 
                     </form>

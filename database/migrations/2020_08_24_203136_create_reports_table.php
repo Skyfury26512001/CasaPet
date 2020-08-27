@@ -20,7 +20,7 @@ class CreateReportsTable extends Migration
             $table->string('PhoneNumber');
             $table->string('Thumbnails');
             $table->text('Content');
-            $table->integer('Status');
+            $table->integer('Status'); // 0 : Chưa xử lý ; 1 : Đang xử lý ; 2 : Đã xử lý ;  3 : Không xử lý
             $table->timestamps();
         });
     }

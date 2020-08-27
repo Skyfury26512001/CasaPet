@@ -36,11 +36,11 @@
                 if (allVals.length <= 0) {
                     alert("Please select row.");
                 } else {
-                    var check = confirm("Are you sure you want to deactive this post?");
+                    var check = confirm("Are you sure you want to deactive this new?");
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_post_deactive_multi')}}',
+                            url: '{{route('admin_new_deactive_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -51,7 +51,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_post_list')}}';
+                                    window.location = '{{route('admin_new_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -86,7 +86,7 @@
                     if (check == true) {
                         var join_selected_values = allVals.join(",");
                         $.ajax({
-                            url: '{{route('admin_post_active_multi')}}',
+                            url: '{{route('admin_new_active_multi')}}',
                             type: 'PUT',
                             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                             data: 'ids=' + join_selected_values,
@@ -97,7 +97,7 @@
                                     });
                                     alert(data['success']);
                                     // alert("Accounts Deleted Success");
-                                    window.location = '{{route('admin_post_list')}}';
+                                    window.location = '{{route('admin_new_list')}}';
                                 } else if (data['error']) {
                                     console.log(data['error']);
                                 } else {
@@ -176,11 +176,11 @@
                         <div class="col-3">
                             <h4 class="header-title">Pets</h4>
                             <p class="sub-header">
-                                <code>All posts</code>
+                                <code>All news</code>
                             </p>
                         </div>
                         <div class="col-9">
-                            <form action="{{route('admin_post_list')}}" method="GET" style="display: flex">
+                            <form action="{{route('admin_new_list')}}" method="GET" style="display: flex">
                                 <div class="form-filter">
                                     Lọc theo ngày tạo
                                     <select class="form-control select-form-control" name="orderBy">
@@ -223,10 +223,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-12">
                             <div class="row">
                                 <div class="offset-8 col-3">
-                                    <form class="app-search" action="{{route('admin_post_list')}}">
+                                    <form class="app-search" action="{{route('admin_new_list')}}">
                                         <div class="app-search-box">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" name="keyword"
@@ -255,57 +255,59 @@
                                     </thead>
                                     <tbody>
                                     @csrf
-                                    {{--                            {{dd($posts)}}--}}
-                                    @foreach($posts as $post)
-                                        {{--                                {{dd($post)}}--}}
+                                    {{--                            {{dd($news)}}--}}
+                                    @foreach($news as $new)
+                                        {{--                                {{dd($new)}}--}}
                                         <tr>
                                             <td colspan="" style="vertical-align: middle;">
                                                 <div class="checkbox checkbox-primary">
                                                     <input class="checkbox_list" id="" type="checkbox"
-                                                           style="opacity: 1" name="ids[]" value="{{$post->id}}">
+                                                           style="opacity: 1" name="ids[]" value="{{$new->id}}">
                                                 </div>
                                             </td>
-                                            <td>{{$post->id}}</td>
-                                            <td>{{$post->Title}}</td>
-                                            <td>{!!$post->Content  !!}</td>
-                                            @if ($post->Status == 0)
+                                            <td>{{$new->id}}</td>
+                                            <td><div class="ellipsis">{{$new->Title}}</div></td>
+                                            <td>
+                                                <div class="ellipsis">{!!$new->Content  !!}</div>
+                                            </td>
+                                            @if ($new->Status == 0)
                                                 <td style="color: gray">Không hoạt động</td>
-                                            @elseif ($post->Status == 1)
+                                            @elseif ($new->Status == 1)
                                                 <td style="color: mediumspringgreen"> Đang hoạt động</td>
                                             @else
                                                 <td style="color: red"> Unknown Status</td>
                                             @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_post_edit',$post->id)}}"
+                                                    <a href="{{route('admin_new_edit',$new->id)}}"
                                                        class="btn btn-primary"
                                                        style="float:right">Sửa</a>
                                                 </div>
                                             </td>
-                                            @if ($post->Status == 0)
+                                            @if ($new->Status == 0)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_post_active',$post->id)}}"
+                                                        <form action="{{route('admin_new_active',$new->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Active</button>
+                                                            <button class="btn btn-primary btn-table">Kích hoạt</button>
                                                         </form>
                                                     </div>
                                                 </td>
-                                            @elseif ($post->Status == 1)
+                                            @elseif ($new->Status == 1)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_post_deactive',$post->id)}}"
+                                                        <form action="{{route('admin_new_deactive',$new->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Deactive</button>
+                                                            <button class="btn btn-primary btn-table">Hủy</button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_post_detail',$post->id)}}"
+                                                    <a href="{{route('admin_new_detail',$new->id)}}"
                                                        class="btn btn-primary"
                                                        style="float:right">Chi tiết</a>
                                                 </div>
@@ -317,7 +319,7 @@
                             </div>
                             <div style="margin-top: 1%">
                                 <div class="row">
-                                    <div class="col-5"> {{ $posts->links() }}</div>
+                                    <div class="col-5"> {{ $news->links() }}</div>
                                     <div class="col-6">
                                         <button class="btn btn-primary" style="float: right;margin-left: 5%;"
                                                 id="deactive_all"> Deactive All

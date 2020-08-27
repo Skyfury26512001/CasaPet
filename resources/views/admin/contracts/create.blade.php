@@ -114,7 +114,7 @@
                         </div>
                         <div class="form-group">
                             <label for="SpeciesSort">Loài<span class="text-danger">*</span></label>
-                            <select name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
+                            <select class="form-control select-form-control" name="SpeciesSort" class="form-control" id="SpeciesSort" required="">
                                 <option value="Chó">Chó</option>
                                 <option value="Mèo">Mèo</option>
                                 <option value="Vịt">Vịt</option>

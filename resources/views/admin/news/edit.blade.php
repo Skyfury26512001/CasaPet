@@ -10,7 +10,7 @@
                 uploadPreset: 'rdjyel16',
                 multiple: false,
                 form: '#product_form',
-                folder: 'PetCasa/PostThumbnails',
+                folder: 'PetCasa/UserAvatar',
                 fieldName: 'avatar',
                 thumbnails: '.avatar'
             }, function (error, result) {
@@ -28,21 +28,12 @@
 
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
-            // var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            // var imgName = splittedImg[splittedImg.length - 1];
-            // imgName = imgName.split('.');
-            // $(this).parent().remove();
-            // console.log($(this).parent());
-            // var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
-            // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
-            // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
-            // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
-            // console.log(input);
-            // input.remove()
-            // console.log(input);
-            // console.log("Remove image : " + "sucessful");
-            let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
-            $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
+            var splittedImg = $(this).parent().find('img').attr('src').split('/');
+            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
+            console.log(imgName);
+            var publicId = $(this).parent().attr('data-cloudinary');
+            $(this).parent().remove();
+            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
         });
     </script>
     <script>
@@ -77,52 +68,55 @@
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card-box">
                     <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
-                    <form action="{{route('admin_post_store')}}" id="product_form" method="POST"
+                    <form action="{{route('admin_new_update',$new->id)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="Title">Tiêu đề<span class="text-danger">*</span></label>
                             <input type="text" name="Title" parsley-trigger="change" required=""
-                                   class="form-control" id="Title" value="{{old('Title')}}">
+                                   class="form-control" id="Title" value="{{$new->Title   }}">
                             @if ($errors->has('Title'))
                                 <label class="alert-warning">{{$errors->first('Title')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Content" >Mô tả<span class="text-danger">*</span></label>
+                            <label for="userName">Thumnails<span class="text-danger">*</span></label>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                            <div class="thumbnails">
+                                <ul class="cloudinary-thumbnails">
+                                    @foreach($new->ArrayThumbnails450x450 as $thumbnail)
+                                        <li class="cloudinary-thumbnail active" data-cloudinary="{{$thumbnail}}">
+                                            <img src="{{$thumbnail}}" style="width: 300px;height: 300px">
+                                            <a href="#" class="cloudinary-delete">x</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @if ($errors->has('thumbnails'))
+                                <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Content">Mô tả<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
-                                      placeholder="" >{{old('Content')}}</textarea>
+                                      placeholder="">{{$new->Content}}</textarea>
                             @if ($errors->has('Content'))
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
+
                         <div class="form-group">
-                            <label for="Account_id" value="{{old('Account_id')}}">AccountId<span class="text-danger">*</span></label>
-                            <input list="account" name="Account_id" value="{{old('Account_id')}}"/>
-                            <datalist id="account">
-                                @foreach ($accounts as $account)
-                                <option value="{{$account->id}}">{{$account->FullName}}</option>
-                                @endforeach
-                            </datalist>
-                            @if ($errors->has('Account_id'))
-                                <label class="alert-warning">{{$errors->first('Account_id')}}</label>
-                            @endif
+                            <label for="Status">Status<span class="text-danger">*</span></label>
                         </div>
-                        <div class="form-group">
-                            <label for="Pet_id">PetID<span class="text-danger">*</span></label>
-                            <input list="pet" name="Pet_id" value="{{old('Pet_id')}}"/>
-                            <datalist id="pet">
-                                @foreach ($pets as $pet)
-                                <option value="{{$pet->id}}">{{$pet->Name}}</option>
-                                @endforeach
-                            </datalist>
-                            @if ($errors->has('Pet_id'))
-                                <label class="alert-warning">{{$errors->first('Pet_id')}}</label>
-                            @endif
-                        </div>
+
+                        @foreach($new->ArrayThumbnails as $thumbnail)
+                            <input type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}"
+                                   value="{{$thumbnail}}">
+                        @endforeach
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit

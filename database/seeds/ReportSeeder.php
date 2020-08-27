@@ -21,22 +21,82 @@ class ReportSeeder extends Seeder
         }
         $reports = array(
             array(
-                'FullName'      => 'Quá trình phục hồi kì diệu của Gấu liệt', // Tiêu đề bài viết
-                'Address'     => 'Nguyễn Văn Tài', // ID pet
-                'PhoneNumber' => '0583973384', // Id tài khoản
-                'Thumbnails'    => "", // Nội dung bài viết
-                'Content'     => 1, // Trạng thái bài viết ( 1 : active ; 0 : deactive )
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 2 ! Ngõ 157 Đường Mai Quốc Việt',
+                'Thumbnails'    => "#",
+                'Content'     => "Có 1 ổ mèo con bị thương ",
+                'Status' => 0,
+                'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
+                'updated_at' => \Carbon\Carbon::now(),
+            ),
+            array(
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 11 ! Ngõ 33/22/1 Đường Mai Quốc Việt',
+                'Thumbnails'    => "",
+                'Content'     => "Ở khu số 5 ! Ngõ 159 Đường Mai Quốc Việt",
                 'Status' => 1,
                 'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'FullName'      => 'Quá trình phục hồi kì diệu của Gấu liệt', // Tiêu đề bài viết
-                'Address'     => 'Nguyễn Văn Tài', // ID pet
-                'PhoneNumber' => '0583973384', // Id tài khoản
-                'Thumbnails'    => "", // Nội dung bài viết
-                'Content'     => 1, // Trạng thái bài viết ( 1 : active ; 0 : deactive )
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 2 ! Ngõ 90 Đường Mai Quốc Việt',
+                'Thumbnails'    => "",
+                'Content'     => "Ở khu số 10 ! Ngõ 157 Đường Mai Quốc Việt",
+                'Status' => 2,
+                'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
+                'updated_at' => \Carbon\Carbon::now(),
+            ),
+            array(
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 2 ! Ngõ 90 Đường Mai Quốc Việt',
+                'Thumbnails'    => "",
+                'Content'     => "Ở khu số 10 ! Ngõ 157 Đường Mai Quốc Việt",
+                'Status' => 3,
+                'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
+                'updated_at' => \Carbon\Carbon::now(),
+            ),
+            array(
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 2 ! Ngõ 157 Đường Mai Quốc Việt',
+                'Thumbnails'    => "#",
+                'Content'     => "Có 1 ổ mèo con bị thương ",
+                'Status' => 0,
+                'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
+                'updated_at' => \Carbon\Carbon::now(),
+            ),
+            array(
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 11 ! Ngõ 33/22/1 Đường Mai Quốc Việt',
+                'Thumbnails'    => "",
+                'Content'     => "Ở khu số 5 ! Ngõ 159 Đường Mai Quốc Việt",
                 'Status' => 1,
+                'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
+                'updated_at' => \Carbon\Carbon::now(),
+            ),
+            array(
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 2 ! Ngõ 90 Đường Mai Quốc Việt',
+                'Thumbnails'    => "",
+                'Content'     => "Ở khu số 10 ! Ngõ 157 Đường Mai Quốc Việt",
+                'Status' => 2,
+                'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
+                'updated_at' => \Carbon\Carbon::now(),
+            ),
+            array(
+                'FullName'      => 'Nguyễn Đức Trung',
+                'PhoneNumber' => '0583973384',
+                'Address' => 'Ở khu số 2 ! Ngõ 90 Đường Mai Quốc Việt',
+                'Thumbnails'    => "",
+                'Content'     => "Ở khu số 10 ! Ngõ 157 Đường Mai Quốc Việt",
+                'Status' => 3,
                 'created_at' => \Carbon\Carbon::now()->addDays(rand(-30, 30)),
                 'updated_at' => \Carbon\Carbon::now(),
             ),

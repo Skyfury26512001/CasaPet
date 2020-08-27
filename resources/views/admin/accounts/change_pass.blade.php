@@ -67,8 +67,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
                             <li class="breadcrumb-item active">Quản lý tài khoản</li>
                         </ol>
                     </div>
@@ -97,7 +96,7 @@
                         <div class="form-group">
                             <label for="newPassword">Mật khẩu mới<span class="text-danger">*</span></label>
                             <input type="password" name="newPassword" parsley-trigger="change" required=""
-                                   value="{{$account->newPassword}}" class="form-control" id="newPassword">
+                                   value="{{$account->newPassword}}" class="form-control" id="newPassword" style="width: 30%">
                             @if ($errors->has('newPassword'))
                                 <label class="alert-warning">{{$errors->first('newPassword')}}</label>
                             @endif
@@ -114,11 +113,9 @@
 {{--                        <input type="hidden" name="avatar" data-cloudinary-public-id="{{$account->Avatar}}" value="{{$account->Avatar}}">--}}
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
-                                Submit
+                                Cập nhật
                             </button>
-                            <button type="reset" class="btn btn-secondary waves-effect waves-light">
-                                Cancel
-                            </button>
+                            <a class="btn btn-secondary waves-effect waves-light mr-1" href="{{route('admin_account_list')}}" style="color: yellow">Trở lại danh sách</a>
                         </div>
 
                     </form>
