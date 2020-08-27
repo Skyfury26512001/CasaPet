@@ -46,7 +46,7 @@ class DonationController extends Controller
         $donation->note = $request->note;
 
         $donation->save();
-        return redirect(url('https://paypal.me/PetsCasa?locale.x=en_US'));
+        return redirect(url('https://www.sandbox.paypal.com/vn/signin'));
     }
 
     /**

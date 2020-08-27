@@ -10,7 +10,7 @@
                 uploadPreset: 'rdjyel16',
                 multiple: true,
                 form: '#product_form',
-                folder: 'PetCasa/PetThumbnails',
+                folder: 'PetCasa/ReportThumbnails',
                 fieldName: 'thumbnails[]',
                 thumbnails: '.thumbnails'
             }, function (error, result) {
@@ -30,25 +30,8 @@
 
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
-            var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            // var imgName = splittedImg[splittedImg.length - 1];
-            // imgName = imgName.split('.');
-            // $(this).parent().remove();
-            // console.log($(this).parent());
-            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
-            // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
-            // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
-            // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
-            // console.log(input);
-            // input.remove()
-            // console.log(input);
-            // console.log("Remove image : " + "sucessful");
-            console.log(imgName)
-            // console.log($(this).parent().attr('data-cloudinary'))
-            var publicId = $(this).parent().attr('data-cloudinary');
-            $(this).parent().remove();
-            // let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
-            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
+            let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
+            $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
     </script>
     <script>
@@ -84,16 +67,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-box">
-                    <h4 class="header-title">Chỉnh sửa thông tin báo cáo : </h4>
-                    <form action="{{route('admin_report_update',$report->id)}}" id="product_form" method="POST"
+                    <h4 class="header-title">Thêm mới báo cáo : </h4>
+                    <form action="{{route('admin_report_store')}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
-                        @method('PUT')
-
                         <div class="form-group">
                             <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
                             <input type="text" name="FullName" parsley-trigger="change" required=""
-                                   class="form-control" id="FullName" value="{{$report->FullName}}" style="width: 30%;">
+                                   class="form-control" id="FullName" value="" style="width: 30%;">
                             @if ($errors->has('FullName'))
                                 <label class="alert-warning">{{$errors->first('FullName')}}</label>
                             @endif
@@ -101,7 +82,7 @@
                         <div class="form-group">
                             <label for="Address">Địa chỉ <span class="text-danger">*</span></label>
                             <input type="text" name="Address" parsley-trigger="change" required=""
-                                   class="form-control" id="Address" value="{{$report->Address}}" style="width: 45%;">
+                                   class="form-control" id="Address" value="" style="width: 45%;">
                             @if ($errors->has('Address'))
                                 <label class="alert-warning">{{$errors->first('Address')}}</label>
                             @endif
@@ -109,59 +90,31 @@
                         <div class="form-group">
                             <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
                             <input type="text" name="PhoneNumber" parsley-trigger="change" required=""
-                                   class="form-control" id="PhoneNumber" value="{{$report->PhoneNumber}}"
+                                   class="form-control" id="PhoneNumber" value=""
                                    style="width: 10%;">
                             @if ($errors->has('PhoneNumber'))
                                 <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Content">Nội dung<span class="text-danger">*</span></label>
+                            <label for="Content">Mô tả<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
-                                      placeholder="">{{$report->Content}}</textarea>
+                                      placeholder=""></textarea>
                             @if ($errors->has('Content'))
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="userName">Thumnails<span class="text-danger">*</span></label>
-                            <button disabled type="button" id="upload_widget" class="btn-primary btn">Upload</button>
-                            <div class="thumbnails">
-                                <ul class="cloudinary-thumbnails">
-                                    @foreach($report->ArrayThumbnails450x450 as $thumbnail)
-                                        <li class="cloudinary-thumbnail active" data-cloudinary="{{$thumbnail}}">
-                                            <img src="{{$thumbnail}}" style="width: 300px;height: 300px">
-                                            <a href="#" class="cloudinary-delete">x</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                            <div class="thumbnails"></div>
                             @if ($errors->has('thumbnails'))
                                 <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
                             @endif
                         </div>
-                        <div class="form-group" style="width:10%;">
-                            <label for="Status">Trạng thái<span class="text-danger">*</span></label>
-                            <select name="Status" class="form-control select-form-control"
-                                    @if ($report->Status == 2 ) disabled @endif>
-                                <option value="0" @if ( $report->Status == 0 ) select
-                                        @endif @if ( $report->Status != 0 ) disabled @endif > Chưa xử lý
-                                </option>
-                                <option value="1" @if ( $report->Status == 1 ) select @endif > Đang xử lý</option>
-                                <option value="2" @if ( $report->Status == 2 ) select @endif > Đã xử lý</option>
-                                <option value="3" @if ( $report->Status == 3 ) select @endif > Từ chối</option>
-                            </select>
-                            @if ($errors->has('thumbnails'))
-                                <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
-                            @endif
-                        </div>
-                        @foreach($report->ArrayThumbnails as $thumbnail)
-                            <input type="hidden" name="thumbnails[]" data-cloudinary-public-id="{{$thumbnail}}"
-                                   value="{{$thumbnail}}">
-                        @endforeach
                         <div class="form-group text-right mb-0">
-                            <button class="btn btn-primary waves-effect waves-light mr-1">
-                                Cập nhật
+                            <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
+                                Submit
                             </button>
                             <a class="btn btn-secondary waves-effect waves-light" href="{{route('admin_report_list')}}">
                                 Hủy

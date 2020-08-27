@@ -120,7 +120,9 @@
                             </div>
                             <div class="form-group col-lg-6" style="padding-top: 15px;">
                                 <label for="userName">Hình Đại Diện<span class="text-danger">*</span></label>
-                                &nbsp;&nbsp;&nbsp;<button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                                &nbsp;&nbsp;&nbsp;<button type="button" id="upload_widget" class="btn-primary btn">
+                                    Upload
+                                </button>
                                 <div class="avatar"></div>
                                 @if ($errors->has('avatar'))
                                     <label class="alert-warning">{{$errors->first('avatar')}}</label>

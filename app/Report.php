@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-    protected $fillable = ['FullName','Address','PhoneNumber','Thumbnails','Content','Status'];
+    protected $fillable = ['FullName', 'Address', 'PhoneNumber', 'Thumbnails', 'Content', 'Status'];
     protected static $link = 'https://res.cloudinary.com/dwarrion/image/upload/';
 
     public function getArrayThumbnails450x450Attribute()
@@ -54,4 +54,10 @@ class Report extends Model
     {
         return $id_thumbnail . self::$link;
     }
+
+    public function Pets()
+    {
+        return $this->belongsToMany(Pet::class, 'report_pet');
+    }
+
 }

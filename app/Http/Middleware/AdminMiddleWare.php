@@ -10,21 +10,19 @@ class AdminMiddleWare
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        $current_account = session('current_account');
-//        $account = Account::first();
-//        dd("132");
-//        dd($current_account);
-//        dd($current_account->roles);
-        if (isset($current_account) && $current_account != NULL){
-                if ($current_account->role != 'user'){
-                    return $next($request);
-                }
+        $current_account = Account::find(session('current_account')->id);
+        $request->session()->put('current_account', $current_account);
+        if (isset($current_account) && $current_account != NULL) {
+            $role = $current_account->Role_id;
+            if ($role > 1) {
+                return $next($request);
+            }
         }
         return redirect('/');
     }

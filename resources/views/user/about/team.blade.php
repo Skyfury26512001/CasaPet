@@ -145,7 +145,8 @@
     <!-- /bg-light-custom -->
 
     <!-- Section Call to action -->
-    <div id="call-to-action">
+    <div id="call-to-action"
+         style="background: url('https://res.cloudinary.com/dwarrion/image/upload/v1597767578/PetCasa/TeamPage/team_cover_xf0zyq.jpg')">
         <div class="container" style="padding: 100px 0 50px 0">
             <div class="row" style="color: white">
                 <div class="col-md" style="padding: 0 50px 0 50px">

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // user : route
 
 /* Home */
-Route::get('/','PageController@home')->name('home');
+Route::get('/', 'PageController@home')->name('home');
 
 
 /* Sub Pages */
@@ -40,6 +40,7 @@ Route::get('/services', function () {
 Route::get('/rescue_form', function () {
     return view('user.services.rescue_form');
 })->name('rescue_form');
+Route::post('/rescue_form', 'SendMailController@report_send')->name('report_send');
 
 Route::get('/adoption', function () {
     return view('user.services.adoption');
@@ -105,6 +106,12 @@ Route::get('/donation', function () {
     return view('user.donation.donation');
 })->name('get_donation');
 
+Route::post('/donation', 'DonationController@store')->name('donation');
+
+Route::get('/foster', function () {
+    return view('user.foster');
+})->name('foster');
+
 /* 7.Login-Register */
 
 Route::get('/login_register', function () {
@@ -113,19 +120,13 @@ Route::get('/login_register', function () {
 
 Route::post('/login', 'AccountController@loginP')->name('loginP');
 Route::post('/register', 'AccountController@registerP')->name('register');
-/* 8.Faq */
 
-Route::post('/donation', 'DonationController@store')->name('donation');
+Route::get('/personal_info', 'PersonalInfoController@account_data')->name('personal_info');
 
-Route::get('/donate_guide', function () {
-    return view('user.donation.donate_guide');
-})->name('donate_guide');
-
+Route::post('/personal_info_update', 'PersonalInfoController@account_update')->name('personal_info_update');
 
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
-
-
 
 
 // admin : route
@@ -210,6 +211,10 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/aceptAll', 'ReportController@acept_multi')->name('admin_report_acept_multi');
         Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
         Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
+    });
+    Route::group(['prefix' => '/report_pet'], function () {
+        Route::get('/', 'ReportController@list')->name('admin_report_list');
+        Route::get('/create', 'ReportController@create')->name('admin_report_create');
     });
 });
 

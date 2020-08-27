@@ -25,7 +25,6 @@ class CreatePostsTable extends Migration
             $table->integer('Status'); // 0 : Deactive , 1 : Active
             $table->timestamps();
         });
-        // add category
     }
 
     /**

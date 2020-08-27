@@ -7,8 +7,8 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use phpDocumentor\Reflection\Types\Array_;
 
 class AccountController extends Controller
@@ -41,18 +41,18 @@ class AccountController extends Controller
             }
             Account::create($account);
             $content = "Cảm ơn đã xử dụng dịch vụ của chúng tôi ! :3 Mãi yêu :3 !";
-            $data = array('name' => "$request->FullName", 'contact_message' => "$content", 'transaction' => 'as');
+            $data    = array('name' => "$request->FullName", 'contact_message' => "$content", 'transaction' => 'as');
             Mail::send('user.contact.email', $data, function ($message) use ($request) {
                 $message->to("$request->Email", "$request->FullName")->subject('Tạo mới tài khoản thành công');
-                $message->from("t1908@gmail.com", "PetsCasa");
+                $message->from("petscasavn@gmail.com", "PetsCasa");
             });
-            $contentTele =  "\n + Tài khoản mới được tạo : $request->Email " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Số nhận diện : $request->IDNo";
-            $contentTeleSend = urlencode("Yêu cầu mới \n- Từ: Petcasa \n- Tiêu đề: Tạo mới tài khoản \n- Nội dung: ".$contentTele);
+            $contentTele     = "\n + Tài khoản mới được tạo : $request->Email " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Số nhận diện : $request->IDNo";
+            $contentTeleSend = urlencode("Yêu cầu mới \n- Từ: Petcasa \n- Tiêu đề: Tạo mới tài khoản \n- Nội dung: " . $contentTele);
 //            dd($contentTeleSend);
-            $roomId = -1001421358819;
+            $roomId    = -1001421358819;
             $bot_token = "bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI";
 //            $url = "https://api.telegram.org/bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI/sendMessage?chat_id=-1001421358819&text='Xin Chào'";
-            $url = "https://api.telegram.org/$bot_token/sendMessage?chat_id=$roomId&text=$contentTeleSend";
+            $url     = "https://api.telegram.org/$bot_token/sendMessage?chat_id=$roomId&text=$contentTeleSend";
             $urldone = file_get_contents($url);
             return redirect(route('login_register'));
         });

@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewController extends Controller
 {
     public function list(Request $request)
     {
 
-        $news         = News::query();
-        $condition    = [];
+        $news      = News::query();
+        $condition = [];
         if ($request->has('start') && $request->has('end')) {
             array_push($condition, ['created_at', '>', $request->start]);
             array_push($condition, ['created_at', '<=', $request->end]);
@@ -22,10 +23,12 @@ class NewController extends Controller
             }
         }
         if ($request->has('keyword')) {
-            array_push($condition, ['Email', 'Like', '%' . $request->keyword . '%']);
+            array_push($condition, ['Title', 'Like', '%' . $request->keyword . '%']);
         }
         if ($request->has('orderBy')) {
             $news->orderBy('created_at', $request->orderBy);
+        } else {
+            $news->orderBy('created_at', "DESC");
         }
         $news = $news->where($condition)->paginate(5)->appends($request->query());
 //        dd($news);
@@ -47,27 +50,24 @@ class NewController extends Controller
                 'thumbnails' => 'required',
             ]
         );
-        dd($request);
-
         $new = DB::transaction(function () use ($request) {
-            $new           = new Post($request->all());
+            $new           = new News($request->all());
             $new['Status'] = 1;
             $new['Slug']   = to_slug($request->input('Title'));
+            foreach ($request->thumbnails as $thumb) {
+                $new['Thumbnails'] .= $thumb . ",";
+            }
             $new->save();
             $new['Slug'] = to_slug($new['id'] . ' ' . $request->input('Title'));
-            $new->save();
+            $new->update();
             return $new;
         });
-
-        $new = $new->toArray();
-//        dd($new);
-        News::create($new);
-        return redirect(route('admin_news_list'));
+        return redirect(route('admin_new_list'));
     }
 
     public function edit($id)
     {
-        $new     = News::find($id);
+        $new = News::find($id);
 //        dd($pet);
 
         if (isset($new)) {
@@ -88,7 +88,7 @@ class NewController extends Controller
             $new->Status     = $request->Status;
             $new->update();
 //            dd("updateSuccess");
-            return redirect(route('admin_news_list'));
+            return redirect(route('admin_new_list'));
         }
         return redirect(route('admin_404'));
     }
@@ -109,7 +109,7 @@ class NewController extends Controller
         $new = News::find($id);
         if (isset($new) && $new != null) {
             News::where('id', '=', $id)->update(['status' => 0]);
-            return redirect(route('admin_news_list'));
+            return redirect(route('admin_new_list'));
         }
         return redirect(route('admin_404'));
     }
@@ -132,7 +132,7 @@ class NewController extends Controller
         $new = News::find($id);
         if (isset($new) && $new != null) {
             News::where('id', '=', $id)->update(['status' => 1]);
-            return redirect(route('admin_news_list'));
+            return redirect(route('admin_new_list'));
         }
         return redirect(route('admin_404'));
     }
