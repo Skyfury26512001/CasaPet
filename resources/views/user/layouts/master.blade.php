@@ -225,8 +225,7 @@
                                     Đăng nhập/Đăng ký
                                 </a>
                             </li>
-                            @endif
-                            </li>
+                        @endif
                     </ul>
                     <!--ul -->
                 </div>

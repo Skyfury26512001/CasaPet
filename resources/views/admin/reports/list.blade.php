@@ -293,8 +293,8 @@
                                 </div>
                                 <div class="col-1">
                                     <a class="btn btn-primary" href="{{route('admin_report_list')}}">
-                                            Reset
-                                        </a>
+                                        Reset
+                                    </a>
                                 </div>
                             </div>
                             <div class="">
@@ -325,9 +325,17 @@
                                             </td>
                                             <td>{{$report->id}}</td>
                                             <td>{{$report->FullName}}</td>
-                                            <td>{{$report->Address}}</td>
+                                            <td>
+                                                <div style="width: 150px">
+                                                    {!! Illuminate\Support\Str::limit($report->Address,100) !!}
+                                                </div>
+                                            </td>
                                             <td>{{$report->PhoneNumber}}</td>
-                                            <td>{{$report->Content}}</td>
+                                            <td>
+                                                <div style="width: 250px">
+                                                    {!! Illuminate\Support\Str::limit($report->Content,150) !!}
+                                                </div>
+                                            </td>
                                             @if ($report->Status == 0)
                                                 <td style="color: blueviolet">Chưa xử lý</td>
                                             @elseif ($report->Status == 1)

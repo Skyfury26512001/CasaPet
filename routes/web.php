@@ -40,6 +40,7 @@ Route::get('/services', function () {
 Route::get('/rescue_form', function () {
     return view('user.services.rescue_form');
 })->name('rescue_form');
+Route::post('/rescue_form', 'SendMailController@report_send')->name('report_send');
 
 Route::get('/adoption', function () {
     return view('user.services.adoption');
@@ -211,6 +212,10 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/aceptAll', 'ReportController@acept_multi')->name('admin_report_acept_multi');
         Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
         Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
+    });
+    Route::group(['prefix' => '/report_pet'], function () {
+        Route::get('/', 'ReportController@list')->name('admin_report_list');
+        Route::get('/create', 'ReportController@create')->name('admin_report_create');
     });
 });
 

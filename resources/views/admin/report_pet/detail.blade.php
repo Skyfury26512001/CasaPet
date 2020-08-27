@@ -35,7 +35,7 @@
             // imgName = imgName.split('.');
             // $(this).parent().remove();
             // console.log($(this).parent());
-            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
+            var imgName = splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1];
             // console.log('input[data-cloudinary-public-id="' + imgName + '"]')
             // $('input[data-cloudinary-public-id="' + imgName + '"]').remove();
             // var input = document.querySelector('[data-cloudinary-public-id="' + splittedImg[splittedImg.length - 3] +'/'+ splittedImg[splittedImg.length - 2] +'/'+ splittedImg[splittedImg.length - 1] +'"]');
@@ -43,10 +43,10 @@
             // input.remove()
             // console.log(input);
             // console.log("Remove image : " + "sucessful");
-            console.log(imgName)
+             console.log(imgName)
             // console.log($(this).parent().attr('data-cloudinary'))
             var publicId = $(this).parent().attr('data-cloudinary');
-            $(this).parent().remove();
+             $(this).parent().remove();
             // let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
         });
@@ -92,7 +92,7 @@
 
                         <div class="form-group">
                             <label for="FullName">Họ và tên<span class="text-danger">*</span></label>
-                            <input type="text" name="FullName" parsley-trigger="change" required=""
+                            <input disabled type="text" name="FullName" parsley-trigger="change" required=""
                                    class="form-control" id="FullName" value="{{$report->FullName}}" style="width: 30%;">
                             @if ($errors->has('FullName'))
                                 <label class="alert-warning">{{$errors->first('FullName')}}</label>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Address">Địa chỉ <span class="text-danger">*</span></label>
-                            <input type="text" name="Address" parsley-trigger="change" required=""
+                            <input disabled type="text" name="Address" parsley-trigger="change" required=""
                                    class="form-control" id="Address" value="{{$report->Address}}" style="width: 45%;">
                             @if ($errors->has('Address'))
                                 <label class="alert-warning">{{$errors->first('Address')}}</label>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="form-group">
                             <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
-                            <input type="text" name="PhoneNumber" parsley-trigger="change" required=""
+                            <input disabled type="text" name="PhoneNumber" parsley-trigger="change" required=""
                                    class="form-control" id="PhoneNumber" value="{{$report->PhoneNumber}}"
                                    style="width: 10%;">
                             @if ($errors->has('PhoneNumber'))
@@ -125,7 +125,7 @@
                         </div>
                         <div class="form-group">
                             <label for="userName">Thumnails<span class="text-danger">*</span></label>
-                            <button disabled type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                            <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
                             <div class="thumbnails">
                                 <ul class="cloudinary-thumbnails">
                                     @foreach($report->ArrayThumbnails450x450 as $thumbnail)
@@ -142,26 +142,22 @@
                         </div>
                         <div class="form-group" style="width:10%;">
                             <label for="Status">Trạng thái<span class="text-danger">*</span></label>
-                            <select name="Status" class="form-control select-form-control"
-                                    @if ($report->Status == 2 ) disabled @endif>
-                                <option value="0" @if ( $report->Status == 0 ) select
-                                        @endif @if ( $report->Status != 0 ) disabled @endif > Chưa xử lý
-                                </option>
-                                <option value="1" @if ( $report->Status == 1 ) select @endif > Đang xử lý</option>
-                                <option value="2" @if ( $report->Status == 2 ) select @endif > Đã xử lý</option>
-                                <option value="3" @if ( $report->Status == 3 ) select @endif > Từ chối</option>
+                            <select name="Status" class="form-control select-form-control" disabled >
+                                <option value="0"  @if ( $report->Status == 0 ) select @endif > Chưa xử lý </option>
+                                <option value="1"  @if ( $report->Status == 1 ) select @endif > Đang xử lý </option>
+                                <option value="2"  @if ( $report->Status == 2 ) select @endif > Đã xử lý </option>
+                                <option value="3"  @if ( $report->Status == 3 ) select @endif > Từ chối </option>
                             </select>
                             @if ($errors->has('thumbnails'))
                                 <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
                             @endif
                         </div>
                         @foreach($report->ArrayThumbnails as $thumbnail)
-                            <input type="hidden" name="thumbnails[]" data-cloudinary-public-id="{{$thumbnail}}"
-                                   value="{{$thumbnail}}">
+                            <input disabled type="hidden" name="thumbnails[]" data-cloudinary-public-id="{{$thumbnail}}" value="{{$thumbnail}}">
                         @endforeach
                         <div class="form-group text-right mb-0">
-                            <button class="btn btn-primary waves-effect waves-light mr-1">
-                                Cập nhật
+                            <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
+                               Sửa
                             </button>
                             <a class="btn btn-secondary waves-effect waves-light" href="{{route('admin_report_list')}}">
                                 Hủy

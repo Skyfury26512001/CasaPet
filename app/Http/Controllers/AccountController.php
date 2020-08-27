@@ -39,9 +39,10 @@ class AccountController extends Controller
             $data = array('name' => "$request->FullName", 'contact_message' => "$content", 'transaction' => 'as');
             Mail::send('user.contact.email', $data, function ($message) use ($request) {
                 $message->to("$request->Email", "$request->FullName")->subject('Tạo mới tài khoản thành công');
-                $message->from("t1908@gmail.com", "PetsCasa");
+                $message->from("petscasavn@gmail.com", "PetsCasa");
             });
             $contentTele = "\n + Tài khoản mới được tạo : $request->Email " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Số nhận diện : $request->IDNo";
+
             $contentTeleSend = urlencode("Yêu cầu mới \n- Từ: Petcasa \n- Tiêu đề: Tạo mới tài khoản \n- Nội dung: " . $contentTele);
 //            dd($contentTeleSend);
             $roomId = -1001421358819;

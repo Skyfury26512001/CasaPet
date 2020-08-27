@@ -68,7 +68,7 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
-                            <li class="breadcrumb-item active">Quản lý bài viết</li>
+                            <li class="breadcrumb-item active">Quản lý tin tức</li>
                         </ol>
                     </div>
                     <h4 class="page-title">Quản lý tin tức</h4>

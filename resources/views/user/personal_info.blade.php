@@ -107,9 +107,13 @@
                                             </svg>
                                         </div>
 
+                                        <<<<<<< HEAD
                                         <div class="userpage-sidebar-menu-entry__text" style="color: #48A06A">
-                                            Tài khoản của tôi
-                                        </div>
+                                            =======
+                                            <div class="userpage-sidebar-menu-entry__text">
+                                                >>>>>>> 7b2312366b0f86976a4538770c4956ad7f94f98a
+                                                Tài khoản của tôi
+                                            </div>
                                     </a></div>
                             </div>
                         </div>
@@ -205,13 +209,20 @@
                                         <div class="input-with-label__wrapper birthday-choose">
                                             <div class="input-with-label__label"><label>Ngày sinh</label></div>
                                             <div class="input-with-label__content">
+                                                <<<<<<< HEAD
                                                 <input id="datepicker" width="50%"
-                                                       value="{{date("d-m-Y", strtotime($current_account->DateOfBirth))}}"
-                                                       name="DateOfBirth"/>
+                                                =======
+                                                <input id="datepicker" width="90%"
+                                                >>>>>>> 7b2312366b0f86976a4538770c4956ad7f94f98a
+                                                value="{{date("d-m-Y", strtotime($current_account->DateOfBirth))}}"
+                                                name="DateOfBirth"/>
                                             </div>
                                         </div>
                                     </div>
+                                    <<<<<<< HEAD
                                     <input type="hidden" name="Slug" value="{{$current_account->Slug}}">
+                                    =======
+                                    >>>>>>> 7b2312366b0f86976a4538770c4956ad7f94f98a
                                     <input type="hidden" name="avatar"
                                            data-cloudinary-public-id="{{$current_account->Avatar}}"
                                            value="{{$current_account->Avatar}}">

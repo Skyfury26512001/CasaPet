@@ -17,6 +17,7 @@ class PersonalInfoController extends Controller
 
     public function account_update(Request $request)
     {
+
         $account = Account::where('Slug', '=', $request->Slug)->first();
         if (isset($account) && $account != null) {
             $account->FullName = $request->FullName;

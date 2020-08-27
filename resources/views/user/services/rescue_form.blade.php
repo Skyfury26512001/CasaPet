@@ -40,8 +40,8 @@
                 cloudName: 'dwarrion',
                 uploadPreset: 'rdjyel16',
                 multiple: true,
-                form: '#product_form',
-                folder: 'PetCasa/PetThumbnails',
+                form: '#rescue_form',
+                folder: 'PetCasa/OrderRescue',
                 fieldName: 'thumbnails[]',
                 thumbnails: '.thumbnails'
             }, function (error, result) {
@@ -72,29 +72,40 @@
         <div class="container custom-1">
             <h2>Cứu nạn chó mèo</h2>
             <div class="container bg-light-custom border-irregular1 block-padding">
-                <form class="form-group" method="POST" action="{{route('rescue_form')}}">
+                <form id="rescue_form" class="form-group" method="POST" action="{{route('report_send')}}">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <label>Loại đơn<span class="require"></span></label>
-                            <input type="text" name="ordertype" class="form-control input-field" value="Cứu hộ"
+                            <input type="text" name="OrderType" class="form-control input-field" value="Cứu hộ"
                                    readonly autocomplete="off">
                         </div>
                         <div class="col-md-6">
                             <label>Họ và tên<span class="require"></span></label>
-                            <input type="text" name="name" class="form-control input-field" autocomplete="off">
+                            <input type="text" name="FullName" class="form-control input-field" autocomplete="off"
+                                   value="{{old('FullName')}}">
+                            @if ($errors->has('FullName'))
+                                <label class="alert-warning">{{$errors->first('FullName')}}</label>
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <label>SĐT<span class="required"></span></label>
-                            <input type="text" name="phonenumber" class="form-control input-field" autocomplete="off">
+                            <input type="number" name="PhoneNumber" class="form-control input-field" autocomplete="off"
+                                   value="{{old('PhoneNumber')}}">
+                            @if ($errors->has('PhoneNumber'))
+                                <label class=" alert-warning">{{$errors->first('PhoneNumber')}}</label>
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <label>Địa chỉ<span class="required"></span></label>
-                            <input type="text" name="address" class="form-control input-field" autocomplete="off">
+                            <input type="text" name="Address" class="form-control input-field" autocomplete="off"
+                                   value="{{old('Address')}}">
+                            @if ($errors->has('Address'))
+                                <label class=" alert-warning">{{$errors->first('Address')}}</label>
+                            @endif
                         </div>
                         <div class="col-md-12">
-                            <label>Ảnh mô tả - Phiền bạn chụp ảnh thật rõ, ảnh rộng và thẳng mặt vật nuôi nhà
-                                mình</label>
+                            <label>Ảnh mô tả - Phiền bạn chụp ảnh thật rõ, ảnh rộng và thẳng mặt vật nuôi</label>
                             <br>
                             <div class="form-group">
                                 <button type="button" id="upload_widget" class="btn-primary btn">Upload</button>
@@ -106,7 +117,11 @@
                         </div>
                         <div class="col-md-12">
                             <label>Nội dung<span class="required"></span></label>
-                            <input type="text" name="messenger" class="form-control input-field" autocomplete="off">
+                            <input style="height: 75px" type="text" name="Messenger" class="form-control input-field"
+                                   autocomplete="off" value="{{old('Messenger')}}">
+                            @if ($errors->has('Messenger'))
+                                <label class=" alert-warning">{{$errors->first('Messenger')}}</label>
+                            @endif
                         </div>
                     </div>
                     <div class="submit-btn">
