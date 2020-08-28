@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PetSeeder::class);
         $this->call(OrderSeeder::class);
         $this->call(ReportSeeder::class);
-        $this->call(NewSeeder::class);
+        $this->call(CategorySeeder::class);
+//        $this->call(NewSeeder::class);
     }
 }

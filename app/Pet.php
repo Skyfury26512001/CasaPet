@@ -15,6 +15,11 @@ class Pet extends Model
     {
         return $this->belongsToMany(Report::class);
     }
+    
+    public function News()
+    {
+        return $this->belongsToMany(Report::class);
+    }
 
     public function getArrayThumbnails450x450Attribute()
     {

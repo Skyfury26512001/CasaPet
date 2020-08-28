@@ -11,8 +11,8 @@
                 multiple: false,
                 form: '#product_form',
                 folder: 'PetCasa/UserAvatar',
-                fieldName: 'avatar',
-                thumbnails: '.avatar'
+                fieldName: 'thumbnails[]',
+                thumbnails: '.thumbnails'
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
@@ -108,13 +108,32 @@
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
-
                         <div class="form-group">
-                            <label for="Status">Status<span class="text-danger">*</span></label>
+                            <label for="Category_id">Chọn chuyên mục<span class="text-danger">*</span></label>
+                            <select class="form-control" id="select-7" name="Category_id">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}"
+                                            @if ($new->Category_id == $category->id) selected @endif>{{$category->Name}}</option>
+                                @endforeach
+                            </select>
                         </div>
-
+                        <div class="form-group">
+                            <label for="Status">Chọn chuyên mục<span class="text-danger">*</span></label>
+                            <select class="form-control" id="select-7" name="Status">
+                                <option value="0" @if ($new->Category_id == 0) selected @endif>Không hoạt động</option>
+                                <option value="1" @if ($new->Category_id == 1) selected @endif>Hoạt động</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Author">Tác giả<span class="text-danger">*</span></label>
+                            <input type="text" name="Author" parsley-trigger="change" required=""
+                                   class="form-control" id="Author" value="{{$new->Author}}">
+                            @if ($errors->has('Author'))
+                                <label class="alert-warning">{{$errors->first('Author')}}</label>
+                            @endif
+                        </div>
                         @foreach($new->ArrayThumbnails as $thumbnail)
-                            <input type="hidden" name="avatar" data-cloudinary-public-id="{{$thumbnail}}"
+                            <input type="hidden" name="thumbnails[]" data-cloudinary-public-id="{{$thumbnail}}"
                                    value="{{$thumbnail}}">
                         @endforeach
                         <div class="form-group text-right mb-0">

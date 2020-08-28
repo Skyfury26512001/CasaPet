@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,17 +37,19 @@ class NewController extends Controller
 
     public function create()
     {
-        return view('admin.news.create');
+        $categories = Category::all();
+        return view('admin.news.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $request->validate(
             [
-                'Title' => 'required',
-                'Content' => 'required',
-                'Author' => 'required',
-                'thumbnails' => 'required',
+                'Title'       => 'required',
+                'Content'     => 'required',
+                'Author'      => 'required',
+                'thumbnails'  => 'required',
+                'Category_id' => 'required',
             ]
         );
         $new = DB::transaction(function () use ($request) {
@@ -66,13 +69,11 @@ class NewController extends Controller
 
     public function edit($id)
     {
-        $new = News::find($id);
-//        dd($pet);
-
+        $new        = News::find($id);
+        $categories = Category::where('Status', '=', '1')->get();
         if (isset($new)) {
-            return view('admin.news.edit', compact('new'));
+            return view('admin.news.edit', compact('new', 'categories'));
         }
-
         return redirect(route('admin_404'));
     }
 
@@ -80,14 +81,32 @@ class NewController extends Controller
     {
         $new = News::find($id);
         if (isset($new)) {
-            $new->Title = $request->Title;
-            $new->Content = $request->Content;
-            $new->Account_id = $request->Account_id;
-            $new->Pet_id = $request->Pet_id;
-            $new->Status = $request->Status;
+            $new->Title      = $request->Title;
+            $new->Content    = $request->Content;
+            $new->Author     = $request->Author;
+            $new->Thumbnails = null;
+            foreach ($request->thumbnails as $thumb) {
+                $new->Thumbnails .= $thumb . ",";
+            }
+            $new->Thumbnails  = substr($new['Thumbnails'], 0, -1);
+            $new->Category_id = $request->Category_id;
+            $new->Status      = $request->Status;
             $new->update();
-//            dd("updateSuccess");
             return redirect(route('admin_new_list'));
+        }
+        return redirect(route('admin_404'));
+    }
+
+    public function pet_update(Request $request, $id)
+    {
+        $request->validate([
+            'PetIds' => 'required',
+        ]);
+        $new = News::find($id);
+        if (isset($new) && $new != null) {
+            $new->Pets()->detach();
+            $new->Pets()->attach($request->PetIds);
+            return redirect(route('admin_new_edit', $id));
         }
         return redirect(route('admin_404'));
     }
@@ -116,7 +135,7 @@ class NewController extends Controller
     public function deactive_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids = $request->ids;
+        $ids       = $request->ids;
         $ids_array = explode(',', $ids);
         if (isset($ids_array) && $ids_array != null) {
             News::whereIn('id', $ids_array)->update(['status' => 0]);
@@ -127,7 +146,7 @@ class NewController extends Controller
 
     public function active(Request $request)
     {
-        $id = $request->id;
+        $id  = $request->id;
         $new = News::find($id);
         if (isset($new) && $new != null) {
             News::where('id', '=', $id)->update(['status' => 1]);
@@ -139,7 +158,7 @@ class NewController extends Controller
     public function active_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids = $request->ids;
+        $ids       = $request->ids;
         $ids_array = explode(',', $ids);
 //        return response()->json(['success'=>$ids_array]);
         if (isset($ids_array) && $ids_array != null) {

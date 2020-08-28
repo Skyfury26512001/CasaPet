@@ -9,7 +9,7 @@ class News extends Model
     protected $table = "news";
 
     protected $guarded = [];
-    public $fillable = ['Name', 'Slug', 'Thumbnails', 'Content', 'Title', 'Author', 'Status'];
+    public $fillable = ['Name', 'Slug', 'Thumbnails', 'Content', 'Title', 'Author', 'Status', 'Category_id'];
 
     protected static $link = 'https://res.cloudinary.com/dwarrion/image/upload/';
 
@@ -18,7 +18,7 @@ class News extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
         }
-        $list_photos = array();
+        $list_photos  = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
@@ -33,7 +33,7 @@ class News extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
         }
-        $list_photos = array();
+        $list_photos  = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
@@ -51,4 +51,8 @@ class News extends Model
         }
     }
 
+    public function Pets()
+    {
+        return $this->belongsToMany(Pet::class, 'report_pet')->withTimestamps();
+    }
 }
