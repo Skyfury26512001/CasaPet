@@ -15,7 +15,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/about">About PetsCasa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('about')}}">About PetsCasa</a></li>
                 </ol>
             </nav>
         </div>
@@ -97,7 +97,7 @@
                                         phúc lợi động vật, công nghệ và tiếp thị có thể sử dụng kiến thức và chuyên
                                         môn của họ cho mục đích tốt và chúng tôi vô cùng tự hào về nhóm thúc đẩy sứ mệnh
                                         của chúng tôi ngày hôm nay.
-                                        <a href="/team"><u>Tìm hiểu thêm về họ</u></a>.
+                                        <a href="{{route('team')}}"><u>Tìm hiểu thêm về họ</u></a>.
                                     </p>
                                 </div>
                             </div>

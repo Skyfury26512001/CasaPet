@@ -36,6 +36,9 @@ class DonationController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
+            'FullName' => 'required',
+            'PhoneNumber' => 'required|numeric',
+            'Amount' => 'required|numeric',
             //put fields to be validated here
         ]);
 
@@ -44,7 +47,6 @@ class DonationController extends Controller
         $donation->phonenumber = $request->phonenumber;
         $donation->amount = $request->amount;
         $donation->note = $request->note;
-
         $donation->save();
         return redirect(url('https://www.sandbox.paypal.com/vn/signin'));
     }

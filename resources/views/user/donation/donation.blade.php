@@ -41,6 +41,11 @@
     </style>
 @endsection
 @section('specific_js')
+    <script>
+        $("#paypal-button-container").click(function () {
+            $("#target").submit();
+        });
+    </script>
     <!-- Include the PayPal JavaScript SDK -->
     <script
         src="https://www.paypal.com/sdk/js?client-id=Aa7uffDMG6QFVbl4k074yVwic421SWLCfeOTt1poGLK8suW3bKj3r9EVWoH72QP5nakrbJz0_dA70uqr&currency=USD"></script>
@@ -82,7 +87,7 @@
         <div class="container custom-1">
             <h2>Donation Form</h2>
             <div class="container bg-light-custom border-irregular1 block-padding">
-                <form class="form-group" method="POST" action="{{route('donation')}}">
+                <form class="form-group" method="POST" action="{{route('donation')}}" id="target">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
