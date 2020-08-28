@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Pet;
 use App\Report;
 use Illuminate\Http\Request;
@@ -70,8 +71,9 @@ class ReportController extends Controller
             return $item->id;
         });
         if (isset($report) && $report != null) {
-            $pets = Pet::where('Status', '=', '1')->get();
-            return view('admin.reports.edit', compact('report', 'pets', 'report_pet_id'));
+            $pets       = Pet::where('Status', '=', '1')->get();
+            $categories = Category::where('Status', '=', '1')->get();
+            return view('admin.reports.edit', compact('report', 'pets', 'report_pet_id', 'categories'));
         }
         return redirect(route('admin_404'));
     }
@@ -87,7 +89,6 @@ class ReportController extends Controller
 
     public function update(Request $request, $id)
     {
-//        dd($request);
         $request->validate([
             'FullName'    => 'required',
             'Content'     => 'required',
@@ -111,7 +112,6 @@ class ReportController extends Controller
             'PetIds' => 'required',
         ]);
         $report = Report::find($id);
-//        dd($report);
         if (isset($report) && $report != null) {
             $report->Pets()->detach();
             $report->Pets()->attach($request->PetIds);
@@ -166,5 +166,10 @@ class ReportController extends Controller
         Report::where('Status', '=', '0')->whereIn('id', $ids_array)->update(['Status' => 1]);
         Report::where('Status', '=', '3')->whereIn('id', $ids_array)->update(['Status' => 1]);
         return response()->json(['success' => "Hoàn thành chuyển đổi trạng thái."]);
+    }
+
+    public function add_to_news(Request $request)
+    {
+        dd($request);
     }
 }

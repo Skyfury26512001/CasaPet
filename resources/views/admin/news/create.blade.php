@@ -2,7 +2,16 @@
 @section('specific_js')
     <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-
+    <script src="{{asset('assets/admin/js/selectize.js')}}"></script>
+    <script>
+        $('.selectize-multiple').selectize({
+            delimiter: ',',
+            persist: false,
+            create: function (input) {
+                return {value: input, text: input};
+            }
+        });
+    </script>
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget(
             {
@@ -58,6 +67,9 @@
             });
     </script>
 @endsection
+@section('specific_css')
+    <link rel="stylesheet" href="{{asset('assets/admin/css/selectize.bootstrap4.css')}}">
+@endsection
 @section('content')
     <div class="container-fluid">
 
@@ -95,7 +107,7 @@
                         <div class="form-group">
                             <label for="Content">Nội dung bài viết :<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
-                                      placeholder="" >{{old('Content')}}</textarea>
+                                      placeholder="">{{old('Content')}}</textarea>
                             @if ($errors->has('Content'))
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
@@ -115,6 +127,14 @@
                             @if ($errors->has('thumbnails'))
                                 <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
                             @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Category_id">Chọn chuyên mục<span class="text-danger">*</span></label>
+                            <select class="form-control" id="select-7" name="Category_id">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->Name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">

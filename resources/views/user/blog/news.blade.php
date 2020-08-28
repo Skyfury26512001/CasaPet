@@ -3,6 +3,44 @@
     News
 @endsection
 @section('specific_css')
+    <style>
+        a:hover {
+            color: black;
+        }
+
+        h2 {
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        .page-item.active .page-link {
+            background-color: #48A06A !important;
+        }
+    </style>
+@endsection
+@section('specific_js')
+    <script>
+        $("ul.pagination").addClass('float-right');
+        {{--        $(function () {--}}
+
+        {{--            var $sidebar = $("#sidebar"),--}}
+        {{--                $window = $(window),--}}
+        {{--                offset = $sidebar.offset(),--}}
+        {{--                topPadding = 120;--}}
+
+        {{--            $window.scroll(function () {--}}
+        {{--                if ($window.scrollTop() > offset.top) {--}}
+        {{--                    $sidebar.stop().animate({--}}
+        {{--                        marginTop: $window.scrollTop() - offset.top + topPadding--}}
+        {{--                    });--}}
+        {{--                } else {--}}
+        {{--                    $sidebar.stop().animate({--}}
+        {{--                        marginTop: 0--}}
+        {{--                    });--}}
+        {{--                }--}}
+        {{--            });--}}
+
+        {{--        });--}}
+    </script>
 @endsection
 @section('content')
     <!-- Jumbotron -->
@@ -30,54 +68,54 @@
             <div class="row">
                 <!-- Blog Entries Column -->
                 <div class="col-lg-8">
-                    <h2>Tin tức về cứu hộ khẩn cấp</h2>
+                    <h2>Tin tức</h2>
                     <!-- Blog Post -->
-                    <div class="card blog-card">
-                        <!-- Post info-->
-                        <div class="post-info border-irregular2 text-muted">
-                            January 1, 2018 by
-                            <a href="#">Lila Smith</a> / <a href="#"><i class="fas fa-comment margin-icon"></i>10
-                                comments</a>
-                        </div>
-                        <a href="blog-single.html">
-                            <!-- image -->
-                            <img class="card-img-top img-fluid" src="img/blog.jpg" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a href="blog-single.html">
-                                <h3 class="card-title">Everything you need to know before adopting a pet</h3>
+                    @foreach ( $news as $new)
+                        <div class="card blog-card">
+                            <!-- Post info-->
+                            <div class="post-info border-irregular2 text-muted">
+                                {{date("d/m/Y", strtotime($new->created_at))}} bởi
+                                <span style="color: #48A06A">{{$new->Author}}</span>
+                            </div>
+                            <a href="{{route('single_new',$new->Slug)}}">
+                                <!-- image -->
+                                <img class="card-img-top img-fluid" src="{{$new->FirstThumbnail}}" alt="">
                             </a>
-                            <!-- excerpt -->
-                            <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita
-                                corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a href="blog-single.html" class="btn btn-primary">Read More &rarr;</a>
+                            <div class="card-body">
+                                <a href="{{route('single_new',$new->Slug)}}">
+                                    <h3 class="card-title">{{$new->Title}}</h3>
+                                </a>
+                                <!-- excerpt -->
+                                {{--                                <p class="card-text mt-3">{{$new->Content}}</p>--}}
+                                <a href="{{route('single_new',$new->Slug)}}" class="btn btn-primary">Đọc thêm &rarr;</a>
+                            </div>
+                            <!--card-footer -->
                         </div>
-                        <!--card-footer -->
-                    </div>
-                    <!-- /card blog-card -->
+                @endforeach
+                <!-- /card blog-card -->
                     <div class="col-md-12 mt-5">
                         <!-- pagination -->
                         <nav aria-label="pagination">
-                            <ul class="pagination float-right">
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
+                            {{--                            <ul class="pagination float-right">--}}
+                            {{--                                <li class="page-item"><a class="page-link active" href="#">1</a></li>--}}
+                            {{--                                <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+                            {{--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+                            {{--                                <li class="page-item"><a class="page-link" href="#">Next</a></li>--}}
+                            {{--                            </ul>--}}
+                            {{$news->links()}}
                         </nav>
                         <!-- /nav -->
                     </div>
                     <!-- /col-md -->
                 </div>
                 <!-- Sidebar Widgets Column -->
-                <div class="blog-sidebar bg-light-custom  h-50 border-irregular1 col-lg-4">
+                <div class="blog-sidebar bg-light-custom  h-50 border-irregular1 col-lg-4" id="sidebar">
                     <!-- Search Widget -->
                     <div class="card">
-                        <h5 class="card-header">Search</h5>
+                        <h5 class="card-header">Tìm kiếm</h5>
                         <div class="card-body">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
+                                <input type="text" class="form-control" placeholder="...">
                                 <span class="input-group-btn">
                            <button class="btn btn-secondary" type="button">Go!</button>
                            </span>
@@ -86,136 +124,61 @@
                     </div>
                     <!-- Categories Widget -->
                     <div class="card">
-                        <h5 class="card-header">Categories</h5>
+                        <h5 class="card-header">Chuyên mục</h5>
                         <div class="card-body">
                             <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action">
-                                    Pet Training
+                                    Quá trình cứu hộ
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action">Veterinarian</a>
-                                <a href="#" class="list-group-item list-group-item-action">Pet Hotel</a>
-                                <a href="#" class="list-group-item list-group-item-action">Vaccines</a>
+                                <a href="#" class="list-group-item list-group-item-action">Tin tức và sự kiện</a>
+                                <a href="#" class="list-group-item list-group-item-action">Kiến thức nuôi boss</a>
                             </div>
                         </div>
                     </div>
                     <!-- Side Widget -->
                     <div class="card">
-                        <h5 class="card-header">Image Widget</h5>
+                        <h5 class="card-header">Video nổi bật</h5>
                         <div class="card-body">
-                            <img src="img/gallery/gallery1.jpg" class="img-fluid" alt=""/>
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FVwyIfChIdY"
+                                        allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
                     <!-- Side Widget -->
-                    <div class="card">
-                        <h5 class="card-header">Tags</h5>
-                        <div class="card-body">
-                            <a href="#" class="badge badge-pill badge-default">Dogs</a>
-                            <a href="#" class="badge badge-pill badge-default">Cats</a>
-                            <a href="#" class="badge badge-pill badge-default">Nutrition</a>
-                            <a href="#" class="badge badge-pill badge-default">Events</a>
-                            <a href="#" class="badge badge-pill badge-default">Exotic pets</a>
-                            <a href="#" class="badge badge-pill badge-default">Adoption</a>
-                            <a href="#" class="badge badge-pill badge-default">Pet Insurance</a>
-                        </div>
-                    </div>
+                    {{--                    <div class="card">--}}
+                    {{--                        <h5 class="card-header">Tags</h5>--}}
+                    {{--                        <div class="card-body">--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Dogs</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Cats</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Nutrition</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Events</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Exotic pets</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Adoption</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Pet Insurance</a>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </div>
-                <div class="col-lg-8">
-                    <h2>Tin tức thường</h2>
-                    <!-- Blog Post -->
-                    <div class="card blog-card">
-                        <!-- Post info-->
-                        <div class="post-info border-irregular2 text-muted">
-                            January 1, 2018 by
-                            <a href="#">Lila Smith</a> / <a href="#"><i class="fas fa-comment margin-icon"></i>10
-                                comments</a>
-                        </div>
-                        <a href="blog-single.html">
-                            <!-- image -->
-                            <img class="card-img-top img-fluid" src="img/blog.jpg" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a href="blog-single.html">
-                                <h3 class="card-title">Everything you need to know before adopting a pet</h3>
-                            </a>
-                            <!-- excerpt -->
-                            <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta
-                                expedita
-                                corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a href="blog-single.html" class="btn btn-primary">Read More &rarr;</a>
-                        </div>
-                        <!--card-footer -->
-                    </div>
-                    <!-- /card blog-card -->
-                    <!-- Blog Post -->
-                    <div class="card blog-card">
-                        <div class="post-info  border-irregular2 text-muted">
-                            January 1, 2018 by
-                            <a href="#">Lila Smith</a> / <a href="#"><i class="fas fa-comment margin-icon"></i>10
-                                comments</a>
-                        </div>
-                        <a href="blog-single.html">
-                            <!-- image -->
-                            <img class="card-img-top img-fluid" src="img/blog.jpg" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a href="blog-single.html">
-                                <h3 class="card-title">What are the most nutritious cat foods?</h3>
-                            </a>
-                            <!-- excerpt -->
-                            <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta
-                                expedita
-                                corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a href="blog-single.html" class="btn btn-primary">Read More &rarr;</a>
-                        </div>
-                        <!--card-footer -->
-                    </div>
-                    <!-- /card blog-card -->
-                    <!-- Blog Post -->
-                    <div class="card blog-card">
-                        <div class="post-info  border-irregular2 text-muted">
-                            January 1, 2018 by
-                            <a href="#">Lila Smith</a> / <a href="#"><i class="fas fa-comment margin-icon"></i>10
-                                comments</a>
-                        </div>
-                        <a href="blog-single.html">
-                            <!-- image -->
-                            <img class="card-img-top img-fluid" src="img/blog.jpg" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a href="blog-single.html">
-                                <h3 class="card-title">The friendliest dog breeds for families</h3>
-                            </a>
-                            <!-- excerpt -->
-                            <p class="card-text mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta
-                                expedita
-                                corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a href="blog-single.html" class="btn btn-primary">Read More &rarr;</a>
-                        </div>
-                        <!--card-footer -->
-                    </div>
-                    <!-- /card blog-card -->
-                    <div class="col-md-12 mt-5">
-                        <!-- pagination -->
-                        <nav aria-label="pagination">
-                            <ul class="pagination float-right">
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
-                        <!-- /nav -->
-                    </div>
-                    <!-- /col-md -->
-                </div>
-                <!-- /col-lg-8 -->
             </div>
             <!-- /.row -->
         </div>
         <!-- /.container -->
+        <!-- Section Call To Action -->
+        <div id="call-to-action">
+            <div class="container block-padding">
+                <div
+                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                    <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
+                </div>
+                <div
+                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                    <a href="{{route('get_involed')}}" class="btn btn-primary"
+                       aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
+                </div>
+            </div>
+            <!--/row -->
+        </div>
+        <!--/call-to-action -->
     </div>
     <!-- /page -->
 @endsection

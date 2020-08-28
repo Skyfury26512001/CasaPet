@@ -206,7 +206,7 @@
                                             <div class="input-with-label__label"><label>Ngày sinh</label></div>
                                             <div class="input-with-label__content">
                                                 <input id="datepicker" width="50%"
-                                                       value="{{date("d-m-Y", strtotime($current_account->DateOfBirth))}}"
+                                                       value="{{date("d/m/Y", strtotime($current_account->DateOfBirth))}}"
                                                        name="DateOfBirth"/>
                                             </div>
                                         </div>

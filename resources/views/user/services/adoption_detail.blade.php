@@ -114,22 +114,22 @@
             <!-- /row-->
         </div>
         <!-- /container-->
+        <!-- Section Call To Action -->
+        <div id="call-to-action">
+            <div class="container block-padding">
+                <div
+                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                    <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
+                </div>
+                <div
+                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                    <a href="{{route('get_involed')}}" class="btn btn-primary"
+                       aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
+                </div>
+            </div>
+            <!--/row -->
+        </div>
+        <!--/call-to-action -->
     </div>
     <!-- /page -->
-    <!-- Section Call To Action -->
-    <div id="call-to-action">
-        <div class="container block-padding">
-            <div
-                class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
-                <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
-            </div>
-            <div
-                class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
-                <a href="{{route('get_involed')}}" class="btn btn-primary"
-                   aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
-            </div>
-        </div>
-        <!--/row -->
-    </div>
-    <!--/call-to-action -->
 @endsection

@@ -9,7 +9,7 @@ class News extends Model
     protected $table = "news";
 
     protected $guarded = [];
-    public $fillable = ['Name', 'Slug', 'Thumbnails', 'Content', 'Title', 'Author', 'Status'];
+    public $fillable = ['Name', 'Slug', 'Thumbnails', 'Content', 'Title', 'Author', 'Status', 'Category_id'];
 
     protected static $link = 'https://res.cloudinary.com/dwarrion/image/upload/';
 
@@ -47,8 +47,12 @@ class News extends Model
     {
         $thumbnail[] = explode(',', $this->Thumbnails);
         foreach ($thumbnail as $thumbnailValue) {
-            return self::$link . 'c_scale,h_800,w_800/' . $thumbnailValue[0];
+            return self::$link . $thumbnailValue[0];
         }
     }
 
+    public function Pets()
+    {
+        return $this->belongsToMany(Pet::class, 'report_pet')->withTimestamps();
+    }
 }

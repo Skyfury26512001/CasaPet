@@ -222,6 +222,77 @@
 
                     </form>
                 </div> <!-- end card-box -->
+                <div class="card-box">
+                    <h4 class="header-title">Chuyển tới mục bài viết : </h4>
+                    <form action="{{route('admin_new_store')}}" id="product_form" method="POST"
+                          class="parsley-examples" novalidate="">
+                        @csrf
+                        {{--                        {{dd($report_pet_id)}}--}}
+                        <div class="form-group">
+                            <label for="Status">Tiêu đề<span class="text-danger">*</span></label>
+                            <input type="text" name="Title" parsley-trigger="change" required=""
+                                   class="form-control" id="Title" value="{{$report->FullName." ".$report->Address}}"
+                                   style="width: 100%;">
+                            @if ($errors->has('Title'))
+                                <label class="alert-warning">{{$errors->first('Title')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="Author">Tác giả<span class="text-danger">*</span></label>
+                            <input type="text" name="Author" parsley-trigger="change" required=""
+                                   class="form-control" id="Author" value="{{$report->FullName}}" style="width: 30%;">
+                            @if ($errors->has('Author'))
+                                <label class="alert-warning">{{$errors->first('Author')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group" style="width: 200%">
+                            <label for="Content">Nội dung<span class="text-danger">*</span></label>
+                            <textarea id="editor" name="Content" class="form-control"
+                                      placeholder="">{{$report->Content}}</textarea>
+                            @if ($errors->has('Content'))
+                                <label class="alert-warning">{{$errors->first('Content')}}</label>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="userName">Thumnails<span class="text-danger">*</span></label>
+                            <button disabled type="button" id="upload_widget" class="btn-primary btn">Upload</button>
+                            <div class="thumbnails">
+                                <ul class="cloudinary-thumbnails">
+                                    @foreach($report->ArrayThumbnails450x450 as $thumbnail)
+                                        <li class="cloudinary-thumbnail active" data-cloudinary="{{$thumbnail}}">
+                                            <img src="{{$thumbnail}}" style="width: 300px;height: 300px">
+                                            <a href="#" class="cloudinary-delete">x</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @if ($errors->has('thumbnails'))
+                                <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
+                            @endif
+                        </div>
+                        @foreach($report->ArrayThumbnails as $thumbnail)
+                            <input type="hidden" name="thumbnails[]" data-cloudinary-public-id="{{$thumbnail}}"
+                                   value="{{$thumbnail}}">
+                        @endforeach
+                        <div class="form-group">
+                            <label for="Category_id">Chọn chuyên mục<span class="text-danger">*</span></label>
+                            <select class="form-control" id="select-7" name="Category_id">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->Name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group text-right mb-0">
+                            <button class="btn btn-primary waves-effect waves-light mr-1">
+                                Đăng
+                            </button>
+                            <a class="btn btn-secondary waves-effect waves-light" href="{{route('admin_report_list')}}">
+                                Hủy
+                            </a>
+                        </div>
+
+                    </form>
+                </div> <!-- end card-box -->
             </div>
             <!-- end row -->
         </div>
