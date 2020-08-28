@@ -18,7 +18,7 @@ class News extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
         }
-        $list_photos  = array();
+        $list_photos = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
@@ -33,7 +33,7 @@ class News extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
         }
-        $list_photos  = array();
+        $list_photos = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
@@ -47,7 +47,7 @@ class News extends Model
     {
         $thumbnail[] = explode(',', $this->Thumbnails);
         foreach ($thumbnail as $thumbnailValue) {
-            return self::$link . 'c_scale,h_800,w_800/' . $thumbnailValue[0];
+            return self::$link . $thumbnailValue[0];
         }
     }
 
