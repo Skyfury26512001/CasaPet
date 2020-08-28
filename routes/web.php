@@ -35,7 +35,7 @@ Route::get('/get_involved', function () {
 /* 1.Services */
 Route::get('/services', function () {
     return view('user.services.services');
-});
+})->name('services');
 
 Route::get('/rescue_form', function () {
     return view('user.services.rescue_form');
@@ -77,9 +77,7 @@ Route::get('/pet_care', function () {
 
 
 /* 3.Blog */
-Route::get('/news', function () {
-    return view('user.blog.news');
-})->name('news');
+Route::get('/news', 'BlogController@news_list_data')->name('news');
 
 
 /* 4.About */
@@ -119,6 +117,9 @@ Route::get('/login_register', function () {
 })->name('login_register');
 
 Route::post('/login', 'AccountController@loginP')->name('loginP');
+
+Route::post('/logout', 'AccountController@logOut')->name('logout');
+
 Route::post('/register', 'AccountController@registerP')->name('register');
 
 Route::get('/personal_info', 'PersonalInfoController@account_data')->name('personal_info');
@@ -213,6 +214,10 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
         Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
     });
+    Route::group(['prefix' => '/report_pet'], function () {
+        Route::get('/', 'ReportController@list')->name('admin_report_list');
+        Route::get('/create', 'ReportController@create')->name('admin_report_create');
+    });
 });
 
 Route::get('/test', function () { return view('admin.test'); });
@@ -221,11 +226,16 @@ Route::get('checking_page', function () {
     return view('session_checking');
 });
 
-/* Logout  */
+/* Admin Login */
+Route::get('/admin_login', function () {
+    return view('admin.login_register');
+})->name('login');
+
+/* Admin Logout */
 Route::get('/logOut', 'AccountController@logOut')->name('logOut');
 
 
-/* 7.Time Line */
+/* Timeline */
 Route::get('/timeline', function () {
     return view('timeline');
 });

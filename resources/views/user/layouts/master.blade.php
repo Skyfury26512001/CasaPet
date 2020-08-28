@@ -35,7 +35,8 @@
     <link href={{asset('assets/user/styles/dogwalker.css')}} rel="stylesheet">
     <!-- Layer Slider -->
     <link href={{asset('assets/user/vendor/layerslider/css/layerslider.css')}} rel="stylesheet">
-
+    <!-- Datepicker -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- SPECIFIC CSS -->
 @yield('specific_css')
 <!-- Custom CSS -->
@@ -47,7 +48,9 @@
 
         .login-image {
             border-radius: 50%;
-            height: 40px;
+            height: 35px;
+            padding-right: 5px;
+            /*margin-top: 20px;*/
         }
     </style>
 </head>
@@ -142,7 +145,7 @@
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/services" id="services-dropdown"
+                            <a class="nav-link dropdown-toggle" href="{{route('services')}}" id="services-dropdown"
                                data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
                                 Dịch vụ
@@ -166,41 +169,59 @@
                     {{--                            </div>--}}
                     {{--                        </li>--}}
                     <!-- menu item -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="/news">Tin tức</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('news')}}">Tin tức</a>
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/about" id="about-dropdown" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" href="{{route('about')}}" id="about-dropdown"
+                               data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
                                 Về chúng tôi
                             </a>
                             <div class="dropdown-menu" aria-labelledby="about-dropdown">
-                                <a class="dropdown-item" href="/about">Giới thiệu</a>
-                                <a class="dropdown-item" href="/team">Thành viên</a>
+                                <a class="dropdown-item" href="{{route('about')}}">Giới thiệu</a>
+                                <a class="dropdown-item" href="{{route('team')}}">Thành viên</a>
                             </div>
                         </li>
                         <!-- menu item -->
                         <li class="nav-item ">
-                            <a class="nav-link" href="/contact">Liên hệ</a>
+                            <a class="nav-link" href="{{route('contact')}}">Liên hệ</a>
                         </li>
                         <!-- menu item -->
                         <li class="nav-item active">
-                            <a class="nav-link" href="/donation">
+                            <a class="nav-link" href="{{route('donation')}}">
                                 Donate
                             </a>
                         </li>
                         <!-- menu item -->
-                    @php
-                        $current_account = session()->get('current_account');
-                    @endphp
-                    <!-- menu item -->
-                        @if(isset($current_account) && $current_account != null)
-                            <img class="login-image" src="{{$current_account->Avatar128x128}}"
-                                 alt=""> {{$current_account->FullName}}
+                        <li class="nav-item dropdown">
+                        @php
+                            $current_account = session()->get('current_account');
+                        @endphp
+                        <!-- menu item -->
+                            @if(isset($current_account) && $current_account != null)
+                                <a href="{{route('personal_info')}}" class="nav-link dropdown-toggle"
+                                   id="about-dropdown" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <img class="login-image" src="{{$current_account->Avatar128x128}}"
+                                         alt="">{{$current_account->FullName}}</a>
+                                <div class="dropdown-menu" aria-labelledby="about-dropdown">
+                                    <a class="dropdown-item" href="{{route('personal_info')}}">Hồ sơ cá nhân</a>
+                                    <a class="dropdown-item" href="">Thay đổi mật khẩu</a>
+                                    <a class="dropdown-item"
+                                       href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"
+                                    >Đăng
+                                        xuất</a>
+                                    <form id="frm-logout" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="/login_register">
+                                <a class="nav-link" href="{{route('login_register')}}">
                                     Đăng nhập/Đăng ký
                                 </a>
                             </li>

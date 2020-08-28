@@ -82,13 +82,13 @@
                 <div class="card-box">
                     <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
                     <div id="product_form" method="POST"
-                          class="parsley-examples" novalidate="">
+                         class="parsley-examples" novalidate="">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="Title">Tiêu đề<span class="text-danger">*</span></label>
                             <input disabled type="text" name="Title" parsley-trigger="change" required=""
-                                   class="form-control" id="Title" value="{{$post->Title   }}">
+                                   class="form-control" id="Title" value="{{$post->Title}}">
                             @if ($errors->has('Title'))
                                 <label class="alert-warning">{{$errors->first('Title')}}</label>
                             @endif
@@ -117,11 +117,12 @@
                         </div>
                         <div class="form-group">
                             <label for="Status">Status<span class="text-danger">*</span></label>
-                            <select class="form-control select-form-control" name="Status" disabled>
-                                if($request->Status != "All"){array_push($condition, ['Status', '=', $request->Status]);}
+                            <select class="form-control select-form-control" name="Status" disabled></select>
+                            if($request->Status != "All"){array_push($condition, ['Status', '=', $request->Status]);}
                         </div>
                         <div class="form-group text-right mb-0">
-                            <a class="btn btn-primary waves-effect waves-light mr-1" href="{{route('admin_post_edit',$post->id)}}">
+                            <a class="btn btn-primary waves-effect waves-light mr-1"
+                               href="{{route('admin_post_edit',$post->id)}}">
                                 Sửa
                             </a>
                             <a href="{{route('admin_post_list')}}" class="btn btn-secondary waves-effect waves-light">

@@ -158,7 +158,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="IDNo">Chứng Minh Thư / Thẻ Căn Cước <span
-                                            class="text-danger">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input type="number" name="IDNo" parsley-trigger="change" required=""
                                        class="form-control" id="IDNo" value="{{old('IDNo')}}">
                                 @if ($errors->has('IDNo'))

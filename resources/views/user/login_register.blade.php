@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script
-            src="https://kit.fontawesome.com/64d58efce2.js"
-            crossorigin="anonymous"
+        src="https://kit.fontawesome.com/64d58efce2.js"
+        crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="{{asset('assets/user/css/login_register.css')}}"/>
     <link href={{asset('assets/user/fonts/flaticon/flaticon.css')}} rel="stylesheet" type="text/css">
@@ -45,31 +45,45 @@
                 <div class="input-field">
                     <i class="fas fa-user"></i>
 
-                    <input type="text" placeholder="@if ($errors->first('FullName') != "") {{$errors->first('FullName')}} @else Họ và Tên @endif" name="FullName"/>
+                    <input type="text"
+                           placeholder="@if ($errors->first('FullName') != "") {{$errors->first('FullName')}} @else Họ và Tên @endif"
+                           name="FullName"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="@if ($errors->first('Email') != "") {{$errors->first('Email')}} @else Email @endif" name="Email"/>
+                    <input type="email"
+                           placeholder="@if ($errors->first('Email') != "") {{$errors->first('Email')}} @else Email @endif"
+                           name="Email"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="text" placeholder="@if ($errors->first('PhoneNumber') != "") {{$errors->first('PhoneNumber')}} @else Số điện thoại @endif" name="PhoneNumber"/>
+                    <input type="text"
+                           placeholder="@if ($errors->first('PhoneNumber') != "") {{$errors->first('PhoneNumber')}} @else Số điện thoại @endif"
+                           name="PhoneNumber"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-home"></i>
-                    <input type="text" placeholder="@if ($errors->first('Address') != "") {{$errors->first('Address')}} @else Địa chỉ @endif" name="Address"/>
+                    <input type="text"
+                           placeholder="@if ($errors->first('Address') != "") {{$errors->first('Address')}} @else Địa chỉ @endif"
+                           name="Address"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-birthday-cake"></i>
-                    <input type="date" placeholder="@if ($errors->first('DateOfBirth') != "") {{$errors->first('DateOfBirth')}} @else dd/mm/yy @endif"  name="DateOfBirth"/>
+                    <input type="date"
+                           placeholder="@if ($errors->first('DateOfBirth') != "") {{$errors->first('DateOfBirth')}} @else dd/mm/yy @endif"
+                           name="DateOfBirth"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="@if ($errors->first('Password') != "") {{$errors->first('Password')}} @else Mật khẩu @endif" name="Password"/>
+                    <input type="password"
+                           placeholder="@if ($errors->first('Password') != "") {{$errors->first('Password')}} @else Mật khẩu @endif"
+                           name="Password"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-id-card"></i>
-                    <input type="number" placeholder="@if ($errors->first('IDNo') != "") {{$errors->first('IDNo')}} @else Chứng minh Thư / Thẻ căn cước @endif" name="IDNo"/>
+                    <input type="number"
+                           placeholder="@if ($errors->first('IDNo') != "") {{$errors->first('IDNo')}} @else Chứng minh Thư / Thẻ căn cước @endif"
+                           name="IDNo"/>
                 </div>
                 <input type="submit" class="btn" value="Gửi" style="background-color: coral"/>
                 {{--                <p class="social-text">Đăng ký với: </p>--}}
@@ -89,28 +103,37 @@
         <div class="panel left-panel">
             <div class="content">
                 <h3>Chưa có tài khoản?</h3>
-                <p>Trở thành 1 thành viên của &nbsp;<i class="flaticon-dog-20">PetsCasa</i>&nbsp; ngay thôi nào!!</p>
+                <p>Trở thành 1 thành viên của &nbsp;<a href="/" class="home_direction"><i class="flaticon-dog-20">PetsCasa</i></a>&nbsp;
+                    ngay
+                    thôi nào!!</p>
                 <button class="btn transparent" id="sign-up-btn">
                     Đăng ký
                 </button>
+                <button class="btn transparent" id="sign-up-btn">
+                    <a class="home_direction" href="/">Trang chủ</a>
+                </button>
             </div>
             <img
-                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
-                    class="image" alt="">
+                src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
+                class="image" alt="">
         </div>
         <div class="panel right-panel">
             <div class="content">
                 <h3>Đã có tài khoản?</h3>
-                <p>Trải nghiệm dịch vụ của &nbsp;<i class="flaticon-dog-20" style="color: #F9BE4F">PetsCasa</i>&nbsp;
+                <p>Trải nghiệm dịch vụ của &nbsp;<a href="/" class="home_direction"><i class="flaticon-dog-20"
+                                                                                       style="color: #F9BE4F">PetsCasa</i></a>&nbsp;
                     ngay
                     thôi nào!!</p>
                 <button class="btn transparent" id="sign-in-btn">
                     Đăng nhập
                 </button>
+                <button class="btn transparent" id="sign-up-btn">
+                    <a class="home_direction" href="/">Trang chủ</a>
+                </button>
             </div>
             <img
-                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
-                    class="image" alt=""/>
+                src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
+                class="image" alt=""/>
         </div>
     </div>
 </div>

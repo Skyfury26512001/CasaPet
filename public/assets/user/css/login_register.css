@@ -437,3 +437,8 @@ input:-webkit-autofill:focus {
     font-weight: 600;
     color: #F9575C;
 }
+
+.home_direction {
+    text-decoration: none;
+    color: white
+}

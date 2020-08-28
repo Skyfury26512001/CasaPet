@@ -10,7 +10,6 @@ class NewController extends Controller
 {
     public function list(Request $request)
     {
-
         $news      = News::query();
         $condition = [];
         if ($request->has('start') && $request->has('end')) {
@@ -44,9 +43,9 @@ class NewController extends Controller
     {
         $request->validate(
             [
-                'Title'      => 'required',
-                'Content'    => 'required',
-                'Author'     => 'required',
+                'Title' => 'required',
+                'Content' => 'required',
+                'Author' => 'required',
                 'thumbnails' => 'required',
             ]
         );
@@ -81,11 +80,11 @@ class NewController extends Controller
     {
         $new = News::find($id);
         if (isset($new)) {
-            $new->Title      = $request->Title;
-            $new->Content    = $request->Content;
+            $new->Title = $request->Title;
+            $new->Content = $request->Content;
             $new->Account_id = $request->Account_id;
-            $new->Pet_id     = $request->Pet_id;
-            $new->Status     = $request->Status;
+            $new->Pet_id = $request->Pet_id;
+            $new->Status = $request->Status;
             $new->update();
 //            dd("updateSuccess");
             return redirect(route('admin_new_list'));
@@ -93,16 +92,16 @@ class NewController extends Controller
         return redirect(route('admin_404'));
     }
 
-    public function detail($id)
-    {
-        $new     = News::where('id', '=', $id)->first();
-        $account = Account::find($new->Account_id);
-        $pet     = Pet::find($new->Pet_id);
-        if (isset($new) && $new != null) {
-            return view('admin.news.detail', compact('new', 'account', 'pet'));
-        }
-        return view('admin.404-admin');
-    }
+//    public function detail($id)
+//    {
+//        $new = News::where('id', '=', $id)->first();
+//        $account = Account::find($new->Account_id);
+//        $pet = Pet::find($new->Pet_id);
+//        if (isset($new) && $new != null) {
+//            return view('admin.news.detail', compact('new', 'account', 'pet'));
+//        }
+//        return view('admin.404-admin');
+//    }
 
     public function deactive($id, Request $request)
     {
@@ -117,7 +116,7 @@ class NewController extends Controller
     public function deactive_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
         if (isset($ids_array) && $ids_array != null) {
             News::whereIn('id', $ids_array)->update(['status' => 0]);
@@ -128,7 +127,7 @@ class NewController extends Controller
 
     public function active(Request $request)
     {
-        $id  = $request->id;
+        $id = $request->id;
         $new = News::find($id);
         if (isset($new) && $new != null) {
             News::where('id', '=', $id)->update(['status' => 1]);
@@ -140,7 +139,7 @@ class NewController extends Controller
     public function active_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
 //        return response()->json(['success'=>$ids_array]);
         if (isset($ids_array) && $ids_array != null) {

@@ -773,6 +773,11 @@ button, input, optgroup, select, textarea {
     font-weight: 500;
 }
 
+.userpage-sidebar-menu-entry__text:hover,
+.user-page-brief__edit:hover {
+    color: black !important;
+}
+
 /*DatePicker*/
 .input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
     border-top-right-radius: 0;
@@ -896,3 +901,17 @@ a {
 .page {
     padding-bottom: unset;
 }
+
+.input-group-append .btn {
+    margin-top: unset;
+    box-shadow: unset;
+}
+
+.form-control {
+    border: 1px solid rgba(0, 0, 0, .14);
+}
+
+.gj-icon {
+    color: #48A06A;
+}
+
