@@ -38,8 +38,8 @@
     <!-- Datepicker -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- SPECIFIC CSS -->
-@yield('specific_css')
-<!-- Custom CSS -->
+
+    <!-- Custom CSS -->
     <style>
         .fb_dialog_content > iframe {
             bottom: 100px !important;
@@ -52,7 +52,15 @@
             padding-right: 5px;
             /*margin-top: 20px;*/
         }
+
+        .fast-link {
+            color: yellow;
+            background-color: red;
+            margin-left: 25px;
+        }
     </style>
+
+    @yield('specific_css')
 </head>
 
 <!-- ==== body starts ==== -->
@@ -130,6 +138,9 @@
                 <a class="navbar-brand" href="/">
                     <i class="flaticon-dog-20"></i><span>PetsCasa</span>
                 </a>
+                <!-- Main service -->
+                <a class="navbar-brand fast-link" href="{{route('rescue_form')}}"><strong>Cứu Hộ Khẩn
+                        Cấp!</strong></a>
                 <!-- Navbartoggler -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,10 +150,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <!-- menu item -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Trang chủ</a>
-                        </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="{{route('services')}}" id="services-dropdown"

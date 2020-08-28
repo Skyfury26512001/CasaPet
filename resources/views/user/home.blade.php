@@ -29,7 +29,7 @@
                     <div class="d-none d-sm-block">
                         <p class="header-p">Search our list of dogs, cats and other pets available for adoption near
                             you</p>
-                        <a class="btn btn-primary " href="/adoption">Adopt Today</a>
+                        <a class="btn btn-primary " href="{{route('adoption')}}">Adopt Today</a>
                     </div>
                     <!--/d-none  -->
                 </div>
@@ -51,7 +51,7 @@
                     <!--the div below is hidden on small screens  -->
                     <div class="d-none d-sm-block">
                         <p class="header-p">We have all the best products for your pet, visit our store today!</p>
-                        <a class="btn btn-primary " href="/contact">Contact us</a>
+                        <a class="btn btn-primary " href="{{route('contact')}}">Contact us</a>
                     </div>
                     <!--/d-none  -->
                 </div>
@@ -73,7 +73,7 @@
                     <!--the div below is hidden on small screens  -->
                     <div class="d-none d-sm-block">
                         <p class="header-p">Our facility is designed to meet the unique needs of your pet</p>
-                        <a class="btn btn-primary " href="/services">Our services</a>
+                        <a class="btn btn-primary " href="{{route('services')}}">Our services</a>
                     </div>
                     <!--/d-none  -->
                 </div>
@@ -573,7 +573,7 @@
             </div>
             <!-- /row -->
             <div class="text-center mt-5">
-                <a href="/adoption" class="btn btn-secondary btn-lg">Xem thêm</a>
+                <a href="{{route('adoption')}}" class="btn btn-secondary btn-lg">Xem thêm</a>
             </div>
         </div>
         <!-- /container -->

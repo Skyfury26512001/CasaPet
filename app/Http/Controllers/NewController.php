@@ -173,4 +173,11 @@ class NewController extends Controller
         $news = News::where('Status', '=', 1)->paginate(3);
         return view('user.blog.news', compact('news'));
     }
+
+    public function single_new_data($Slug)
+    {
+        $single_new = News::where('Slug', '=', $Slug)->first();
+//        dd($pet);
+        return view('user.blog.single_new', compact('single_new'));
+    }
 }

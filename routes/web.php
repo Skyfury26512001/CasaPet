@@ -28,7 +28,7 @@ Route::get('/success', function () {
     return view('user.sub_pages.success');
 })->name('success');
 
-Route::get('/get_involved', function () {
+Route::get('/get-involved', function () {
     return view('user.sub_pages.get_involved');
 })->name('get_involed');
 
@@ -37,20 +37,21 @@ Route::get('/services', function () {
     return view('user.services.services');
 })->name('services');
 
-Route::get('/rescue_form', function () {
+Route::get('/rescue-form', function () {
     return view('user.services.rescue_form');
 })->name('rescue_form');
+
 Route::post('/rescue_form', 'SendMailController@report_send')->name('report_send');
 
 Route::get('/adoption', function () {
     return view('user.services.adoption');
 })->name('adoption');
 
-Route::get('/adoption/adoption_detail', function () {
+Route::get('/adoption/adoption-detail', function () {
     return view('user.services.adoption_detail');
 })->name('adoption_detail');
 
-Route::get('/adopt_form', function () {
+Route::get('/adopt-form', function () {
     return view('user.services.adopt_form');
 })->name('adoption_form');
 
@@ -58,7 +59,7 @@ Route::get('/concession', function () {
     return view('user.services.concession');
 })->name('concession');
 
-Route::get('/concession_form', function () {
+Route::get('/concession-form', function () {
     return view('user.services.concession_form');
 })->name('concession_form');
 
@@ -71,7 +72,7 @@ Route::get('/shop', function () {
     return view('user.store.shop');
 });
 
-Route::get('/pet_care', function () {
+Route::get('/pet-care', function () {
     return view('user.store.pet_care');
 });
 
@@ -79,6 +80,7 @@ Route::get('/pet_care', function () {
 /* 3.Blog */
 Route::get('/news', 'NewController@news_list_data')->name('news');
 
+Route::get('/news/single_new/{Slug}', 'NewController@single_new_data')->name('single_new');
 
 /* 4.About */
 Route::get('/about', function () {
@@ -95,9 +97,9 @@ Route::get('/contact', function () {
     return view('user.contact.contact');
 })->name('contact');
 
-Route::get('/mail_send', 'SendMailController@sendMail');
+Route::get('/mail-send', 'SendMailController@sendMail');
 
-Route::post('/mail_send_post', 'SendMailController@sendMail')->name('send_contact_mail');
+Route::post('/mail-send_post', 'SendMailController@sendMail')->name('send_contact_mail');
 
 /* 6.Donation */
 Route::get('/donation', function () {
@@ -112,7 +114,7 @@ Route::get('/foster', function () {
 
 /* 7.Login-Register */
 
-Route::get('/login_register', function () {
+Route::get('/login-register', function () {
     return view('user.login_register');
 })->name('login_register');
 
@@ -122,9 +124,9 @@ Route::post('/logout', 'AccountController@logOut')->name('logout');
 
 Route::post('/register', 'AccountController@registerP')->name('register');
 
-Route::get('/personal_info', 'PersonalInfoController@account_data')->name('personal_info');
+Route::get('/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
 
-Route::post('/personal_info_update', 'PersonalInfoController@account_update')->name('personal_info_update');
+Route::post('/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
 
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
@@ -227,7 +229,7 @@ Route::get('checking_page', function () {
 });
 
 /* Admin Login */
-Route::get('/admin_login', function () {
+Route::get('/admin-login', function () {
     return view('admin.login_register');
 })->name('login');
 

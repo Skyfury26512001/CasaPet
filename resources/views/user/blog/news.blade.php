@@ -11,12 +11,15 @@
         h2 {
             border-bottom: 1px solid rgba(0, 0, 0, .125);
         }
+
+        .page-item.active .page-link {
+            background-color: #48A06A !important;
+        }
     </style>
 @endsection
 @section('specific_js')
     <script>
         $("ul.pagination").addClass('float-right');
-        $("li .page-item .active").css("background-color", "red");
         {{--        $(function () {--}}
 
         {{--            var $sidebar = $("#sidebar"),--}}
@@ -74,17 +77,17 @@
                                 {{date("d/m/Y", strtotime($new->created_at))}} bởi
                                 <span style="color: #48A06A">{{$new->Author}}</span>
                             </div>
-                            <a href="blog-single.html">
+                            <a href="{{route('single_new',$new->Slug)}}">
                                 <!-- image -->
                                 <img class="card-img-top img-fluid" src="{{$new->FirstThumbnail}}" alt="">
                             </a>
                             <div class="card-body">
-                                <a href="blog-single.html">
+                                <a href="{{route('single_new',$new->Slug)}}">
                                     <h3 class="card-title">{{$new->Title}}</h3>
                                 </a>
                                 <!-- excerpt -->
                                 {{--                                <p class="card-text mt-3">{{$new->Content}}</p>--}}
-                                <a href="blog-single.html" class="btn btn-primary">Đọc thêm &rarr;</a>
+                                <a href="{{route('single_new',$new->Slug)}}" class="btn btn-primary">Đọc thêm &rarr;</a>
                             </div>
                             <!--card-footer -->
                         </div>
@@ -125,22 +128,24 @@
                         <div class="card-body">
                             <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action">
-                                    Pet Training
+                                    Quá trình cứu hộ
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action">Veterinarian</a>
-                                <a href="#" class="list-group-item list-group-item-action">Pet Hotel</a>
-                                <a href="#" class="list-group-item list-group-item-action">Vaccines</a>
+                                <a href="#" class="list-group-item list-group-item-action">Tin tức và sự kiện</a>
+                                <a href="#" class="list-group-item list-group-item-action">Kiến thức nuôi boss</a>
                             </div>
                         </div>
                     </div>
                     <!-- Side Widget -->
-                {{--                    <div class="card">--}}
-                {{--                        <h5 class="card-header">Image Widget</h5>--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <img src="{{asset('assets/user/img/gallery/gallery1.jpg')}}" class="img-fluid" alt=""/>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                <!-- Side Widget -->
+                    <div class="card">
+                        <h5 class="card-header">Video nổi bật</h5>
+                        <div class="card-body">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FVwyIfChIdY"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Side Widget -->
                     {{--                    <div class="card">--}}
                     {{--                        <h5 class="card-header">Tags</h5>--}}
                     {{--                        <div class="card-body">--}}
@@ -158,6 +163,22 @@
             <!-- /.row -->
         </div>
         <!-- /.container -->
+        <!-- Section Call To Action -->
+        <div id="call-to-action">
+            <div class="container block-padding">
+                <div
+                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                    <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
+                </div>
+                <div
+                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                    <a href="{{route('get_involed')}}" class="btn btn-primary"
+                       aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
+                </div>
+            </div>
+            <!--/row -->
+        </div>
+        <!--/call-to-action -->
     </div>
     <!-- /page -->
 @endsection
