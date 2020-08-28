@@ -42,7 +42,6 @@ class AccountController extends Controller
                 $message->from("petscasavn@gmail.com", "PetsCasa");
             });
             $contentTele = "\n + Tài khoản mới được tạo : $request->Email " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Số nhận diện : $request->IDNo";
-
             $contentTeleSend = urlencode("Yêu cầu mới \n- Từ: Petcasa \n- Tiêu đề: Tạo mới tài khoản \n- Nội dung: " . $contentTele);
 //            dd($contentTeleSend);
             $roomId = -1001421358819;

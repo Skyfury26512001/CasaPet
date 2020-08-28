@@ -77,7 +77,7 @@ Route::get('/pet_care', function () {
 
 
 /* 3.Blog */
-Route::get('/news', 'BlogController@news_list_data')->name('news');
+Route::get('/news', 'NewController@news_list_data')->name('news');
 
 
 /* 4.About */

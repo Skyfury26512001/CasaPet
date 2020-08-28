@@ -13,32 +13,30 @@
         }
     </style>
 @endsection
-@section('specific_js')
-    <script>
-        $("ul.pagination").addClass('float-right');
-        $("li .page-item .active").css("background-color", "red");
-        {{--        $(function () {--}}
+{{--@section('specific_js')--}}
+{{--    <script>--}}
+{{--        $(function () {--}}
 
-        {{--            var $sidebar = $("#sidebar"),--}}
-        {{--                $window = $(window),--}}
-        {{--                offset = $sidebar.offset(),--}}
-        {{--                topPadding = 120;--}}
+{{--            var $sidebar = $("#sidebar"),--}}
+{{--                $window = $(window),--}}
+{{--                offset = $sidebar.offset(),--}}
+{{--                topPadding = 120;--}}
 
-        {{--            $window.scroll(function () {--}}
-        {{--                if ($window.scrollTop() > offset.top) {--}}
-        {{--                    $sidebar.stop().animate({--}}
-        {{--                        marginTop: $window.scrollTop() - offset.top + topPadding--}}
-        {{--                    });--}}
-        {{--                } else {--}}
-        {{--                    $sidebar.stop().animate({--}}
-        {{--                        marginTop: 0--}}
-        {{--                    });--}}
-        {{--                }--}}
-        {{--            });--}}
+{{--            $window.scroll(function () {--}}
+{{--                if ($window.scrollTop() > offset.top) {--}}
+{{--                    $sidebar.stop().animate({--}}
+{{--                        marginTop: $window.scrollTop() - offset.top + topPadding--}}
+{{--                    });--}}
+{{--                } else {--}}
+{{--                    $sidebar.stop().animate({--}}
+{{--                        marginTop: 0--}}
+{{--                    });--}}
+{{--                }--}}
+{{--            });--}}
 
-        {{--        });--}}
-    </script>
-@endsection
+{{--        });--}}
+{{--    </script>--}}
+{{--@endsection--}}
 @section('content')
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid overlay">

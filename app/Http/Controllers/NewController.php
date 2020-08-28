@@ -150,4 +150,10 @@ class NewController extends Controller
         }
         return response()->json(['error' => "Account Active unsuccessfully."]);
     }
+
+    public function news_list_data()
+    {
+        $news = News::where('Status', '=', 1)->paginate(3);
+        return view('user.blog.news', compact('news'));
+    }
 }
