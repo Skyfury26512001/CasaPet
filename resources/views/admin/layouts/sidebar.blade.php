@@ -41,28 +41,8 @@
                 </li>
                 <li>
                     <a href="#">
-                        <i class=" mdi mdi-reply-all-outline"></i>
-                        <span>  Quản lý yêu cầu</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{route('admin_order_list')}}">Danh sách</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="mdi mdi-file-document-box-check-outline"></i>
-                        <span>  Quản lý hợp đồng</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="{{route('admin_contract_list')}}">Danh sách</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
                         <i class="mdi mdi-view-compact"></i>
-                        <span>  Quản lý bài viết</span>
+                        <span>  Quản lý tin tức</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
@@ -79,6 +59,26 @@
                     <ul class="nav-second-level" aria-expanded="false">
                         <li><a href="{{route('admin_report_list')}}">Danh sách</a></li>
                         <li><a href="{{route('admin_report_create')}}">Thêm mới</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class=" mdi mdi-reply-all-outline"></i>
+                        <span>  Quản lý yêu cầu</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin_order_list')}}">Danh sách</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-file-document-box-check-outline"></i>
+                        <span>  Quản lý hợp đồng</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{{route('admin_contract_list')}}">Danh sách</a></li>
                     </ul>
                 </li>
                 {{--                <li>--}}

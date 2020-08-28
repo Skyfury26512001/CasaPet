@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Donation;
+use App\Blog;
 use Illuminate\Http\Request;
 
-class DonationController extends Controller
+class BlogController extends Controller
 {
+    public function news_list_data()
+    {
+        $new = Blog::where('Status', '=', 1)->get();
+        dd($new);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class DonationController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -31,31 +37,20 @@ class DonationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
-            //put fields to be validated here
-        ]);
-
-        $donation = new Donation();
-        $donation->name = $request->name;
-        $donation->phonenumber = $request->phonenumber;
-        $donation->amount = $request->amount;
-        $donation->note = $request->note;
-
-        $donation->save();
-        return redirect(url('https://www.sandbox.paypal.com/vn/signin'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param \App\Blog $blog
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
         //
     }
@@ -63,10 +58,10 @@ class DonationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param \App\Blog $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Blog $blog)
     {
         //
     }
@@ -75,10 +70,10 @@ class DonationController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param \App\Blog $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Blog $blog)
     {
         //
     }
@@ -86,10 +81,10 @@ class DonationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param \App\Blog $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $blog)
     {
         //
     }

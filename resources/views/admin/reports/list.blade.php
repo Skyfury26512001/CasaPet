@@ -243,15 +243,25 @@
                                                 selected
                                                 @endif>All
                                         </option>
-                                        <option value="1"
-                                                @if (Request::get('Status') == "1")
-                                                selected
-                                                @endif>Hoạt động
-                                        </option>
                                         <option value="0"
                                                 @if (Request::get('Status') == "0")
                                                 selected
-                                                @endif>Không hoạt động
+                                                @endif>Chưa xử lý
+                                        </option>
+                                        <option value="2"
+                                                @if (Request::get('Status') == "2")
+                                                selected
+                                                @endif>Hoàn thành
+                                        </option>
+                                        <option value="3"
+                                                @if (Request::get('Status') == "3")
+                                                selected
+                                                @endif>Từ chối
+                                        </option>
+                                        <option value="4"
+                                                @if (Request::get('Status') == "3")
+                                                selected
+                                                @endif>Bài viết ẩn
                                         </option>
                                     </select>
                                 </div>
@@ -293,8 +303,8 @@
                                 </div>
                                 <div class="col-1">
                                     <a class="btn btn-primary" href="{{route('admin_report_list')}}">
-                                            Reset
-                                        </a>
+                                        Reset
+                                    </a>
                                 </div>
                             </div>
                             <div class="">
@@ -325,9 +335,17 @@
                                             </td>
                                             <td>{{$report->id}}</td>
                                             <td>{{$report->FullName}}</td>
-                                            <td>{{$report->Address}}</td>
+                                            <td>
+                                                <div style="width: 150px">
+                                                    {!! Illuminate\Support\Str::limit($report->Address,100) !!}
+                                                </div>
+                                            </td>
                                             <td>{{$report->PhoneNumber}}</td>
-                                            <td>{{$report->Content}}</td>
+                                            <td>
+                                                <div style="width: 250px">
+                                                    {!! Illuminate\Support\Str::limit($report->Content,150) !!}
+                                                </div>
+                                            </td>
                                             @if ($report->Status == 0)
                                                 <td style="color: blueviolet">Chưa xử lý</td>
                                             @elseif ($report->Status == 1)
@@ -336,6 +354,8 @@
                                                 <td style="color: mediumspringgreen"> Đã xử lý</td>
                                             @elseif ($report->Status == 3)
                                                 <td style="color: #a01522"> Từ chối</td>
+                                            @elseif ($report->Status == 4)
+                                                <td style="color: #f84552"> Ẩn</td>
                                             @else
                                                 <td style="color: red"> Unknown Status</td>
                                             @endif
@@ -394,11 +414,12 @@
                                                 </td>
                                             @endif
                                             <td>
-                                                <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_report_detail',$report->id)}}"
-                                                       class="btn btn-primary"
-                                                       style="float:right">Chi tiết</a>
-                                                </div>
+                                                <button type="button"
+                                                        class="btn btn-primary btn-table"
+                                                        data-toggle="modal"
+                                                        data-target="#task-detail-modal-{{$report->id}}">
+                                                    Chi tiết
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -427,9 +448,65 @@
 
             </div>
         </div>
-        <!-- end row -->
-
     </div> <!-- end container-fluid -->
+    @foreach($reports as $report)
+        <div id="task-detail-modal-{{$report->id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+             style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0 p-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
 
+                        <div class="p-2 task-detail">
+                            <div class="media mb-3">
+                                <div class="media-body">
+                                    <h5 class="media-heading mb-1 mt-0">Họ và tên :</h5>
+                                    <span class="badge badge-danger">{{$report->FullName}}</span>
+                                </div>
+                            </div>
 
+                            <h4 class="mb-4">Địa chỉ : {{$report->Address}}</h4>
+
+                            <p class="text-muted">
+                                {{$report->Content}}
+                            </p>
+
+                            <ul class="list-inline task-dates mb-0 mt-4">
+                                <li>
+                                    <h5 class="mb-1">Ngày tạo</h5>
+                                    <p> {{$report->created_at}} <small class="text-muted"></small></p>
+                                </li>
+
+                                <li>
+                                    <h5 class="mb-1">Ngày thay đổi mới nhất</h5>
+                                    <p> {{$report->updated_at}} <small class="text-muted"></small></p>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+
+                            {{--                            <div class="task-tags mt-4">--}}
+                            {{--                                <h5 class="">Tags</h5>--}}
+                            {{--                                <input type="text" value="Amsterdam,Washington,Sydney" data-role="tagsinput"--}}
+                            {{--                                       placeholder="add tags"/>--}}
+                            {{--                            </div>--}}
+                            <div class="attached-files mt-4">
+                                <h5 class="">Attached Files </h5>
+                                <div class="files-list">
+                                    @foreach ($report->ArrayThumbnails450x450 as $thumbnail)
+                                        <div class="file-box">
+                                            <a href=""><img src="{{$thumbnail}}"
+                                                            class="img-fluid img-thumbnail" alt="attached-img"></a>
+                                            <p class="font-13 mb-1 text-muted"><small></small></p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    @endforeach
 @endsection

@@ -41,3 +41,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.modal-header .close {
+    z-index: 2;
+}

@@ -202,7 +202,7 @@
                                 </ul>
                                 <!-- Buttons -->
                                 <div class="text-center">
-                                    <a href="/adoption_detail" class="btn btn-primary">Thêm thông tin</a>
+                                    <a href="{{route('adoption_detail')}}" class="btn btn-primary">Thêm thông tin</a>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
             <div class="col-lg-7 text-light text-center">
                 <h4 data-aos="zoom-out" class="text-capitalize aos-init aos-animate">Bạn Chưa Đủ Điều Kiện Mang
                     Boss Về Nhà? Tham gia chương trình Nhận nuôi Ảo nhé.</h4>
-                <a href="/donate_guide"
+                <a href="{{route('foster')}}"
                    class="btn btn-secondary aos-init aos-animate" data-aos="zoom-out" aria-label="Tìm hiểu ngay"
                    aria-labelledby="Tìm hiểu ngay">Tìm hiểu ngay</a>
             </div>

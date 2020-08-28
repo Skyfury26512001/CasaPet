@@ -26,17 +26,55 @@
             text-align: center;
         }
 
-        .donate_btn {
-            text-align: center;
-        }
-
         img {
             max-width: 100%;
             width: 350px;
             display: block;
             margin: auto;
         }
+
+        #paypal-button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
     </style>
+@endsection
+@section('specific_js')
+    <!-- Include the PayPal JavaScript SDK -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=Aa7uffDMG6QFVbl4k074yVwic421SWLCfeOTt1poGLK8suW3bKj3r9EVWoH72QP5nakrbJz0_dA70uqr&currency=USD"></script>
+
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+            style: {
+                layout: 'horizontal',
+                color: 'black',
+                shape: 'rect',
+                label: 'paypal'
+            },
+
+            // Set up the transaction
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '20.00'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
 @endsection
 @section('content')
     <!-- ==== Page Content ==== -->
@@ -68,10 +106,7 @@
                                       required=""></textarea>
                         </div>
                     </div>
-                    <div class="donate_btn">
-                        <button type="submit" id="submit_btn" value="Submit" class="btn btn-primary">Donate
-                        </button>
-                    </div>
+                    <div id="paypal-button-container"></div>
                 </form>
                 <!-- /form-group-->
             </div>
@@ -80,7 +115,7 @@
     <!-- /container -->
     <!-- /page -->
     <div class="container custom-2">
-        <div class="row block-padding col-md-12">
+        <div class="row block-padding col-md-12" style="border-top: 1px solid #f5f5f5">
             <div class="col-md-4">
                 <img
                     src="https://res.cloudinary.com/dwarrion/image/upload/v1598263958/PetCasa/Donation%20Page/dog_iqkinh.jpg"
