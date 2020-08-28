@@ -53,6 +53,6 @@ class SendMailController extends Controller
             $urldone = file_get_contents($url);
             return $report;
         });
-        dd($report);
+        return redirect(route('success'));
     }
 }

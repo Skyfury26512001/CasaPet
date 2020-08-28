@@ -57,7 +57,7 @@ class Report extends Model
 
     public function Pets()
     {
-        return $this->belongsToMany(Pet::class, 'report_pet');
+        return $this->belongsToMany(Pet::class, 'report_pet')->withTimestamps();
     }
 
 }

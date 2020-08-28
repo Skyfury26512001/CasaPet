@@ -2,17 +2,7 @@
 @section('specific_js')
     <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="{{asset('assets/admin/js/selectize.js')}}"></script>
-    <script>
-        $('.selectize-multiple').selectize({
-            delimiter: ',',
-            persist: false,
-            create: function (input) {
-                return {value: input, text: input};
-            }
-        });
-    </script>
+
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget(
             {
@@ -72,9 +62,6 @@
             });
     </script>
 @endsection
-@section('specific_css')
-    <link rel="stylesheet" href="{{asset('assets/admin/css/selectize.bootstrap4.css')}}">
-@endsection
 @section('content')
     <div class="container-fluid">
 
@@ -95,7 +82,7 @@
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-12">
                 <div class="card-box">
                     <h4 class="header-title">Chỉnh sửa thông tin báo cáo : </h4>
                     <form action="{{route('admin_report_update',$report->id)}}" id="product_form" method="POST"
@@ -123,12 +110,12 @@
                             <label for="PhoneNumber">Số điện thoại<span class="text-danger">*</span></label>
                             <input type="text" name="PhoneNumber" parsley-trigger="change" required=""
                                    class="form-control" id="PhoneNumber" value="{{$report->PhoneNumber}}"
-                                   style="width: 15%;">
+                                   style="width: 10%;">
                             @if ($errors->has('PhoneNumber'))
                                 <label class="alert-warning">{{$errors->first('PhoneNumber')}}</label>
                             @endif
                         </div>
-                        <div class="form-group" style="width: 200%">
+                        <div class="form-group">
                             <label for="Content">Nội dung<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
                                       placeholder="">{{$report->Content}}</textarea>
@@ -153,25 +140,16 @@
                                 <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
                             @endif
                         </div>
-                        <div class="form-group" style="width:20%;">
+                        <div class="form-group" style="width:10%;">
                             <label for="Status">Trạng thái<span class="text-danger">*</span></label>
-                            <select name="Status" class="form-control select-form-control">
-                                <option value="0" @if ( $report->Status == 0 ) selected @endif
-                                @if ( $report->Status != 0 ) disabled @endif> Chưa xử lý
+                            <select name="Status" class="form-control select-form-control"
+                                    @if ($report->Status == 2 ) disabled @endif>
+                                <option value="0" @if ( $report->Status == 0 ) selected
+                                        @endif @if ( $report->Status != 0 ) disabled @endif > Chưa xử lý
                                 </option>
-                                <option value="1" @if ( $report->Status == 1 ) selected
-                                        @endif @if ($report->Status == 2 && $report->Status == 4) disabled @endif> Đang
-                                    xử lý
-                                </option>
-                                <option value="2" @if ( $report->Status == 2) selected
-                                        @endif @if ($report->Status == 2 ) disabled @endif> Đã xử lý
-                                </option>
-                                <option value="3" @if ( $report->Status == 3) selected
-                                        @endif @if ($report->Status == 2  && $report->Status == 4) disabled @endif> Từ
-                                    chối
-                                </option>
-                                <option value="4" @if ( $report->Status == 4 ) selected @endif> Ẩn
-                                </option>
+                                <option value="1" @if ( $report->Status == 1 ) selected @endif > Đang xử lý</option>
+                                <option value="2" @if ( $report->Status == 2 ) selected @endif > Đã xử lý</option>
+                                <option value="3" @if ( $report->Status == 3 ) selected @endif > Từ chối</option>
                             </select>
                             @if ($errors->has('thumbnails'))
                                 <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
@@ -193,36 +171,7 @@
                     </form>
                 </div> <!-- end card-box -->
             </div>
-            <div class="col-lg-5">
-                <div class="card-box">
-                    <h4 class="header-title">Cập nhật mã thú nuôi : </h4>
-                    <form action="{{route('admin_report_pet_update',$report->id)}}" id="product_form" method="POST"
-                          class="parsley-examples" novalidate="">
-                        @csrf
-                        @method('PUT')
-                        {{--                        {{dd($report_pet_id)}}--}}
-                        <div class="form-group">
-                            <label for="Status">Chọn mã thú nuôi<span class="text-danger">*</span></label>
-                            <select class="form-control selectize-multiple" id="select-7" name="PetIds[]" multiple>
-                                @foreach($pets as $pet)
-                                    <option value="{{$pet->id}}"
-                                            @if (in_array($pet->id,json_decode(json_encode($report_pet_id), true))) selected @endif>{{$pet->Name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group text-right mb-0">
-                            <button class="btn btn-primary waves-effect waves-light mr-1">
-                                Cập nhật
-                            </button>
-                            <a class="btn btn-secondary waves-effect waves-light" href="{{route('admin_report_list')}}">
-                                Hủy
-                            </a>
-                        </div>
-
-                    </form>
-                </div> <!-- end card-box -->
-            </div>
             <!-- end row -->
         </div>
+
 @endsection

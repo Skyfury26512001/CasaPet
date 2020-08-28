@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pet;
 use App\Report;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Array_;
@@ -30,6 +31,8 @@ class ReportController extends Controller
             $reports->orderBy('Status', "ASC");
         }
         $reports = $reports->where($condition)->paginate(5)->appends(request()->query());
+//        $reports = Report::where('Status', '=', '3')->get();
+//        dd($reports);
         return view('admin.reports.list', compact('reports'));
     }
 
@@ -62,9 +65,13 @@ class ReportController extends Controller
 
     public function edit($id)
     {
-        $report = Report::find($id);
+        $report        = Report::find($id);
+        $report_pet_id = collect($report->Pets)->map(function ($item) {
+            return $item->id;
+        });
         if (isset($report) && $report != null) {
-            return view('admin.reports.edit', compact('report'));
+            $pets = Pet::where('Status', '=', '1')->get();
+            return view('admin.reports.edit', compact('report', 'pets', 'report_pet_id'));
         }
         return redirect(route('admin_404'));
     }
@@ -80,7 +87,6 @@ class ReportController extends Controller
 
     public function update(Request $request, $id)
     {
-//        dd($request);
         $request->validate([
             'FullName'    => 'required',
             'Content'     => 'required',
@@ -88,16 +94,29 @@ class ReportController extends Controller
             'PhoneNumber' => 'required',
             'thumbnails'  => 'required',
         ]);
-
         $report               = $request->all();
         $report['Thumbnails'] = null;
-//        dd($request->thumbnails);
         foreach ($request->thumbnails as $thumb) {
             $report['Thumbnails'] .= $thumb . ",";
         }
         $report['Thumbnails'] = substr($report['Thumbnails'], 0, -1);
         Report::find($id)->update($report);
         return redirect(route('admin_report_list'));
+    }
+
+    public function pet_update(Request $request, $id)
+    {
+        $request->validate([
+            'PetIds' => 'required',
+        ]);
+        $report = Report::find($id);
+//        dd($report);
+        if (isset($report) && $report != null) {
+            $report->Pets()->detach();
+            $report->Pets()->attach($request->PetIds);
+            return redirect(route('admin_report_edit', $id));
+        }
+        return redirect(route('admin_404'));
     }
 
     public function handle($id)

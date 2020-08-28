@@ -206,19 +206,16 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::get('/edit/{slug}', 'ReportController@edit')->name('admin_report_edit');
         Route::get('/detail/{slug}', 'ReportController@detail')->name('admin_report_detail');
         Route::put('/update/{slug}', 'ReportController@update')->name('admin_report_update');
+        Route::put('/update_pet/{slug}', 'ReportController@pet_update')->name('admin_report_pet_update');
         Route::put('/handle/{id}', 'ReportController@handle')->name('admin_report_handle');
         Route::put('/done/{id}', 'ReportController@done')->name('admin_report_done');
         Route::put('/aceptAll', 'ReportController@acept_multi')->name('admin_report_acept_multi');
         Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
         Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
     });
-    Route::group(['prefix' => '/report_pet'], function () {
-        Route::get('/', 'ReportController@list')->name('admin_report_list');
-        Route::get('/create', 'ReportController@create')->name('admin_report_create');
-    });
 });
 
-
+Route::get('/test', function () { return view('admin.test'); });
 // test : route
 Route::get('checking_page', function () {
     return view('session_checking');
