@@ -2,6 +2,13 @@
 @section('title')
     Adoption Detail
 @endsection
+@section('specific_css')
+    <style>
+        .page {
+            padding-bottom: unset;
+        }
+    </style>
+@endsection
 @section('specific_js')
 @endsection
 @section('content')
@@ -10,14 +17,15 @@
         <div class="jumbo-heading">
             <!-- section-heading -->
             <div class="section-heading" data-aos="zoom-in">
-                <h1>Adopt a Pet</h1>
+                <h1>Nhận nuôi thú cưng</h1>
             </div>
             <!-- /section-heading -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('adoption')}}">Nhận nuôi</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('adoption_detail')}}">Chi
+                    <li class="breadcrumb-item"><a href="{{route('pet_list_adoption')}}">Nhận nuôi</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a
+                            href="#">Chi
                             tiết</a></li>
                 </ol>
             </nav>
@@ -32,71 +40,59 @@
                 <div class="col-lg-12">
                     <div class="row bg-light-custom border-irregular1 block-padding">
                         <!-- image -->
-                        <div class="col-lg-4 offset-lg-2">
+                        <div class="col-lg-3 offset-lg-2">
                             <!-- owl slider -->
                             <div id="owl-adopt-single" class="owl-carousel top-centered-nav owl-theme">
-                                <div class="col-md-12">
-                                    <!-- image -->
-                                    <a href="{{asset('assets/user/img/adoption/adoption1.jpg')}}"
-                                       title="your caption here">
-                                        <img src="{{asset('assets/user/img/adoption/adoption1.jpg')}}"
-                                             class="border-irregular1 img-fluid hover-opacity" alt="">
-                                    </a>
-                                </div>
-                                <!-- /col-md-12 -->
-                                <div class="col-md-12">
-                                    <!-- image -->
-                                    <a href="{{asset('assets/user/img/adoption/adoptionsingle1.jpg')}}"
-                                       title="your caption here">
-                                        <img src="{{asset('assets/user/img/adoption/adoptionsingle1.jpg')}}"
-                                             class="border-irregular2 img-fluid hover-opacity" alt="">
-                                    </a>
-                                </div>
-                                <!-- /col-md-12 -->
-                                <div class="col-md-12">
-                                    <!-- image -->
-                                    <a href="{{asset('assets/user/img/adoption/adoptionsingle2.jpg')}}"
-                                       title="your caption here">
-                                        <img src="{{asset('assets/user/img/adoption/adoptionsingle2.jpg')}}"
-                                             class="border-irregular1 img-fluid hover-opacity" alt="">
-                                    </a>
-                                </div>
+                                @foreach($single_pet->ArrayThumbnails450x450 as $thumbnail)
+                                    <div class="col-md-12">
+                                        <!-- image -->
+                                        <a href="{{$thumbnail}}"
+                                           title="{{$single_pet->Name}}">
+                                            <img src="{{$thumbnail}}"
+                                                 class="border-irregular1 img-fluid hover-opacity" alt="">
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
-                            <!-- /owl-carousel -->
                         </div>
                         <!-- /col-md -->
                         <!-- adoption info  -->
-                        <div class="col-lg-4 res-margin mt-5 text-xs-center">
-                            <h4><strong>Tên bé:</strong> Fluffy</h4>
+                        <div class="col-lg-5 res-margin mt-5 text-xs-center">
+                            <h4><strong>Tên bé: {{$single_pet->Name}}</strong></h4>
                             <div class="row">
                                 <div class="col-sm-5">
                                     <ul class="list-unstyled pet-adopt-info">
-                                        <li class="h7">Giới tính: <span>nam</span></li>
-                                        <li class="h7">Tuổi: <span>2 năm</span></li>
-                                        <li class="h7">Giống: <span>Poodle</span></li>
+                                        <li class="h7">Giới tính: <span>{{$single_pet->Sex}}</span></li>
+                                        <li class="h7">Tuổi: <span>{{$single_pet->Age}}</span></li>
+                                        <li class="h7">Giống: <span>{{$single_pet->Breed}}</span></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-7">
                                     <ul class="list-unstyled pet-adopt-info">
-                                        <li class="h7">Triệt sản: <span>Có</span></li>
-                                        <li class="h7">Giấy khai sinh: <span>Không</span></li>
-                                        <li class="h7">Tiêm phòng: <span>Có</span></li>
+                                        <li class="h7">Triệt sản: <span>{{$single_pet->Neutered}}</span></li>
+                                        <li class="h7">Giấy khai sinh: <span>{{$single_pet->CertifiedPedigree}}</span>
+                                        </li>
+                                        <li class="h7">Tiêm phòng: <span>{{$single_pet->Vaccinated}}</span></li>
                                     </ul>
                                 </div>
                                 <!-- /div-->
                             </div>
                             <!-- /row-->
-                            <p class="font-weight-bold">Fluffy là một con chó rất ngọt ngào và năng động, bé đã sẵn
+                            <p class="font-weight-bold">{{$single_pet->Name}} là một con chó rất ngọt ngào và năng động,
+                                bé đã sẵn
                                 sàng cho một ngôi nhà mới!</p>
                             <!-- button -->
-                            <a href="{{route('adoption_form')}}" class="btn btn-primary " data-aos="zoom-in">Nhận nuôi
+                            <a href="{{route('adoption_form', $single_pet->Slug)}}" class="btn btn-primary "
+                               data-aos="zoom-in">Nhận
+                                nuôi
                                 ngay!</a>
                         </div>
                         <!-- /col-md -->
+
                     </div>
                     <!-- /row-->
                     <div class="col-md-12 mt-5">
-                        <h3>Về Fluffy</h3>
+                        <h3>Về {{$single_pet->Name}}</h3>
                         <!-- ul custom-->
                         <ul class="custom list-inline font-weight-bold">
                             <li class="list-inline-item">Thân thiện với những chú chó khác</li>
@@ -104,8 +100,11 @@
                         </ul>
                         <p>
                             <!-- Description -->
+                            {{$single_pet->Description}}
                         </p>
-                        <p class="custom-link"><a href="{{route('adoption')}}">« Quay lại danh sách nhận nuôi</a></p>
+                        <p class="custom-link"><a href="{{route('pet_list_adoption')}}">« Quay lại danh sách nhận
+                                nuôi</a>
+                        </p>
                     </div>
                     <!-- /col-md-->
                 </div>
@@ -115,7 +114,8 @@
         </div>
         <!-- /container-->
         <!-- Section Call To Action -->
-        <div id="call-to-action">
+        <div id="call-to-action"
+             style="background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598789854/PetCasa/AdoptionPage/cat_fkhckl.jpg)">
             <div class="container block-padding">
                 <div
                     class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">

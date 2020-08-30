@@ -15,7 +15,7 @@ class Pet extends Model
     {
         return $this->belongsToMany(Report::class);
     }
-    
+
     public function News()
     {
         return $this->belongsToMany(Report::class);
@@ -30,7 +30,7 @@ class Pet extends Model
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
-                array_push($list_photos, self::$link . $single);
+                array_push($list_photos, self::$link.$single);
             }
         }
         return $list_photos;

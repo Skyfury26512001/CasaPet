@@ -43,17 +43,11 @@ Route::get('/rescue-form', function () {
 
 Route::post('/rescue_form', 'SendMailController@report_send')->name('report_send');
 
-Route::get('/adoption', function () {
-    return view('user.services.adoption');
-})->name('adoption');
+Route::get('/adoption', 'PetController@pet_list_adoption')->name('pet_list_adoption');
 
-Route::get('/adoption/adoption-detail', function () {
-    return view('user.services.adoption_detail');
-})->name('adoption_detail');
+Route::get('/adoption/{slug}', 'PetController@pet_detail_adoption')->name('adoption_detail');
 
-Route::get('/adopt-form', function () {
-    return view('user.services.adopt_form');
-})->name('adoption_form');
+Route::get('/adoption/adoption-form/{slug}', 'PetController@adoption_form_fill')->name('adoption_form');
 
 Route::get('/concession', function () {
     return view('user.services.concession');
@@ -115,7 +109,7 @@ Route::get('/foster', function () {
 /* 7.Login-Register */
 
 Route::get('/login-register', function () {
-    return view('user.login_register');
+    return view('user.account.login_register');
 })->name('login_register');
 
 Route::post('/login', 'AccountController@loginP')->name('loginP');
@@ -124,9 +118,9 @@ Route::post('/logout', 'AccountController@logOut')->name('logout');
 
 Route::post('/register', 'AccountController@registerP')->name('register');
 
-Route::get('/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
+Route::get('/account/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
 
-Route::post('/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
+Route::post('/account/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
 
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
@@ -222,7 +216,9 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
     });
 });
 
-Route::get('/test', function () { return view('admin.test'); });
+Route::get('/test', function () {
+    return view('admin.test');
+});
 // test : route
 Route::get('checking_page', function () {
     return view('session_checking');

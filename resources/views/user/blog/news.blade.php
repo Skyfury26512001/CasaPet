@@ -15,6 +15,10 @@
         .page-item.active .page-link {
             background-color: #48A06A !important;
         }
+
+        .page {
+            padding-bottom: unset;
+        }
     </style>
 @endsection
 @section('specific_js')
@@ -70,7 +74,7 @@
                 <div class="col-lg-8">
                     <h2>Tin tức</h2>
                     <!-- Blog Post -->
-                    @foreach ( $news as $new)
+                    @foreach ($news as $new)
                         <div class="card blog-card">
                             <!-- Post info-->
                             <div class="post-info border-irregular2 text-muted">
@@ -164,7 +168,8 @@
         </div>
         <!-- /.container -->
         <!-- Section Call To Action -->
-        <div id="call-to-action">
+        <div id="call-to-action"
+             style="background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598789854/PetCasa/AdoptionPage/cat_fkhckl.jpg)">
             <div class="container block-padding">
                 <div
                     class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">

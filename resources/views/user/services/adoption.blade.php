@@ -11,7 +11,20 @@
             background-attachment: fixed !important;
             background-size: cover !important;
         }
+
+        .page-item.active .page-link {
+            background-color: #48A06A !important;
+        }
+
+        .page {
+            padding-bottom: unset;
+        }
     </style>
+@endsection
+@section('specific_js')
+    <script>
+        $("ul.pagination").addClass('float-right');
+    </script>
 @endsection
 @section('content')
     <!-- ==== Page Content ==== -->
@@ -33,59 +46,6 @@
         <!-- /jumbo-heading -->
     </div>
     <!-- /jumbotron -->
-    <div class="bg-light">
-        <section class="container aos-init aos-animate bg-light" data-aos="zoom-in">
-            <div class="row">
-                <div class="col-sm-8 col-md-8 col-lg-8">
-                    <h3 class="text-capitalize">quy trình nhận nuôi</h3>
-                    <hr class="small-divider left">
-                    <p class="mt-4 text-justify">
-                        Trước khi quyết định nhận nuôi bé chó hay mèo nào, bạn hãy tự hỏi bản thân rằng mình đã sẵn sàng
-                        để chịu trách nhiệm cả đời cho bé chưa, cả về tài chính, nơi ở cũng như tinh thần. Việc nhận
-                        nuôi cần được sự đồng thuận lớn từ bản thân bạn cũng như gia đình và những người liên quan. Xin
-                        cân nhắc kỹ trước khi liên hệ với PetsCasa về việc nhận nuôi.<br><br>Bạn đã sẵn sàng? Hãy thực
-                        hiện các bước sau đây nhé:<br><br>1️⃣ Tìm hiểu về thú cưng bạn muốn nhận nuôi trên trang web của
-                        PetsCasa.<br>2️⃣ Cập nhập đẩy đủ thông tin trên hồ sơ cá nhân.<br>3️⃣ Chuẩn bị cơ sở vật chất và
-                        đóng tiền vía để đón bé về. <br>4️⃣ Cập nhập thông tin (có ảnh) của bé 2 tháng 1 lần trong 1 năm
-                        sau khi nhận bé về.<br>5️⃣ Khi có sự cố cần liên hệ ngay để được tư vấn kịp thời.<br><br>❗ Lưu
-                        ý:<br>- Tiền vía mỗi bé sẽ khác nhau tùy thuộc vào tình trạng của bé khi cứu cũng như các dịch
-                        vụ y tế (tiêm phòng, triệt sản) đã thực hiện. <br>- Tiền vía dùng để trả các khoản chi về y tế
-                        trước đây cho bé, cũng như để hỗ trợ chi phí chăm sóc, nuôi dưỡng các bé khác tại nhà chung.<br>-
-                        Trường hợp không nuôi được tiếp cần trả lại cho Nhóm, không tự ý đem cho người khác.<br><br>🐕&zwj;🦺
-                        Nếu bạn chỉ có thể chăm sóc tạm thời (foster), tham khảo thông tin tại mục Tình nguyện.<br><br>🐈
-                        Tìm hiểu thêm về chương trình Nhận nuôi Ảo ở banner cuối trang này.
-                    </p>
-
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="card bg-soft-blue">
-                        <h5 class="text-capitalize" style="color: #808080">điều kiện nhận nuôi</h5>
-                        <ul class="custom pl-0 font-weight-bold">
-                            <li class="row no-gutters">
-                                <div class="col-1"><label class="m-0"></label></div>
-                                <div class="col-10">
-                                    <span>Tài chính tự chủ và ổn định.</span>
-                                </div>
-                            </li>
-                            <li class="row no-gutters">
-                                <div class="col-1"><label class="m-0"></label></div>
-                                <div class="col-10">
-                                    <span>Chỗ ở cố định, ưu tiên tại Hà Nội</span>
-                                </div>
-                            </li>
-                            <li class="row no-gutters">
-                                <div class="col-1"><label class="m-0"></label></div>
-                                <div class="col-10">
-                                    <span>Cam kết tiêm phòng và triệt sản .</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
     <div class="section-heading-1 text-center mt-5">
         <h2 data-aos="zoom-in" class="aos-init aos-animate" style="margin-bottom: unset;">Tìm thú cưng</h2>
     </div>
@@ -95,11 +55,11 @@
                aria-label="Tất cả" aria-labelledby="Tất cả">Tất cả</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" onclick="GetTypeAnimal(5)" href="#" data-toggle="tab" data-filter=".cho"
+            <a class="nav-link" onclick="GetTypeAnimal(5)" href="#" data-toggle="tab" data-filter=".Chó"
                aria-label="Chó" aria-labelledby="Chó">Chó</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" onclick="GetTypeAnimal(6)" href="#" data-toggle="tab" data-filter=".meo"
+            <a class="nav-link" onclick="GetTypeAnimal(6)" href="#" data-toggle="tab" data-filter=".Mèo"
                aria-label="Mèo" aria-labelledby="Mèo">Mèo</a>
         </li>
     </ul>
@@ -185,51 +145,109 @@
             <!-- First row: Adopt a pet -->
             <div class="row mt-5">
                 <!-- Pet  -->
-                <div class="adopt-card col-md-6 col-xl-3 res-margin">
-                    <div class="card bg-light-custom">
-                        <div class="thumbnail text-center">
-                            <!-- Image -->
-                            <img src="{{asset('assets/user/img/adoption/adoption1.jpg')}}"
-                                 class="border-irregular1 img-fluid" alt="">
-                            <!-- Name -->
-                            <div class="caption-adoption">
-                                <h6 class="adoption-header">Fluffy</h6>
-                                <!-- List -->
-                                <ul class="list-unstyled">
-                                    <li><strong>Giới tính:</strong></li>
-                                    <li><strong>Triệt sản: </strong></li>
-                                    <li><strong>Tuổi:</strong></li>
-                                </ul>
-                                <!-- Buttons -->
-                                <div class="text-center">
-                                    <a href="{{route('adoption_detail')}}" class="btn btn-primary">Thêm thông tin</a>
+                @foreach($pets as $pet)
+                    <div class="{{$pet->Species}} adopt-card col-md-6 col-xl-3 res-margin">
+                        <div class="card bg-light-custom">
+                            <div class="thumbnail text-center">
+                                <!-- Image -->
+                                <img src="{{$pet->FirstThumbnail}}"
+                                     class="border-irregular1 img-fluid" alt="">
+                                <!-- Name -->
+                                <div class="caption-adoption">
+                                    <h6 class="adoption-header">{{$pet->Name}}</h6>
+                                    <!-- List -->
+                                    <ul class="list-unstyled">
+                                        <li><strong>Giống: </strong>{{$pet->Breed}}</li>
+                                        <li><strong>Giới tính: </strong>{{$pet->Sex}}</li>
+                                        <li><strong>Tuổi: </strong>{{$pet->Age}}</li>
+                                    </ul>
+                                    <!-- Buttons -->
+                                    <div class="text-center">
+                                        <a href="{{route('adoption_detail',$pet->Slug)}}" class="btn btn-primary">Thêm
+                                            thông
+                                            tin</a>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- /thumbnail -->
                         </div>
-                        <!-- /thumbnail -->
+                        <!-- /card -->
                     </div>
-                    <!-- /card -->
-                </div>
-                <!-- /adopt-card -->
-                <!-- /pet -->
+                    <!-- /adopt-card -->
+            @endforeach
+            <!-- /pet -->
 
             </div>
             <!-- /row -->
             <div class="col-md-12 mt-5">
                 <!-- pagination -->
-                <nav aria-label="pagination">
-                    <ul class="pagination float-right">
-                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
-                <!-- /nav -->
+                {{$pets->links()}}
             </div>
             <!-- /col-md -->
         </div>
         <!-- /container -->
+        <div class="bg-light">
+            <section class="container aos-init aos-animate bg-light" data-aos="zoom-in">
+                <div class="row">
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                        <h3 class="text-capitalize">quy trình nhận nuôi</h3>
+                        <hr class="small-divider left">
+                        <p class="mt-4 text-justify">
+                            Trước khi quyết định nhận nuôi bé chó hay mèo nào, bạn hãy tự hỏi bản thân rằng mình đã sẵn
+                            sàng
+                            để chịu trách nhiệm cả đời cho bé chưa, cả về tài chính, nơi ở cũng như tinh thần. Việc nhận
+                            nuôi cần được sự đồng thuận lớn từ bản thân bạn cũng như gia đình và những người liên quan.
+                            Xin
+                            cân nhắc kỹ trước khi liên hệ với PetsCasa về việc nhận nuôi.<br><br>Bạn đã sẵn sàng? Hãy
+                            thực
+                            hiện các bước sau đây nhé:<br><br>1️⃣ Tìm hiểu về thú cưng bạn muốn nhận nuôi trên trang web
+                            của
+                            PetsCasa.<br>2️⃣ Cập nhập đẩy đủ thông tin trên hồ sơ cá nhân.<br>3️⃣ Chuẩn bị cơ sở vật
+                            chất và
+                            đóng tiền vía để đón bé về. <br>4️⃣ Cập nhập thông tin (có ảnh) của bé 2 tháng 1 lần trong 1
+                            năm
+                            sau khi nhận bé về.<br>5️⃣ Khi có sự cố cần liên hệ ngay để được tư vấn kịp thời.<br><br>❗
+                            Lưu
+                            ý:<br>- Tiền vía mỗi bé sẽ khác nhau tùy thuộc vào tình trạng của bé khi cứu cũng như các
+                            dịch
+                            vụ y tế (tiêm phòng, triệt sản) đã thực hiện. <br>- Tiền vía dùng để trả các khoản chi về y
+                            tế
+                            trước đây cho bé, cũng như để hỗ trợ chi phí chăm sóc, nuôi dưỡng các bé khác tại nhà chung.<br>-
+                            Trường hợp không nuôi được tiếp cần trả lại cho Nhóm, không tự ý đem cho người khác.<br><br>🐕&zwj;🦺
+                            Nếu bạn chỉ có thể chăm sóc tạm thời (foster), tham khảo thông tin tại mục Tình
+                            nguyện.<br><br>🐈
+                            Tìm hiểu thêm về chương trình Nhận nuôi Ảo ở banner cuối trang này.
+                        </p>
+
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        <div class="card bg-soft-blue">
+                            <h5 class="text-capitalize" style="color: #808080">điều kiện nhận nuôi</h5>
+                            <ul class="custom pl-0 font-weight-bold">
+                                <li class="row no-gutters">
+                                    <div class="col-1"><label class="m-0"></label></div>
+                                    <div class="col-10">
+                                        <span>Tài chính tự chủ và ổn định.</span>
+                                    </div>
+                                </li>
+                                <li class="row no-gutters">
+                                    <div class="col-1"><label class="m-0"></label></div>
+                                    <div class="col-10">
+                                        <span>Chỗ ở cố định, ưu tiên tại Hà Nội</span>
+                                    </div>
+                                </li>
+                                <li class="row no-gutters">
+                                    <div class="col-1"><label class="m-0"></label></div>
+                                    <div class="col-10">
+                                        <span>Cam kết tiêm phòng và triệt sản .</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
     <!-- /page -->
     <section class="container-fluid adoption-online-bg overlay">

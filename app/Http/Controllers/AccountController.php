@@ -59,11 +59,16 @@ class AccountController extends Controller
     {
         $condition = ['Email' => $request->EmailLogin, 'Status' => "1",];
         $account   = Account::where($condition)->get()->first();
-        if (isset($account)) {
-            $PasswordHash = $account->PasswordHash;
-            $Salt         = $account->Salt;
-            $passIn       = md5($request->PasswordLogin . $Salt);
-            if ($PasswordHash == $passIn) {
+        // Đây này
+        // Cái condition kia là điều kiện thôi , vì nó đăng nhập rồi mới được đổi mật khẩu nên cái request->email kia sẽ lấy từ session
+        // $account -> Lấy ra tài khoản để lấy được trường passwordHash và Salt
+        if (isset($account)) { // Cái này là kiểm tra mình có lấy ra được tài khoản nào không
+            $PasswordHash = $account->PasswordHash; // Gán PasswordHash lấy được từ $account trên DB
+            $Salt         = $account->Salt;         // Tương tự nhưng với salt
+            $passIn       = md5($request->PasswordLogin . $Salt); // mã hoá password nhập vào cùng với cái salt trên DB
+            if ($PasswordHash == $passIn) {  // Kiểm tra xem mật khẩu nhập vào cùng với salt kia có giống mật khẩu đã mã hoá trước của mình không
+               // Trong cái thằng này của anh thì sẽ là nếu đúng -> Cho đổi mật khẩu mới
+                // Sai thì trả lại lỗi mật khẩu trùng !
                 session_start();
                 $account_session = $request->session();
                 $account['role'] = $account->role->name;
@@ -241,6 +246,12 @@ class AccountController extends Controller
         }
 //        dd($account);
         return view('admin.404-admin');
+
+        # Đây là 1 cái ví vụ về đổi password nè anh !
+    }
+
+    public function user_changPassword(Request  $request){
+        $request->validate();
     }
 
     public function logOut()

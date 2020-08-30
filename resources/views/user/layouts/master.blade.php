@@ -159,9 +159,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="services-dropdown">
                                 <a class="dropdown-item" href="{{route('rescue_form')}}">Cứu hộ chó mèo</a>
-                                <a class="dropdown-item" href="{{route('adoption')}}">Nhận nuôi thú cưng</a>
+                                <a class="dropdown-item" href="{{route('pet_list_adoption')}}">Nhận nuôi thú cưng</a>
                                 <a class="dropdown-item" href="{{route('concession_form')}}">Nhượng thú cưng</a>
-                                <a class="dropdown-item" href="{{route('volunteer')}}">Tình nguyện</a>
+                                {{--                                <a class="dropdown-item" href="{{route('volunteer')}}">Tình nguyện</a>--}}
                             </div>
                         </li>
                         <!-- menu item -->
@@ -273,9 +273,9 @@
             <div class="col-lg-3">
                 <h6><i class="far fa-clock margin-icon"></i>Đường dẫn nhanh</h6>
                 <ul class="list-unstyled">
-                    <li><a href="/login_register">Đăng nhập hoặc đăng ký</a></li>
-                    <li><a href="/adoption">Nhận nuôi</a></li>
-                    <li><a href="/donate_guide">Nhận nuôi ảo</a></li>
+                    <li><a href="{{route('login_register')}}">Đăng nhập hoặc đăng ký</a></li>
+                    <li><a href="{{route('pet_list_adoption')}}">Nhận nuôi</a></li>
+                    <li><a href="{{route('foster')}}">Nhận nuôi ảo</a></li>
                 </ul>
                 <!--ul -->
             </div>
@@ -284,7 +284,7 @@
         <!-- row-->
         <div class="row">
             <div class="credits col-sm-12">
-                <p>Copyright 2020 / Designed by <a href="/about_us">Avenger Team</a></p>
+                <p>Copyright 2020 / Designed by <a href="{{route('team')}}">Avenger Team</a></p>
             </div>
         </div>
         <!-- row -->

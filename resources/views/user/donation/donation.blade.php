@@ -17,10 +17,6 @@
             padding-bottom: 50px;
         }
 
-        .row {
-            margin: unset;
-        }
-
         h2 {
             color: #48A06A;
             text-align: center;
@@ -37,7 +33,6 @@
             margin-top: 20px;
             text-align: center;
         }
-
     </style>
 @endsection
 @section('specific_js')
