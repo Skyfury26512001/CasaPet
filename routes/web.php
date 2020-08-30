@@ -227,7 +227,7 @@ Route::get('/test', function () { return view('admin.test'); });
 Route::get('checking_page', function () {
     return view('session_checking');
 });
-
+Route::get('/test-sms-Nexom', 'SmsController@Nexom_SmS');
 /* Admin Login */
 Route::get('/admin-login', function () {
     return view('admin.login_register');
