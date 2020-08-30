@@ -56,9 +56,8 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active">Quản lý tài khoản</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý tin tức</li>
                         </ol>
                     </div>
                     <h4 class="page-title">Quản lý tài khoản</h4>
@@ -70,7 +69,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-box">
-                    <h4 class="header-title">Chỉnh sửa thông tin cá nhân : </h4>
+                    <h4 class="header-title">Chỉnh sửa thông tin bài viết : </h4>
                     <form action="{{route('admin_new_update',$new->id)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
@@ -101,7 +100,7 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Content">Mô tả<span class="text-danger">*</span></label>
+                            <label for="Content">Nội dung<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
                                       placeholder="">{{$new->Content}}</textarea>
                             @if ($errors->has('Content'))
@@ -136,6 +135,7 @@
                             <input type="hidden" name="thumbnails[]" data-cloudinary-public-id="{{$thumbnail}}"
                                    value="{{$thumbnail}}">
                         @endforeach
+
                         <div class="form-group text-right mb-0">
                             <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
                                 Submit

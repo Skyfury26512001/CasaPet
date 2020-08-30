@@ -1,5 +1,7 @@
 /* LOGIN - MAIN.JS - dp 2017 */
-
+$("#logIn").click(function () {
+    $("#login-form").submit();
+});
 // LOGIN TABS
 $(function () {
     var tab = $('.tabs h3 a');

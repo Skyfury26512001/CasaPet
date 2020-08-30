@@ -53,6 +53,6 @@ class News extends Model
 
     public function Pets()
     {
-        return $this->belongsToMany(Pet::class, 'report_pet')->withTimestamps();
+        return $this->belongsToMany(Pet::class, 'pet_new', 'new_id', 'pet_id')->withTimestamps();
     }
 }

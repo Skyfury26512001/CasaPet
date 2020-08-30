@@ -21,12 +21,19 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.secure_url);
-                    var thumbnailInput = document.querySelector('input[name="avatar"]');
                     var thumbnail = document.querySelector('.avatar-uploader__avatar-image');
                     var urlString = 'url(' + result.info.secure_url + ')';
+                    console.log(123);
                     thumbnail.style.backgroundImage = urlString;
+                    // var thumbnailInput = document.querySelector('input[name="avatar"]');
+                    // thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
+                    document.querySelector('input[name="avatar"]').remove();
+                    var thumbnailInput = document.querySelector('input[name="avatar"]');
                     thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
-                    console.log(result.info)
+                    console.log(result.info);
+                    console.log(thumbnailInput.getAttribute('data-cloudinary-public-id'));
+                    // let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
+                    // console.log(publicId);
                 }
             }
         );

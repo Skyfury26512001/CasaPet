@@ -359,13 +359,15 @@
                                             @else
                                                 <td style="color: red"> Unknown Status</td>
                                             @endif
-                                            <td>
-                                                <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_report_edit',$report->id)}}"
-                                                       class="btn btn-primary"
-                                                       style="float:right">Sửa</a>
-                                                </div>
-                                            </td>
+                                            @if ($report->Status != 1)
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="{{route('admin_report_edit',$report->id)}}"
+                                                           class="btn btn-primary"
+                                                           style="float:right">Sửa</a>
+                                                    </div>
+                                                </td>
+                                            @endif
                                             @if ($report->Status == 0)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
@@ -377,13 +379,16 @@
                                                     </div>
                                                 </td>
                                             @elseif ($report->Status == 1)
-                                                <td>
+                                                <td colspan=2>
                                                     <div class="d-flex justify-content-center">
-                                                        <form action="{{route('admin_report_done',$report->id)}}"
-                                                              method="POST">
-                                                            @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Kết thúc</button>
-                                                        </form>
+                                                        @csrf @method('PUT')
+                                                        <button type="button"
+                                                                class="btn btn-primary"
+                                                                data-toggle="modal"
+                                                                data-target="#task-finish-modal-{{$report->id}}">
+                                                            Kết thúc và thêm
+                                                            mã thú nuôi
+                                                        </button>
                                                     </div>
                                                 </td>
                                             @elseif ($report->Status == 2)
@@ -400,7 +405,9 @@
                                                         <form action="{{route('admin_report_handle',$report->id)}}"
                                                               method="POST">
                                                             @csrf @method('PUT')
-                                                            <button class="btn btn-primary btn-table">Nhận</button>
+                                                            <button class="btn btn-primary btn-table"
+                                                                    style="color: yellow">Đã từ chối
+                                                            </button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -504,6 +511,48 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    @endforeach
+    @foreach($reports as $report)
+        <div id="task-finish-modal-{{$report->id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+             style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0 p-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="p-2 task-detail">
+                            @csrf
+                            <h4 class="mb-4">Địa chỉ : {{$report->Address}}</h4>
+                            <p class="text-muted">
+                                {{$report->Content}}
+                            </p>
+                            <h4 class="header-title">Thú nuôi liên quan : </h4>
+                            <div>
+                                @php
+                                    $report_pet_id = collect($report->Pets)->map(function ($item) {
+                return $item->id;
+            });
+                                @endphp
+                                {{--                        {{dd($report_pet_id)}}--}}
+                                <div class="form-group">
+                                    <label for="Status">Chọn mã thú nuôi<span class="text-danger">*</span></label>
+                                    <select class="form-control selectize-multiple" id="select-7" name="PetIds[]"
+                                            multiple>
+
+                                        @foreach($pets as $pet)
+                                            <option value="{{$pet->id}}"
+                                                    @if (in_array($pet->id,json_decode(json_encode($report_pet_id), true))) selected @endif>{{$pet->Name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
