@@ -15,9 +15,9 @@ class CreateReportPetTable extends Migration
     {
         Schema::create('report_pet', function (Blueprint $table) {
             $table->unsignedBigInteger('Report_id');
-            $table->foreign('Report_id')->references('id')->on('Reports')->onDelete('cascade');
+            $table->foreign('Report_id')->references('id')->on('reports')->onDelete('cascade');
             $table->unsignedBigInteger('Pet_id');
-            $table->foreign('Pet_id')->references('id')->on('Pets')->onDelete('cascade');
+            $table->foreign('Pet_id')->references('id')->on('pets')->onDelete('cascade');
             $table->timestamps();
         });
     }
