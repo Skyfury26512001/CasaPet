@@ -14,10 +14,10 @@ class CreatePetNewTable extends Migration
     public function up()
     {
         Schema::create('pet_new', function (Blueprint $table) {
-            $table->unsignedBigInteger('Report_id');
-            $table->foreign('Report_id')->references('id')->on('Reports')->onDelete('cascade');
+            $table->unsignedBigInteger('New_id');
+            $table->foreign('New_id')->references('id')->on('news')->onDelete('cascade');
             $table->unsignedBigInteger('Pet_id');
-            $table->foreign('Pet_id')->references('id')->on('Pets')->onDelete('cascade');
+            $table->foreign('Pet_id')->references('id')->on('pets')->onDelete('cascade');
             $table->timestamps();
         });
     }

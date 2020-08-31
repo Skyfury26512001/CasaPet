@@ -58,6 +58,22 @@
             background-color: red;
             margin-left: 25px;
         }
+        .button-sos{
+            margin-bottom: 120px;
+            background: #ff7600;
+            border-radius: 50%;
+            padding: 22px 10px;
+        }
+        .button-sos:after{
+            content: "\f126";
+            z-index: 0;
+            font-family: "flaticon";
+            font-size: 50px;
+            bottom: -20px;
+            z-index: 0;
+            text-shadow: 0px 4px 17px rgba(255, 255, 255, 0.6);
+
+        }
     </style>
 
     @yield('specific_css')
@@ -290,6 +306,11 @@
         <!-- row -->
     </div>
     <!-- container -->
+    <!-- SOS -->
+    <div class="page-scroll hidden-sm hidden-xs">
+        <a class="button-sos back-to-top" href="{{route('rescue_form')}}"><strong>SOS</strong></a>
+    </div>
+    <!-- End SOS -->
     <!-- Go To Top Link -->
     <div class="page-scroll hidden-sm hidden-xs">
         <a href="#top" class="back-to-top"><i class="fa fa-angle-up"></i></a>
