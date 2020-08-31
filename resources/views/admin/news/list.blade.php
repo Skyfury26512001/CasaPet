@@ -244,7 +244,7 @@
                                     </form>
                                 </div>
                                 <div class="col-1">
-                                    <a class="btn btn-primary" href="{{route('admin_report_list')}}">
+                                    <a class="btn btn-primary" href="{{route('admin_new_list')}}">
                                         Reset
                                     </a>
                                 </div>
@@ -278,7 +278,10 @@
                                                 <div class="ellipsis">{{$new->Title}}</div>
                                             </td>
                                             <td>
-                                                <div class="ellipsis">{!!$new->Content  !!}</div>
+                                                <div class="ellipsis"
+                                                     style="overflow: hidden;white-space: pre-wrap;word-break: break-word;">
+                                                    {!! Str::words($new->Content, $words = 30, $end = '...') !!}
+                                                </div>
                                             </td>
                                             @if ($new->Status == 0)
                                                 <td style="color: gray">Không hoạt động</td>
@@ -317,9 +320,11 @@
                                             @endif
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('admin_new_detail',$new->id)}}"
-                                                       class="btn btn-primary"
-                                                       style="float:right">Chi tiết</a>
+                                                    <a type="button"
+                                                       class="btn btn-primary btn-table"
+                                                       data-toggle="modal"
+                                                       data-target="#task-detail-modal-{{$new->id}}"
+                                                       style="float:right;color: black">Chi tiết</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -346,8 +351,64 @@
             </div>
         </div>
         <!-- end row -->
-
     </div> <!-- end container-fluid -->
+    @foreach($news as $new)
+        <div id="task-detail-modal-{{$new->id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+             style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0 p-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
 
+                        <div class="p-2 task-detail">
+                            <div class="media mb-3">
+                                <div class="media-body">
+                                    <h5 class="media-heading mb-1 mt-0">Tiêu dề
+                                        : <h5 class="badge badge-success" style="font-size: 15px">{{$new->Title}}</h5>
+                                    </h5>
+
+                                </div>
+                            </div>
+
+                            <h4 class="mb-4">Tác giả : {{$new->Author}}</h4>
+
+                            <p class="text-muted">
+                            <h4 class="mb-4">Nội dung vài viết
+                                : </h4> {!! Str::words($new->Content, $words = 100, $end = '...') !!}
+                            </p>
+
+                            <h4 class="mb-4">Chuyên mục: {{$new->Category->Name}}</h4>
+                            <ul class="list-inline task-dates mb-0 mt-4">
+                                <li>
+                                    <h5 class="mb-1">Ngày tạo</h5>
+                                    <p> {{$new->created_at}} <small class="text-muted"></small></p>
+                                </li>
+
+                                <li>
+                                    <h5 class="mb-1">Ngày thay đổi mới nhất</h5>
+                                    <p> {{$new->updated_at}} <small class="text-muted"></small></p>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <div class="attached-files mt-4">
+                                <h5 class="">Ảnh liên quan </h5>
+                                <div class="files-list">
+                                    @foreach ($new->ArrayThumbnails450x450 as $thumbnail)
+                                        <div class="file-box">
+                                            <a href=""><img src="{{$thumbnail}}"
+                                                            class="img-fluid img-thumbnail" alt="attached-img"></a>
+                                            <p class="font-13 mb-1 text-muted"><small></small></p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    @endforeach
 
 @endsection

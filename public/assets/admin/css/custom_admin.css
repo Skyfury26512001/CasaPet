@@ -36,10 +36,11 @@
 }
 
 .ellipsis {
-    white-space: nowrap;
     width: 300px;
-    overflow: hidden;
     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .modal-header .close {

@@ -55,4 +55,9 @@ class News extends Model
     {
         return $this->belongsToMany(Pet::class, 'pet_new', 'new_id', 'pet_id')->withTimestamps();
     }
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class, 'Category_id', 'id');
+    }
 }

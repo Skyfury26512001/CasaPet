@@ -382,13 +382,11 @@
                                                 <td colspan=2>
                                                     <div class="d-flex justify-content-center">
                                                         @csrf @method('PUT')
-                                                        <button type="button"
-                                                                class="btn btn-primary"
-                                                                data-toggle="modal"
-                                                                data-target="#task-finish-modal-{{$report->id}}">
+                                                        <a class="btn btn-primary"
+                                                           href="{{route('admin_report_edit',$report->id)}}">
                                                             Kết thúc và thêm
                                                             mã thú nuôi
-                                                        </button>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             @elseif ($report->Status == 2)
@@ -440,9 +438,9 @@
                                         <button class="btn btn-primary" style="float: right;margin-left: 3%;"
                                                 id="acept_all"> Chấp nhận
                                         </button>
-                                        <button class="btn btn-primary" style="float: right;margin-left: 3%;"
-                                                id="done_all"> Hoàn thành
-                                        </button>
+                                        {{--                                        <button class="btn btn-primary" style="float: right;margin-left: 3%;"--}}
+                                        {{--                                                id="done_all"> Hoàn thành--}}
+                                        {{--                                        </button>--}}
                                         <button class="btn btn-primary" style="float: right" id="decline_all"> Từ chối
                                         </button>
 
@@ -492,14 +490,8 @@
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
-
-                            {{--                            <div class="task-tags mt-4">--}}
-                            {{--                                <h5 class="">Tags</h5>--}}
-                            {{--                                <input type="text" value="Amsterdam,Washington,Sydney" data-role="tagsinput"--}}
-                            {{--                                       placeholder="add tags"/>--}}
-                            {{--                            </div>--}}
                             <div class="attached-files mt-4">
-                                <h5 class="">Attached Files </h5>
+                                <h5 class="">Ảnh liên quan </h5>
                                 <div class="files-list">
                                     @foreach ($report->ArrayThumbnails450x450 as $thumbnail)
                                         <div class="file-box">
@@ -516,46 +508,46 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
     @endforeach
-    @foreach($reports as $report)
-        <div id="task-finish-modal-{{$report->id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-             style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header border-bottom-0 p-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="p-2 task-detail">
-                            @csrf
-                            <h4 class="mb-4">Địa chỉ : {{$report->Address}}</h4>
-                            <p class="text-muted">
-                                {{$report->Content}}
-                            </p>
-                            <h4 class="header-title">Thú nuôi liên quan : </h4>
-                            <div>
-                                @php
-                                    $report_pet_id = collect($report->Pets)->map(function ($item) {
-                return $item->id;
-            });
-                                @endphp
-                                {{--                        {{dd($report_pet_id)}}--}}
-                                <div class="form-group">
-                                    <label for="Status">Chọn mã thú nuôi<span class="text-danger">*</span></label>
-                                    <select class="form-control selectize-multiple" id="select-7" name="PetIds[]"
-                                            multiple>
+    {{--    @foreach($reports as $report)--}}
+    {{--        <div id="task-finish-modal-{{$report->id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"--}}
+    {{--             style="display: none;">--}}
+    {{--            <div class="modal-dialog modal-lg">--}}
+    {{--                <div class="modal-content">--}}
+    {{--                    <div class="modal-header border-bottom-0 p-0">--}}
+    {{--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
+    {{--                    </div>--}}
+    {{--                    <div class="modal-body">--}}
+    {{--                        <form class="p-2 task-detail">--}}
+    {{--                            @csrf--}}
+    {{--                            <h4 class="mb-4">Địa chỉ : {{$report->Address}}</h4>--}}
+    {{--                            <p class="text-muted">--}}
+    {{--                                {{$report->Content}}--}}
+    {{--                            </p>--}}
+    {{--                            <h4 class="header-title">Thú nuôi liên quan : </h4>--}}
+    {{--                            <div>--}}
+    {{--                                @php--}}
+    {{--                                    $report_pet_id = collect($report->Pets)->map(function ($item) {--}}
+    {{--                return $item->id;--}}
+    {{--            });--}}
+    {{--                                @endphp--}}
+    {{--                                --}}{{--                        {{dd($report_pet_id)}}--}}
+    {{--                                <div class="form-group">--}}
+    {{--                                    <label for="Status">Chọn mã thú nuôi<span class="text-danger">*</span></label>--}}
+    {{--                                    <select class="form-control selectize-multiple" id="select-7" name="PetIds[]"--}}
+    {{--                                            multiple>--}}
 
-                                        @foreach($pets as $pet)
-                                            <option value="{{$pet->id}}"
-                                                    @if (in_array($pet->id,json_decode(json_encode($report_pet_id), true))) selected @endif>{{$pet->Name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-    @endforeach
+    {{--                                        @foreach($pets as $pet)--}}
+    {{--                                            <option value="{{$pet->id}}"--}}
+    {{--                                                    @if (in_array($pet->id,json_decode(json_encode($report_pet_id), true))) selected @endif>{{$pet->Name}}</option>--}}
+    {{--                                        @endforeach--}}
+    {{--                                    </select>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                            <div class="clearfix"></div>--}}
+    {{--                        </form>--}}
+    {{--                    </div>--}}
+    {{--                </div><!-- /.modal-content -->--}}
+    {{--            </div><!-- /.modal-dialog -->--}}
+    {{--        </div><!-- /.modal -->--}}
+    {{--    @endforeach--}}
 @endsection
