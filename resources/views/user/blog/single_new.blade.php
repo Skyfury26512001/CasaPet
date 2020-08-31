@@ -4,6 +4,10 @@
 @endsection
 @section('content')
     <!-- Jumbotron -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0&appId=322810592178754&autoLogAppEvents=1"
+            nonce="BlkDPPpx"></script>
     <div class="jumbotron jumbotron-fluid overlay">
         <div class="jumbo-heading">
             <!-- section-heading -->
@@ -44,25 +48,34 @@
                         <!-- Post Content -->
                         <p>{{$single_new->Content}}</p>
                         <!-- Comments Form -->
-                    {{--                        <div class="card my-4 mt-5 bg-light-custom border-irregular1">--}}
-                    {{--                            <h5 class="card-header">Leave a Comment:</h5>--}}
-                    {{--                            <div class="card-body">--}}
-                    {{--                                <form>--}}
-                    {{--                                    <div class="form-group">--}}
-                    {{--                                        <textarea class="form-control" rows="3"></textarea>--}}
-                    {{--                                    </div>--}}
-                    {{--                                    <button type="submit" class="btn btn-primary">Submit</button>--}}
-                    {{--                                </form>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    <!-- Comment -->
-                    {{--                        <div class="comment row mt-5">--}}
+                        <!-- Comment -->
+                        <div class="fb-comments"
+                             data-href="{{URL::current()}}"
+                             data-numposts="5" data-width=""></div>
+                    {{--                        <div class="comment row">--}}
                     {{--                            <div class="col-md-3 col-xs-12 comment-img text-center float-left">--}}
-                    {{--                                <img class="rounded-circle img-fluid m-x-auto" src="img/team/team1.jpg" alt="">--}}
+                    {{--                                <img class="rounded-circle img-fluid m-x-auto" src="img/team/team2.jpg" alt="">--}}
                     {{--                            </div>--}}
                     {{--                            <!-- /col-md -->--}}
                     {{--                            <div class="col-md-9 col-xs-12 float-right">--}}
-                    {{--                                <h6 class="mt-2"><a href="">Luisa Smith</a> <small>says:</small></h6>--}}
+                    {{--                                <h6 class="mt-2"><a href="">John Doe</a> <small>says:</small></h6>--}}
+                    {{--                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--}}
+                    {{--                                    sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.--}}
+                    {{--                                    Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in--}}
+                    {{--                                    faucibus.</p>--}}
+                    {{--                                <button type="submit" class="btn btn-primary btn-sm float-right">Reply</button>--}}
+                    {{--                            </div>--}}
+                    {{--                            <!--/media-body -->--}}
+                    {{--                        </div>--}}
+                    {{--                        <!--/Comment -->--}}
+                    {{--                        <!-- Single Comment -->--}}
+                    {{--                        <div class="comment row">--}}
+                    {{--                            <div class="col-md-3 col-xs-12 comment-img text-center float-left">--}}
+                    {{--                                <img class="rounded-circle img-fluid m-x-auto" src="img/team/team3.jpg" alt="">--}}
+                    {{--                            </div>--}}
+                    {{--                            <!-- /col-md -->--}}
+                    {{--                            <div class="col-md-9 col-xs-12 float-right">--}}
+                    {{--                                <h6 class="mt-2"><a href="">Mia Kelly</a> <small>says:</small></h6>--}}
                     {{--                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--}}
                     {{--                                    sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.--}}
                     {{--                                    Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in--}}
@@ -72,40 +85,6 @@
                     {{--                            <!--/media-body -->--}}
                     {{--                        </div>--}}
                     <!--/Comment -->
-                        <!-- Comment -->
-                        {{--                        <div class="comment row">--}}
-                        {{--                            <div class="col-md-3 col-xs-12 comment-img text-center float-left">--}}
-                        {{--                                <img class="rounded-circle img-fluid m-x-auto" src="img/team/team2.jpg" alt="">--}}
-                        {{--                            </div>--}}
-                        {{--                            <!-- /col-md -->--}}
-                        {{--                            <div class="col-md-9 col-xs-12 float-right">--}}
-                        {{--                                <h6 class="mt-2"><a href="">John Doe</a> <small>says:</small></h6>--}}
-                        {{--                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--}}
-                        {{--                                    sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.--}}
-                        {{--                                    Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in--}}
-                        {{--                                    faucibus.</p>--}}
-                        {{--                                <button type="submit" class="btn btn-primary btn-sm float-right">Reply</button>--}}
-                        {{--                            </div>--}}
-                        {{--                            <!--/media-body -->--}}
-                        {{--                        </div>--}}
-                        {{--                        <!--/Comment -->--}}
-                        {{--                        <!-- Single Comment -->--}}
-                        {{--                        <div class="comment row">--}}
-                        {{--                            <div class="col-md-3 col-xs-12 comment-img text-center float-left">--}}
-                        {{--                                <img class="rounded-circle img-fluid m-x-auto" src="img/team/team3.jpg" alt="">--}}
-                        {{--                            </div>--}}
-                        {{--                            <!-- /col-md -->--}}
-                        {{--                            <div class="col-md-9 col-xs-12 float-right">--}}
-                        {{--                                <h6 class="mt-2"><a href="">Mia Kelly</a> <small>says:</small></h6>--}}
-                        {{--                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante--}}
-                        {{--                                    sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.--}}
-                        {{--                                    Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in--}}
-                        {{--                                    faucibus.</p>--}}
-                        {{--                                <button type="submit" class="btn btn-primary btn-sm float-right">Reply</button>--}}
-                        {{--                            </div>--}}
-                        {{--                            <!--/media-body -->--}}
-                        {{--                        </div>--}}
-                        {{--                        <!--/Comment -->--}}
                     </div>
                     <!--/Card-body -->
                 </div>

@@ -33,7 +33,7 @@
             <p>Điền <strong>địa chỉ Email</strong> của bạn vào ô dưới đây rồi <strong>ấn
                     Gửi</strong></p>
             <p>Chúng tôi sẽ gửi cho bạn một email để hướng dẫn chi tiết hơn về việc đổi mật khẩu.</p>
-            <form action="" method="POST" class="recovery-form">
+            <form action="#" method="POST" class="recovery-form">
                 <input type="text" class="input" id="user-recover" placeholder="Email">
                 <input type="submit" class="button" value="Gửi">
             </form>
@@ -79,20 +79,22 @@
                 <div class="tabs">
                     <h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Đăng nhập</span></a>
                     </h3>
-                    <h3 class="signup-tab"><a class="sign-up" href="#signup-tab-content"><span>Đăng ký</span></a></h3>
+                    {{--                    <h3 class="signup-tab"><a class="sign-up" href="#signup-tab-content"><span>Đăng ký</span></a></h3>--}}
                 </div>
                 <!-- Tabs Content -->
                 <div class="tabs-content">
                     <!-- Tabs Content Login -->
                     <div id="login-tab-content" class="active">
-                        <form action="" method="POST" class="login-form">
+                        <form action="{{route('logIn')}}" method="POST" class="login-form" id="login-form">
+                            @csrf
                             <input type="text" class="input" id="user_login" autocomplete="off"
-                                   placeholder="Email">
+                                   placeholder="Email" name="EmailLogin">
                             <input type="password" class="input" id="user_pass" autocomplete="off"
-                                   placeholder="Mật khẩu">
+                                   placeholder="Mật khẩu" name="PasswordLogin">
                             <input type="checkbox" class="checkbox" checked id="remember_me">
                             <label for="remember_me">Ghi nhớ tài khoản</label>
-                            <input type="submit" class="button" value="Đăng nhập">
+                            {{--                            <input type="submit" class="button" value="Đăng nhập">--}}
+                            <button class="button" id="logIn">Đăng nhập</button>
                         </form>
                         <div class="help-action">
                             <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="forgot">Quên mật
@@ -100,26 +102,26 @@
                         </div>
                     </div>
                     <!-- Tabs Content Sign Up -->
-                    <div id="signup-tab-content">
-                        <form action="" method="POST" class="signup-form">
-                            <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Họ và tên">
-                            <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email">
-                            <input type="date" class="input" id="user_dob" autocomplete="off">
-                            <input type="tel" class="input" id="user_phonenumber" autocomplete="off"
-                                   placeholder="Số điện thoại">
-                            <input type="text" class="input" id="user_address" autocomplete="off" placeholder="Địa chỉ">
-                            <input type="text" class="input" id="user_idno" autocomplete="off"
-                                   placeholder="Chứng minh thư/Thẻ căn cước">
-                            <input type="password" class="input" id="user_pass" autocomplete="off"
-                                   placeholder="Mật khẩu">
-                            <input type="submit" class="button" value="Đăng ký">
-                        </form>
-                        <div class="help-action">
-                            <p>Thông qua đăng ký, bạn đã đồng ý với</p>
-                            <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="agree">Danh sách
-                                    các điều khoản</a></p>
-                        </div>
-                    </div>
+                    {{--                    <div id="signup-tab-content">--}}
+                    {{--                        <form action="" method="POST" class="signup-form">--}}
+                    {{--                            <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Họ và tên">--}}
+                    {{--                            <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email">--}}
+                    {{--                            <input type="date" class="input" id="user_dob" autocomplete="off">--}}
+                    {{--                            <input type="tel" class="input" id="user_phonenumber" autocomplete="off"--}}
+                    {{--                                   placeholder="Số điện thoại">--}}
+                    {{--                            <input type="text" class="input" id="user_address" autocomplete="off" placeholder="Địa chỉ">--}}
+                    {{--                            <input type="text" class="input" id="user_idno" autocomplete="off"--}}
+                    {{--                                   placeholder="Chứng minh thư/Thẻ căn cước">--}}
+                    {{--                            <input type="password" class="input" id="user_pass" autocomplete="off"--}}
+                    {{--                                   placeholder="Mật khẩu">--}}
+                    {{--                            <input type="submit" class="button" value="Đăng ký">--}}
+                    {{--                        </form>--}}
+                    {{--                        <div class="help-action">--}}
+                    {{--                            <p>Thông qua đăng ký, bạn đã đồng ý với</p>--}}
+                    {{--                            <p><i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="agree">Danh sách--}}
+                    {{--                                    các điều khoản</a></p>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
         </div>

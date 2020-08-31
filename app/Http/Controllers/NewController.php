@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\News;
+use App\Pet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -71,8 +72,12 @@ class NewController extends Controller
     {
         $new        = News::find($id);
         $categories = Category::where('Status', '=', '1')->get();
+        $new_pet_id = collect($new->Pets)->map(function ($item) {
+            return $item->id;
+        });
         if (isset($new)) {
-            return view('admin.news.edit', compact('new', 'categories'));
+            $pets = Pet::all();
+            return view('admin.news.edit', compact('new', 'categories', 'new_pet_id', 'pets'));
         }
         return redirect(route('admin_404'));
     }

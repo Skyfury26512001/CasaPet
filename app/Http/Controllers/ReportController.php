@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\News;
 use App\Pet;
 use App\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Array_;
 
 class ReportController extends Controller
@@ -32,9 +34,9 @@ class ReportController extends Controller
             $reports->orderBy('Status', "ASC");
         }
         $reports = $reports->where($condition)->paginate(5)->appends(request()->query());
-//        $reports = Report::where('Status', '=', '3')->get();
-//        dd($reports);
-        return view('admin.reports.list', compact('reports'));
+
+        $pets = Pet::where('Status', '=', '1')->get();
+        return view('admin.reports.list', compact('reports', 'pets'));
     }
 
     public function create()
@@ -118,6 +120,31 @@ class ReportController extends Controller
             return redirect(route('admin_report_edit', $id));
         }
         return redirect(route('admin_404'));
+    }
+
+    public function report_new(Request $request)
+    {
+        $Id = DB::transaction(function () use ($request) {
+            $report            = Report::find($request->Report_id);
+            $report->NewStatus = 1;
+            $report->update();
+            $new               = $request->all();
+            $new['Status']     = 1;
+            $new['Slug']       = to_slug($request->Title);
+            $new['Thumbnails'] = null;
+            foreach ($request->thumbnails as $thumb) {
+                $new['Thumbnails'] .= $thumb . ",";
+            }
+            $new['Thumbnails'] = substr($new['Thumbnails'], 0, -1);
+            $new               = new News($new);
+            $new->save();
+            $new['Slug'] = $new['Slug'] . ('-') . $new->id;
+            $new->save();
+            $new->Pets()->detach();
+            $new->Pets()->attach($request->PetIds);
+            return $new->id;
+        });
+        return redirect(route('admin_new_edit', $Id));
     }
 
     public function handle($id)

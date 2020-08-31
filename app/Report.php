@@ -27,7 +27,7 @@ class Report extends Model
     public function getArrayThumbnailsAttribute()
     {
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
-            return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
+            return array('PetCasa/noimages_aaqvrt_opnyoy.png');
         }
         $list_photos  = array();
         $single_thumb = explode(',', $this->Thumbnails);
@@ -42,7 +42,7 @@ class Report extends Model
     public function getFirstThumbnailAttribute()
     {
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
-            return array('https://res.cloudinary.com/vernom/image/upload/v1596461891/perfume_project/noimages_aaqvrt.png');
+            return array('PetCasa/noimages_aaqvrt_opnyoy.png');
         }
         $thumbnail[] = explode(',', $this->Thumbnails);
         foreach ($thumbnail as $thumbnailValue) {

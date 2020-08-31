@@ -16,7 +16,7 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var thumbnailInput = document.querySelectorAll('input[name="avatar"]');
+                    var thumbnailInput = document.querySelector('input[name="avatar"]');
                     thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');
                     console.log(thumbnailInput)
                 }
@@ -92,19 +92,20 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Content" >Mô tả<span class="text-danger">*</span></label>
+                            <label for="Content">Mô tả<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Content" class="form-control"
-                                      placeholder="" >{{old('Content')}}</textarea>
+                                      placeholder="">{{old('Content')}}</textarea>
                             @if ($errors->has('Content'))
                                 <label class="alert-warning">{{$errors->first('Content')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="Account_id" value="{{old('Account_id')}}">AccountId<span class="text-danger">*</span></label>
+                            <label for="Account_id" value="{{old('Account_id')}}">AccountId<span
+                                        class="text-danger">*</span></label>
                             <input list="account" name="Account_id" value="{{old('Account_id')}}"/>
                             <datalist id="account">
                                 @foreach ($accounts as $account)
-                                <option value="{{$account->id}}">{{$account->FullName}}</option>
+                                    <option value="{{$account->id}}">{{$account->FullName}}</option>
                                 @endforeach
                             </datalist>
                             @if ($errors->has('Account_id'))
@@ -116,7 +117,7 @@
                             <input list="pet" name="Pet_id" value="{{old('Pet_id')}}"/>
                             <datalist id="pet">
                                 @foreach ($pets as $pet)
-                                <option value="{{$pet->id}}">{{$pet->Name}}</option>
+                                    <option value="{{$pet->id}}">{{$pet->Name}}</option>
                                 @endforeach
                             </datalist>
                             @if ($errors->has('Pet_id'))

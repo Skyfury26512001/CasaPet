@@ -58,7 +58,7 @@ class AccountController extends Controller
     public function loginP(Request $request)
     {
         $condition = ['Email' => $request->EmailLogin, 'Status' => "1",];
-        $account   = Account::where($condition)->get()->first();
+        $account   = Account::where($condition)->where('Role_id', '=', 1)->get()->first();
         if (isset($account)) {
             $PasswordHash = $account->PasswordHash;
             $Salt         = $account->Salt;
@@ -73,6 +73,28 @@ class AccountController extends Controller
             return redirect(route('login_register'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
         } else {
             return redirect(route('login_register'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
+        }
+    }
+
+    public function admin_loginP(Request $request)
+    {
+        $condition = ['Email' => $request->EmailLogin, 'Status' => "1"];
+        $account   = Account::where($condition)->where('Role_id', '>', 1)->get()->first();
+//        dd($request);
+        if (isset($account)) {
+            $PasswordHash = $account->PasswordHash;
+            $Salt         = $account->Salt;
+            $passIn       = md5($request->PasswordLogin . $Salt);
+            if ($PasswordHash == $passIn) {
+                session_start();
+                $account_session = $request->session();
+                $account['role'] = $account->role->name;
+                $account_session->put('current_account', $account);
+                return redirect('/admin');
+            }
+            return redirect(route('admin-login'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
+        } else {
+            return redirect(route('admin-login'))->withErrors([['email' => 'account not found'], ['password' => 'Account not found']]);
         }
     }
 

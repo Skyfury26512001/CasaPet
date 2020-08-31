@@ -28,7 +28,7 @@ class AddCategoryToNewsTable extends Migration
     {
         Schema::table('news', function (Blueprint $table) {
 //            Schema::disableForeignKeyConstraints();
-//            $table->dropForeign('categories_category_id_foreign');
+            $table->dropForeign(['Category_id']);
 //            Schema::enableForeignKeyConstraints();
         });
     }
