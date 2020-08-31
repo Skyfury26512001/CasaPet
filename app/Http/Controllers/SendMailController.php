@@ -30,7 +30,7 @@ class SendMailController extends Controller
                 'PhoneNumber.required' => 'Vui lòng điền số điện thoại để chúng tôi có thể liên lạc với bạn',
                 'Address.required'     => 'Vui lòng điền địa chỉ để chúng tôi có mặt tại địa điểm sớm nhất',
             ]);
-            dd("Stop here SendMailController@report_send");
+//            dd("Stop here SendMailController@report_send");
             $report            = new Report($request->all());
             $report['Content'] = $request->Messenger;
             foreach ($request->thumbnails as $thumb) {
