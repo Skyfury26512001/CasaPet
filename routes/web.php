@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 /* Home */
 Route::get('/', 'PageController@home')->name('home');
 
-
 /* Sub Pages */
 Route::get('/error', function () {
     return view('user.sub_pages.error');
@@ -48,6 +47,8 @@ Route::get('/adoption', 'PetController@pet_list_adoption')->name('pet_list_adopt
 Route::get('/adoption/{slug}', 'PetController@pet_detail_adoption')->name('adoption_detail');
 
 Route::get('/adoption/adoption-form/{slug}', 'PetController@adoption_form_fill')->name('adoption_form');
+
+Route::post('/adoption/adoption-form/{slug}', 'OrderController@form_send')->name('adoption_form_send');
 
 Route::get('/concession', function () {
     return view('user.services.concession');
@@ -118,10 +119,10 @@ Route::post('/logout', 'AccountController@logOut')->name('logout');
 
 Route::post('/register', 'AccountController@registerP')->name('register');
 
-Route::get('/account/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
-
-Route::post('/account/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
-
+Route::group(['prefix' => '/account'], function () {
+    Route::get('/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
+    Route::post('/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
+});
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
 

@@ -49,20 +49,22 @@
     <div class="section-heading-1 text-center mt-5">
         <h2 data-aos="zoom-in" class="aos-init aos-animate" style="margin-bottom: unset;">Tìm thú cưng</h2>
     </div>
+
     <ul class="nav nav-pills category-isotope center-nav aos-init aos-animate" data-aos="zoom-in">
         <li class="nav-item">
             <a class="nav-link active" href="#" onclick="GetTypeAnimal()" data-toggle="tab" data-filter="*"
                aria-label="Tất cả" aria-labelledby="Tất cả">Tất cả</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" onclick="GetTypeAnimal(5)" href="#" data-toggle="tab" data-filter=".Chó"
+            <a class="nav-link" onclick="GetTypeAnimal(8)" href="#" data-toggle="tab" data-filter=".Chó"
                aria-label="Chó" aria-labelledby="Chó">Chó</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" onclick="GetTypeAnimal(6)" href="#" data-toggle="tab" data-filter=".Mèo"
+            <a class="nav-link" onclick="GetTypeAnimal(8)" href="#" data-toggle="tab" data-filter=".Mèo"
                aria-label="Mèo" aria-labelledby="Mèo">Mèo</a>
         </li>
     </ul>
+
     <div class="container aos-init aos-animate" data-aos="zoom-in">
         <div class="row pt-4">
             <div class="col-6 col-sm-4 col-md-4 col-lg-4">
@@ -80,9 +82,8 @@
                     <label>Độ tuổi</label>
                     <select id="age" class="form-control">
                         <option value="">Tất cả</option>
-                        <option value="1">Trẻ</option>
-                        <option value="2">Trưởng thành</option>
-                        <option value="3">Già</option>
+                        <option value="1">Dưới 6 tháng</option>
+                        <option value="2">6 tháng - 2 năm</option>
                     </select>
                 </div>
             </div>
@@ -106,17 +107,6 @@
                         <option value="8">Đen</option>
                         <option value="9">Trắng</option>
                         <option value="10">Vàng</option>
-                        <option value="11">Đen Trắng</option>
-                        <option value="12">Trắng vàng</option>
-                        <option value="13">Mướp</option>
-                        <option value="14">Tam Thể</option>
-                        <option value="15">Nhị Thể</option>
-                        <option value="16">Đồi Mồi</option>
-                        <option value="17">Xám</option>
-                        <option value="18">Xiêm</option>
-                        <option value="19">Nâu</option>
-                        <option value="20">Nâu vàng</option>
-                        <option value="21">Đen vàng</option>
                     </select>
                 </div>
             </div>
@@ -176,7 +166,6 @@
                     <!-- /adopt-card -->
             @endforeach
             <!-- /pet -->
-
             </div>
             <!-- /row -->
             <div class="col-md-12 mt-5">

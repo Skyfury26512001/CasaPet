@@ -177,7 +177,7 @@
                 </div>
                 <div
                     class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
-                    <a href="{{route('get_involed')}}" class="btn btn-primary"
+                    <a href="#" class="btn btn-primary"
                        aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
                 </div>
             </div>

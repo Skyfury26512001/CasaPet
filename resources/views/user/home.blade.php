@@ -475,7 +475,7 @@
                     <div class="isotope-ietm">
                         <div class="gallery-thumb">
                             <img class="img-fluid" src="{{$pet->FirstThumbnail}}" alt="">
-                            <a href=""
+                            <a href="{{$pet->FirstThumbnail}}"
                                title="{{$pet->name}}">
                                 <span class="overlay-mask"></span>
                             </a>
