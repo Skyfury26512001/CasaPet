@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderSeeder::class);
         $this->call(ReportSeeder::class);
         $this->call(CategorySeeder::class);
-//        $this->call(NewSeeder::class);
+        $this->call(NewSeeder::class);
     }
 }
