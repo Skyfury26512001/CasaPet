@@ -31,14 +31,27 @@ class SendMailController extends Controller
                 'Address.required'     => 'Vui lòng điền địa chỉ để chúng tôi có mặt tại địa điểm sớm nhất',
             ]);
 //            dd("Stop here SendMailController@report_send");
-            $report            = new Report($request->all());
-            $report['Content'] = $request->Messenger;
-            foreach ($request->thumbnails as $thumb) {
-                $report['Thumbnails'] .= $thumb . ",";
+            $report = new Report($request->all());
+            if (!$request->has('FullName') || $request->FullName == null) {
+                $report['FullName'] = "Không có tên";
+            }
+            if ($request->has('Messenger') && $request->Messenger != null) {
+                $report['Content'] = $request->Messenger;
+            } else {
+                $report['Content'] = "Không có nội dung";
+            }
+            if ($request->has('thumbnails')) {
+                foreach ($request->thumbnails as $thumb) {
+                    $report['Thumbnails'] .= $thumb . ",";
+                }
+            } else {
+                $report['Thumbnails'] = "PetCasa/noimages_aaqvrt_opnyoy.png";
             }
             $report['Status'] = 0;
+//            dd($report);
             $report->save();
-
+//            dd($request->PhoneNumber);
+//            dd("Start send notification");
             /* Start Send notification to admin */
             /* Gmail */
             $data = array('name' => "$request->FullName", 'contact_message' => "$request->Messenger", 'transaction' => 'as');
@@ -63,7 +76,7 @@ class SendMailController extends Controller
             $message = $client->message()->send([
                 'to'   => "$request->PhoneNumber",
                 'from' => 'Pet Casa',
-                'text' => 'Cảm ơn bạn đã liên lạc với chúng tôi ! Yêu cầu hỗ trợ của bạn đã được gửi . Chúng tôi sẽ xử lý yêu cầu sớm nhất có thể ! Cảm ơn đã tin tưởng chúng tôi <3 !'
+                'text' => 'Thank you for contacting us! Your support request has been submitted. We will process your request as soon as possible! Thanks for trusting us <3!'
             ]);
             /* End Send SMS to phoneNumber */
 
