@@ -9,11 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-json": "*",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.24",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "nexmo/client": "^2.0",
+        "phpviet/laravel-validation": "^1.0",
+        "swiftmailer/swiftmailer": "^6.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -33,6 +37,9 @@
         }
     },
     "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },
