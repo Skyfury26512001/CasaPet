@@ -3,6 +3,7 @@ html {
     box-sizing: border-box;
     font-family: georgia;
 }
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -13,7 +14,6 @@ img {
 
 .timeline {
     text-align: center;
-    margin-top: 150px;
 }
 
 .timeline .year {
@@ -29,68 +29,71 @@ img {
 }
 
 .timeline .year span :after {
-     content: "";
-     display: block;
-     width: 80%;
-     margin: auto;
-     height: 1px;
-     background: #F9BE4F;
- }
-
+    content: "";
+    display: block;
+    width: 80%;
+    margin: auto;
+    height: 1px;
+    background: #48A06A;
+}
 
 
 .timeline .year span .year--end:before {
-     content: "";
-     display: block;
-     width: 80%;
-     margin: auto;
-     height: 1px;
-     background: #F9BE4F;
- }
+    content: "";
+    display: block;
+    width: 80%;
+    margin: auto;
+    height: 1px;
+    background: #48A06A;
+}
 
 .timeline .year span.year--end :after {
-     content: none;
- }
-
+    content: none;
+}
 
 
 .timeline .days {
     list-style-type: none;
     margin: 0;
-    padding: 0; }
+    padding: 0;
+}
 
 .timeline .days .day {
     width: 100%;
-    float: left;}
+    float: left;
+}
 
 .timeline .days .events {
     position: relative;
     float: left;
-    border-right: 1px solid #F9BE4F;
+    border-right: 1px solid #48A06A;
     padding: 30px;
     text-align: right;
-    width: 50%;}
+    width: 50%;
+}
 
 .timeline .days .day .events:after {
-     content: "";
-     width: 40%;
-     display: inline-block;
-     height: 1px;
-     background: #F9BE4F;
+    content: "";
+    width: 40%;
+    display: inline-block;
+    height: 1px;
+    background: #48A06A;
 
-     position: absolute;
-     right: 0;
- }
+    position: absolute;
+    right: 0;
+}
+
 .timeline .days .day .events:nth-child(odd):after {
     content: "";
     width: 40%;
     display: inline-block;
     height: 1px;
-    background: #F9BE4F;
+    background: #48A06A;
 
     position: absolute;
     /*right: 0;*/
 }
+
 .timeline .days .day .events .date {
     position: absolute;
     top: 50%;
@@ -100,7 +103,7 @@ img {
     padding: 30px;
     text-align: left;
 
-    color: #F9BE4F;
+    color: #48A06A;
     font-size: 24px;
     white-space: nowrap;
 }
@@ -108,7 +111,8 @@ img {
 .timeline .days .day .events .day__img {
     margin-right: -30px;
     position: relative;
-    overflow: hidden;}
+    overflow: hidden;
+}
 
 .timeline .days .day .events .day__img img {
     display: block;
@@ -122,23 +126,23 @@ img {
     bottom: 0;
     right: 0;
     padding: 20px;
-    background: #F9BE4F;
+    background: #48A06A;
     color: #fff;
 }
-
 
 
 .timeline .days .day:nth-child(odd) .events {
     width: calc(50% + 1px);
     float: right;
     border-right: 0;
-    border-left: 1px solid #F9BE4F;
-    text-align: left;}
+    border-left: 1px solid #48A06A;
+    text-align: left;
+}
 
 .timeline .days .day:nth-child(odd) .events:after {
-     right: auto;
-     left: 0;
- }
+    right: auto;
+    left: 0;
+}
 
 .timeline .days .day:nth-child(odd) .events .date {
     left: auto;
@@ -148,7 +152,8 @@ img {
 
 .timeline .days .day:nth-child(odd) .events .day__img {
     margin-right: auto;
-    margin-left: -30px;}
+    margin-left: -30px;
+}
 
 .timeline .days .day:nth-child(odd) .events .day__img img {
     float: left;
@@ -159,10 +164,11 @@ img {
     left: 0;
 }
 
-.facebook-comment{
+.facebook-comment {
     text-align: center;
 }
-.boder-footer{
+
+.boder-footer {
     border: 1px solid black;
     margin: 10px 0;
     width: 50%;

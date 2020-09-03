@@ -29,7 +29,7 @@
                     <div class="d-none d-sm-block">
                         <p class="header-p">Search our list of dogs, cats and other pets available for adoption near
                             you</p>
-                        <a class="btn btn-primary " href="{{route('adoption')}}">Adopt Today</a>
+                        <a class="btn btn-primary " href="{{route('pet_list_adoption')}}">Adopt Today</a>
                     </div>
                     <!--/d-none  -->
                 </div>
@@ -470,12 +470,12 @@
         <!-- Gallery -->
         <div id="gallery-isotope" class="mt-5">
         @foreach($pets as $pet)
-            <!-- Image 1 -->
+            <!-- Image -->
                 <div class="{{$pet->Species}} col-lg-3 col-sm-6 col-md-6">
-                    <div class="isotope-item">
+                    <div class="isotope-ietm">
                         <div class="gallery-thumb">
                             <img class="img-fluid" src="{{$pet->FirstThumbnail}}" alt="">
-                            <a href=""
+                            <a href="{{$pet->FirstThumbnail}}"
                                title="{{$pet->name}}">
                                 <span class="overlay-mask"></span>
                             </a>
@@ -561,7 +561,8 @@
                                     </ul>
                                     <!-- Buttons -->
                                     <div class="text-center">
-                                        <a href="/adoption/adoption_detail" class="btn btn-primary">Chi tiết</a>
+                                        <a href="{{route('adoption_detail',$pet->Slug)}}" class="btn btn-primary">Chi
+                                            tiết</a>
                                     </div>
                                 </div>
                             </div>
@@ -573,7 +574,7 @@
             </div>
             <!-- /row -->
             <div class="text-center mt-5">
-                <a href="{{route('adoption')}}" class="btn btn-secondary btn-lg">Xem thêm</a>
+                <a href="{{route('pet_list_adoption')}}" class="btn btn-secondary btn-lg">Xem thêm</a>
             </div>
         </div>
         <!-- /container -->

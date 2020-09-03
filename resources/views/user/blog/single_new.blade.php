@@ -47,7 +47,18 @@
                         <hr>
                         <!-- Post Content -->
                         <p>{{$single_new->Content}}</p>
-                        <!-- Comments Form -->
+                        @if ($include_pet != null && sizeof($include_pet) > 0)
+                            {{--                            <div class="card">--}}
+                            <h5 class="card-header">Thú nuôi liên quan :</h5>
+                            <div class="card-body">
+                                @foreach($include_pet as $pet)
+                                    <a href="{{route('adoption_detail',$pet->Slug)}}"
+                                       class="badge badge-pill badge-default">{{$pet->Name}}</a>
+                                @endforeach
+                            </div>
+                        {{--                            </div>--}}
+                    @endif
+                    <!-- Comments Form -->
                         <!-- Comment -->
                         <div class="fb-comments"
                              data-href="{{URL::current()}}"
@@ -90,53 +101,63 @@
                 </div>
                 <!-- /col-lg -->
                 <!-- Sidebar Widgets Column -->
-                <div class="blog-sidebar bg-light-custom  h-50 border-irregular1 col-lg-4">
+                <div class="blog-sidebar bg-light-custom  h-50 border-irregular1 col-lg-4" id="sidebar">
                     <!-- Search Widget -->
                     <div class="card">
-                        <h5 class="card-header">Search</h5>
+                        <h5 class="card-header">Tìm kiếm</h5>
                         <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                           <button class="btn btn-secondary" type="button">Go!</button>
-                           </span>
-                            </div>
+                            <form action="{{route('news')}}" method="GET">
+                                {{--                                @csrf--}}
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="Keyword" placeholder="...">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="submit">Tìm!</button>
+                                    </span>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- Categories Widget -->
                     <div class="card">
-                        <h5 class="card-header">Categories</h5>
+                        <h5 class="card-header">Chuyên mục</h5>
                         <div class="card-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    Pet Training
+                                <a href="{{route('news',["Category" => "1"])}}"
+                                   class="list-group-item list-group-item-action">
+                                    Quá trình cứu hộ
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action">Veterinarian</a>
-                                <a href="#" class="list-group-item list-group-item-action">Pet Hotel</a>
-                                <a href="#" class="list-group-item list-group-item-action">Vaccines</a>
+                                <a href="{{route('news',["Category" => "2"])}}"
+                                   class="list-group-item list-group-item-action">
+                                    Tin tức và sự kiện</a>
+                                <a href="{{route('news',["Category" => "3"])}}"
+                                   class="list-group-item list-group-item-action">
+                                    Kiến thức nuôi boss</a>
                             </div>
                         </div>
                     </div>
                     <!-- Side Widget -->
-                    <div class="card">
-                        <h5 class="card-header">Image Widget</h5>
-                        <div class="card-body">
-                            <img src="img/gallery/gallery1.jpg" class="img-fluid" alt=""/>
-                        </div>
-                    </div>
-                    <!-- Side Widget -->
-                    <div class="card">
-                        <h5 class="card-header">Tags</h5>
-                        <div class="card-body">
-                            <a href="#" class="badge badge-pill badge-default">Dogs</a>
-                            <a href="#" class="badge badge-pill badge-default">Cats</a>
-                            <a href="#" class="badge badge-pill badge-default">Nutrition</a>
-                            <a href="#" class="badge badge-pill badge-default">Events</a>
-                            <a href="#" class="badge badge-pill badge-default">Exotic pets</a>
-                            <a href="#" class="badge badge-pill badge-default">Adoption</a>
-                            <a href="#" class="badge badge-pill badge-default">Pet Insurance</a>
-                        </div>
-                    </div>
+                {{--                    <div class="card">--}}
+                {{--                        <h5 class="card-header">Video nổi bật</h5>--}}
+                {{--                        <div class="card-body">--}}
+                {{--                            <div class="embed-responsive embed-responsive-4by3">--}}
+                {{--                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FVwyIfChIdY"--}}
+                {{--                                        allowfullscreen></iframe>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                <!-- Side Widget -->
+                    {{--                    <div class="card">--}}
+                    {{--                        <h5 class="card-header">Tags</h5>--}}
+                    {{--                        <div class="card-body">--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Dogs</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Cats</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Nutrition</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Events</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Exotic pets</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Adoption</a>--}}
+                    {{--                            <a href="#" class="badge badge-pill badge-default">Pet Insurance</a>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
             <!-- /.row -->

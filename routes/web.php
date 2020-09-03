@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 /* Home */
 Route::get('/', 'PageController@home')->name('home');
 
-
 /* Sub Pages */
 Route::get('/error', function () {
     return view('user.sub_pages.error');
@@ -43,17 +42,13 @@ Route::get('/rescue-form', function () {
 
 Route::post('/rescue_form', 'SendMailController@report_send')->name('report_send');
 
-Route::get('/adoption', function () {
-    return view('user.services.adoption');
-})->name('adoption');
+Route::get('/adoption', 'PetController@pet_list_adoption')->name('pet_list_adoption');
 
-Route::get('/adoption/adoption-detail', function () {
-    return view('user.services.adoption_detail');
-})->name('adoption_detail');
+Route::get('/adoption/{slug}', 'PetController@pet_detail_adoption')->name('adoption_detail');
 
-Route::get('/adopt-form', function () {
-    return view('user.services.adopt_form');
-})->name('adoption_form');
+Route::get('/adoption/adoption-form/{slug}', 'PetController@adoption_form_fill')->name('adoption_form');
+
+Route::post('/adoption/adoption-form/{slug}', 'OrderController@form_send')->name('adoption_form_send');
 
 Route::get('/concession', function () {
     return view('user.services.concession');
@@ -80,7 +75,7 @@ Route::get('/pet-care', function () {
 /* 3.Blog */
 Route::get('/news', 'NewController@news_list_data')->name('news');
 
-Route::get('/news/single_new/{Slug}', 'NewController@single_new_data')->name('single_new');
+Route::get('/news/{Slug}', 'NewController@single_new_data')->name('single_new');
 
 /* 4.About */
 Route::get('/about', function () {
@@ -115,7 +110,7 @@ Route::get('/foster', function () {
 /* 7.Login-Register */
 
 Route::get('/login-register', function () {
-    return view('user.login_register');
+    return view('user.account.login_register');
 })->name('login_register');
 
 Route::post('/login', 'AccountController@loginP')->name('loginP');
@@ -124,10 +119,10 @@ Route::post('/logout', 'AccountController@logOut')->name('logout');
 
 Route::post('/register', 'AccountController@registerP')->name('register');
 
-Route::get('/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
-
-Route::post('/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
-
+Route::group(['prefix' => '/account'], function () {
+    Route::get('/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
+    Route::post('/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
+});
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
 
@@ -222,7 +217,9 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
     });
 });
 
-Route::get('/test', function () { return view('admin.test'); });
+Route::get('/test', function () {
+    return view('admin.test');
+});
 // test : route
 Route::get('checking_page', function () {
     return view('session_checking');

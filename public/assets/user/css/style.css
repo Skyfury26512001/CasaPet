@@ -1013,6 +1013,7 @@ figure.team-style3:hover a:nth-child(3) i {
 .blog-card .card-img-top {
     border-bottom: 10px solid transparent;
     transition: all .3s ease-out;
+    height: 450px;
 }
 
 .blog-card .card-img-top:hover {

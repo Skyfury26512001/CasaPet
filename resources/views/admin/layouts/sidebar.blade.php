@@ -52,8 +52,8 @@
                 </li>
                 <li>
                     <a href="#">
-                        <i class="mdi mdi-view-compact"></i>
-                        <span>  Quản lý báo cáo</span>
+                        <i class="mdi mdi-chat-alert"></i>
+                        <span>Yêu cầu hỗ trợ</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">

@@ -22,6 +22,7 @@
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.secure_url);
                     var thumbnail = document.querySelector('.avatar-uploader__avatar-image');
+                    var thumbnail1 = document.querySelector('.petscasa-avatar__img');
                     var urlString = 'url(' + result.info.secure_url + ')';
                     console.log(123);
                     thumbnail.style.backgroundImage = urlString;
@@ -53,6 +54,18 @@
             uiLibrary: 'bootstrap4',
             format: 'dd/mm/yyyy'
         });
+    </script>
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+
     </script>
 @endsection
 @section('content')
@@ -88,8 +101,8 @@
                                              xmlns="http://www.w3.org/2000/svg"
                                              style="margin-right: 4px;">
                                             <path
-                                                    d="M8.54 0L6.987 1.56l3.46 3.48L12 3.48M0 8.52l.073 3.428L3.46 12l6.21-6.18-3.46-3.48"
-                                                    fill="#9B9B9B" fill-rule="evenodd"></path>
+                                                d="M8.54 0L6.987 1.56l3.46 3.48L12 3.48M0 8.52l.073 3.428L3.46 12l6.21-6.18-3.46-3.48"
+                                                fill="#9B9B9B" fill-rule="evenodd"></path>
                                         </svg>
                                         Sửa hồ sơ
                                     </a>
@@ -113,11 +126,11 @@
                                                 </g>
                                             </svg>
                                         </div>
-
                                         <div class="userpage-sidebar-menu-entry__text" style="color: #48A06A">
                                             Tài khoản của tôi
                                         </div>
-                                    </a></div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -160,6 +173,24 @@
                                                                                              placeholder=""
                                                                                              value="{{$current_account->Email}}"
                                                                                              name="Email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-with-label">
+                                        <div class="input-with-label__wrapper">
+                                            <div class="input-with-label__label"><label for="password">Mật khẩu</label>
+                                            </div>
+                                            <div class="input-with-label__content">
+                                                <div class="input-with-validator-wrapper">
+                                                    <div class="input-with-validator">
+                                                        <input type="password"
+                                                               placeholder=""
+                                                               value="{{$current_account->PasswordHash}}"
+                                                               name="Password"
+                                                               id="password">
+                                                        <i class="fa fa-eye" id="togglePassword"></i>
                                                     </div>
                                                 </div>
                                             </div>

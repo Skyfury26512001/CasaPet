@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-5 h-50 border-irregular1  bg-light-custom text-center">
                     <h1 class="mt-4">Success!</h1>
-                    <h5>Cám ơn bạn đã tin tưởng và sử dụng dịch vụ của PetCasa. Chúng tôi sẽ liên lạc lại với bạn sớm
+                    <h5>Cám ơn bạn đã tin tưởng và lựa chọn PetCasa. Chúng tôi sẽ liên lạc lại với bạn sớm
                         nhất có thể.</h5>
                     <button class="btn btn-primary mb-5" onclick="goBack()">Quay trở lại</button>
                 </div>

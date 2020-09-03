@@ -263,6 +263,13 @@ class AccountController extends Controller
         }
 //        dd($account);
         return view('admin.404-admin');
+
+        # Đây là 1 cái ví vụ về đổi password nè anh !
+    }
+
+    public function user_changPassword(Request $request)
+    {
+        $request->validate();
     }
 
     public function logOut()

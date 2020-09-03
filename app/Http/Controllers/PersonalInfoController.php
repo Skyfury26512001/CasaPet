@@ -12,7 +12,7 @@ class PersonalInfoController extends Controller
     {
         $current_account_id = session('current_account')->id;
         $cr_account         = Account::where('id', '=', $current_account_id)->where('Status', '=', '1')->first();
-        return view('user.personal_info')->with('current_account', $cr_account);
+        return view('user.account.personal_info')->with('current_account', $cr_account);
     }
 
     public function account_update(Request $request)
@@ -27,6 +27,7 @@ class PersonalInfoController extends Controller
             $account->PhoneNumber = $request->PhoneNumber;
             $account->IDNo        = $request->IDNo;
             $account->update();
+//            dd($account->Avatar);
             return redirect(route('personal_info'));
         }
         return redirect(route('error'));
