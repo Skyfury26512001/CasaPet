@@ -7,10 +7,10 @@
     <script src={{asset('assets/user/js/map.js')}}></script>
     <!-- Mailchimp script -->
     <script src={{asset('assets/user/js/mailchimp.js')}}></script>
-    <!-- number counter script -->
-    <script src={{asset('assets/user/js/counter.js"')}}></script>
     <!-- Contact Form script -->
     <script src={{asset('assets/user/js/contact.js')}}></script>
+    <!-- Number counter script -->
+    <script src={{asset('assets/user/js/counter.js')}}></script>
 @endsection
 @section('content')
     <!-- ==== Slider ==== -->
@@ -117,139 +117,140 @@
             <div class="container block-padding pt-0">
                 <div class="row">
                     <div class="col-xl-6">
-                        <h3>The best for your pet!</h3>
-                        <p>Aliquam erat volutpat In id fermentum augue, ut pellentesque leo. Maecenas at arcu risus.
-                            Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec
-                            lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.</p>
-                        <p><strong>Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall Maecenas at arcu
-                                risus scelerisque laoree.</strong></p>
+                        <h3>Điều tốt nhất dành cho các bạn chó, mèo!</h3>
+                        <p>PetsCasa là một tổ chức từ thiện phúc lợi động vật với tầm nhìn về một tương lai nơi mọi vật
+                            nuôi đều được an toàn, được tôn trọng và yêu thương.</p>
+                        <p><strong>Nhóm của chúng tôi và các tình nguyện viên hiện đang làm việc trong các nhóm chính
+                                sau:</strong></p>
                         <!-- ul custom-->
                         <ul class="custom pl-0">
-                            <li>Aliquam erat volut pat.</li>
-                            <li>Ibu lum orci eget, viverra elit liquam erat volut pat phas ellus ac.</li>
-                            <li>Aliquam erat volut pat phas ellu</li>
+                            <li>Cứu hộ chó mèo</li>
+                            <li>Nhận nuôi thú cưng</li>
+                            <li>Nhượng nuôi thú cưng</li>
                         </ul>
                     </div>
                     <!-- /col-xl-->
                     <div class="col-xl-6">
-                        <img src={{asset('assets/user/img/services2.jpg')}} alt="" data-aos="fade-down"
-                             data-aos-duration="1500"
-                             class="img-fluid border-irregular1 border-double">
+                        <img
+                            src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,w_800/v1599127104/PetCasa/HomePage/home_3_iiohrf.jpg
+                            alt="" data-aos="fade-down"
+                            data-aos-duration="1500"
+                            class="img-fluid border-irregular1 border-double">
                     </div>
                 </div>
                 <!-- /row -->
             </div>
             <!-- /container -->
             <!-- services carousel -->
-            <div class="bg-light-custom block-padding border-irregular1">
-                <div id="owl-services" class="container owl-carousel owl-theme">
-                    <!-- service 1  -->
-                    <div class="col-md-12">
-                        <div class="serviceBox">
-                            <!-- service icon -->
-                            <div class="service-icon">
-                                <i class="flaticon-people-1"></i>
-                            </div>
-                            <!-- service content -->
-                            <div class="service-content">
-                                <h6>Fun Activities</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.
-                                </p>
-                                <a class="btn btn-primary" href="services-single.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- service 2  -->
-                    <div class="col-md-12">
-                        <div class="serviceBox">
-                            <!-- service icon -->
-                            <div class="service-icon">
-                                <i class="flaticon-pet-shelter"></i>
-                            </div>
-                            <!-- service content -->
-                            <div class="service-content">
-                                <h6>Pet Hotel</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.
-                                </p>
-                                <a class="btn btn-primary" href="services-single.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- service 3  -->
-                    <div class="col-md-12">
-                        <div class="serviceBox">
-                            <!-- service icon -->
-                            <div class="service-icon">
-                                <i class="flaticon-animals-2"></i>
-                            </div>
-                            <!-- service content -->
-                            <div class="service-content">
-                                <h6>Grooming Services</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.
-                                </p>
-                                <a class="btn btn-primary" href="services-single.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- service 4 -->
-                    <div class="col-md-12">
-                        <div class="serviceBox">
-                            <!-- service icon -->
-                            <div class="service-icon">
-                                <i class="flaticon-dog-with-first-aid-kit-bag"></i>
-                            </div>
-                            <!-- service content -->
-                            <div class="service-content">
-                                <h6>Veterinary 24/7</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.
-                                </p>
-                                <a class="btn btn-primary" href="services-single.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- service 5 -->
-                    <div class="col-md-12">
-                        <div class="serviceBox">
-                            <!-- service icon -->
-                            <div class="service-icon">
-                                <i class="flaticon-syringe"></i>
-                            </div>
-                            <!-- service content -->
-                            <div class="service-content">
-                                <h6>Vaccines</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.
-                                </p>
-                                <a class="btn btn-primary" href="services-single.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- service 6 -->
-                    <div class="col-md-12">
-                        <div class="serviceBox">
-                            <!-- service icon -->
-                            <div class="service-icon">
-                                <i class="flaticon-dog-training-3"></i>
-                            </div>
-                            <!-- service content -->
-                            <div class="service-content">
-                                <h6>Huấn luyện</h6>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.
-                                </p>
-                                <a class="btn btn-primary" href="services-single.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--col-md-12  -->
-                </div>
-                <!-- /owl-services -->
-            </div>
-            <!-- /bg-light-custom -->
+        {{--            <div class="bg-light-custom block-padding border-irregular1">--}}
+        {{--                <div id="owl-services" class="container owl-carousel owl-theme">--}}
+        {{--                    <!-- service 1  -->--}}
+        {{--                    <div class="col-md-12">--}}
+        {{--                        <div class="serviceBox">--}}
+        {{--                            <!-- service icon -->--}}
+        {{--                            <div class="service-icon">--}}
+        {{--                                <i class="flaticon-people-1"></i>--}}
+        {{--                            </div>--}}
+        {{--                            <!-- service content -->--}}
+        {{--                            <div class="service-content">--}}
+        {{--                                <h6>Fun Activities</h6>--}}
+        {{--                                <p>--}}
+        {{--                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.--}}
+        {{--                                </p>--}}
+        {{--                                <a class="btn btn-primary" href="services-single.html">read more</a>--}}
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <!-- service 2  -->--}}
+        {{--                    <div class="col-md-12">--}}
+        {{--                        <div class="serviceBox">--}}
+        {{--                            <!-- service icon -->--}}
+        {{--                            <div class="service-icon">--}}
+        {{--                                <i class="flaticon-pet-shelter"></i>--}}
+        {{--                            </div>--}}
+        {{--                            <!-- service content -->--}}
+        {{--                            <div class="service-content">--}}
+        {{--                                <h6>Pet Hotel</h6>--}}
+        {{--                                <p>--}}
+        {{--                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.--}}
+        {{--                                </p>--}}
+        {{--                                <a class="btn btn-primary" href="services-single.html">read more</a>--}}
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <!-- service 3  -->--}}
+        {{--                    <div class="col-md-12">--}}
+        {{--                        <div class="serviceBox">--}}
+        {{--                            <!-- service icon -->--}}
+        {{--                            <div class="service-icon">--}}
+        {{--                                <i class="flaticon-animals-2"></i>--}}
+        {{--                            </div>--}}
+        {{--                            <!-- service content -->--}}
+        {{--                            <div class="service-content">--}}
+        {{--                                <h6>Grooming Services</h6>--}}
+        {{--                                <p>--}}
+        {{--                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.--}}
+        {{--                                </p>--}}
+        {{--                                <a class="btn btn-primary" href="services-single.html">read more</a>--}}
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <!-- service 4 -->--}}
+        {{--                    <div class="col-md-12">--}}
+        {{--                        <div class="serviceBox">--}}
+        {{--                            <!-- service icon -->--}}
+        {{--                            <div class="service-icon">--}}
+        {{--                                <i class="flaticon-dog-with-first-aid-kit-bag"></i>--}}
+        {{--                            </div>--}}
+        {{--                            <!-- service content -->--}}
+        {{--                            <div class="service-content">--}}
+        {{--                                <h6>Veterinary 24/7</h6>--}}
+        {{--                                <p>--}}
+        {{--                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.--}}
+        {{--                                </p>--}}
+        {{--                                <a class="btn btn-primary" href="services-single.html">read more</a>--}}
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <!-- service 5 -->--}}
+        {{--                    <div class="col-md-12">--}}
+        {{--                        <div class="serviceBox">--}}
+        {{--                            <!-- service icon -->--}}
+        {{--                            <div class="service-icon">--}}
+        {{--                                <i class="flaticon-syringe"></i>--}}
+        {{--                            </div>--}}
+        {{--                            <!-- service content -->--}}
+        {{--                            <div class="service-content">--}}
+        {{--                                <h6>Vaccines</h6>--}}
+        {{--                                <p>--}}
+        {{--                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.--}}
+        {{--                                </p>--}}
+        {{--                                <a class="btn btn-primary" href="services-single.html">read more</a>--}}
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <!-- service 6 -->--}}
+        {{--                    <div class="col-md-12">--}}
+        {{--                        <div class="serviceBox">--}}
+        {{--                            <!-- service icon -->--}}
+        {{--                            <div class="service-icon">--}}
+        {{--                                <i class="flaticon-dog-training-3"></i>--}}
+        {{--                            </div>--}}
+        {{--                            <!-- service content -->--}}
+        {{--                            <div class="service-content">--}}
+        {{--                                <h6>Huấn luyện</h6>--}}
+        {{--                                <p>--}}
+        {{--                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum malesuada.--}}
+        {{--                                </p>--}}
+        {{--                                <a class="btn btn-primary" href="services-single.html">read more</a>--}}
+        {{--                            </div>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+        {{--                    <!--col-md-12  -->--}}
+        {{--                </div>--}}
+        {{--                <!-- /owl-services -->--}}
+        {{--            </div>--}}
+        <!-- /bg-light-custom -->
         </div>
         <!-- /container -->
     </section>
@@ -260,16 +261,22 @@
             <div class="row">
                 <div class="col-xl-8">
                     <!-- image  -->
-                    <img src="{{asset('assets/user/img/blurbimg.png')}}" class="img-fluid blurb-img" alt=""/>
+                    <img
+                        src="https://res.cloudinary.com/dwarrion/image/upload/v1599126130/PetCasa/HomePage/home_2_vryttr.jpg"
+                        class="img-fluid blurb-img" alt=""/>
                 </div>
                 <div class="col-xl-4" data-aos="fade-down">
-                    <h2 class="res-margin">Tham gia câu lạc bộ</h2>
-                    <p class="featured-text">Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh
-                        hendrerit id.
-                        In aliquet magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum.
+                    <h2 class="res-margin">Tham gia với chúng tôi</h2>
+                    <p class="featured-text">Sự hợp tác của bạn có thể là món quà hoàn hảo cho các bé thú cưng
+                        của chúng tôi và cộng đồng địa phương. Chúng tôi là một nhóm các cá nhân với nhiều kỹ năng và
+                        kinh nghiệm. Nhân viên của chúng tôi làm việc toàn thời gian và dành thời gian rảnh rỗi để giải
+                        cứu và phục hồi nhiều bé chó, mèo nhất có thể. Điều này bao gồm việc họ cần phải làm những công
+                        việc gây bẩn tay hàng ngày và còn cả các quản trị viên, tài chính và tiếp thị. Chúng tôi đã có
+                        rất nhiều các loại tổ chức hợp tác với chúng tôi, cung cấp cho chúng tôi kinh phí, nhân lực,
+                        đồ tiếp tế cho động vật và tổ chức các sự kiện nhân danh chúng tôi!
                     </p>
                     <!-- button -->
-                    <a href="/contact" class="btn btn-primary">contact us</a>
+                    <a href="{{route('contact')}}" class="btn btn-primary">Liên hệ với PetsCasa</a>
                 </div>
                 <!-- /col-lg -->
             </div>
@@ -287,7 +294,7 @@
     <section id="about" class="dog-bg2">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>About Us</h2>
+                <h2>Về PetsCasa</h2>
             </div>
             <!-- /Section-heading -->
         </div>
@@ -295,23 +302,22 @@
         <div class="container block-padding pt-0">
             <div class="row">
                 <div class="col-lg-6">
-                    <h3>Caring for your pets</h3>
-                    <p>Aliquam erat volutpat In id fermentum augue, ut pellentesque leo. Maecenas at arcu risus. Donec
-                        commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis
-                        maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.</p>
-                    <p>Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall Maecenas at arcu risus
-                        scelerisque laoree.</p>
-                    <ul class="custom pl-0">
-                        <li>Orci eget, viverra elit liquam erat volut pat phas ellus ac</li>
-                        <li>Ipuset phas ellus ac sodales Lorem ipsum dolor Phas ell</li>
-                        <li>Aliquam erat volut pat phas ellu</li>
-                    </ul>
+                    <h3>Chăm sóc thú cưng</h3>
+                    <p>Cam kết của chúng tôi để chấm dứt sự đau khổ của động vật.</p>
+                    <p>PetsCasa được thành lập tại Hà Nội, Việt Nam bởi Avenger Team, những người nhận thấy sự cần thiết
+                        về giáo dục động vật trong khu vực. PetsCasa phục vụ cộng đồng bằng cách cung cấp sự an toàn,
+                        điều trị y tế và phục hồi chức năng để giúp những bé chó và mèo hoang tìm được những gia đình
+                        thực sự. Bên cạnh đó, PetsCasa còn cung cấp dịch vụ, tiện ích cho thú cưng của bạn. Chúng tôi
+                        cũng làm việc với các đối tác khác và ngành thú y để cải thiện việc chăm sóc các bé.</p>
                     <!-- /ul -->
                 </div>
                 <!-- image -->
                 <div class="col-lg-6">
-                    <img src={{asset('assets/user/img/about2.jpg')}} alt="" class="img-fluid border-irregular1"
-                         data-aos="zoom-in">
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599126137/PetCasa/HomePage/home_1_ls9cmm.jpg
+                        alt=""
+                        class="img-fluid border-irregular1"
+                        data-aos="zoom-in">
                 </div>
             </div>
             <!-- /row -->
@@ -325,8 +331,8 @@
                         <div class="counter">
                             <i class="counter-icon fa fa-users"></i>
                             <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="1500">600</div>
-                            <h3 class="title">Happy Clients</h3>
+                            <div class="counter-value" data-count="100">0</div>
+                            <h3 class="title">Khách hàng vui vẻ</h3>
                         </div>
                         <!-- /counter -->
                     </div>
@@ -336,7 +342,7 @@
                         <div class="counter">
                             <i class="counter-icon flaticon-dog-in-front-of-a-man"></i>
                             <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="14">60</div>
+                            <div class="counter-value" data-count="14">0</div>
                             <h3 class="title">Tình nguyên viên</h3>
                         </div>
                         <!-- /counter -->
@@ -347,7 +353,7 @@
                         <div class="counter">
                             <i class="counter-icon flaticon-dog-2"></i>
                             <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="900">125</div>
+                            <div class="counter-value" data-count="40">0</div>
                             <h3 class="title">Chó được giúp đỡ</h3>
                         </div>
                         <!-- /counter -->
@@ -358,7 +364,7 @@
                         <div class="counter">
                             <i class="counter-icon flaticon-prize-badge-with-paw-print"></i>
                             <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="12">5</div>
+                            <div class="counter-value" data-count="5">0</div>
                             <h3 class="title">Giấy chứng nhận</h3>
                         </div>
                         <!-- /counter -->
@@ -385,12 +391,14 @@
                         </div>
                         <!-- /content -->
                         <div class="testimonial-pic">
-                            <img src={{asset('assets/user/img/team/team1.jpg')}} class="img-fluid" alt="">
+                            <img
+                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144330/PetCasa/HomePage/dvh_htnold.png
+                                class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
-                            <h5 class="testimonial-title">Lucianna Smith</h5>
-                            <span>Teacher</span>
+                            <h5 class="testimonial-title">Đoàn Văn Hậu</h5>
+                            <span>Cầu thủ bóng đá</span>
                         </div>
                         <!-- /testimonial-review -->
                     </div>
@@ -406,12 +414,14 @@
                         </div>
                         <!-- /content -->
                         <div class="testimonial-pic">
-                            <img src={{asset('assets/user/img/team/team2.jpg')}} class="img-fluid" alt="">
+                            <img
+                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144230/PetCasa/HomePage/bp_woxzrr.jpg
+                                class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
-                            <h5 class="testimonial-title">John Sadana</h5>
-                            <span>Doctor</span>
+                            <h5 class="testimonial-title">Nguyễn Thị Bích Diệp</h5>
+                            <span>Ca sĩ</span>
                         </div>
                         <!-- /testimonial-review -->
                     </div>
@@ -427,12 +437,14 @@
                         </div>
                         <!-- /content -->
                         <div class="testimonial-pic">
-                            <img src={{asset('assets/user/img/team/team3.jpg')}} class="img-fluid" alt="">
+                            <img
+                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144385/PetCasa/HomePage/pt_wrkybq.jpg
+                                class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
-                            <h5 class="testimonial-title">Jane Janeth</h5>
-                            <span>Librarian</span>
+                            <h5 class="testimonial-title">Nguyễn Phú Trọng</h5>
+                            <span>Tổng thống Nga</span>
                         </div>
                         <!-- /testimonial-review -->
                     </div>
@@ -496,24 +508,24 @@
                 <!-- Form -->
                 <div id="mc_embed_signup">
                     <!-- your form address in the line bellow -->
-                    <form action="//yourlist.us12.list-manage.com/subscribe/post?u=04e646927a196552aaee78a7b&id=111"
-                          method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                          class="validate" target="_blank" novalidate>
+                    <form action="{{route('mail_customer')}}"
+                          method="POST" id="contact_form" class="validate" target="_blank">
+                        @csrf
                         <div id="mc_embed_signup_scroll">
                             <div class="mc-field-group">
                                 <div class="input-group">
                                     <input class="form-control input-lg required email" type="email" value=""
-                                           name="EMAIL" placeholder="Email của bạn" id="mce-EMAIL">
+                                           name="Email" placeholder="Email của bạn" id="mce-EMAIL" required="">
                                     <span class="input-group-btn">
                               <button class="btn btn-primary" type="submit" value="Subscribe" name="subscribe"
                                       id="mc-embedded-subscribe">Đăng ký</button>
                               </span>
                                 </div>
                                 <!-- Subscription results -->
-                                <div id="mce-responses" class="mailchimp">
-                                    <div class="alert alert-danger response" id="mce-error-response"></div>
-                                    <div class="alert alert-success response" id="mce-success-response"></div>
-                                </div>
+                                {{--                                <div id="mce-responses" class="mailchimp">--}}
+                                {{--                                    <div class="alert alert-danger response" id="mce-error-response"></div>--}}
+                                {{--                                    <div class="alert alert-success response" id="mce-success-response"></div>--}}
+                                {{--                                </div>--}}
                             </div>
                             <!-- /mc-fiel-group -->
                         </div>
@@ -530,7 +542,7 @@
     <!--/call-to-action -->
     <!-- Section Adopt -->
     <section id="adopt" class="paws-house-bg1 bg-light">
-        <div class="container ">
+        <div class="container">
             <div class="section-heading text-center">
                 <h2>Nhận Nuôi</h2>
             </div>
@@ -555,8 +567,8 @@
                                     <!-- List -->
                                     <ul class="list-unstyled">
                                         <li><strong>Giới tính: </strong> {{$pet->Sex}}</li>
-                                        <li><strong>Triệt sản: </strong> @if ($pet->Neutered == "Yes") Đã triệt
-                                            sản @elseif ($pet->Neutered == "No") Chưa triệt sản @endif</li>
+                                        <li><strong>Triệt sản: </strong> @if ($pet->Neutered == "Có") Đã triệt
+                                            sản @elseif ($pet->Neutered == "Không") Chưa triệt sản @endif</li>
                                         <li><strong>Tuổi: </strong>{{$pet->Age}}</li>
                                     </ul>
                                     <!-- Buttons -->
