@@ -75,7 +75,7 @@ Route::get('/pet-care', function () {
 /* 3.Blog */
 Route::get('/news', 'NewController@news_list_data')->name('news');
 
-Route::get('/news/single_new/{Slug}', 'NewController@single_new_data')->name('single_new');
+Route::get('/news/{Slug}', 'NewController@single_new_data')->name('single_new');
 
 /* 4.About */
 Route::get('/about', function () {

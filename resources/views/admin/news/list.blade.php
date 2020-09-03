@@ -392,14 +392,26 @@
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
-                            <div class="attached-files mt-4">
-                                <h5 class="">Ảnh liên quan </h5>
-                                <div class="files-list">
-                                    @foreach ($new->ArrayThumbnails450x450 as $thumbnail)
-                                        <div class="file-box">
-                                            <a href=""><img src="{{$thumbnail}}"
-                                                            class="img-fluid img-thumbnail" alt="attached-img"></a>
-                                            <p class="font-13 mb-1 text-muted"><small></small></p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="attached-files mt-4">
+                                        <h5 class="">Ảnh liên quan </h5>
+                                        <div class="files-list">
+                                            @foreach ($new->ArrayThumbnails450x450 as $thumbnail)
+                                                <div class="file-box">
+                                                    <a href=""><img src="{{$thumbnail}}"
+                                                                    class="img-fluid img-thumbnail" alt="attached-img"></a>
+                                                    <p class="font-13 mb-1 text-muted"><small></small></p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="">Thú nuôi liên quan </h5>
+                                    @foreach($new->Pets as $pet)
+                                        <div class="text-muted">
+                                            <a href="{{route('admin_pet_edit',$pet->Slug)}}">{{$pet->Name}}</a>
                                         </div>
                                     @endforeach
                                 </div>

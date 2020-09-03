@@ -173,16 +173,29 @@ class NewController extends Controller
         return response()->json(['error' => "Account Active unsuccessfully."]);
     }
 
-    public function news_list_data()
+    public function news_list_data(Request $request)
     {
-        $news = News::where('Status', '=', 1)->paginate(3);
+        $news = News::query();
+//        dd($request);
+        if (isset($request->Category) && $request->Category != Null) {
+            $news = $news->where("Category_id", '=', $request->Category);
+        }
+        if (isset($request->Keyword) && $request->Keyword != Null) {
+            $news_title_search  = News::query()->where("Title", 'LIKE', '%' . $request->Keyword . '%')->paginate(3);
+            $news_author_search = News::query()->where("Author", 'LIKE', '%' . $request->Keyword . '%')->paginate(3);
+        }
+        $news = $news->where('Status', '=', 1)->orderBy('created_at', "DESC")->paginate(3);
+        if (isset($request->Keyword) && $request->Keyword != Null) {
+            $news = $news->merge($news_title_search, $news_author_search)->paginate(3)->appends(request()->all());
+        }
+//        dd($news);
         return view('user.blog.news', compact('news'));
     }
 
     public function single_new_data($Slug)
     {
-        $single_new = News::where('Slug', '=', $Slug)->first();
-//        dd($pet);
-        return view('user.blog.single_new', compact('single_new'));
+        $single_new  = News::where('Slug', '=', $Slug)->first();
+        $include_pet = $single_new->Pets;
+        return view('user.blog.single_new', compact('single_new', 'include_pet'));
     }
 }

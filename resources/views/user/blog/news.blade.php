@@ -77,22 +77,33 @@
                     @foreach ($news as $new)
                         <div class="card blog-card">
                             <!-- Post info-->
-                            <div class="post-info border-irregular2 text-muted">
-                                {{date("d/m/Y", strtotime($new->created_at))}} bởi
-                                <span style="color: #48A06A">{{$new->Author}}</span>
-                            </div>
+                            <a href="{{route('single_new',$new->Slug)}}">
+                                <h3 class="card-title"
+                                    style="@if ($new->Category_id == 1) color:red;@endif">{{$new->Title}}</h3>
+                            </a>
+
                             <a href="{{route('single_new',$new->Slug)}}">
                                 <!-- image -->
                                 <img class="card-img-top img-fluid" src="{{$new->FirstThumbnail}}" alt="">
                             </a>
                             <div class="card-body">
-                                <a href="{{route('single_new',$new->Slug)}}">
-                                    <h3 class="card-title">{{$new->Title}}</h3>
-                                </a>
                                 <!-- excerpt -->
-                                {{--                                <p class="card-text mt-3">{{$new->Content}}</p>--}}
-                                <a href="{{route('single_new',$new->Slug)}}" class="btn btn-primary">Đọc thêm &rarr;</a>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="post-info border-irregular2 text-muted">
+                                            {{date("d/m/Y", strtotime($new->created_at))}} bởi
+                                            <span style="color: #48A06A">{{$new->Author}}</span>
+                                        </div>
+                                        {{--                                <p class="card-text mt-3">{{$new->Content}}</p>--}}
+                                        <div>
+                                            <a href="{{route('single_new',$new->Slug)}}" class="btn btn-primary"
+                                               style="float: right">Đọc thêm
+                                                &rarr;</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <!--card-footer -->
                         </div>
                 @endforeach
@@ -118,12 +129,15 @@
                     <div class="card">
                         <h5 class="card-header">Tìm kiếm</h5>
                         <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="...">
-                                <span class="input-group-btn">
-                           <button class="btn btn-secondary" type="button">Go!</button>
-                           </span>
-                            </div>
+                            <form action="{{route('news')}}" method="GET">
+                                {{--                                @csrf--}}
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="Keyword" placeholder="...">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="submit">Tìm!</button>
+                                    </span>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- Categories Widget -->
@@ -131,25 +145,30 @@
                         <h5 class="card-header">Chuyên mục</h5>
                         <div class="card-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action">
+                                <a href="{{route('news',["Category" => "1"])}}"
+                                   class="list-group-item list-group-item-action">
                                     Quá trình cứu hộ
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action">Tin tức và sự kiện</a>
-                                <a href="#" class="list-group-item list-group-item-action">Kiến thức nuôi boss</a>
+                                <a href="{{route('news',["Category" => "2"])}}"
+                                   class="list-group-item list-group-item-action">
+                                    Tin tức và sự kiện</a>
+                                <a href="{{route('news',["Category" => "3"])}}"
+                                   class="list-group-item list-group-item-action">
+                                    Kiến thức nuôi boss</a>
                             </div>
                         </div>
                     </div>
                     <!-- Side Widget -->
-                    <div class="card">
-                        <h5 class="card-header">Video nổi bật</h5>
-                        <div class="card-body">
-                            <div class="embed-responsive embed-responsive-4by3">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FVwyIfChIdY"
-                                        allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Side Widget -->
+                {{--                    <div class="card">--}}
+                {{--                        <h5 class="card-header">Video nổi bật</h5>--}}
+                {{--                        <div class="card-body">--}}
+                {{--                            <div class="embed-responsive embed-responsive-4by3">--}}
+                {{--                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FVwyIfChIdY"--}}
+                {{--                                        allowfullscreen></iframe>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                <!-- Side Widget -->
                     {{--                    <div class="card">--}}
                     {{--                        <h5 class="card-header">Tags</h5>--}}
                     {{--                        <div class="card-body">--}}
@@ -172,11 +191,11 @@
              style="background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598789854/PetCasa/AdoptionPage/cat_fkhckl.jpg)">
             <div class="container block-padding">
                 <div
-                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                        class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
                     <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
                 </div>
                 <div
-                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                        class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
                     <a href="#" class="btn btn-primary"
                        aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
                 </div>

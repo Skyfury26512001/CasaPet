@@ -75,7 +75,7 @@
                 <form id="rescue_form" class="form-group" method="POST" action="{{route('report_send')}}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="display: none">
                             <label>Loại đơn<span class="require"></span></label>
                             <input type="text" name="OrderType" class="form-control input-field" value="Cứu hộ"
                                    readonly autocomplete="off">
@@ -96,7 +96,7 @@
                                 <label class=" alert-warning">{{$errors->first('PhoneNumber')}}</label>
                             @endif
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label>Địa chỉ<span class="required"></span></label>
                             <input type="text" name="Address" class="form-control input-field" autocomplete="off"
                                    value="{{old('Address')}}">

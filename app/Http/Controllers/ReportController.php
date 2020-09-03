@@ -36,6 +36,7 @@ class ReportController extends Controller
         $reports = $reports->where($condition)->paginate(5)->appends(request()->query());
 
         $pets = Pet::where('Status', '=', '1')->get();
+//        dd($reports);
         return view('admin.reports.list', compact('reports', 'pets'));
     }
 
