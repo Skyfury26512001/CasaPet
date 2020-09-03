@@ -116,9 +116,10 @@ a:hover, a:focus {
 
 .custom-link {
     font-family: 'Quicksand', sans-serif;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     background: #f3f3f3;
-    display: inline-block;
+    text-align: center;
     padding: 10px;
     font-weight: 700;
     font-size: 20px;
@@ -1363,8 +1364,8 @@ blockquote:before {
 /* Blurb */
 .blurb-img {
     position: absolute;
-    top: -300px;
-    left: 0px;
+    top: 15px;
+    left: 0;
     z-index: 999;
 }
 

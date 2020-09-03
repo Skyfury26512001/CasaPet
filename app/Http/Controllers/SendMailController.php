@@ -24,13 +24,13 @@ class SendMailController extends Controller
 //        dd($request);
         $report = DB::transaction(function () use ($request) {
             $request->validate([
-                'Messenger'   => 'required',
-                'FullName'    => 'required',
+                'Messenger' => 'required',
+                'FullName' => 'required',
                 'PhoneNumber' => 'required|numeric',
-                'Address'     => 'required',
-                'thumbnails'  => 'required',
+                'Address' => 'required',
+                'thumbnails' => 'required',
             ]);
-            $report            = new Report($request->all());
+            $report = new Report($request->all());
             $report['Content'] = $request->Messenger;
             foreach ($request->thumbnails as $thumb) {
                 $report['Thumbnails'] .= $thumb . ",";
@@ -44,12 +44,12 @@ class SendMailController extends Controller
                 $message->from("t1908e@gmail.com", "$request->FullName");
             });
 
-            $contentTele     = "\n + Tại khu vực : $request->Address " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Nội dung : $request->Messenger";
+            $contentTele = "\n + Tại khu vực : $request->Address " . "\n + Họ và tên : $request->FullName " . "\n + Số điện thoại : $request->PhoneNumber" . "\n + Nội dung : $request->Messenger";
             $contentTeleSend = urlencode("Báo cáo mới \n- Từ: $request->FullName  \n- Nội dung: " . $contentTele);
-            $roomId          = -1001421358819;
-            $bot_token       = "bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI";
+            $roomId = -1001421358819;
+            $bot_token = "bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI";
 //            $url = "https://api.telegram.org/bot1325493252:AAHl6t46WUA-xB2Q6VeqC8CPb-vRmqcy4DI/sendMessage?chat_id=-1001421358819&text='Xin Chào'";
-            $url     = "https://api.telegram.org/$bot_token/sendMessage?chat_id=$roomId&text=$contentTeleSend";
+            $url = "https://api.telegram.org/$bot_token/sendMessage?chat_id=$roomId&text=$contentTeleSend";
             $urldone = file_get_contents($url);
             return $report;
         });

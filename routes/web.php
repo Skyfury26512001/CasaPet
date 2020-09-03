@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 /* Home */
 Route::get('/', 'PageController@home')->name('home');
 
+Route::post('/', 'MailController@customer_regis_receive_mail')->name('mail_customer');
+
 /* Sub Pages */
 Route::get('/error', function () {
     return view('user.sub_pages.error');

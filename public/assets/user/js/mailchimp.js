@@ -27,7 +27,7 @@
             r = n[0]
         }
         var i = this;
-        if (i.clk = r, "image" == r.type) if (void 0 !== t.offsetX) i.clk_x = t.offsetX, i.clk_y = t.offsetY; else if ("function" == typeof e.fn.offset) {
+        if (i.clk = r, "image" === r.type) if (void 0 !== t.offsetX) i.clk_x = t.offsetX, i.clk_y = t.offsetY; else if ("function" == typeof e.fn.offset) {
             var o = a.offset();
             i.clk_x = t.pageX - o.left, i.clk_y = t.pageY - o.top
         } else i.clk_x = t.pageX - r.offsetLeft, i.clk_y = t.pageY - r.offsetTop;
@@ -104,7 +104,7 @@
                 function t() {
                     try {
                         var e = n(g).readyState;
-                        a("state = " + e), e && "uninitialized" == e.toLowerCase() && setTimeout(t, 50)
+                        a("state = " + e), e && "uninitialized" === e.toLowerCase() && setTimeout(t, 50)
                     } catch (r) {
                         a("Server abort: ", r, " (", r.name, ")"), s(k), j && clearTimeout(j), j = void 0
                     }
@@ -136,13 +136,13 @@
             function s(t) {
                 if (!x.aborted && !F) {
                     if (M = n(g), M || (a("cannot access response document"), t = k), t === D && x) return x.abort("timeout"), void S.reject(x, "timeout");
-                    if (t == k && x) return x.abort("server abort"), void S.reject(x, "error", "server abort");
-                    if (M && M.location.href != m.iframeSrc || T) {
+                    if (t === k && x) return x.abort("server abort"), void S.reject(x, "error", "server abort");
+                    if (M && M.location.href !== m.iframeSrc || T) {
                         g.detachEvent ? g.detachEvent("onload", s) : g.removeEventListener("load", s, !1);
                         var r, i = "success";
                         try {
                             if (T) throw"timeout";
-                            var o = "xml" == m.dataType || M.XMLDocument || e.isXMLDoc(M);
+                            var o = "xml" === m.dataType || M.XMLDocument || e.isXMLDoc(M);
                             if (a("isXml=" + o), !o && window.opera && (null === M.body || !M.body.innerHTML) && --O) return a("requeing onLoad callback, DOM not available"), void setTimeout(s, 250);
                             var u = M.body ? M.body : M.documentElement;
                             x.responseText = u ? u.innerHTML : null, x.responseXML = M.XMLDocument ? M.XMLDocument : M, o && (m.dataType = "xml"), x.getResponseHeader = function (e) {
@@ -156,7 +156,7 @@
                                     var p = M.getElementsByTagName("pre")[0], h = M.getElementsByTagName("body")[0];
                                     p ? x.responseText = p.textContent ? p.textContent : p.innerText : h && (x.responseText = h.textContent ? h.textContent : h.innerText)
                                 }
-                            } else "xml" == c && !x.responseXML && x.responseText && (x.responseXML = X(x.responseText));
+                            } else "xml" === c && !x.responseXML && x.responseText && (x.responseXML = X(x.responseText));
                             try {
                                 E = _(x, c, m)
                             } catch (y) {
@@ -236,7 +236,7 @@
         if (t.data && (t.extraData = t.data, p = e.param(t.data, d)), t.beforeSubmit && t.beforeSubmit(v, this, t) === !1) return a("ajaxSubmit: submit aborted via beforeSubmit callback"), this;
         if (this.trigger("form-submit-validate", [v, this, t, m]), m.veto) return a("ajaxSubmit: submit vetoed via form-submit-validate trigger"), this;
         var g = e.param(v, d);
-        p && (g = g ? g + "&" + p : p), "GET" == t.type.toUpperCase() ? (t.url += (t.url.indexOf("?") >= 0 ? "&" : "?") + g, t.data = null) : t.data = g;
+        p && (g = g ? g + "&" + p : p), "GET" === t.type.toUpperCase() ? (t.url += (t.url.indexOf("?") >= 0 ? "&" : "?") + g, t.data = null) : t.data = g;
         var x = [];
         if (t.resetForm && x.push(function () {
             f.resetForm()
@@ -268,7 +268,7 @@
         }
         var j = e("input[type=file]:enabled", this).filter(function () {
                 return "" !== e(this).val()
-            }), w = j.length > 0, S = "multipart/form-data", D = f.attr("enctype") == S || f.attr("encoding") == S,
+            }), w = j.length > 0, S = "multipart/form-data", D = f.attr("enctype") === S || f.attr("encoding") === S,
             k = n.fileapi && n.formdata;
         a("fileAPI :" + k);
         var A, L = (w || D) && !k;
@@ -293,17 +293,17 @@
         var i, o = this[0], s = this.attr("id"), u = t ? o.getElementsByTagName("*") : o.elements;
         if (u && !/MSIE [678]/.test(navigator.userAgent) && (u = e(u).get()), s && (i = e(':input[form="' + s + '"]').get(), i.length && (u = (u || []).concat(i))), !u || !u.length) return a;
         var c, l, f, m, d, p, h;
-        for (c = 0, p = u.length; p > c; c++) if (d = u[c], f = d.name, f && !d.disabled) if (t && o.clk && "image" == d.type) o.clk == d && (a.push({
+        for (c = 0, p = u.length; p > c; c++) if (d = u[c], f = d.name, f && !d.disabled) if (t && o.clk && "image" === d.type) o.clk === d && (a.push({
             name: f,
             value: e(d).val(),
             type: d.type
         }), a.push({name: f + ".x", value: o.clk_x}, {
             name: f + ".y",
             value: o.clk_y
-        })); else if (m = e.fieldValue(d, !0), m && m.constructor == Array) for (r && r.push(d), l = 0, h = m.length; h > l; l++) a.push({
+        })); else if (m = e.fieldValue(d, !0), m && m.constructor === Array) for (r && r.push(d), l = 0, h = m.length; h > l; l++) a.push({
             name: f,
             value: m[l]
-        }); else if (n.fileapi && "file" == d.type) {
+        }); else if (n.fileapi && "file" === d.type) {
             r && r.push(d);
             var v = d.files;
             if (v.length) for (l = 0; l < v.length; l++) a.push({
@@ -319,7 +319,7 @@
         }));
         if (!t && o.clk) {
             var g = e(o.clk), x = g[0];
-            f = x.name, f && !x.disabled && "image" == x.type && (a.push({
+            f = x.name, f && !x.disabled && "image" === x.type && (a.push({
                 name: f,
                 value: g.val()
             }), a.push({name: f + ".x", value: o.clk_x}, {name: f + ".y", value: o.clk_y}))
@@ -333,7 +333,7 @@
             var a = this.name;
             if (a) {
                 var n = e.fieldValue(this, t);
-                if (n && n.constructor == Array) for (var i = 0, o = n.length; o > i; i++) r.push({
+                if (n && n.constructor === Array) for (var i = 0, o = n.length; o > i; i++) r.push({
                     name: a,
                     value: n[i]
                 }); else null !== n && "undefined" != typeof n && r.push({name: this.name, value: n})
@@ -342,16 +342,16 @@
     }, e.fn.fieldValue = function (t) {
         for (var r = [], a = 0, n = this.length; n > a; a++) {
             var i = this[a], o = e.fieldValue(i, t);
-            null === o || "undefined" == typeof o || o.constructor == Array && !o.length || (o.constructor == Array ? e.merge(r, o) : r.push(o))
+            null === o || "undefined" == typeof o || o.constructor === Array && !o.length || (o.constructor === Array ? e.merge(r, o) : r.push(o))
         }
         return r
     }, e.fieldValue = function (t, r) {
         var a = t.name, n = t.type, i = t.tagName.toLowerCase();
-        if (void 0 === r && (r = !0), r && (!a || t.disabled || "reset" == n || "button" == n || ("checkbox" == n || "radio" == n) && !t.checked || ("submit" == n || "image" == n) && t.form && t.form.clk != t || "select" == i && -1 == t.selectedIndex)) return null;
-        if ("select" == i) {
+        if (void 0 === r && (r = !0), r && (!a || t.disabled || "reset" === n || "button" === n || ("checkbox" === n || "radio" === n) && !t.checked || ("submit" === n || "image" === n) && t.form && t.form.clk !== t || "select" === i && -1 === t.selectedIndex)) return null;
+        if ("select" === i) {
             var o = t.selectedIndex;
             if (0 > o) return null;
-            for (var s = [], u = t.options, c = "select-one" == n, l = c ? o + 1 : u.length, f = c ? o : 0; l > f; f++) {
+            for (var s = [], u = t.options, c = "select-one" === n, l = c ? o + 1 : u.length, f = c ? o : 0; l > f; f++) {
                 var m = u[f];
                 if (m.selected) {
                     var d = m.value;

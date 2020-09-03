@@ -3,7 +3,7 @@
     Adoption Detail
 @endsection
 @section('specific_css')
-    <link href={{asset('assets/user/styles/timeline.css')}} rel="stylesheet">
+    <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">
     <style>
         .page {
             padding-bottom: unset;
@@ -70,7 +70,10 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <ul class="list-unstyled pet-adopt-info">
-                                        <li class="h7">Triệt sản: <span>{{$single_pet->Neutered}}</span></li>
+                                        <li class="h7">Triệt sản: <span>@if ($single_pet->Neutered == "Có")
+                                                    Đã triệt sản @elseif ($single_pet->Neutered == "Không")Chưa triệt
+                                                    sản @endif</span>
+                                        </li>
                                         <li class="h7">Giấy khai sinh: <span>{{$single_pet->CertifiedPedigree}}</span>
                                         </li>
                                         <li class="h7">Tiêm phòng: <span>{{$single_pet->Vaccinated}}</span></li>
@@ -103,63 +106,82 @@
                             <!-- Description -->
                             {{$single_pet->Description}}
                         </p>
-                        <h3>Timeline</h3>
-                        <div class="timeline">
-                            <div class="year">
-                                <div class="inner">
-                                    <span>2016</span>
+
+                        @if($single_pet->Status == 1)
+                            <h3>Timeline</h3>
+                            <div class="timeline">
+                                <div class="year">
+                                    <div class="inner">
+                                        <span>2016</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <ul class="days">
-                                <li class="day">
-                                    <div class="events">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius perferendis
-                                            vitae, facere accusantium magni, explicabo mollitia quidem odio autem, iste
-                                            optio? Consequuntur ratione dolorum velit maiores quam odit odio
-                                            suscipit.</p>
-                                        <div class="date">18 October (Monday)</div>
-                                    </div>
-                                </li>
-
-                                <li class="day">
-                                    <div class="events">
-                                        <p>Lorem dolor sit amet, consectetur adipisicing elit. Eius perferendis vitae,
-                                            facere accusantium magni, explicabo mollitia quidem odio autem, iste optio?
-                                            Consequuntur ratione dolorum velit maiores quam odit odio suscipit.</p>
-                                        <div class="date">18 October (Monday)</div>
-                                    </div>
-                                </li>
-
-                                <li class="day">
-                                    <div class="events">
-                                        <div class="day__img">
-                                            <img src="http://placehold.it/400x300" alt=""/>
-                                            <p class="caption">
-                                                Lorem ipsum dolor sit amet.
-                                            </p>
+                                <ul class="days">
+                                    <li class="day">
+                                        <div class="events">
+                                            <div class="day__img">
+                                                <img src="http://placehold.it/400x300" alt=""/>
+                                                <p class="caption">
+                                                    Caption
+                                                </p>
+                                            </div>
+                                            <div class="date">18 October (Monday)
+                                                <p>Description</p>
+                                            </div>
                                         </div>
-                                        <div class="date">18 October (Monday)</div>
-                                    </div>
-                                </li>
+                                    </li>
 
-                                <li class="day">
-                                    <div class="events">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius perferendis
-                                            vitae, facere accusantium magni, explicabo mollitia quidem odio autem, iste
-                                            optio? Consequuntur ratione dolorum velit maiores quam odit odio
-                                            suscipit.</p>
-                                        <div class="date">18 October (Monday)</div>
-                                    </div>
-                                </li>
-                            </ul>
+                                    <li class="day">
+                                        <div class="events">
+                                            <div class="day__img">
+                                                <img src="http://placehold.it/400x300" alt=""/>
+                                                <p class="caption">
+                                                    Caption
+                                                </p>
+                                            </div>
+                                            <div class="date">18 October (Monday)
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </li>
 
-                            <div class="year year--end">
-                                <div class="inner">
-                                    <span>2017</span>
+                                    <li class="day">
+                                        <div class="events">
+                                            <div class="day__img">
+                                                <img src="http://placehold.it/400x300" alt=""/>
+                                                <p class="caption">
+                                                    Caption
+                                                </p>
+                                            </div>
+                                            <div class="date">18 October (Monday)
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="day">
+                                        <div class="events">
+                                            <div class="day__img">
+                                                <img src="http://placehold.it/400x300" alt=""/>
+                                                <p class="caption">
+                                                    Caption
+                                                </p>
+                                            </div>
+                                            <div class="date">18 October (Monday)
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="year year--end">
+                                    <div class="inner">
+                                        <span>2017</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="border-footer"></div>
+                        @endif
                         <p class="custom-link"><a href="{{route('pet_list_adoption')}}">« Quay lại danh sách nhận
                                 nuôi</a>
                         </p>
