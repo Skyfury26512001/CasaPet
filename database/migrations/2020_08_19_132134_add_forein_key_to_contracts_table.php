@@ -27,7 +27,7 @@ class AddForeinKeyToContractsTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::table('contracts', function (Blueprint $table) {
-            //
+            $table->dropForeign(['Order_id']);
         });
         Schema::enableForeignKeyConstraints();
     }
