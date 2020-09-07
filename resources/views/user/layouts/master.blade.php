@@ -61,7 +61,7 @@
 
         .button-sos {
             margin-bottom: 120px;
-            background: #ff7600;
+            background: #333 !important;
             border-radius: 50%;
             padding: 15px 11px;
         }
@@ -156,8 +156,6 @@
                     <i class="flaticon-dog-20"></i><span>PetsCasa</span>
                 </a>
                 <!-- Main service -->
-                <a class="navbar-brand fast-link" href="{{route('rescue_form')}}"><strong>Cứu Hộ Khẩn
-                        Cấp!</strong></a>
                 <!-- Navbartoggler -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -232,12 +230,16 @@
                                          alt="">{{$current_account->FullName}}</a>
                                 <div class="dropdown-menu" aria-labelledby="about-dropdown">
                                     <a class="dropdown-item" href="{{route('personal_info')}}">Hồ sơ cá nhân</a>
-                                    <a class="dropdown-item" href="">Thay đổi mật khẩu</a>
+                                    <a class="dropdown-item"
+                                       href="{{route('user_account_change_password', $current_account->Slug)}}">Thay đổi
+                                        mật khẩu</a>
+                                    <a class="dropdown-item"
+                                       href="{{route('user_account_update_timeline', $current_account->Slug)}}">Cập nhập
+                                        Timeline</a>
                                     <a class="dropdown-item"
                                        href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"
-                                    >Đăng
-                                        xuất</a>
+                                    >Đăng xuất</a>
                                     <form id="frm-logout" action="{{ route('logout') }}" method="POST"
                                           style="display: none;">
                                         @csrf

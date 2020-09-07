@@ -16,21 +16,36 @@
     <!-- ==== Slider ==== -->
     <div id="slider" style="width:1200px;height:800px;margin:0 auto;margin-bottom: 0px;">
         <!-- Slide 1 -->
-        @foreach($newest_report as $new)
+        @for ($i = 0; $i < sizeof($newest_report); $i++)
+
+            {{--        @foreach($newest_report as $new)--}}
             <div class="ls-slide"
                  data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
                 <!-- bg image  -->
-                <img src={{$new->FirstThumbnail800x500}} class="ls-bg" alt=""/>
-                <!-- text  -->
+                @if ($i == 0)
+                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_1_gso6gw.jpg
+                         class="ls-bg" alt=""/>
+                @elseif ($i == 1)
+                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295579/PetCasa/HomePage/homesl_2_wukawq.jpg
+                         class="ls-bg" alt=""/>
+                @elseif ($i == 2)
+                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295581/PetCasa/HomePage/homesl_5_nxzgc7.jpg
+                         class="ls-bg" alt=""/>
+                @elseif ($i == 3)
+                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_4_r6c5hc.jpg
+                         class="ls-bg" alt=""/>
+            @endif
+            <!-- text  -->
                 <div class="ls-l header-wrapper"
                      data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                     <div class="header-text dog-elements">
-                        {{--                        {{dd($new)}}--}}
-                        <h1>{{$new->Title}}</h1>
+                        {{--                        {{dd($newest_report[$i])}}--}}
+                        <h1>{{$newest_report[$i]->Title}}</h1>
                         <!--the div below is hidden on small screens  -->
                         <div class="d-none d-sm-block">
-                            <p class="header-p">{!! Str::words($new->Content, $words = 20, $end = '...') !!}</p>
-                            <a class="btn btn-primary " href="{{route('single_new',$new->Slug)}}">Xem ngay</a>
+                            <p class="header-p">{!! Str::words($newest_report[$i]->Content, $words = 20, $end = '...') !!}</p>
+                            <a class="btn btn-primary " href="{{route('single_new',$newest_report[$i]->Slug)}}">Xem
+                                ngay</a>
                         </div>
                         <!--/d-none  -->
                     </div>
@@ -38,8 +53,7 @@
                 </div>
                 <!-- ls-l  -->
             </div>
-            <!-- ls-slide -->
-        @endforeach
+        @endfor
     </div>
     <!-- /slider -->
     <!-- ==== Page Content ==== -->
@@ -445,7 +459,7 @@
                 <div id="mc_embed_signup">
                     <!-- your form address in the line bellow -->
                     <form action="{{route('mail_customer')}}"
-                          method="POST" id="contact_form" class="validate" target="_blank">
+                          method="POST" id="contact_form" class="validate">
                         @csrf
                         <div id="mc_embed_signup_scroll">
                             <div class="mc-field-group">
@@ -453,8 +467,8 @@
                                     <input class="form-control input-lg required email" type="email" value=""
                                            name="Email" placeholder="Email của bạn" id="mce-EMAIL" required="">
                                     <span class="input-group-btn">
-                              <button class="btn btn-primary" type="submit" value="Subscribe" name="subscribe"
-                                      id="mc-embedded-subscribe">Đăng ký</button>
+                                        <button class="btn btn-primary" type="submit" name="subscribe"
+                                                id="mc-embedded-subscribe">Đăng ký</button>
                               </span>
                                 </div>
                                 <!-- Subscription results -->
