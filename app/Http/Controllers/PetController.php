@@ -11,8 +11,8 @@ class PetController extends Controller
     public function list(Request $request)
     {
 //        dd($request);
-        $orderBy = "DESC";
-        $pets = Pet::query();
+        $orderBy   = "DESC";
+        $pets      = Pet::query();
         $condition = [];
         if ($request->has('start') && $request->has('end')) {
             array_push($condition, ['created_at', '>=', $request->start]);
@@ -44,22 +44,22 @@ class PetController extends Controller
     {
 //        dd($request);
         $request->validate([
-            'Name' => 'required',
+            'Name'              => 'required',
             'CertifiedPedigree' => 'required',
-            'Description' => 'required',
-            'Species' => 'required',
-            'Breed' => 'required',
-            'Age' => 'required',
-            'thumbnails' => 'required',
-            'Sex' => 'required',
-            'Neutered' => 'required',
-            'Vaccinated' => 'required',
+            'Description'       => 'required',
+            'Species'           => 'required',
+            'Breed'             => 'required',
+            'Age'               => 'required',
+            'thumbnails'        => 'required',
+            'Sex'               => 'required',
+            'Neutered'          => 'required',
+            'Vaccinated'        => 'required',
         ]);
-        $pet = $request->all();
-        $slug_begin = generateRandomString(8);
-        $Slug = to_slug($slug_begin . ' ' . $pet['Name']);
-        $pet['Slug'] = $Slug;
-        $pet['Status'] = 1;
+        $pet               = $request->all();
+        $slug_begin        = generateRandomString(8);
+        $Slug              = to_slug($slug_begin . ' ' . $pet['Name']);
+        $pet['Slug']       = $Slug;
+        $pet['Status']     = 1;
         $pet['Thumbnails'] = null;
 //        dd($request->thumbnails);
         foreach ($request->thumbnails as $thumb) {
@@ -87,14 +87,15 @@ class PetController extends Controller
     public function update(Request $request, $slug)
     {
 //        dd($request);
-        $pet = Pet::where('Slug', '=', $slug)->first();
-        $pet['Name'] = $request->Name;
+        $pet                      = Pet::where('Slug', '=', $slug)->first();
+        $pet['Name']              = $request->Name;
         $pet['CertifiedPedigree'] = $request->CertifiedPedigree;
-        $pet['Description'] = $request->Description;
-        $pet['Breed'] = $request->Breed;
-        $pet['Species'] = $request->Species;
-        $pet['Age'] = $request->Age;
-        $pet['Vaccinated'] = $request->Vaccinated;
+        $pet['Description']       = $request->Description;
+        $pet['Breed']             = $request->Breed;
+        $pet['Species']           = $request->Species;
+        $pet['Age']               = $request->Age;
+        $pet['Vaccinated']        = $request->Vaccinated;
+        $pet['Neutered']          = $request->Neutered;
         if ($request->has('thumbnails')) {
             $pet['Thumbnails'] = null;
             foreach ($request->thumbnails as $thumb) {
@@ -102,7 +103,7 @@ class PetController extends Controller
             }
             $pet['Thumbnails'] = substr($pet['Thumbnails'], 0, -1);
         }
-        $pet['Sex'] = $request->Sex;
+        $pet['Sex']      = $request->Sex;
         $pet['Neutered'] = $request->Neutered;
 //        dd($pet);
 
@@ -121,7 +122,7 @@ class PetController extends Controller
     public function deactive_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids = $request->ids;
+        $ids       = $request->ids;
         $ids_array = explode(',', $ids);
         Pet::whereIn('id', $ids_array)->update(['status' => 0]);
         return response()->json(['success' => "Pet Deactive successfully."]);
@@ -137,7 +138,7 @@ class PetController extends Controller
     public function active_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids = $request->ids;
+        $ids       = $request->ids;
         $ids_array = explode(',', $ids);
 //        return response()->json(['success'=>$ids_array]);
         Pet::whereIn('id', $ids_array)->update(['status' => 1]);

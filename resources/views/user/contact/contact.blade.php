@@ -41,41 +41,9 @@
                 <div class="contact-info col-lg-5">
                     <h4>Gửi thư cho PetsCasa</h4>
                     <!-- Form Starts -->
-                    <form action="{{route('send_contact_mail')}}" id="contact_form" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Tên<span class="required">*</span></label>
-                                    <input type="text" name="name" class="form-control input-field" required=""
-                                           autocomplete="off">
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Email<span class="required">*</span></label>
-                                    <input type="email" name="email" class="form-control input-field" required=""
-                                           autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Chủ đề</label>
-                                    <input type="text" name="subject" class="form-control input-field"
-                                           autocomplete="off">
-                                </div>
-                                <div class="col-md-12">
-                                    <label>Tin nhắn<span class="required">*</span></label>
-                                    <textarea name="contact_message" id="message" class="textarea-field form-control"
-                                              rows="3"
-                                              required=""></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" id="submit_btn" value="Submit" class="btn btn-primary">Gửi
-                            </button>
-                        </div>
-                        <!-- /form-group-->
-                        <!-- Contact results -->
-                        <div id="contact_results"></div>
-                    </form>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSem9SJuzxZtdvmk_JHPIyaltpVc2DkhwYtUOotB7fh9ikWpxQ/viewform?embedded=true"
+                            width="640" height="446" frameborder="0" marginheight="0" marginwidth="0">Loading…
+                    </iframe>
                     <!-- /contact)form-->
                 </div>
                 <!-- /contact-info-->
@@ -90,7 +58,7 @@
                             <!-- contact icons-->
                             <ul class="list-unstyled mt-5 list-contact">
                                 <li class="h7"><i class="fa fa-envelope margin-icon"></i><a
-                                        href="mailto:t1908e@gmail.com">t1908e@gmail.com</a></li>
+                                            href="mailto:t1908e@gmail.com">t1908e@gmail.com</a></li>
                                 <li class="h7"><i class="fa fa-phone margin-icon"></i>(123) 456-789</li>
                                 <li class="h7"><i class="fa fa-map-marker margin-icon"></i>8 Tôn Thất Thuyết - Hà Nội
                                 </li>
