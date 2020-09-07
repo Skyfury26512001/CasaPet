@@ -46,3 +46,18 @@
 .modal-header .close {
     z-index: 2;
 }
+
+.custom-detail-title {
+    font-size: 21px;
+    white-space: pre-wrap;
+    text-align: left;
+    color: green;
+}
+
+.box {
+    display: inline-flex;
+}
+
+.box > .d-flex {
+    margin: 0 10px;
+}

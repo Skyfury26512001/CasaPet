@@ -19,7 +19,7 @@
                 uploadPreset: 'rdjyel16',
                 multiple: true,
                 form: '#product_form',
-                folder: 'PetCasa/PetThumbnails',
+                folder: 'PetCasa/NewThumbnails',
                 fieldName: 'thumbnails[]',
                 thumbnails: '.thumbnails'
             }, function (error, result) {

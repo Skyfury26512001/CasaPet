@@ -21,7 +21,6 @@ class OrderSeeder extends Seeder
         }
         $orders = array(
             array(
-                'id'          => 1,
                 'OrderType'   => 'Nhận nuôi', // Nhận nuôi hoặc Gửi nuôi
                 'FullName'    => 'Nguyễn Văn Tài', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại
@@ -33,7 +32,28 @@ class OrderSeeder extends Seeder
                 'updated_at'  => \Carbon\Carbon::now(),
             ),
             array(
-                'id'          => 2,
+                'OrderType'   => 'Nhận nuôi', // Nhận nuôi hoặc Gửi nuôi
+                'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
+                'PhoneNumber' => '0583973384', // Số điện Thoại
+                'Email'       => 'nguyenVanTai@gmail.com', // Email
+                'PetId'       => 2,      // ID con pet
+                'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
+                'Status'      => 0,      // trạng thái  0 - > Chưa xử lý ; 1 - Chưa xử lý ; 2 - Đã xử lý
+                'created_at'  => \Carbon\Carbon::now(),
+                'updated_at'  => \Carbon\Carbon::now(),
+            ),
+            array(
+                'OrderType'   => 'Nhận nuôi', // Nhận nuôi hoặc Gửi nuôi
+                'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
+                'PhoneNumber' => '0583973384', // Số điện Thoại
+                'Email'       => 'nguyenVanTai@gmail.com', // Email
+                'PetId'       => 2,      // ID con pet
+                'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
+                'Status'      => 0,      // trạng thái  0 - > Chưa xử lý ; 1 - Chưa xử lý ; 2 - Đã xử lý
+                'created_at'  => \Carbon\Carbon::now(),
+                'updated_at'  => \Carbon\Carbon::now(),
+            ),
+            array(
                 'OrderType'   => 'Nhận nuôi', // Nhận nuôi hoặc Gửi nuôi
                 'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại

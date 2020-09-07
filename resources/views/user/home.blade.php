@@ -16,94 +16,30 @@
     <!-- ==== Slider ==== -->
     <div id="slider" style="width:1200px;height:800px;margin:0 auto;margin-bottom: 0px;">
         <!-- Slide 1 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src={{asset('assets/user/img/slide1.jpg')}} class="ls-bg" alt=""/>
-            <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text dog-elements">
-                    <h1>Adopt a pet today!</h1>
-                    <!--the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">Search our list of dogs, cats and other pets available for adoption near
-                            you</p>
-                        <a class="btn btn-primary " href="{{route('pet_list_adoption')}}">Adopt Today</a>
+        @foreach($newest_report as $new)
+            <div class="ls-slide"
+                 data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
+                <!-- bg image  -->
+                <img src={{$new->FirstThumbnail800x500}} class="ls-bg" alt=""/>
+                <!-- text  -->
+                <div class="ls-l header-wrapper"
+                     data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
+                    <div class="header-text dog-elements">
+                        {{--                        {{dd($new)}}--}}
+                        <h1>{{$new->Title}}</h1>
+                        <!--the div below is hidden on small screens  -->
+                        <div class="d-none d-sm-block">
+                            <p class="header-p">{!! Str::words($new->Content, $words = 20, $end = '...') !!}</p>
+                            <a class="btn btn-primary " href="{{route('single_new',$new->Slug)}}">Xem ngay</a>
+                        </div>
+                        <!--/d-none  -->
                     </div>
-                    <!--/d-none  -->
+                    <!-- header-text  -->
                 </div>
-                <!-- header-text  -->
+                <!-- ls-l  -->
             </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
-        <!-- Slide 2 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src={{asset('assets/user/img/slide2.jpg')}} class="ls-bg" alt=""/>
-            <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text cat-elements">
-                    <h1>High Quality pet food</h1>
-                    <!--the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">We have all the best products for your pet, visit our store today!</p>
-                        <a class="btn btn-primary " href="{{route('contact')}}">Contact us</a>
-                    </div>
-                    <!--/d-none  -->
-                </div>
-                <!-- header-text  -->
-            </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
-        <!-- Slide 3 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src={{asset('assets/user/img/slide3.jpg')}} class="ls-bg" alt=""/>
-            <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text dog-elements">
-                    <h1>Visit our Pet Hotel</h1>
-                    <!--the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">Our facility is designed to meet the unique needs of your pet</p>
-                        <a class="btn btn-primary " href="{{route('services')}}">Our services</a>
-                    </div>
-                    <!--/d-none  -->
-                </div>
-                <!-- header-text  -->
-            </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
-        <!-- Slide 4 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src={{asset('assets/user/img/slide4.jpg')}} class="ls-bg" alt=""/>
-            <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text cat-elements">
-                    <h1>Experienced Veterinarians</h1>
-                    <!-- the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">Your pet is in good hands, meet our highly qualified professionals</p>
-                        <a class="btn btn-primary " href="/team">Our Team</a>
-                    </div>
-                    <!--/d-none  -->
-                </div>
-                <!-- header-text  -->
-            </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
+            <!-- ls-slide -->
+        @endforeach
     </div>
     <!-- /slider -->
     <!-- ==== Page Content ==== -->
@@ -132,10 +68,10 @@
                     <!-- /col-xl-->
                     <div class="col-xl-6">
                         <img
-                            src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,w_800/v1599127104/PetCasa/HomePage/home_3_iiohrf.jpg
-                            alt="" data-aos="fade-down"
-                            data-aos-duration="1500"
-                            class="img-fluid border-irregular1 border-double">
+                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,w_800/v1599127104/PetCasa/HomePage/home_3_iiohrf.jpg
+                                alt="" data-aos="fade-down"
+                                data-aos-duration="1500"
+                                class="img-fluid border-irregular1 border-double">
                     </div>
                 </div>
                 <!-- /row -->
@@ -262,8 +198,8 @@
                 <div class="col-xl-8">
                     <!-- image  -->
                     <img
-                        src="https://res.cloudinary.com/dwarrion/image/upload/v1599126130/PetCasa/HomePage/home_2_vryttr.jpg"
-                        class="img-fluid blurb-img" alt=""/>
+                            src="https://res.cloudinary.com/dwarrion/image/upload/v1599126130/PetCasa/HomePage/home_2_vryttr.jpg"
+                            class="img-fluid blurb-img" alt=""/>
                 </div>
                 <div class="col-xl-4" data-aos="fade-down">
                     <h2 class="res-margin">Tham gia với chúng tôi</h2>
@@ -314,10 +250,10 @@
                 <!-- image -->
                 <div class="col-lg-6">
                     <img
-                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599126137/PetCasa/HomePage/home_1_ls9cmm.jpg
-                        alt=""
-                        class="img-fluid border-irregular1"
-                        data-aos="zoom-in">
+                            src=https://res.cloudinary.com/dwarrion/image/upload/v1599126137/PetCasa/HomePage/home_1_ls9cmm.jpg
+                            alt=""
+                            class="img-fluid border-irregular1"
+                            data-aos="zoom-in">
                 </div>
             </div>
             <!-- /row -->
@@ -392,8 +328,8 @@
                         <!-- /content -->
                         <div class="testimonial-pic">
                             <img
-                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144330/PetCasa/HomePage/dvh_htnold.png
-                                class="img-fluid" alt="">
+                                    src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144330/PetCasa/HomePage/dvh_htnold.png
+                                    class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
@@ -415,8 +351,8 @@
                         <!-- /content -->
                         <div class="testimonial-pic">
                             <img
-                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144230/PetCasa/HomePage/bp_woxzrr.jpg
-                                class="img-fluid" alt="">
+                                    src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144230/PetCasa/HomePage/bp_woxzrr.jpg
+                                    class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
@@ -438,8 +374,8 @@
                         <!-- /content -->
                         <div class="testimonial-pic">
                             <img
-                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144385/PetCasa/HomePage/pt_wrkybq.jpg
-                                class="img-fluid" alt="">
+                                    src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144385/PetCasa/HomePage/pt_wrkybq.jpg
+                                    class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">

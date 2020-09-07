@@ -19,7 +19,7 @@
                 uploadPreset: 'rdjyel16',
                 multiple: false,
                 form: '#product_form',
-                folder: 'PetCasa/UserAvatar',
+                folder: 'PetCasa/NewThumbnails',
                 fieldName: 'thumbnails[]',
                 thumbnails: '.thumbnails'
             }, function (error, result) {
@@ -34,7 +34,6 @@
         $('#upload_widget').click(function () {
             myWidget.open();
         })
-
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
             var splittedImg = $(this).parent().find('img').attr('src').split('/');

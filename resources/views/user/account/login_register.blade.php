@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script
-        src="https://kit.fontawesome.com/64d58efce2.js"
-        crossorigin="anonymous"
+            src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="{{asset('assets/user/css/login_register.css')}}"/>
     <link href={{asset('assets/user/fonts/flaticon/flaticon.css')}} rel="stylesheet" type="text/css">
@@ -24,6 +24,9 @@
                     <i class="fas fa-user"></i>
                     <input type="text" placeholder="Email" name="EmailLogin"/>
                 </div>
+                @if($errors->has('Email'))
+                    <div class="error">{{ $errors->first('Email') }}</div>
+                @endif
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" name="PasswordLogin"/>
@@ -114,8 +117,8 @@
                 </button>
             </div>
             <img
-                src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
-                class="image" alt="">
+                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
+                    class="image" alt="">
         </div>
         <div class="panel right-panel">
             <div class="content">
@@ -132,8 +135,8 @@
                 </button>
             </div>
             <img
-                src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
-                class="image" alt=""/>
+                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
+                    class="image" alt=""/>
         </div>
     </div>
 </div>

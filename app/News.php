@@ -51,6 +51,14 @@ class News extends Model
         }
     }
 
+    public function getFirstThumbnail800x500Attribute()
+    {
+        $thumbnail[] = explode(',', $this->Thumbnails);
+        foreach ($thumbnail as $thumbnailValue) {
+            return self::$link . 'c_scale,h_800,w_500/' . $thumbnailValue[0];
+        }
+    }
+
     public function Pets()
     {
         return $this->belongsToMany(Pet::class, 'pet_new', 'new_id', 'pet_id')->withTimestamps();

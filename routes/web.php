@@ -60,6 +60,8 @@ Route::get('/concession-form', function () {
     return view('user.services.concession_form');
 })->name('concession_form');
 
+Route::post('/concession-form', 'PageController@concessionP')->name('concession_formP');
+
 Route::get('/volunteer', function () {
     return view('user.services.volunteer');
 })->name('volunteer');
