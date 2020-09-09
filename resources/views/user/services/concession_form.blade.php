@@ -130,8 +130,12 @@
                         </div>
                         <div class="col-md-6">
                             <label>Tuổi<span class="required"></span></label>
-                            <input value="{{old('Age')}}" type="text" name="Age" class="form-control input-field"
-                                   autocomplete="off">
+                            <?php $current_time = \Carbon\Carbon::now() ?>
+                            <select class="form-control" name="Age">
+                                <option value="{{$current_time->addDays(150)}}">Dưới 6 tháng</option>
+                                <option value="{{$current_time->addDays(540)}}">Từ 6 tháng đến 2 năm</option>
+                                <option value="{{$current_time->addDays(780)}}">2 năm</option>
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <label>Loại<span class="required"></span></label>
@@ -143,29 +147,29 @@
                         <div class="col-md-6">
                             <label>Giới tính<span class="required"></span></label>
                             <select class="form-control" name="Sex">
-                                <option value="male">Đực</option>
-                                <option value="female">Cái</option>
+                                <option value="Đực">Đực</option>
+                                <option value="Cái">Cái</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label>Giấy khai sinh<span class="required"></span></label>
                             <select class="form-control" name="CertifiedPedigree">
-                                <option value="yes">Có</option>
-                                <option value="no">Không</option>
+                                <option value="Có">Có</option>
+                                <option value="Không">Không</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label>Tiêm phòng<span class="required"></span></label>
                             <select class="form-control" name="Vaccinated">
-                                <option value="yes">Rồi</option>
-                                <option value="no">Chưa</option>
+                                <option value="Có">Rồi</option>
+                                <option value="Không">Chưa</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label>Triệt sản<span class="required"></span></label>
                             <select class="form-control" name="Neutered">
-                                <option value="yes">Rồi</option>
-                                <option value="no">Chưa</option>
+                                <option value="Có">Rồi</option>
+                                <option value="Không">Chưa</option>
                             </select>
                         </div>
                         <div class="col-md-12">
@@ -186,6 +190,12 @@
                                       rows="5"
                                       required=""
                                       placeholder="Tình trạng sức khoẻ (quá khứ đã từng bị bệnh gì?, dị ứng gì?...) - Thích ăn gì? - Nhạy cảm với gì?"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label>Vài lời nhắn nhủ :<span class="required"></span></label>
+                            <textarea name="Message" id="message" class="textarea-field form-control"
+                                      rows="5"
+                                      placeholder="Ghi chú : "></textarea>
                         </div>
                     </div>
                     <div class="submit-btn">

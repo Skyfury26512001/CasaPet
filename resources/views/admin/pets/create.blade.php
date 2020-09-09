@@ -92,14 +92,15 @@
                         <div class="form-group">
                             <label for="Description">Mô tả<span class="text-danger">*</span></label>
                             <textarea id="editor" name="Description" class="form-control"
-                                              placeholder=""></textarea>
+                                      placeholder=""></textarea>
                             @if ($errors->has('Description'))
                                 <label class="alert-warning">{{$errors->first('Description')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="Species">Loài<span class="text-danger">*</span></label>
-                            <select class="form-control select-form-control" name="Species" class="form-control" id="Species" required="" style="width: 10%">
+                            <select class="form-control select-form-control" name="Species" class="form-control"
+                                    id="Species" required="" style="width: 10%">
                                 <option value="Chó">Chó</option>
                                 <option value="Mèo">Mèo</option>
                                 <option value="Vịt">Vịt</option>
@@ -118,8 +119,12 @@
                         </div>
                         <div class="form-group">
                             <label for="Age">Tuổi<span class="text-danger">*</span></label>
-                            <input type="text" name="Age" parsley-trigger="change" required=""
-                                   class="form-control" id="Age" value="{{old('Age')}}" style="width: 20%">
+                            <select class="form-control select-form-control" name="Age" class="form-control"
+                                    id="Species" required="" style="width: 15%">
+                                <option value="{{\Carbon\Carbon::now()->addDays(-150)}}"> Dưới 6 tháng</option>
+                                <option value="{{\Carbon\Carbon::now()->addDays(-540)}}"> Từ 6 tháng đến 2 năm</option>
+                                <option value="{{\Carbon\Carbon::now()->addDays(-780)}}"> Trên 2 năm</option>
+                            </select>
                             @if ($errors->has('Age'))
                                 <label class="alert-warning">{{$errors->first('Age')}}</label>
                             @endif

@@ -74,9 +74,9 @@
                                 sau:</strong></p>
                         <!-- ul custom-->
                         <ul class="custom pl-0">
-                            <li>Cứu hộ chó mèo</li>
-                            <li>Nhận nuôi thú cưng</li>
-                            <li>Nhượng nuôi thú cưng</li>
+                            <li><a href="{{route('rescue_form')}}">Cứu hộ chó mèo</a></li>
+                            <li><a href="{{route('pet_list_adoption')}}">Nhận nuôi thú cưng</a></li>
+                            <li><a href="{{route('concession_form')}}">Nhượng nuôi thú cưng</a></li>
                         </ul>
                     </div>
                     <!-- /col-xl-->

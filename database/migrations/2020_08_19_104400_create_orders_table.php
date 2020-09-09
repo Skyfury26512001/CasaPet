@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('FullName');
             $table->string('PhoneNumber');
             $table->string('Email');
+            $table->string('Message')->nullable();
             $table->unsignedBigInteger('PetId');
             $table->string('IDNo');
             $table->integer('Status');  // 0 - Chưa xử lý ; 1 - Từ chối ; 2 - Đồng ý ;

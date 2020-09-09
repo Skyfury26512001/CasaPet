@@ -12,7 +12,7 @@ class Report extends Model
     public function getArrayThumbnails450x450Attribute()
     {
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
-            return array('PetCasa/noimages_aaqvrt_opnyoy.png');
+            return array(self::$link . 'PetCasa/noimages_aaqvrt_opnyoy.png');
         }
         $list_photos  = array();
         $single_thumb = explode(',', $this->Thumbnails);
