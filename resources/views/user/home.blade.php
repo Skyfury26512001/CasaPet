@@ -442,13 +442,13 @@
                         <!-- /content -->
                         <div class="testimonial-pic">
                             <img
-                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144385/PetCasa/HomePage/pt_wrkybq.jpg
+                                src=https://res.cloudinary.com/dwarrion/image/upload/v1599480105/PetCasa/HomePage/rhym_syy7vb.jpg
                                 class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
-                            <h5 class="testimonial-title">Nguyễn Phú Trọng</h5>
-                            <span>Tổng thống Nga</span>
+                            <h5 class="testimonial-title">Rhymnastic</h5>
+                            <span>Rapper</span>
                         </div>
                         <!-- /testimonial-review -->
                     </div>

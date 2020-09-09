@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "nexmo/client": "^2.0",
         "phpviet/laravel-validation": "^1.0",
+        "realrashid/sweet-alert": "^3.1",
         "swiftmailer/swiftmailer": "^6.2"
     },
     "require-dev": {

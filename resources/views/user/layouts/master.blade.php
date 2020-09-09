@@ -348,6 +348,7 @@
     </div>
 </footer>
 <!-- footer-->
+
 <!-- Bootstrap core & Jquery -->
 <script src={{asset('assets/user/vendor/jquery/jquery.min.js')}}></script>
 <script src={{asset('assets/user/vendor/bootstrap/js/bootstrap.min.js')}}></script>
@@ -362,6 +363,7 @@
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.transitions.js')}}></script>
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js')}}></script>
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.load.js')}}></script>
+
 <!-- SPECIFIC SCRIPTS -->
 @yield('specific_js')
 </body>

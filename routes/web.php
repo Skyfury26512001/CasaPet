@@ -52,10 +52,6 @@ Route::get('/adoption/adoption-form/{slug}', 'PetController@adoption_form_fill')
 
 Route::post('/adoption/adoption-form/{slug}', 'OrderController@form_send')->name('adoption_form_send');
 
-Route::get('/concession', function () {
-    return view('user.services.concession');
-})->name('concession');
-
 Route::get('/concession-form', function () {
     return view('user.services.concession_form');
 })->name('concession_form');
