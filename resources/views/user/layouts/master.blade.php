@@ -61,14 +61,9 @@
 
         .button-sos {
             margin-bottom: 120px;
-            background: #333 !important;
+            background: #ff7600;
             border-radius: 50%;
-            padding: 15px 11px;
-            position: fixed;
-            bottom: 40px;
-            right: 42px;
-            transition: all 0.2s ease-in-out;
-            z-index: 119;
+            padding: 22px 10px;
         }
 
         .button-sos:after {
@@ -88,6 +83,7 @@
         .blog-card .post-info:before, .color1, a:hover, a:focus, .dog-elements:after, .cat-elements:after, .bg-secondary a, .header-text:before, ul.social-media li:hover i {
             color: #ff8500;
         }
+
     </style>
 
     @yield('specific_css')
@@ -324,7 +320,11 @@
     <!-- container -->
     <!-- SOS -->
     <div class="page-scroll hidden-sm hidden-xs">
+        <<<<<<< HEAD
         <a class="button-sos" href="{{route('rescue_form')}}"><strong>SOS</strong></a>
+        =======
+        <a class="button-sos back-to-top" href="{{route('rescue_form')}}"><strong>SOS</strong></a>
+        >>>>>>> 67285f3ffcbb877b8dffdf5812762ecdbb2ef712
     </div>
     <!-- End SOS -->
     <!-- Go To Top Link -->
