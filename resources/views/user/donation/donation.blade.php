@@ -43,7 +43,7 @@
     </script>
     <!-- Include the PayPal JavaScript SDK -->
     <script
-        src="https://www.paypal.com/sdk/js?client-id=Aa7uffDMG6QFVbl4k074yVwic421SWLCfeOTt1poGLK8suW3bKj3r9EVWoH72QP5nakrbJz0_dA70uqr&currency=USD"></script>
+            src="https://www.paypal.com/sdk/js?client-id=Aa7uffDMG6QFVbl4k074yVwic421SWLCfeOTt1poGLK8suW3bKj3r9EVWoH72QP5nakrbJz0_dA70uqr&currency=USD"></script>
 
     <script>
         // Render the PayPal button into #paypal-button-container
@@ -58,11 +58,12 @@
             // Set up the transaction
             createOrder: function (data, actions) {
                 return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '20.00'
-                        }
-                    }]
+                    purchase_units: [
+                        {
+                            amount: {
+                                value: '20.00'
+                            }
+                        }]
                 });
             },
 
@@ -77,6 +78,7 @@
     </script>
 @endsection
 @section('content')
+
     <!-- ==== Page Content ==== -->
     <div class="page">
         <div class="container custom-1">
@@ -118,8 +120,8 @@
         <div class="row block-padding col-md-12" style="border-top: 1px solid #f5f5f5">
             <div class="col-md-4">
                 <img
-                    src="https://res.cloudinary.com/dwarrion/image/upload/v1598263958/PetCasa/Donation%20Page/dog_iqkinh.jpg"
-                    alt="">
+                        src="https://res.cloudinary.com/dwarrion/image/upload/v1598263958/PetCasa/Donation%20Page/dog_iqkinh.jpg"
+                        alt="">
             </div>
             <div class="col-md-8">
                 <h5 style="color: #48A06A; font-weight: 600">Khoản đóng góp của bạn hướng tới điều gì?</h5>
@@ -156,10 +158,11 @@
                 </div>
                 <div class="col-md-4">
                     <img
-                        src="https://res.cloudinary.com/dwarrion/image/upload/v1598263957/PetCasa/Donation%20Page/cat_zzwepf.jpg"
-                        alt="">
+                            src="https://res.cloudinary.com/dwarrion/image/upload/v1598263957/PetCasa/Donation%20Page/cat_zzwepf.jpg"
+                            alt="">
                 </div>
             </div>
         </div>
     </div>
+    <!-- ==== End Page Content ==== -->
 @endsection

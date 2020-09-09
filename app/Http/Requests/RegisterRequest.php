@@ -55,7 +55,7 @@ class RegisterRequest extends FormRequest
                 $find_account = Account::where('Email',$this->Email)->get()->first();
                     if ($find_account != null) {
                         if ($find_account->Email){
-                        return $validator->errors()->add('Email', 'This email have been already used !');
+                        return $validator->errors()->add('Email', 'Email này đã được sử dụng!');
                     }
                 }
             });
