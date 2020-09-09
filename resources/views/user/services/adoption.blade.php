@@ -149,7 +149,16 @@
                                     <ul class="list-unstyled">
                                         <li><strong>Giống: </strong>{{$pet->Breed}}</li>
                                         <li><strong>Giới tính: </strong>{{$pet->Sex}}</li>
-                                        <li><strong>Tuổi: </strong>{{$pet->Age}}</li>
+                                        <li><strong>Tuổi: </strong>
+                                            <?php $current_Time = Carbon\Carbon::now(); ?>
+                                            @if ($current_Time->addDays(-180) <  $pet->Age)
+                                                Dưới 6 tháng
+                                            @elseif ($current_Time->addDays(-720) <  $pet->Age)
+                                                Từ 6 tháng đến 2 năm
+                                            @elseif ($current_Time->addDays(-720) >  $pet->Age)
+                                                Từ 2 năm trở lên
+                                            @endif
+                                        </li>
                                     </ul>
                                     <!-- Buttons -->
                                     <div class="text-center">

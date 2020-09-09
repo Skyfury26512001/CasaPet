@@ -25,7 +25,8 @@ class OrderSeeder extends Seeder
                 'FullName'    => 'Nguyễn Văn Tài', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại
                 'Email'       => 'nguyenVanTai@gmail.com', // Email
-                'PetId'       => 1,      // ID con pet
+                'Message'     => 'Tôi vô cùng muốn nhận nuôi con này , tôi đang cần một người bạn để tâm sự bầu bạn :3 cảm ơn ad', // Message
+                'PetId'       => 39,      // ID con pet
                 'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
                 'Status'      => 0,      // trạng thái  0 - > Chưa xử lý ; 1 - Chưa xử lý ; 2 - Đã xử lý
                 'created_at'  => \Carbon\Carbon::now(),
@@ -36,7 +37,8 @@ class OrderSeeder extends Seeder
                 'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại
                 'Email'       => 'nguyenVanTai@gmail.com', // Email
-                'PetId'       => 2,      // ID con pet
+                'Message'     => 'Mình đã muốn nuôi một con pet như này lâu lắm ròi ý , mãi mới tìm thấy một con ưng ý', // Message
+                'PetId'       => 40,      // ID con pet
                 'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
                 'Status'      => 0,      // trạng thái  0 - > Chưa xử lý ; 1 - Chưa xử lý ; 2 - Đã xử lý
                 'created_at'  => \Carbon\Carbon::now(),
@@ -47,7 +49,8 @@ class OrderSeeder extends Seeder
                 'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại
                 'Email'       => 'nguyenVanTai@gmail.com', // Email
-                'PetId'       => 2,      // ID con pet
+                'Message'     => 'Con này trông hay hay , minh muốn đem về để nghịc quá đi !', // Message
+                'PetId'       => 40,      // ID con pet
                 'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
                 'Status'      => 0,      // trạng thái  0 - > Chưa xử lý ; 1 - Chưa xử lý ; 2 - Đã xử lý
                 'created_at'  => \Carbon\Carbon::now(),
@@ -58,7 +61,8 @@ class OrderSeeder extends Seeder
                 'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại
                 'Email'       => 'nguyenVanTai@gmail.com', // Email
-                'PetId'       => 2,      // ID con pet
+                'Message'     => 'Cho mình xin nhận nuôi con này được không , trông nó cute quá mình không chịu được', // Message
+                'PetId'       => 40,      // ID con pet
                 'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
                 'Status'      => 0,      // trạng thái  0 - > Chưa xử lý ; 1 - Chưa xử lý ; 2 - Đã xử lý
                 'created_at'  => \Carbon\Carbon::now(),

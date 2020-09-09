@@ -431,7 +431,8 @@
                             <div>
                                 <div style="display: inline-flex" class="mb-4">
                                     <h4>Tên bé : </h4>
-                                    <div>{{$pet->Name}}</div>
+                                    <a href="{{route('admin_pet_detail',$pet->Slug)}}"
+                                       style="margin-top: 7px;font-size: 15px;"> {{$pet->Name}}</a>
                                 </div>
                                 <h4>Giấy tờ khai sinh : </h4>{{$pet->CertifiedPedigree}}
                                 <h4>Mô tả : </h4>{{$pet->Description}}
@@ -453,6 +454,25 @@
                                     <p> {{$order->updated_at}} <small class="text-muted"></small></p>
                                 </li>
                             </ul>
+                            @if ($order->Status == 0)
+                                <div class="text-right mb-0 mt-4" style="display: inline-flex">
+                                    <form action="{{route('admin_order_acept',$order->id)}}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-primary waves-effect waves-light mr-1"
+                                                href="{{route('admin_order_acept',$order->id)}}">
+                                            Chấp nhận
+                                        </button>
+                                    </form>
+                                    <form action="{{route('admin_order_decline',$order->id)}}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-secondary waves-effect waves-light"
+                                                href="{{route('admin_order_decline',$order->id)}}">
+                                            Từ chối
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
+
                             <div class="clearfix"></div>
                         </div>
                     </div>

@@ -61,3 +61,9 @@
 .box > .d-flex {
     margin: 0 10px;
 }
+
+.casa-alert {
+    position: fixed;
+    top: 80px;
+    right: 10px;
+}

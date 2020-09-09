@@ -44,7 +44,7 @@ class PageController extends Controller
             $slug_begin        = generateRandomString(8);
             $Slug              = to_slug($slug_begin . ' ' . $pet['Name']);
             $pet['Slug']       = $Slug;
-            $pet['Status']     = 1;
+            $pet['Status']     = 0;
             $pet['Thumbnails'] = null;
             foreach ($request->thumbnails as $thumb) {
                 $pet['Thumbnails'] .= $thumb . ",";
@@ -57,6 +57,6 @@ class PageController extends Controller
             $order['Status'] = 0;
             $order->save();
         });
-        return redirect(route('success'));
+        return redirect(route('success2'));
     }
 }

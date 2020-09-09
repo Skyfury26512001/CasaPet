@@ -36,13 +36,15 @@
     <!-- /jumbotron -->
     <div class="page pb-0">
         <div class="container">
+            <h4>Gửi thư cho PetsCasa</h4>
             <div class="row">
+
                 <!-- contact-info-->
                 <div class="contact-info col-lg-5">
-                    <h4>Gửi thư cho PetsCasa</h4>
+
                     <!-- Form Starts -->
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSem9SJuzxZtdvmk_JHPIyaltpVc2DkhwYtUOotB7fh9ikWpxQ/viewform?embedded=true"
-                            width="640" height="446" frameborder="0" marginheight="0" marginwidth="0">Loading…
+                            width="640" height="1092" frameborder="0" marginheight="0" marginwidth="0">Loading…
                     </iframe>
                     <!-- /contact)form-->
                 </div>

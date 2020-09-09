@@ -38,7 +38,7 @@
     <!-- Datepicker -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- SPECIFIC CSS -->
-
+    <link href={{asset('assets/user/css/custom.css')}} rel="stylesheet">
     <!-- Custom CSS -->
     <style>
         .fb_dialog_content > iframe {
@@ -64,6 +64,11 @@
             background: #333 !important;
             border-radius: 50%;
             padding: 15px 11px;
+            position: fixed;
+            bottom: 40px;
+            right: 42px;
+            transition: all 0.2s ease-in-out;
+            z-index: 119;
         }
 
         .button-sos:after {
@@ -74,6 +79,14 @@
             bottom: -20px;
             z-index: 0;
             text-shadow: 0px 4px 17px rgba(255, 255, 255, 0.6);
+        }
+
+        a:hover {
+            color: #ff8500;
+        }
+
+        .blog-card .post-info:before, .color1, a:hover, a:focus, .dog-elements:after, .cat-elements:after, .bg-secondary a, .header-text:before, ul.social-media li:hover i {
+            color: #ff8500;
         }
     </style>
 
@@ -311,7 +324,7 @@
     <!-- container -->
     <!-- SOS -->
     <div class="page-scroll hidden-sm hidden-xs">
-        <a class="button-sos back-to-top" href="{{route('rescue_form')}}"><strong>SOS</strong></a>
+        <a class="button-sos" href="{{route('rescue_form')}}"><strong>SOS</strong></a>
     </div>
     <!-- End SOS -->
     <!-- Go To Top Link -->

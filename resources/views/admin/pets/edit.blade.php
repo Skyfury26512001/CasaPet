@@ -148,8 +148,21 @@
                         </div>
                         <div class="form-group">
                             <label for="Age">Tuổi<span class="text-danger">*</span></label>
-                            <input type="text" name="Age" parsley-trigger="change" required=""
-                                   class="form-control" id="Age" value="{{$pet->Age}}" style="width: 20%">
+                            <?php $current_Time = Carbon\Carbon::now(); ?>
+                            <select type="text" name="Age" required=""
+                                    class="form-control" id="Age" style="width: 20%">
+                                <option value="{{\Carbon\Carbon::now()->addDays(-150)}}"
+                                        @if ($current_Time->addDays(-180) <  $pet->Age) selected @endif> Dưới 6 tháng
+                                </option>
+
+                                <option value="{{\Carbon\Carbon::now()->addDays(-540)}}"
+                                        @if ($current_Time->addDays(-720) <  $pet->Age && $pet->Age < $current_Time->addDays(-180) ) selected @endif>
+                                    Từ 6 tháng đến 2 năm
+                                </option>
+                                <option value="{{\Carbon\Carbon::now()->addDays(-780)}}"
+                                        @if ($current_Time->addDays(-720) >  $pet->Age) selected @endif> Trên 2 năm
+                                </option>
+                            </select>
                             @if ($errors->has('Age'))
                                 <label class="alert-warning">{{$errors->first('Age')}}</label>
                             @endif
@@ -186,11 +199,11 @@
                         <div class="form-group">
                             <label>Triệt sản<span class="text-danger">*</span></label>
                             <input type="radio" name="Neutered" parsley-trigger="change" required=""
-                                   id="NeuteredYes" value="Có" @if ($pet->Neutered == "Có") checked @endif><label
-                                    for="NeuteredYes">Đã triệt sản</label>
+                                   id="NeuteredYes" value="Có" @if ($pet->Neutered ==  "Có") checked @endif><label
+                                    for="NeuteredYes"> Đã triệt sản</label>
                             <input type="radio" name="Neutered" parsley-trigger="change" required=""
                                    id="NeuteredNo" value="Không" @if ($pet->Neutered == "Không") checked @endif><label
-                                    for="NeuteredNo">Chưa triệt sản</label>
+                                    for="NeuteredNo"> Chưa triệt sản</label>
                             @if ($errors->has('Neutered'))
                                 <label class="alert-warning">{{$errors->first('Neutered')}}</label>
                             @endif
