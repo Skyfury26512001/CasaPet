@@ -3,10 +3,12 @@
     Update Password
 @endsection
 @section('specific_css')
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
 @endsection
 @section('specific_js')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
@@ -18,11 +20,83 @@
             this.classList.toggle('fa-eye-slash');
         });
     </script>
-    <script>
-    </script>
+    @if(isset($toast_error1))
+        <script>
+            $(document).ready(function () {
+                toastr["error"]("Mật khẩu cũ sai!")
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            })
+        </script>
+    @endif
+    @if(isset($toast_error2))
+        <script>
+            $(document).ready(function () {
+                toastr["warning"]("Mật khẩu mới nhập lại không trùng!")
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            })
+        </script>
+    @endif
+    @if(isset($success))
+        <script>
+            $(document).ready(function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                toastr["success"]("Thay đổi mật khẩu thành công!")
+            })
+        </script>
+    @endif
 @endsection
 @section('content')
-    {{--    {{dd($account)}}--}}
     <div class="page bg-light">
         <div class="container margin_30 block-padding">
             <div class="row">
@@ -125,9 +199,6 @@
                                                         <input type="password" name="OldPass" id="password">
                                                         <i class="fa fa-eye" id="togglePassword"></i>
                                                     </div>
-                                                    @if(isset($mess1))
-                                                        <div>{{$mess1}}</div>
-                                                    @endif
                                                     @if($errors->has('OldPass'))
                                                         <div class="error">{{ $errors->first('OldPass') }}</div>
                                                     @endif
@@ -159,9 +230,6 @@
                                                     <div class="input-with-validator">
                                                         <input type="password" name="NewPassCheck">
                                                     </div>
-                                                    @if(isset($mess2))
-                                                        <div>{{$mess2}}</div>
-                                                    @endif
                                                     @if($errors->has('NewPassCheck'))
                                                         <div class="error">{{ $errors->first('NewPassCheck') }}</div>
                                                     @endif
@@ -171,7 +239,8 @@
                                     </div>
                                     <input type="hidden" name="Slug" value="{{$account->Slug}}">
                                     <div class="my-account-page__submit">
-                                        <button type="submit" class="btn btn-solid-primary btn--m btn--inline"
+                                        <button type="submit" id="button"
+                                                class="btn btn-solid-primary btn--m btn--inline"
                                                 aria-disabled="false">Lưu
                                         </button>
                                     </div>

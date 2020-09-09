@@ -151,7 +151,7 @@ class PetController extends Controller
 
     public function pet_list_adoption()
     {
-        $pets = Pet::where('Status', '=', '1')->paginate(8);
+        $pets = Pet::where('Status', '=', '1')->paginate(6);
         return view('user.services.adoption', compact('pets'));
     }
 

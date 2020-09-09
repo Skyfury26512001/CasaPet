@@ -28,9 +28,13 @@ class PersonalInfoController extends Controller
             $account->IDNo = $request->IDNo;
             $account->update();
 //            dd($account->Avatar);
-            return redirect(route('personal_info'));
+            $current_account_id = session('current_account')->id;
+            $current_account = Account::where('id', '=', $current_account_id)->where('Status', '=', '1')->first();
+            return view('user.account.personal_info', compact('current_account'))->with('success', 'success');
         }
-        return redirect(route('error'));
+        $current_account_id = session('current_account')->id;
+        $current_account = Account::where('id', '=', $current_account_id)->where('Status', '=', '1')->first();
+        return view('user.account.personal_info', compact('current_account'))->with('error', 'error');
     }
 
     public function change_password($Slug)
@@ -44,19 +48,6 @@ class PersonalInfoController extends Controller
 
     public function change_passwordP(Request $request)
     {
-        $wrongPass = "Mật khẩu cũ sai!";
-        $notMatch = "Mật khẩu mới nhập lại không trùng!";
-        $request->validate(
-            [
-                'OldPass' => 'required',
-                'NewPass' => 'required',
-                'NewPassCheck' => 'required'
-            ],
-            [
-                'OldPass.required' => 'Vui lòng nhập mật khẩu cũ',
-                'NewPass.required' => 'Vui lòng nhập mật khẩu mới',
-                'NewPassCheck.required' => 'Vui lòng nhập lại mật khẩu mới',
-            ]);
         $account = Account::where('Slug', '=', $request->Slug)->first();
         $pass = md5($request->OldPass . $account->Salt);
         if ($pass == $account->PasswordHash) {
@@ -64,13 +55,15 @@ class PersonalInfoController extends Controller
                 $account->Salt = generateRandomString(5);
                 $account->PasswordHash = md5($request->NewPass . $account->Salt);
                 $account->update();
-                return view('user.account.change_password');
+                $current_account_id = session('current_account')->id;
+                $account = Account::where('id', '=', $current_account_id)->where('Status', '=', '1')->first();
+                return view('user.account.change_password', compact('account'))->with('success', 'Thay đổi thành công');
             }
-            return view('user.account.change_password')->with('mess2', $notMatch)->with('account', session()->get('current_account'));
+            return view('user.account.change_password')->with('toast_error2', 'Mật khẩu mới nhập lại không trùng!')->with('account', session()->get('current_account'));
         }
         $current_account_id = session('current_account')->id;
         $account = Account::where('id', '=', $current_account_id)->where('Status', '=', '1')->first();
-        return view('user.account.change_password', compact('account'))->with('mess1', $wrongPass);
+        return view('user.account.change_password', compact('account'))->with('toast_error1', 'Mật khẩu cũ sai!');
     }
 
     public

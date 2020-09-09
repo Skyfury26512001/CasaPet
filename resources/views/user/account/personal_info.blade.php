@@ -3,10 +3,12 @@
     Personal Info
 @endsection
 @section('specific_css')
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
 @endsection
 @section('specific_js')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget(
@@ -67,6 +69,56 @@
         });
 
     </script>
+    @if(isset($error))
+        <script>
+            $(document).ready(function () {
+                toastr["error"]("Cập nhập thông tin cá nhân không thành công!")
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            })
+        </script>
+    @endif
+    @if(isset($success))
+        <script>
+            $(document).ready(function () {
+                toastr["success"]("Cập nhập thông tin cá nhân thành công!")
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            })
+        </script>
+    @endif
 @endsection
 @section('content')
     {{--    {{dd($current_account)}}--}}
