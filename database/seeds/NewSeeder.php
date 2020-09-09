@@ -46,10 +46,24 @@ class NewSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug' => 'Cuu_ho_chu_meo_muop_bi_co_doc_trong_doi_ret',
-                'Title' => 'Cứu hộ hú mèo mướp bị cô độc trong đói rét',
+                'Slug' => 'Cuu_ho_be_cun_bi_bo_roi_o_ha_noi',
+                'Title' => 'Cứu hộ bé cún ghẻ bị bỏ rơi ở Hà Nội',
                 'Category_id' => 1,
-                'Content' => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.',
+                'Content' => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.
+                <br>
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/2_cljiwi.jpg" alt="">
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/3_p2gcwj.jpg" alt="">
+                <br>
+                Ngày ý tưởng ko cứu được nó. Nửa đêm nhờ tnv chạy ô tô lên Phú Thọ bắt chó vì sợ nó lang thang ngoài đường chết lạnh. 1h sáng đến nơi thì em báo tin ngủ quên. Mình ngồi nhà mò google map với gọi đt loạn lên mà ko biết địa điểm cụ thể ở đâu. Bạn tnv thang lang ko tìm được đường đành đi về. Chiều hôm sau 2h nhờ em Như với Nhung hai đứa đèo nhau bằng xe máy lên Phú Thọ bắt chó.. Lên đến nơi thì em chó nhát người, thế là 3 đứa chơi trò đuổi bắt nhau trên đó chắc cả tiếng đồng hồ. Bắt được thì kẹp 3 đi về đến Hn lúc 10h tối...! Cái Nhung ở trọ trong ký túc xá, về muộn quá ktx đóng cửa nên phải trèo tường vào  vừa buồn cười vừa thương....
+                <br>
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/5_zpnmfg.jpg" alt="">
+                <br>
+                Nhưng cuối cùng thì Thor nó cũng ko phụ công anh chị! Giờ vừa béo vừa đẹp trai, chỉ hiểu lệnh tiếng Anh chứ ko biết tiếng Việt sắp thành Việt kiều đến nơi rồi... Ước gì đứa nào cũng sướng được như nó..
+                <br>
+                Cùng xem thành quả của cả một tập thể, những tnv, các bác sĩ và mạnh thường quân nhé!! Chúng ta đã làm được!! Dù không nhiều nhưng sẽ luôn cố gắng!!
+                <br>
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/6_fjrhdk.jpg" alt="">
+                ',
                 'Author' => 'PetsCasa',
                 'Thumbnails' => 'PetCasa/NewThumbnails/1_aqok2f.jpg,PetCasa/NewThumbnails/2_cljiwi.jpg,PetCasa/NewThumbnails/3_p2gcwj.jpg,PetCasa/NewThumbnails/4_q7gufw.jpg,PetCasa/NewThumbnails/5_zpnmfg,PetCasa/NewThumbnails/6_fjrhdk.jpg',
                 'Status' => 1,
@@ -60,7 +74,21 @@ class NewSeeder extends Seeder
                 'Slug' => 'Cuu_ho_be_cun_bi_bo_roi_o_ha_noi',
                 'Title' => 'Cứu hộ bé cún ghẻ bị bỏ rơi ở Hà Nội',
                 'Category_id' => 1,
-                'Content' => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.',
+                'Content' => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.
+                <br>
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/2_cljiwi.jpg" alt="">
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/3_p2gcwj.jpg" alt="">
+                <br>
+                Ngày ý tưởng ko cứu được nó. Nửa đêm nhờ tnv chạy ô tô lên Phú Thọ bắt chó vì sợ nó lang thang ngoài đường chết lạnh. 1h sáng đến nơi thì em báo tin ngủ quên. Mình ngồi nhà mò google map với gọi đt loạn lên mà ko biết địa điểm cụ thể ở đâu. Bạn tnv thang lang ko tìm được đường đành đi về. Chiều hôm sau 2h nhờ em Như với Nhung hai đứa đèo nhau bằng xe máy lên Phú Thọ bắt chó.. Lên đến nơi thì em chó nhát người, thế là 3 đứa chơi trò đuổi bắt nhau trên đó chắc cả tiếng đồng hồ. Bắt được thì kẹp 3 đi về đến Hn lúc 10h tối...! Cái Nhung ở trọ trong ký túc xá, về muộn quá ktx đóng cửa nên phải trèo tường vào  vừa buồn cười vừa thương....
+                <br>
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/5_zpnmfg.jpg" alt="">
+                <br>
+                Nhưng cuối cùng thì Thor nó cũng ko phụ công anh chị! Giờ vừa béo vừa đẹp trai, chỉ hiểu lệnh tiếng Anh chứ ko biết tiếng Việt sắp thành Việt kiều đến nơi rồi... Ước gì đứa nào cũng sướng được như nó..
+                <br>
+                Cùng xem thành quả của cả một tập thể, những tnv, các bác sĩ và mạnh thường quân nhé!! Chúng ta đã làm được!! Dù không nhiều nhưng sẽ luôn cố gắng!!
+                <br>
+                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/6_fjrhdk.jpg" alt="">
+                ',
                 'Author' => 'PetsCasa',
                 'Thumbnails' => 'PetCasa/NewThumbnails/1_aqok2f.jpg,PetCasa/NewThumbnails/2_cljiwi.jpg,PetCasa/NewThumbnails/3_p2gcwj.jpg,PetCasa/NewThumbnails/4_q7gufw.jpg,PetCasa/NewThumbnails/5_zpnmfg,PetCasa/NewThumbnails/6_fjrhdk.jpg',
                 'Status' => 1,

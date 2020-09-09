@@ -16,98 +16,48 @@
     <!-- ==== Slider ==== -->
     <div id="slider" style="width:1200px;height:800px;margin:0 auto;margin-bottom: 0px;">
         <!-- Slide 1 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_1_gso6gw.jpg
-                 class="ls-bg" alt=""/>
+        @for ($i = 0; $i < sizeof($newest_report); $i++)
+
+            {{--        @foreach($newest_report as $new)--}}
+            <div class="ls-slide"
+                 data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
+                <!-- bg image  -->
+                @if ($i == 0)
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_1_gso6gw.jpg
+                        class="ls-bg" alt=""/>
+                @elseif ($i == 1)
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295579/PetCasa/HomePage/homesl_2_wukawq.jpg
+                        class="ls-bg" alt=""/>
+                @elseif ($i == 2)
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295581/PetCasa/HomePage/homesl_5_nxzgc7.jpg
+                        class="ls-bg" alt=""/>
+                @elseif ($i == 3)
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_4_r6c5hc.jpg
+                        class="ls-bg" alt=""/>
+            @endif
             <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text dog-elements">
-                    <h1>Adopt a pet today!</h1>
-                    <!--the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">Search our list of dogs, cats and other pets available for adoption near
-                            you</p>
-                        <a class="btn btn-primary " href="{{route('pet_list_adoption')}}">Adopt Today</a>
+                <div class="ls-l header-wrapper"
+                     data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
+                    <div class="header-text dog-elements">
+                        {{--                        {{dd($newest_report[$i])}}--}}
+                        <h1>{{$newest_report[$i]->Title}}</h1>
+                        <!--the div below is hidden on small screens  -->
+                        <div class="d-none d-sm-block">
+                            <p class="header-p">{!! Str::words($newest_report[$i]->Content, $words = 20, $end = '...') !!}</p>
+                            <a class="btn btn-primary " href="{{route('single_new',$newest_report[$i]->Slug)}}">Xem
+                                ngay</a>
+                        </div>
+                        <!--/d-none  -->
                     </div>
-                    <!--/d-none  -->
+                    <!-- header-text  -->
                 </div>
-                <!-- header-text  -->
+                <!-- ls-l  -->
             </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
-        <!-- Slide 2 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295579/PetCasa/HomePage/homesl_2_wukawq.jpg
-                 class="ls-bg" alt=""/>
-            <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text cat-elements">
-                    <h1>High Quality pet food</h1>
-                    <!--the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">We have all the best products for your pet, visit our store today!</p>
-                        <a class="btn btn-primary " href="{{route('contact')}}">Contact us</a>
-                    </div>
-                    <!--/d-none  -->
-                </div>
-                <!-- header-text  -->
-            </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
-        <!-- Slide 3 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295581/PetCasa/HomePage/homesl_5_nxzgc7.jpg
-                 class="ls-bg" alt=""/>
-            <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text dog-elements">
-                    <h1>Visit our Pet Hotel</h1>
-                    <!--the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">Our facility is designed to meet the unique needs of your pet</p>
-                        <a class="btn btn-primary " href="{{route('services')}}">Our services</a>
-                    </div>
-                    <!--/d-none  -->
-                </div>
-                <!-- header-text  -->
-            </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
-        <!-- Slide 4 -->
-        <div class="ls-slide"
-             data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
-            <!-- bg image  -->
-            <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_4_r6c5hc.jpg
-                 class="ls-bg" alt=""/>
-            <!-- text  -->
-            <div class="ls-l header-wrapper"
-                 data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
-                <div class="header-text cat-elements">
-                    <h1>Experienced Veterinarians</h1>
-                    <!-- the div below is hidden on small screens  -->
-                    <div class="d-none d-sm-block">
-                        <p class="header-p">Your pet is in good hands, meet our highly qualified professionals</p>
-                        <a class="btn btn-primary " href="/team">Our Team</a>
-                    </div>
-                    <!--/d-none  -->
-                </div>
-                <!-- header-text  -->
-            </div>
-            <!-- ls-l  -->
-        </div>
-        <!-- ls-slide -->
+        @endfor
     </div>
     <!-- /slider -->
     <!-- ==== Page Content ==== -->
@@ -128,9 +78,9 @@
                                 sau:</strong></p>
                         <!-- ul custom-->
                         <ul class="custom pl-0">
-                            <li>Cứu hộ chó mèo</li>
-                            <li>Nhận nuôi thú cưng</li>
-                            <li>Nhượng nuôi thú cưng</li>
+                            <li><a href="{{route('rescue_form')}}">Cứu hộ chó mèo</a></li>
+                            <li><a href="{{route('pet_list_adoption')}}">Nhận nuôi thú cưng</a></li>
+                            <li><a href="{{route('concession_form')}}">Nhượng nuôi thú cưng</a></li>
                         </ul>
                     </div>
                     <!-- /col-xl-->

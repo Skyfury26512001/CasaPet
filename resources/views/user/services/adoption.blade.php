@@ -88,14 +88,17 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-10 col-md-10 col-lg-10">
+            <div class="page">
                 <div class="container block-padding pt-0">
+                    <div class="col-lg-8 offset-lg-2 text-center">
+                        <h3>Tìm một người bạn mới</h3>
+                        <p>Dưới đây là các thành viên trong đại gia đình PetsCasa.</p>
+                    </div>
                     <!-- First row: Adopt a pet -->
                     <div class="row mt-5">
                         <!-- Pet  -->
                         @foreach($pets as $pet)
-                            <div class="{{$pet->Species}} adopt-card col-md-6 col-xl-4 res-margin">
+                            <div class="{{$pet->Species}} adopt-card col-md-6 col-xl-3 res-margin">
                                 <div class="card bg-light-custom">
                                     <div class="thumbnail text-center">
                                         <!-- Image -->
@@ -108,7 +111,16 @@
                                             <ul class="list-unstyled">
                                                 <li><strong>Giống: </strong>{{$pet->Breed}}</li>
                                                 <li><strong>Giới tính: </strong>{{$pet->Sex}}</li>
-                                                <li><strong>Tuổi: </strong>{{$pet->Age}}</li>
+                                                <li><strong>Tuổi: </strong>
+                                                    <?php $current_Time = Carbon\Carbon::now(); ?>
+                                                    @if ($current_Time->addDays(-180) <  $pet->Age)
+                                                        Dưới 6 tháng
+                                                    @elseif ($current_Time->addDays(-720) <  $pet->Age)
+                                                        Từ 6 tháng đến 2 năm
+                                                    @elseif ($current_Time->addDays(-720) >  $pet->Age)
+                                                        Từ 2 năm trở lên
+                                                    @endif
+                                                </li>
                                             </ul>
                                             <!-- Buttons -->
                                             <div class="text-center">
@@ -117,26 +129,24 @@
                                                     thông
                                                     tin</a>
                                             </div>
+                                            <!-- /thumbnail -->
                                         </div>
+                                        <!-- /card -->
                                     </div>
-                                    <!-- /thumbnail -->
+                                    <!-- /adopt-card -->
+                                @endforeach
+                                <!-- /pet -->
                                 </div>
-                                <!-- /card -->
+                                <!-- /row -->
+                                <div class="col-md-12 mt-5">
+                                    <!-- pagination -->
+                                    {{$pets->links()}}
+                                </div>
+                                <!-- /col-md -->
                             </div>
-                            <!-- /adopt-card -->
-                    @endforeach
-                    <!-- /pet -->
+                            <!-- /container -->
                     </div>
-                    <!-- /row -->
-                    <div class="col-md-12 mt-5">
-                        <!-- pagination -->
-                        {{$pets->links()}}
-                    </div>
-                    <!-- /col-md -->
                 </div>
-                <!-- /container -->
-            </div>
-        </div>
     </section>
     <div class="bg-light">
         <section class="container aos-init aos-animate bg-light" data-aos="zoom-in">

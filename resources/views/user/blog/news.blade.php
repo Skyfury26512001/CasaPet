@@ -4,10 +4,7 @@
 @endsection
 @section('specific_css')
     <style>
-        a:hover {
-            color: black;
-        }
-
+        
         h2 {
             border-bottom: 1px solid rgba(0, 0, 0, .125);
         }

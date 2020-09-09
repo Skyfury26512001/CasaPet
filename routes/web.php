@@ -29,6 +29,10 @@ Route::get('/success', function () {
     return view('user.sub_pages.success');
 })->name('success');
 
+Route::get('/success', function () {
+    return view('user.sub_pages.success_2');
+})->name('success2');
+
 Route::get('/get-involved', function () {
     return view('user.sub_pages.get_involved');
 })->name('get_involed');
@@ -55,6 +59,8 @@ Route::post('/adoption/adoption-form/{slug}', 'OrderController@form_send')->name
 Route::get('/concession-form', function () {
     return view('user.services.concession_form');
 })->name('concession_form');
+
+Route::post('/concession-form', 'PageController@concessionP')->name('concession_formP');
 
 Route::get('/volunteer', function () {
     return view('user.services.volunteer');
@@ -115,6 +121,12 @@ Route::post('/login', 'AccountController@loginP')->name('loginP');
 Route::post('/logout', 'AccountController@logOut')->name('logout');
 
 Route::post('/register', 'AccountController@registerP')->name('register');
+
+/* 404 */
+
+Route::get('/404-page', function () {
+    return view('user.sub_pages.error');
+})->name('404');
 
 Route::group(['prefix' => '/account'], function () {
     Route::get('/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
@@ -208,6 +220,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/deactiveAll', 'NewController@deactive_multi')->name('admin_new_deactive_multi');
         Route::put('/activeAll', 'NewController@active_multi')->name('admin_new_active_multi');
     });
+
     Route::group(['prefix' => '/reports'], function () {
         Route::get('/', 'ReportController@list')->name('admin_report_list');
         Route::get('/create', 'ReportController@create')->name('admin_report_create');
@@ -222,6 +235,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/aceptAll', 'ReportController@acept_multi')->name('admin_report_acept_multi');
         Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
         Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
+        Route::post('/edit/pet-store', 'PetController@pet_store')->name('admin_report_pet_store');
     });
 });
 
