@@ -23,17 +23,21 @@
                  data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
                 <!-- bg image  -->
                 @if ($i == 0)
-                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_1_gso6gw.jpg
-                         class="ls-bg" alt=""/>
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_1_gso6gw.jpg
+                        class="ls-bg" alt=""/>
                 @elseif ($i == 1)
-                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295579/PetCasa/HomePage/homesl_2_wukawq.jpg
-                         class="ls-bg" alt=""/>
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295579/PetCasa/HomePage/homesl_2_wukawq.jpg
+                        class="ls-bg" alt=""/>
                 @elseif ($i == 2)
-                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295581/PetCasa/HomePage/homesl_5_nxzgc7.jpg
-                         class="ls-bg" alt=""/>
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295581/PetCasa/HomePage/homesl_5_nxzgc7.jpg
+                        class="ls-bg" alt=""/>
                 @elseif ($i == 3)
-                    <img src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_4_r6c5hc.jpg
-                         class="ls-bg" alt=""/>
+                    <img
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599295580/PetCasa/HomePage/homesl_4_r6c5hc.jpg
+                        class="ls-bg" alt=""/>
             @endif
             <!-- text  -->
                 <div class="ls-l header-wrapper"
@@ -82,10 +86,10 @@
                     <!-- /col-xl-->
                     <div class="col-xl-6">
                         <img
-                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,w_800/v1599127104/PetCasa/HomePage/home_3_iiohrf.jpg
-                                alt="" data-aos="fade-down"
-                                data-aos-duration="1500"
-                                class="img-fluid border-irregular1 border-double">
+                            src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,w_800/v1599127104/PetCasa/HomePage/home_3_iiohrf.jpg
+                            alt="" data-aos="fade-down"
+                            data-aos-duration="1500"
+                            class="img-fluid border-irregular1 border-double">
                     </div>
                 </div>
                 <!-- /row -->
@@ -212,8 +216,8 @@
                 <div class="col-xl-8">
                     <!-- image  -->
                     <img
-                            src="https://res.cloudinary.com/dwarrion/image/upload/v1599126130/PetCasa/HomePage/home_2_vryttr.jpg"
-                            class="img-fluid blurb-img" alt=""/>
+                        src="https://res.cloudinary.com/dwarrion/image/upload/v1599126130/PetCasa/HomePage/home_2_vryttr.jpg"
+                        class="img-fluid blurb-img" alt=""/>
                 </div>
                 <div class="col-xl-4" data-aos="fade-down">
                     <h2 class="res-margin">Tham gia với chúng tôi</h2>
@@ -264,10 +268,10 @@
                 <!-- image -->
                 <div class="col-lg-6">
                     <img
-                            src=https://res.cloudinary.com/dwarrion/image/upload/v1599126137/PetCasa/HomePage/home_1_ls9cmm.jpg
-                            alt=""
-                            class="img-fluid border-irregular1"
-                            data-aos="zoom-in">
+                        src=https://res.cloudinary.com/dwarrion/image/upload/v1599126137/PetCasa/HomePage/home_1_ls9cmm.jpg
+                        alt=""
+                        class="img-fluid border-irregular1"
+                        data-aos="zoom-in">
                 </div>
             </div>
             <!-- /row -->
@@ -342,8 +346,8 @@
                         <!-- /content -->
                         <div class="testimonial-pic">
                             <img
-                                    src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144330/PetCasa/HomePage/dvh_htnold.png
-                                    class="img-fluid" alt="">
+                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144330/PetCasa/HomePage/dvh_htnold.png
+                                class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
@@ -365,8 +369,8 @@
                         <!-- /content -->
                         <div class="testimonial-pic">
                             <img
-                                    src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144230/PetCasa/HomePage/bp_woxzrr.jpg
-                                    class="img-fluid" alt="">
+                                src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144230/PetCasa/HomePage/bp_woxzrr.jpg
+                                class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
@@ -388,13 +392,13 @@
                         <!-- /content -->
                         <div class="testimonial-pic">
                             <img
-                                    src=https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_300,w_300/v1599144385/PetCasa/HomePage/pt_wrkybq.jpg
-                                    class="img-fluid" alt="">
+                                src=https://res.cloudinary.com/dwarrion/image/upload/v1599480105/PetCasa/HomePage/rhym_syy7vb.jpg
+                                class="img-fluid" alt="">
                         </div>
                         <!-- /testimonial-pic -->
                         <div class="testimonial-review">
-                            <h5 class="testimonial-title">Nguyễn Phú Trọng</h5>
-                            <span>Tổng thống Nga</span>
+                            <h5 class="testimonial-title">Rhymnastic</h5>
+                            <span>Rapper</span>
                         </div>
                         <!-- /testimonial-review -->
                     </div>

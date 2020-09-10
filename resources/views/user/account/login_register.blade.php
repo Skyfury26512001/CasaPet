@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script
-            src="https://kit.fontawesome.com/64d58efce2.js"
-            crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('assets/user/css/login_register.css')}}"/>
     <link href={{asset('assets/user/fonts/flaticon/flaticon.css')}} rel="stylesheet" type="text/css">
     <title>Sign in & Sign up Form</title>
@@ -18,7 +17,6 @@
         <div class="signin-signup">
             <form action="{{route('loginP')}}" class="sign-in-form" method="POST">
                 @csrf
-                @method('POST')
                 <h2 class="title">ĐĂNG NHẬP</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
@@ -117,16 +115,15 @@
                 </button>
             </div>
             <img
-                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
-                    class="image" alt="">
+                src="https://res.cloudinary.com/dwarrion/image/upload/v1597853775/PetCasa/Login_Signup_Page/cat_slv9kc.png"
+                class="image" alt="">
         </div>
         <div class="panel right-panel">
             <div class="content">
                 <h3>Đã có tài khoản?</h3>
                 <p>Trải nghiệm dịch vụ của &nbsp;<a href="/" class="home_direction"><i class="flaticon-dog-20"
                                                                                        style="color: #F9BE4F">PetsCasa</i></a>&nbsp;
-                    ngay
-                    thôi nào!!</p>
+                    ngay thôi nào!!</p>
                 <button class="btn transparent" id="sign-in-btn">
                     Đăng nhập
                 </button>
@@ -135,12 +132,89 @@
                 </button>
             </div>
             <img
-                    src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
-                    class="image" alt=""/>
+                src="https://res.cloudinary.com/dwarrion/image/upload/v1597855372/PetCasa/Login_Signup_Page/dog_gdewko.png"
+                class="image" alt=""/>
         </div>
     </div>
 </div>
 
+<script src={{asset('assets/user/vendor/jquery/jquery.min.js')}}></script>
 <script src="{{asset("assets/user/js/login_register.js")}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+@if(isset($toast_error1))
+    <script>
+        $(document).ready(function () {
+            toastr["error"]("Email không tồn tại!")
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": true,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        })
+    </script>
+@endif
+@if(isset($toast_error2))
+    <script>
+        $(document).ready(function () {
+            toastr["error"]("Mật khẩu không đúng!")
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": true,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        })
+    </script>
+@endif
+@if(isset($success))
+    <script>
+        $(document).ready(function () {
+            toastr["success"]("Đăng ký thành công! Đăng nhập ngay thôi nào.")
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": true,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        })
+    </script>
+@endif
 </body>
 </html>

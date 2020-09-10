@@ -27,6 +27,7 @@
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
                     var arrayThumnailInputs = document.querySelectorAll('input[name="petthumbnails[]"]');
+                    $(".cloudinary-thumbnails").removeClass("cloudinary-thumbnails");
                     for (let i = 0; i < arrayThumnailInputs.length; i++) {
                         arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
                     }
@@ -37,7 +38,16 @@
         $('#upload_widget2').click(function () {
             myWidget2.open();
         })
-
+        $('body').on('click', '.cloudinary-delete', function () {
+            console.log('start delete')
+            var splittedImg = $(this).parent().find('img').attr('src').split('/');
+            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
+            var publicId = $(this).parent().attr('data-cloudinary');
+            $(this).parent().remove();
+            console.log($(`input[data-cloudinary-public-id="${imgName}"]`));
+            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
+            console.log('end delete');
+        });
     </script>
     <script type="text/javascript">
         var myWidget3 = cloudinary.createUploadWidget(
@@ -53,9 +63,12 @@
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
                     var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
+                    $(".cloudinary-thumbnails").removeClass("cloudinary-thumbnails");
                     for (let i = 0; i < arrayThumnailInputs.length; i++) {
                         arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
                     }
+                    $('#new_form').find('img[src$="https://res.cloudinary.com/dwarrion/image/upload/PetCasa/noimages_aaqvrt_opnyoy.png"]').parent().remove();
+                    $('#new_form').find('input[data-cloudinary-public-id="PetCasa/noimages_aaqvrt_opnyoy.png"]').remove();
                     console.log(arrayThumnailInputs)
                 }
             }
@@ -63,14 +76,6 @@
         $('#upload_widget3').click(function () {
             myWidget3.open();
         })
-        // xử lý js trên dynamic content.
-        $('body').on('click', '.cloudinary-delete', function () {
-            var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
-            var publicId = $(this).parent().attr('data-cloudinary');
-            $(this).parent().remove();
-            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
-        });
     </script>
     <script>
         ClassicEditor
@@ -240,10 +245,20 @@
                       class="parsley-examples" novalidate="">
                     @csrf
                     <div class="card-box">
-                        <h4 class="header-title"><i class=" mdi mdi-information-outline" data-toggle="tooltip"
-                                                    data-placement="bottom"
-                                                    title="Thú nuôi liên quan tới bài viết!"></i> Thú nuôi liên quan :
-                        </h4>
+                        <div style="display:inline-flex">
+                            <h4 class="header-title">
+                                <i class=" mdi mdi-information-outline" data-toggle="tooltip" data-placement="bottom"
+                                   title="Thú nuôi liên quan tới bài viết!"></i> Thú nuôi liên quan :
+                            </h4>
+                        </div>
+                        <div style="float: right">
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    data-toggle="modal"
+                                    data-target="#task-add-pet">
+                                Thêm mới thú nuôi +
+                            </button>
+                        </div>
                         <div>
                             {{--                        {{dd($report_pet_id)}}--}}
                             <div class="form-group">
@@ -351,30 +366,154 @@
         </div>
 
 
+        {{--            <div class="modal-dialog modal-lg">--}}
+        {{--                <div class="modal-content">--}}
+        {{--                    <div class="modal-header border-bottom-0 p-0">--}}
+        {{--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="modal-body">--}}
+        {{--                        Xin chao bài viết của admin--}}
+        {{--                    </div>--}}
+        {{--                </div><!-- /.modal-content -->--}}
+        {{--            </div><!-- /.modal-dialog -->--}}
+        {{--        </div><!-- /.modal -->--}}
+        {{--        <div id="relation-pet-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"--}}
+        {{--             style="display: none;">--}}
+        {{--            <div class="modal-dialog modal-lg">--}}
+        {{--                <div class="modal-content">--}}
+        {{--                    <div class="modal-header border-bottom-0 p-0">--}}
+        {{--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="modal-body">--}}
+        {{--                        Xin chao Thông tin pet liên quan--}}
+        {{--                    </div>--}}
+        {{--                </div><!-- /.modal-content -->--}}
+        {{--            </div><!-- /.modal-dialog -->--}}
+        {{--        </div><!-- /.modal -->--}}
 
-    {{--            <div class="modal-dialog modal-lg">--}}
-    {{--                <div class="modal-content">--}}
-    {{--                    <div class="modal-header border-bottom-0 p-0">--}}
-    {{--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
-    {{--                    </div>--}}
-    {{--                    <div class="modal-body">--}}
-    {{--                        Xin chao bài viết của admin--}}
-    {{--                    </div>--}}
-    {{--                </div><!-- /.modal-content -->--}}
-    {{--            </div><!-- /.modal-dialog -->--}}
-    {{--        </div><!-- /.modal -->--}}
-    {{--        <div id="relation-pet-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"--}}
-    {{--             style="display: none;">--}}
-    {{--            <div class="modal-dialog modal-lg">--}}
-    {{--                <div class="modal-content">--}}
-    {{--                    <div class="modal-header border-bottom-0 p-0">--}}
-    {{--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
-    {{--                    </div>--}}
-    {{--                    <div class="modal-body">--}}
-    {{--                        Xin chao Thông tin pet liên quan--}}
-    {{--                    </div>--}}
-    {{--                </div><!-- /.modal-content -->--}}
-    {{--            </div><!-- /.modal-dialog -->--}}
-    {{--        </div><!-- /.modal -->--}}
+        {{--  modal add pet --}}
+        <div id="task-add-pet" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+             style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="container card-box">
+                        <form action="{{route('admin_report_pet_store')}}" id="add_pet_form" method="POST"
+                              class="parsley-examples" novalidate="">
+                            @csrf
+                            <div class="form-group">
+                                <label for="FullName">Tên<span class="text-danger">*</span></label>
+                                <input type="text" name="Name" parsley-trigger="change" required=""
+                                       class="form-control" id="Name" value="{{old('Name')}}" style="width: 20%">
+                                @if ($errors->has('Name'))
+                                    <label class="alert-warning">{{$errors->first('Name')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label>Giấy tờ khai sinh<span class="text-danger">*</span></label>
+                                <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                                       id="CertifiedPedigreeYes" value="Có"><label for="CertifiedPedigreeYes">Có</label>
+                                <input type="radio" name="CertifiedPedigree" parsley-trigger="change" required=""
+                                       id="CertifiedPedigreeNo" value="Không" checked><label
+                                        for="CertifiedPedigreeNo">Không</label>
+                                @if ($errors->has('CertifiedPedigree'))
+                                    <label class="alert-warning">{{$errors->first('CertifiedPedigree')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="Description">Mô tả<span class="text-danger">*</span></label>
+                                <textarea id="editor" name="Description" class="form-control"
+                                          placeholder=""></textarea>
+                                @if ($errors->has('Description'))
+                                    <label class="alert-warning">{{$errors->first('Description')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="Species">Loài<span class="text-danger">*</span></label>
+                                <select class="form-control select-form-control" name="Species" class="form-control"
+                                        id="Species" required="" style="width: 10%">
+                                    <option value="Chó">Chó</option>
+                                    <option value="Mèo">Mèo</option>
+                                    <option value="Vịt">Vịt</option>
+                                </select>
+                                @if ($errors->has('Species'))
+                                    <label class="alert-warning">{{$errors->first('Species')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="Breed">Giống<span class="text-danger">*</span></label>
+                                <input type="text" name="Breed" parsley-trigger="change" required=""
+                                       class="form-control" id="Breed" value="{{old('Breed')}}" style="width: 20%">
+                                @if ($errors->has('Breed'))
+                                    <label class="alert-warning">{{$errors->first('Breed')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group" style="width: 50%">
+                                <label for="Age">Tuổi<span class="text-danger">*</span></label>
+                                <?php $current_time = Carbon\Carbon::now() ?>
+                                <select class="form-control" name="Age" id="Age">
+                                    <option value="{{$current_time->addDays(-150)}}">Dưới 6 tháng</option>
+                                    <option value="{{$current_time->addDays(-150)}}">Từ 6 tháng đến 2 năm</option>
+                                    <option value="{{$current_time->addDays(-150)}}">Trên 2 năm</option>
+                                </select>
+                                @if ($errors->has('Age'))
+                                    <label class="alert-warning">{{$errors->first('Age')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="userName">Thumnails<span class="text-danger">*</span></label>
+                                <button type="button" id="upload_widget2" class="btn-primary btn">Upload</button>
+                                <div class="uploaded" id="petthumbnails"></div>
+                                @if ($errors->has('thumbnails'))
+                                    <label class="alert-warning">{{$errors->first('thumbnails')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label>Giới tính<span class="text-danger">*</span></label>
+                                <input type="radio" name="Sex" parsley-trigger="change" required=""
+                                       id="SexMale" value="Đực"><label for="SexMale">Đực</label>
+                                <input type="radio" name="Sex" parsley-trigger="change" required=""
+                                       id="SexFemale" value="Cái"><label for="SexFemale">Cái</label>
+                                @if ($errors->has('Sex'))
+                                    <label class="alert-warning">{{$errors->first('Sex')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label>Triệt sản<span class="text-danger">*</span></label>
+                                <input type="radio" name="Neutered" parsley-trigger="change" required=""
+                                       id="NeuteredYes" value="Yes"><label for="NeuteredYes">Có</label>
+                                <input type="radio" name="Neutered" parsley-trigger="change" required=""
+                                       id="NeuteredNo" value="No"><label for="NeuteredNo">Không</label>
+                                @if ($errors->has('Neutered'))
+                                    <label class="alert-warning">{{$errors->first('Neutered')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label>Tiêm phòng<span class="text-danger">*</span></label>
+                                <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                       id="VaccinatedYes" value="Có"><label for="VaccinatedYes">Có</label>
+                                <input type="radio" name="Vaccinated" parsley-trigger="change" required=""
+                                       id="VaccinatedNo" value="Không"><label for="VaccinatedNo">Không</label>
+                                @if ($errors->has('Vaccinated'))
+                                    <label class="alert-warning">{{$errors->first('Vaccinated')}}</label>
+                                @endif
+                            </div>
+                            <div class="form-group text-right mb-0">
+                                <button class="btn btn-primary waves-effect waves-light mr-1" id="#add_new_pet"
+                                        type="submit">
+                                    Thêm
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        @if (Session::get('created_pet') != null)
+            <div class="alert alert-info casa-alert">
+                Chú mừng đã thêm mới thú nuôi <strong> thành công</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
+        @endif
+    </div>
 @endsection
 

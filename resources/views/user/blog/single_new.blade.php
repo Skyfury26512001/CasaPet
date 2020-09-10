@@ -46,7 +46,7 @@
                         <img src="{{$single_new->FirstThumbnail}}" class="img-fluid" alt="">
                         <hr>
                         <!-- Post Content -->
-                        <p>{{$single_new->Content}}</p>
+                        <p>{!! $single_new->Content !!}</p>
                         @if ($include_pet != null && sizeof($include_pet) > 0)
                             {{--                            <div class="card">--}}
                             <h5 class="card-header">Thú nuôi liên quan :</h5>

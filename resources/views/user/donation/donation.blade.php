@@ -22,7 +22,7 @@
             text-align: center;
         }
 
-        img {
+        .donate_img {
             max-width: 100%;
             width: 350px;
             display: block;
@@ -121,7 +121,8 @@
             <div class="col-md-4">
                 <img
                         src="https://res.cloudinary.com/dwarrion/image/upload/v1598263958/PetCasa/Donation%20Page/dog_iqkinh.jpg"
-                        alt="">
+                    class="donate_img"
+                    alt="">
             </div>
             <div class="col-md-8">
                 <h5 style="color: #48A06A; font-weight: 600">Khoản đóng góp của bạn hướng tới điều gì?</h5>
@@ -157,9 +158,9 @@
                         chúng tôi!</p>
                 </div>
                 <div class="col-md-4">
-                    <img
-                            src="https://res.cloudinary.com/dwarrion/image/upload/v1598263957/PetCasa/Donation%20Page/cat_zzwepf.jpg"
-                            alt="">
+                    <img  src="https://res.cloudinary.com/dwarrion/image/upload/v1598263957/PetCasa/Donation%20Page/cat_zzwepf.jpg"
+                        class="donate_img"
+                        alt="">
                 </div>
             </div>
         </div>
