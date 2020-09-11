@@ -18,6 +18,7 @@
 
         .page {
             padding-bottom: unset;
+            padding-top: 40px;
         }
     </style>
 @endsection
@@ -27,32 +28,37 @@
     </script>
 @endsection
 @section('content')
-    <!-- ==== Page Content ==== -->
+    <!-- /Navigation -->
+    <input type="hidden" id="languageValue" name="languageValue" value="vi"/>
 
+    <!-- ==== Page Content ==== -->
     <div class="section-heading-1 text-center mt-5">
-        <h2 data-aos="zoom-in" class="aos-init aos-animate" style="margin-bottom: unset; margin-top: 170px">
+        <h2 style="margin-bottom: unset; margin-top: 170px">
             Nhận Nuôi Thú Cưng
         </h2>
     </div>
 
-    <ul class="nav nav-pills category-isotope center-nav aos-init aos-animate" data-aos="zoom-in">
+    <ul class="nav nav-pills category-isotope center-nav" data-aos="zoom-in">
         <li class="nav-item">
-            <a class="nav-link active" href="#" onclick="GetTypeAnimal()" data-toggle="tab" data-filter="*"
+            <a class="nav-link all active"
+               href="{{route('pet_list_adoption',["Species" => "All"])}}"
                aria-label="Tất cả" aria-labelledby="Tất cả">Tất cả</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" onclick="GetTypeAnimal(8)" href="#" data-toggle="tab" data-filter=".Chó"
+            <a class="nav-link dog"
+               href="{{route('pet_list_adoption',["Species" => "Chó"])}}"
                aria-label="Chó" aria-labelledby="Chó">Chó</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" onclick="GetTypeAnimal(8)" href="#" data-toggle="tab" data-filter=".Mèo"
+            <a class="nav-link cat"
+               href="{{route('pet_list_adoption',["Species" => "Mèo"])}}"
                aria-label="Mèo" aria-labelledby="Mèo">Mèo</a>
         </li>
     </ul>
 
     <section class="container" style="padding-top: unset">
         <div class="row">
-            <div class="aos-init aos-animate col-sm-2 col-md-2 col-lg-2 ">
+            <div class="aos-init aos-animate col-sm-2 col-md-2 col-lg-2" data-aos="zoom-in">
                 <div class="pt-4" style="margin-top: 40px">
                     <h3>Bộ Lọc</h3>
                     <div class="form-group">
@@ -88,65 +94,67 @@
                     </div>
                 </div>
             </div>
-            <div class="page">
-                <div class="container block-padding pt-0">
-                    <div class="col-lg-8 offset-lg-2 text-center">
-                        <h3>Tìm một người bạn mới</h3>
-                        <p>Dưới đây là các thành viên trong đại gia đình PetsCasa.</p>
-                    </div>
+            <div class="page col-sm-10 col-md-10 col-lg-10" data-aos="zoom-in">
+                <div class="pt-0 aos-init aos-animate">
                     <!-- First row: Adopt a pet -->
-                    <div class="row mt-5">
+                    <div class="row isotope" id="gallery-isotope">
                         <!-- Pet  -->
                         @foreach($pets as $pet)
-                            <div class="{{$pet->Species}} adopt-card col-md-6 col-xl-3 res-margin">
-                                <div class="card bg-light-custom">
-                                    <div class="thumbnail text-center">
-                                        <!-- Image -->
-                                        <img src="{{$pet->FirstThumbnail}}"
-                                             class="border-irregular1 img-fluid" alt="">
-                                        <!-- Name -->
-                                        <div class="caption-adoption">
-                                            <h6 class="adoption-header">{{$pet->Name}}</h6>
-                                            <!-- List -->
-                                            <ul class="list-unstyled">
-                                                <li><strong>Giống: </strong>{{$pet->Breed}}</li>
-                                                <li><strong>Giới tính: </strong>{{$pet->Sex}}</li>
-                                                <li><strong>Tuổi: </strong>
-                                                    <?php $current_Time = Carbon\Carbon::now(); ?>
-                                                    @if ($current_Time->addDays(-180) <  $pet->Age)
-                                                        Dưới 6 tháng
-                                                    @elseif ($current_Time->addDays(-720) <  $pet->Age)
-                                                        Từ 6 tháng đến 2 năm
-                                                    @elseif ($current_Time->addDays(-720) >  $pet->Age)
-                                                        Từ 2 năm trở lên
-                                                    @endif
-                                                </li>
-                                            </ul>
-                                            <!-- Buttons -->
-                                            <div class="text-center">
-                                                <a href="{{route('adoption_detail',$pet->Slug)}}"
-                                                   class="btn btn-primary">Thêm
-                                                    thông
-                                                    tin</a>
+                            <div class="{{$pet->Species}} col-md-6 col-xl-4 isotope-item" style="margin-top: 10px">
+                                <div class="isotope-item">
+                                    <div class="adopt-card res-margin">
+                                        <div class="card bg-light-custom">
+                                            <div class="thumbnail text-center">
+                                                <!-- Image -->
+                                                <img src="{{$pet->FirstThumbnail}}"
+                                                     class="border-irregular1 img-fluid" alt="">
+                                                <!-- Name -->
+                                                <div class="caption-adoption">
+                                                    <h6 class="adoption-header">{{$pet->Name}}</h6>
+                                                    <!-- List -->
+                                                    <ul class="list-unstyled">
+                                                        <li><strong>Giống: </strong>{{$pet->Breed}}</li>
+                                                        <li><strong>Giới tính: </strong>{{$pet->Sex}}</li>
+                                                        <li><strong>Tuổi: </strong>
+                                                            <?php $current_Time = Carbon\Carbon::now(); ?>
+                                                            @if ($current_Time->addDays(-180) <  $pet->Age)
+                                                                Dưới 6 tháng
+                                                            @elseif ($current_Time->addDays(-720) <  $pet->Age)
+                                                                Từ 6 tháng đến 2 năm
+                                                            @elseif ($current_Time->addDays(-720) >  $pet->Age)
+                                                                Từ 2 năm trở lên
+                                                            @endif
+                                                        </li>
+                                                    </ul>
+                                                    <!-- Buttons -->
+                                                    <div class="text-center">
+                                                        <a href="{{route('adoption_detail',$pet->Slug)}}"
+                                                           class="btn btn-primary">Thêm
+                                                            thông
+                                                            tin</a>
+                                                    </div>
+                                                    <!-- /thumbnail -->
+                                                </div>
+                                                <!-- /card -->
                                             </div>
-                                            <!-- /thumbnail -->
+                                            <!-- /adopt-card -->
+                                            <!-- /pet -->
                                         </div>
-                                        <!-- /card -->
+                                        <!-- /row -->
                                     </div>
-                                    <!-- /adopt-card -->
-                                @endforeach
-                                <!-- /pet -->
                                 </div>
-                                <!-- /row -->
-                                <div class="col-md-12 mt-5">
-                                    <!-- pagination -->
-                                    {{$pets->links()}}
-                                </div>
-                                <!-- /col-md -->
+                                <!-- /isotope-item-->
                             </div>
-                            <!-- /container -->
+                            <!-- /col-md -->
+                        @endforeach
+                        <div class="col-md-12 mt-5">
+                            <!-- pagination -->
+                            {{$pets->links()}}
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
     <div class="bg-light">
         <section class="container aos-init aos-animate bg-light" data-aos="zoom-in">

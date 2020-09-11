@@ -10,8 +10,8 @@ class PetController extends Controller
 {
     public function list(Request $request)
     {
-        $orderBy   = "DESC";
-        $pets      = Pet::query();
+        $orderBy = "DESC";
+        $pets = Pet::query();
         $condition = [];
         if ($request->has('start') && $request->has('end')) {
             array_push($condition, ['created_at', '>=', $request->start]);
@@ -43,22 +43,22 @@ class PetController extends Controller
     {
 //        dd($request);
         $request->validate([
-            'Name'              => 'required',
+            'Name' => 'required',
             'CertifiedPedigree' => 'required',
-            'Description'       => 'required',
-            'Species'           => 'required',
-            'Breed'             => 'required',
-            'Age'               => 'required',
-            'thumbnails'        => 'required',
-            'Sex'               => 'required',
-            'Neutered'          => 'required',
-            'Vaccinated'        => 'required',
+            'Description' => 'required',
+            'Species' => 'required',
+            'Breed' => 'required',
+            'Age' => 'required',
+            'thumbnails' => 'required',
+            'Sex' => 'required',
+            'Neutered' => 'required',
+            'Vaccinated' => 'required',
         ]);
-        $pet               = $request->all();
-        $slug_begin        = generateRandomString(8);
-        $Slug              = to_slug($slug_begin . ' ' . $pet['Name']);
-        $pet['Slug']       = $Slug;
-        $pet['Status']     = 1;
+        $pet = $request->all();
+        $slug_begin = generateRandomString(8);
+        $Slug = to_slug($slug_begin . ' ' . $pet['Name']);
+        $pet['Slug'] = $Slug;
+        $pet['Status'] = 1;
         $pet['Thumbnails'] = null;
 //        dd($request->thumbnails);
         foreach ($request->thumbnails as $thumb) {
@@ -91,15 +91,15 @@ class PetController extends Controller
     public function update(Request $request, $slug)
     {
 //        dd($request);
-        $pet                      = Pet::where('Slug', '=', $slug)->first();
-        $pet['Name']              = $request->Name;
+        $pet = Pet::where('Slug', '=', $slug)->first();
+        $pet['Name'] = $request->Name;
         $pet['CertifiedPedigree'] = $request->CertifiedPedigree;
-        $pet['Description']       = $request->Description;
-        $pet['Breed']             = $request->Breed;
-        $pet['Species']           = $request->Species;
-        $pet['Age']               = $request->Age;
-        $pet['Vaccinated']        = $request->Vaccinated;
-        $pet['Neutered']          = $request->Neutered;
+        $pet['Description'] = $request->Description;
+        $pet['Breed'] = $request->Breed;
+        $pet['Species'] = $request->Species;
+        $pet['Age'] = $request->Age;
+        $pet['Vaccinated'] = $request->Vaccinated;
+        $pet['Neutered'] = $request->Neutered;
         if ($request->has('thumbnails')) {
             $pet['Thumbnails'] = null;
             foreach ($request->thumbnails as $thumb) {
@@ -107,7 +107,7 @@ class PetController extends Controller
             }
             $pet['Thumbnails'] = substr($pet['Thumbnails'], 0, -1);
         }
-        $pet['Sex']      = $request->Sex;
+        $pet['Sex'] = $request->Sex;
         $pet['Neutered'] = $request->Neutered;
 //        dd($pet);
 
@@ -126,7 +126,7 @@ class PetController extends Controller
     public function deactive_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
         Pet::whereIn('id', $ids_array)->update(['status' => 0]);
         return response()->json(['success' => "Pet Deactive successfully."]);
@@ -142,16 +142,28 @@ class PetController extends Controller
     public function active_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
 //        return response()->json(['success'=>$ids_array]);
         Pet::whereIn('id', $ids_array)->update(['status' => 1]);
         return response()->json(['success' => "Pet Active successfully."]);
     }
 
-    public function pet_list_adoption()
+    public function pet_list_adoption(Request $request)
     {
-        $pets = Pet::where('Status', '=', '1')->paginate(6);
+        $pets = Pet::query();
+        if (isset($request->Species)) {
+            if ($request->Species == "All") {
+                $pets = Pet::where('Status', '=', '1')->get();
+            } else {
+                $pets = $pets->where("Species", '=', $request->Species);
+            }
+        }
+        $pets = $pets->paginate(6);
+        if ($pets == null || count($pets) == 0) {
+            return redirect(route('404'));
+        }
+        $pets = $pets->appends($request->all());
         return view('user.services.adoption', compact('pets'));
     }
 
@@ -174,22 +186,22 @@ class PetController extends Controller
     {
 
         $request->validate([
-            'Name'              => 'required',
+            'Name' => 'required',
             'CertifiedPedigree' => 'required',
-            'Description'       => 'required',
-            'Species'           => 'required',
-            'Breed'             => 'required',
-            'Age'               => 'required',
-            'petthumbnails'     => 'required',
-            'Sex'               => 'required',
-            'Neutered'          => 'required',
-            'Vaccinated'        => 'required',
+            'Description' => 'required',
+            'Species' => 'required',
+            'Breed' => 'required',
+            'Age' => 'required',
+            'petthumbnails' => 'required',
+            'Sex' => 'required',
+            'Neutered' => 'required',
+            'Vaccinated' => 'required',
         ]);
-        $pet               = $request->all();
-        $slug_begin        = generateRandomString(8);
-        $Slug              = to_slug($slug_begin . ' ' . $pet['Name']);
-        $pet['Slug']       = $Slug;
-        $pet['Status']     = 1;
+        $pet = $request->all();
+        $slug_begin = generateRandomString(8);
+        $Slug = to_slug($slug_begin . ' ' . $pet['Name']);
+        $pet['Slug'] = $Slug;
+        $pet['Status'] = 1;
         $pet['Thumbnails'] = null;
 //        dd($request->thumbnails);
         foreach ($request->petthumbnails as $thumb) {

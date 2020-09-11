@@ -3,7 +3,6 @@
     Timeline Update
 @endsection
 @section('specific_css')
-    {{--    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">--}}
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
     <style>
@@ -11,6 +10,7 @@
             margin: unset;
         }
     </style>
+    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
 @endsection
 @section('specific_js')
     {{--    <script src="{{asset('assets/user/js/timeline.js')}}"></script>--}}

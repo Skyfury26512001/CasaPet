@@ -158,12 +158,11 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Basic Tables</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý hợp đồng</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Basic Tables</h4>
+                    <h4 class="page-title">Quản lý hợp đồng</h4>
                 </div>
             </div>
         </div>
@@ -174,9 +173,9 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="header-title">Pets</h4>
+                            <h4 class="header-title">Danh sách hợp dồng</h4>
                             <p class="sub-header">
-                                <code>All contracts</code>
+                                <code></code>
                             </p>
                         </div>
                         <div class="col-9">
@@ -277,13 +276,13 @@
                                             @else
                                                 <td style="color: red"> Unknown Status</td>
                                             @endif
-{{--                                            <td>--}}
-{{--                                                <div class="d-flex justify-content-center">--}}
-{{--                                                    <a href="{{route('admin_contract_edit',$contract->id)}}"--}}
-{{--                                                       class="btn btn-primary"--}}
-{{--                                                       style="float:right">Edit</a>--}}
-{{--                                                </div>--}}
-{{--                                            </td>--}}
+                                            {{--                                            <td>--}}
+                                            {{--                                                <div class="d-flex justify-content-center">--}}
+                                            {{--                                                    <a href="{{route('admin_contract_edit',$contract->id)}}"--}}
+                                            {{--                                                       class="btn btn-primary"--}}
+                                            {{--                                                       style="float:right">Edit</a>--}}
+                                            {{--                                                </div>--}}
+                                            {{--                                            </td>--}}
                                             @if ($contract->Status == 1)
                                                 <td>
                                                     <div class="d-flex justify-content-center">
@@ -308,9 +307,10 @@
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a action="#"
-                                                              method="POST">
+                                                           method="POST">
                                                             @csrf @method('PUT')
-                                                            <button disabled class="btn btn-primary btn-table">End</button>
+                                                            <button disabled class="btn btn-primary btn-table">End
+                                                            </button>
                                                         </a>
                                                     </div>
                                                 </td>
