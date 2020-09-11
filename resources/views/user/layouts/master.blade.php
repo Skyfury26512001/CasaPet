@@ -61,14 +61,14 @@
 
         .button-sos {
             margin-bottom: 120px;
-            background: #333 !important;
+            background: #000000;
             border-radius: 50%;
-            padding: 15px 11px;
             position: fixed;
-            bottom: 40px;
+            bottom: 80px;
             right: 42px;
             transition: all 0.2s ease-in-out;
             z-index: 119;
+            padding: 22px 10px;
         }
 
         .button-sos:after {
@@ -88,6 +88,7 @@
         .blog-card .post-info:before, .color1, a:hover, a:focus, .dog-elements:after, .cat-elements:after, .bg-secondary a, .header-text:before, ul.social-media li:hover i {
             color: #ff8500;
         }
+
     </style>
 
     @yield('specific_css')
@@ -282,6 +283,7 @@
 <!-- content start -->
 @yield('content')
 <!-- content end -->
+<!-- content end -->
 
 <!-- ==== footer ==== -->
 <footer class="text-light">
@@ -341,7 +343,6 @@
                 version: 'v8.0'
             });
         };
-
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -376,8 +377,6 @@
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.transitions.js')}}></script>
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js')}}></script>
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.load.js')}}></script>
-
-<!-- SPECIFIC SCRIPTS -->
 @yield('specific_js')
 </body>
 </html>

@@ -36,7 +36,7 @@ class OrderSeeder extends Seeder
                 'OrderType'   => 'Nhận nuôi', // Nhận nuôi hoặc Gửi nuôi
                 'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại
-                'Email'       => 'nguyenVanTai@gmail.com', // Email
+                'Email'       => 'skyfury2651@gmail.com', // Email
                 'Message'     => 'Mình đã muốn nuôi một con pet như này lâu lắm ròi ý , mãi mới tìm thấy một con ưng ý', // Message
                 'PetId'       => 40,      // ID con pet
                 'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước
@@ -48,7 +48,7 @@ class OrderSeeder extends Seeder
                 'OrderType'   => 'Nhận nuôi', // Nhận nuôi hoặc Gửi nuôi
                 'FullName'    => 'Nguyễn Văn Tài 2', // Họ và Tên
                 'PhoneNumber' => '0583973384', // Số điện Thoại
-                'Email'       => 'nguyenVanTai@gmail.com', // Email
+                'Email'       => 'hungnbth1908018@fpt.com.vn', // Email
                 'Message'     => 'Con này trông hay hay , minh muốn đem về để nghịc quá đi !', // Message
                 'PetId'       => 40,      // ID con pet
                 'IDNo'        => '05723429371',       // Số chứng minh nhân dân , thẻ căn cước

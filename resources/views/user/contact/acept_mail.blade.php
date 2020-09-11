@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -365,8 +365,15 @@
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h3 style="font-weight: bolder">FEEDBACK!</h3>
-                                        <p>Tên người dùng: {{$name}} <br><br> Nội dung: {{$contact_message}}</p>
+                                        <h3 style="font-weight: bolder">Chúc mừng ! <3 Yêu cầu {{$order->OrderType}} đã
+                                            được chấp nhận !</h3>
+                                        <p>Xin chào {{$order->FullName}} , chúng tôi là thuộc tổ chức PetCasa . Email
+                                            này để chúc mừng bạn là yêu cầu {{$order->OrderType}}
+                                            bé {{$pet->Name}} của bạn đã được thông qua . Vui lòng đến chi nhánh PetCasa
+                                            gần nhất để hoàn tất thủ tục của bạn .Cảm ơn và chúc bạn một ngày làm việc
+                                            vui vẻ
+                                            !
+                                        </p>
                                     </td>
                                 </tr>
                             </table>
