@@ -13,6 +13,25 @@
         }
     </style>
 @endsection
+@section('specific_js')
+    <script>
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 4,
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true
+        });
+        $('.play').on('click', function () {
+            owl.trigger('play.owl.autoplay', [1000])
+        })
+        $('.stop').on('click', function () {
+            owl.trigger('stop.owl.autoplay')
+        })
+    </script>
+@endsection
 @section('content')
     <!-- ==== Page Content ==== -->
     <!-- Jumbotron -->
@@ -110,11 +129,11 @@
         <div id="call-to-action">
             <div class="container block-padding">
                 <div
-                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                        class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
                     <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
                 </div>
                 <div
-                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                        class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
                     <a href="/get_involed" class="btn btn-primary"
                        aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
                 </div>
@@ -130,28 +149,29 @@
                     <h2 data-aos="fade-up" class="aos-init aos-animate">Tin tức</h2>
                 </div>
                 <div class="col-12 carousel-3items owl-carousel owl-theme owl-loaded owl-drag">
-
-
-                    <div class="owl-stage-outer">
-
-                    </div>
-                    <div class="owl-nav">
-                        <div class="owl-prev disabled"><i class="fa fa-chevron-left"></i></div>
-                        <div class="owl-next"><i class="fa fa-chevron-right"></i></div>
-                    </div>
-                    <div class="owl-dots">
-                        <div class="owl-dot active"><span></span></div>
-                        <div class="owl-dot"><span></span></div>
-                    </div>
+                    {{--                    {{dd($news)}}--}}
+                    @foreach($news as $new)
+                        <div class="owl-stage-outer" style="background: url("{{$new->FirstThumbnail}}")">
+                        {{$new->Title}}
                 </div>
-                <div class="col-12 text-center">
-                    <a href="https://www.hanoipetadoption.com/vi/tin-tuc"
-                       class="btn btn-primary mt-3 text-uppercase" aria-label="Đọc thêm"
-                       aria-labelledby="Đọc thêm">Đọc thêm</a>
-                </div>
+                @endforeach
+                {{--                    <div class="owl-nav">--}}
+                {{--                        <div class="owl-prev disabled"><i class="fa fa-chevron-left"></i></div>--}}
+                {{--                        <div class="owl-next"><i class="fa fa-chevron-right"></i></div>--}}
+                {{--                    </div>--}}
+                {{--                    <div class="owl-dots">--}}
+                {{--                        <div class="owl-dot active"><span></span></div>--}}
+                {{--                        <div class="owl-dot"><span></span></div>--}}
+                {{--                                    </div>--}}
             </div>
-        </section>
-        <!-- endsection -->
+            <div class="col-12 text-center">
+                <a href="https://www.hanoipetadoption.com/vi/tin-tuc"
+                   class="btn btn-primary mt-3 text-uppercase" aria-label="Đọc thêm"
+                   aria-labelledby="Đọc thêm">Đọc thêm</a>
+            </div>
+    </div>
+    </section>
+    <!-- endsection -->
     </div>
     <!-- End Page -->
 @endsection

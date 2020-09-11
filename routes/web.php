@@ -107,7 +107,9 @@ Route::get('/donation', function () {
 Route::post('/donation', 'DonationController@store')->name('donation');
 
 Route::get('/foster', function () {
-    return view('user.foster');
+    $news = \App\News::all()->take(3);
+//    dd($news);
+    return view('user.foster', compact('news'));
 })->name('foster');
 
 /* 7.Account */
