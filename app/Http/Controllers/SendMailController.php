@@ -82,6 +82,6 @@ class SendMailController extends Controller
 
             return $report;
         });
-        return redirect(route('success'));
+        return redirect('success');
     }
 }

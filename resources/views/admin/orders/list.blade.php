@@ -158,12 +158,11 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Basic Tables</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pet Casa</a></li>
+                            <li class="breadcrumb-item active">Quản lý yêu cầu</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Basic Tables</h4>
+                    <h4 class="page-title">Quản lý yêu cầu</h4>
                 </div>
             </div>
         </div>
@@ -174,9 +173,9 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-3">
-                            <h4 class="header-title">Accounts</h4>
+                            <h4 class="header-title">Quản lý yêu cầu</h4>
                             <p class="sub-header">
-                                <code>All orders</code>
+                                <code></code>
                             </p>
                         </div>
                         {{--                        {{dd( Request::get('Status'))}}--}}

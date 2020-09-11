@@ -6,13 +6,14 @@
         <div id="sidebar-menu">
 
             <ul class="metismenu" id="side-menu">
-                <li><a href="{{route('home')}}">Trang chính</a></li>
+                <li><a href="{{route('home')}}" aria-expanded="false"><span>Trang chính</span></a></li>
                 <li>
                     <a href="{{route('admin_home')}}">
                         {{--                        <span class="badge badge-success badge-pill float-right">2</span>--}}
                         <span> Admin-Dashboard </span>
                     </a>
                 </li>
+
                 <li>
                     <a href="#" aria-expanded="false">
                         <i class="mdi mdi-account-group"></i>

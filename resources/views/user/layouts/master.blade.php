@@ -67,7 +67,7 @@
             bottom: 80px;
             right: 42px;
             transition: all 0.2s ease-in-out;
-            z-index: 119;
+            z-index: 9999;
             padding: 22px 10px;
         }
 
