@@ -40,8 +40,7 @@
             <div class="row">
 
                 <!-- contact-info-->
-                <div class="contact-info col-lg-5">
-
+                <div class="contact-info col-lg-5" style="max-height: 650px">
                     <!-- Form Starts -->
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSem9SJuzxZtdvmk_JHPIyaltpVc2DkhwYtUOotB7fh9ikWpxQ/viewform?embedded=true"
                             width="640" height="1092" frameborder="0" marginheight="0" marginwidth="0">Loading…
