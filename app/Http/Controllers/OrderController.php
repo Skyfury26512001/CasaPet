@@ -89,6 +89,8 @@ class OrderController extends Controller
                 $pet->update();
                 $declineOrders = Order::where('id', '!=', $id)->where('PetId', $pet->id)->where('Status', '!=', 1)->get();
                 foreach ($declineOrders as $order) {
+                    $order->Status = 1;
+                    $order->update();
                     $pet  = Pet::find($order->id);
                     $data = array('order' => $order, 'pet' => $pet);
                     Mail::send('user.contact.decline_mail', $data, function ($message) use ($order) {
@@ -102,7 +104,7 @@ class OrderController extends Controller
                     $message->to("$order_cur->Email", "$order_cur->FullName")->subject("Thông báo về đơn xin nhận nuôi");
                     $message->from("petcasa@gmail.com", "Pet Casa");
                 });
-                Order::where('id', '!=', $id)->where('PetId', $pet->id)->update(['Status' => 1]);
+
                 $contract                    = new Contract();
                 $contract->Order_id          = $order_cur->id;
                 $contract->Content           = "Xác nhận hợp đồng của : $order_cur->FullName nhận nuôi $pet->Name ! Yêu cầu $order_cur->FullName phải chụp ảnh đăng thông tin gửi lên page !";
