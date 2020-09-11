@@ -8,6 +8,7 @@ use App\Pet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -81,11 +82,26 @@ class OrderController extends Controller
                 $order_cur->update();
                 $pet = Pet::find($order_cur->PetId);
                 if ($order_cur->OrderType == "Gửi nuôi") {
-                    $pet->Status = 1;
+                    $pet->Status = 0;
                 } else {
                     $pet->Status = 2;
                 }
                 $pet->update();
+                $declineOrders = Order::where('id', '!=', $id)->where('PetId', $pet->id)->where('Status', '!=', 1)->get();
+                foreach ($declineOrders as $order) {
+                    $pet  = Pet::find($order->id);
+                    $data = array('order' => $order, 'pet' => $pet);
+                    Mail::send('user.contact.decline_mail', $data, function ($message) use ($order) {
+                        $message->to("$order->Email", "$order->FullName")->subject("Thông báo về đơn xin nhận nuôi");
+                        $message->from("petcasa@gmail.com", "Pet Casa");
+                    });
+                }
+                $pet  = Pet::find($order->id);
+                $data = array('order' => $order_cur, 'pet' => $pet);
+                Mail::send('user.contact.acept_mail', $data, function ($message) use ($order_cur) {
+                    $message->to("$order_cur->Email", "$order_cur->FullName")->subject("Thông báo về đơn xin nhận nuôi");
+                    $message->from("petcasa@gmail.com", "Pet Casa");
+                });
                 Order::where('id', '!=', $id)->where('PetId', $pet->id)->update(['Status' => 1]);
                 $contract                    = new Contract();
                 $contract->Order_id          = $order_cur->id;
@@ -105,20 +121,6 @@ class OrderController extends Controller
         $order_cur = Order::find($id);
         if (isset($order_cur) && $order_cur != null) {
             Order::where('id', '=', $id)->update(['Status' => 1]);
-//            dd(123);
-//            DB::transaction(function () use ($order_cur, $id) {
-//                $order_cur->Status = 2;
-//                $order_cur->update();
-//                $pet = Pet::find($order_cur->PetId);
-//                Order::where('id', '!=', $id)->where('PetId', $pet->id)->update(['Status' => 1]);
-//                $contract                    = new Contract();
-//                $contract->Order_id          = $order_cur->id;
-//                $contract->Content           = "Xác nhận hợp đồng của : $order_cur->FullName nhận nuôi $pet->Name ! Yêu cầu $order_cur->FullName phải chụp ảnh đăng thông tin gửi lên page !";
-//                $contract->ContractDateStart = Carbon::now()->addDays(7)->toDateString();
-//                $contract->ContractDateEnd   = Carbon::now()->addDays(372)->toDateString();
-//                $contract->Status            = 0;
-//                $contract->save();
-//            });
             return redirect(route('admin_order_list'));
         }
         return redirect(route('admin_404'));

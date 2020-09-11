@@ -27,6 +27,7 @@
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
                     var arrayThumnailInputs = document.querySelectorAll('input[name="petthumbnails[]"]');
+                    $(".cloudinary-thumbnails").removeClass("cloudinary-thumbnails");
                     for (let i = 0; i < arrayThumnailInputs.length; i++) {
                         arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
                     }
@@ -37,7 +38,16 @@
         $('#upload_widget2').click(function () {
             myWidget2.open();
         })
-
+        $('body').on('click', '.cloudinary-delete', function () {
+            console.log('start delete')
+            var splittedImg = $(this).parent().find('img').attr('src').split('/');
+            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
+            var publicId = $(this).parent().attr('data-cloudinary');
+            $(this).parent().remove();
+            console.log($(`input[data-cloudinary-public-id="${imgName}"]`));
+            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
+            console.log('end delete');
+        });
     </script>
     <script type="text/javascript">
         var myWidget3 = cloudinary.createUploadWidget(
@@ -53,9 +63,12 @@
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
                     var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
+                    $(".cloudinary-thumbnails").removeClass("cloudinary-thumbnails");
                     for (let i = 0; i < arrayThumnailInputs.length; i++) {
                         arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
                     }
+                    $('#new_form').find('img[src$="https://res.cloudinary.com/dwarrion/image/upload/PetCasa/noimages_aaqvrt_opnyoy.png"]').parent().remove();
+                    $('#new_form').find('input[data-cloudinary-public-id="PetCasa/noimages_aaqvrt_opnyoy.png"]').remove();
                     console.log(arrayThumnailInputs)
                 }
             }
@@ -63,14 +76,6 @@
         $('#upload_widget3').click(function () {
             myWidget3.open();
         })
-        // xử lý js trên dynamic content.
-        $('body').on('click', '.cloudinary-delete', function () {
-            var splittedImg = $(this).parent().find('img').attr('src').split('/');
-            var imgName = splittedImg[splittedImg.length - 3] + '/' + splittedImg[splittedImg.length - 2] + '/' + splittedImg[splittedImg.length - 1];
-            var publicId = $(this).parent().attr('data-cloudinary');
-            $(this).parent().remove();
-            $(`input[data-cloudinary-public-id="${imgName}"]`).remove();
-        });
     </script>
     <script>
         ClassicEditor
@@ -122,8 +127,22 @@
         <div class="row">
             <div class="col-lg-7">
                 <div class="card-box">
-                    <h4 class="header-title"><i class=" mdi mdi-information-outline" data-toggle="modal"
-                                                data-target="#report-info"></i> Tin người dùng đăng : </h4>
+                    <h4 class="header-title"><i class=" mdi mdi-information-outline" data-toggle="tooltip"
+                                                data-placement="top" title=" Tin người dùng đăng : Là những bài báo cáo được người gửi lên có nội dung yêu cầu hỗ trợ thú
+                        nuôi tại khu vực nào đó
+                        Mỗi báo cáo bao gồm : Họ và tên ;
+                        Địa chỉ :
+                        Số điện thoại :
+                        Nội dung :
+                        Ảnh :
+                        Và trạng thái bài viết !
+                        Bài viết có thể có tới 5 trạng thái :
+                        Chưa xử lý , Đang xử lý , Đã xử lý , Từ chối và Ẩn
+                        Chưa xử lý : Báo cáo chưa được admin xử lý , tiếp nhận yêu cầu .
+                        Đang xử lý : Báo cáo đẫ được admin xử lý , đội cứu hộ thú nuôi đã xuất phát .
+                        Đã xử lý : Vấn đề báo cáo đã được xử lý , đội cứu hộ thú nuôi đã hoàn thành nhiệm vụ trở về .
+                        Từ chối : Báo cáo bị từ chối hỗ trợ , không tiếp nhận ."
+                        ></i> Tin người dùng đăng : </h4>
                     <form action="{{route('admin_report_update',$report->id)}}" id="product_form" method="POST"
                           class="parsley-examples" novalidate="">
                         @csrf
@@ -227,8 +246,10 @@
                     @csrf
                     <div class="card-box">
                         <div style="display:inline-flex">
-                            <h4 class="header-title"><i class=" mdi mdi-information-outline" data-toggle="modal"
-                                                        data-target="#relation-pet-info"></i> Thú nuôi liên quan : </h4>
+                            <h4 class="header-title">
+                                <i class=" mdi mdi-information-outline" data-toggle="tooltip" data-placement="bottom"
+                                   title="Thú nuôi liên quan tới bài viết!"></i> Thú nuôi liên quan :
+                            </h4>
                         </div>
                         <div style="float: right">
                             <button type="button"
@@ -253,9 +274,11 @@
                         </div>
                     </div> <!-- end card-box -->
                     <div class="card-box">
-                        <h4 class="header-title"><i class=" mdi mdi-information-outline" data-toggle="modal"
-                                                    data-target="#new-info"></i> Bài viết admin : </h4>
-                        <div class="parsley-examples">
+                        <h4 class="header-title"><i class=" mdi mdi-information-outline" data-toggle="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Admin đăng bài sau khi cập nhật trạng thái của báo cáo"></i>
+                            Bài viết admin : </h4>
+                        <div id="product_form" class="parsley-examples">
                             {{--                        {{dd($report_pet_id)}}--}}
                             <div class="form-group">
                                 <label for="Status">Tiêu đề<span class="text-danger">*</span></label>
@@ -342,47 +365,31 @@
             <!-- end row -->
         </div>
 
-        <div id="report-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-             style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header border-bottom-0 p-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        Tin người dùng đăng : Là những bài báo cáo được người gửi lên có nội dung yêu cầu hỗ trợ thú
-                        nuôi tại khu vực nào đó
-                        Mỗi báo cáo bao gồm : Họ và tên ;
-                        Địa chỉ :
-                        Số điện thoại :
-                        Nội dung :
-                        Ảnh :
-                        Và trạng thái bài viết !
-                        Bài viết có thể có tới 5 trạng thái :
-                        Chưa xử lý , Đang xử lý , Đã xử lý , Từ chối và Ẩn
-                        Chưa xử lý : Báo cáo chưa được admin xử lý , tiếp nhận yêu cầu .
-                        Đang xử lý : Báo cáo đẫ được admin xử lý , đội cứu hộ thú nuôi đã xuất phát .
-                        Đã xử lý : Vấn đề báo cáo đã được xử lý , đội cứu hộ thú nuôi đã hoàn thành nhiệm vụ trở về .
-                        Từ chối : Báo cáo bị từ chối hỗ trợ , không tiếp nhận .
 
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
-        <div id="new-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-             style="display: none;">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header border-bottom-0 p-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        Xin chao bài viết của admin
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+        {{--            <div class="modal-dialog modal-lg">--}}
+        {{--                <div class="modal-content">--}}
+        {{--                    <div class="modal-header border-bottom-0 p-0">--}}
+        {{--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="modal-body">--}}
+        {{--                        Xin chao bài viết của admin--}}
+        {{--                    </div>--}}
+        {{--                </div><!-- /.modal-content -->--}}
+        {{--            </div><!-- /.modal-dialog -->--}}
+        {{--        </div><!-- /.modal -->--}}
+        {{--        <div id="relation-pet-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"--}}
+        {{--             style="display: none;">--}}
+        {{--            <div class="modal-dialog modal-lg">--}}
+        {{--                <div class="modal-content">--}}
+        {{--                    <div class="modal-header border-bottom-0 p-0">--}}
+        {{--                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--}}
+        {{--                    </div>--}}
+        {{--                    <div class="modal-body">--}}
+        {{--                        Xin chao Thông tin pet liên quan--}}
+        {{--                    </div>--}}
+        {{--                </div><!-- /.modal-content -->--}}
+        {{--            </div><!-- /.modal-dialog -->--}}
+        {{--        </div><!-- /.modal -->--}}
 
         {{--  modal add pet --}}
         <div id="task-add-pet" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
@@ -501,7 +508,6 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-        {{--        {{dd()}}--}}
         @if (Session::get('created_pet') != null)
             <div class="alert alert-info casa-alert">
                 Chú mừng đã thêm mới thú nuôi <strong> thành công</strong>
@@ -509,5 +515,5 @@
             </div>
         @endif
     </div>
-    {{--        <div class="modal-backdrop fade show"></div>--}}
 @endsection
+

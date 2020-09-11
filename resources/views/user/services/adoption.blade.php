@@ -65,8 +65,8 @@
                         <label>Giới tính</label>
                         <select id="gender" class="form-control">
                             <option value="">Tất cả</option>
-                            <option value="69">Đực</option>
-                            <option value="70">Cái</option>
+                            <option value="">Đực</option>
+                            <option value="">Cái</option>
                         </select>
                     </div>
                     <div class="">
@@ -74,8 +74,9 @@
                             <label>Độ tuổi</label>
                             <select id="age" class="form-control">
                                 <option value="">Tất cả</option>
-                                <option value="1">Dưới 6 tháng</option>
-                                <option value="2">6 tháng - 2 năm</option>
+                                <option value="">Trẻ</option>
+                                <option value="">Trưởng thành</option>
+                                <option value="">Già</option>
                             </select>
                         </div>
                     </div>
@@ -97,7 +98,7 @@
             <div class="page col-sm-10 col-md-10 col-lg-10" data-aos="zoom-in">
                 <div class="pt-0 aos-init aos-animate">
                     <!-- First row: Adopt a pet -->
-                    <div class="row isotope" id="gallery-isotope">
+                    <div class="row">
                         <!-- Pet  -->
                         @foreach($pets as $pet)
                             <div class="{{$pet->Species}} col-md-6 col-xl-4 isotope-item" style="margin-top: 10px">

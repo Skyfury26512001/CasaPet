@@ -127,6 +127,7 @@ class ReportController extends Controller
     {
         $Id = DB::transaction(function () use ($request) {
             $report            = Report::find($request->Report_id);
+            $report->Status    = 2;
             $report->NewStatus = 1;
             $report->update();
             $new               = $request->all();
@@ -143,6 +144,7 @@ class ReportController extends Controller
             $new->save();
             $new->Pets()->detach();
             $new->Pets()->attach($request->PetIds);
+
             return $new->id;
         });
         return redirect(route('admin_new_edit', $Id));
