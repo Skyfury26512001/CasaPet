@@ -62,8 +62,8 @@
             background: #000000;
             border-radius: 50%;
             position: fixed;
-            bottom: 80px;
-            right: 42px;
+            bottom: 55px;
+            right: 22px;
             transition: all 0.2s ease-in-out;
             z-index: 9999;
             padding: 15px 10px;
@@ -120,7 +120,7 @@
 <div class="fb-customerchat"
      attribution=setup_tool
      page_id="107245207763414"
-     theme_color="#F9BE4F"
+     theme_color="#ff8500"
      logged_in_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?"
      logged_out_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?">
 </div>
