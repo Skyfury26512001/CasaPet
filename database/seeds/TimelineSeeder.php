@@ -22,7 +22,7 @@ class TimelineSeeder extends Seeder
 
         $timeline = array(
             array(
-                'PetID' => '0',
+                'PetID' => '1',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-03-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',
@@ -30,7 +30,7 @@ class TimelineSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'PetID' => '0',
+                'PetID' => '1',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-06-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',
@@ -38,7 +38,7 @@ class TimelineSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'PetID' => '0',
+                'PetID' => '1',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-09-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',
@@ -46,7 +46,7 @@ class TimelineSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'PetID' => '0',
+                'PetID' => '1',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-12-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',
@@ -54,7 +54,7 @@ class TimelineSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'PetID' => '1',
+                'PetID' => '2',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-03-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',
@@ -62,7 +62,7 @@ class TimelineSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'PetID' => '1',
+                'PetID' => '2',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-06-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',
@@ -70,7 +70,7 @@ class TimelineSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'PetID' => '1',
+                'PetID' => '2',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-09-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',
@@ -78,7 +78,7 @@ class TimelineSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'PetID' => '1',
+                'PetID' => '2',
                 'Content' => 'Ngày 1, test 1',
                 'Date' => '2020-12-01',
                 'Image' => 'PetCasa/noimages_aaqvrt_opnyoy.png',

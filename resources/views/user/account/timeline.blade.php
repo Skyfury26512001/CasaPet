@@ -273,9 +273,10 @@
                                             {{--                                            <li><a href="#0" data-date="10/12/2014">10 Dec</a></li>--}}
                                             {{--                                            <li><a href="#0" data-date="19/01/2015">29 Jan</a></li>--}}
                                             {{--                                            <li><a href="#0" data-date="03/03/2015">3 Mar</a></li>--}}
-                                            @foreach($pets as $pet)
-                                                <li><a href="#0"
-                                                       data-date="{{date('d/m/y', strtotime($pet->Date))}}">{{date('d/m/y', strtotime($pet->Date))}}</a>
+                                            @foreach($pet->timelines as $timeline)
+                                                <li>
+                                                    <a href="#"
+                                                       data-date="{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
                                                 </li>
                                             @endforeach
                                         </ol>
@@ -295,12 +296,13 @@
                                     @foreach($pet->timelines as $timeline)
                                         <li class="selected" data-date="16/01/2014">
                                             <h5 style="color: #808080">{{$pet->Name}}</h5>
-                                            <em>January 16th, 2014</em>
+                                            <em>{{$timeline->Date}}</em>
                                             <div class="row">
                                                 <img
-                                                    src="https://res.cloudinary.com/dwarrion/image/upload/v1598727414/PetCasa/noimages_aaqvrt_opnyoy.png"
+                                                    src="{{$timeline->FirstThumbnail}}"
+                                                    class="col-lg-5"
                                                     alt="">
-                                                <p>
+                                                <p class="col-lg-7">
                                                     {{$timeline->Content}}
                                                 </p>
                                             </div>
