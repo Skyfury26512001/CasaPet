@@ -3,14 +3,10 @@
     Adoption Detail
 @endsection
 @section('specific_css')
-    <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">
+    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
     <style>
         .page {
             padding-bottom: unset;
-        }
-
-        li {
-            list-style: none;
         }
     </style>
 @endsection

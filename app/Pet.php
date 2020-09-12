@@ -63,4 +63,9 @@ class Pet extends Model
     {
         return $id_thumbnail . self::$link;
     }
+
+    public function timelines()
+    {
+        return $this->hasMany(Timeline::class, "PetID", 'id');
+    }
 }
