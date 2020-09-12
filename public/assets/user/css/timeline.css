@@ -1,169 +1,3 @@
-/*!* apply a natural box layout model to all elements, but allowing components to change *!*/
-/*html {*/
-/*    box-sizing: border-box;*/
-/*}*/
-
-/*img {*/
-/*    max-width: 100%;*/
-/*}*/
-
-/*.timeline {*/
-/*    text-align: center;*/
-/*}*/
-
-/*.timeline .year {*/
-/*    display: inline-block;*/
-/*    font-size: 36px;*/
-/*    font-weight: bold;*/
-/*    position: relative;*/
-/*}*/
-
-/*.timeline .year span {*/
-/*    display: inline-block;*/
-/*    padding-bottom: 6px;*/
-/*}*/
-
-/*.timeline .year span :after {*/
-/*    content: "";*/
-/*    display: block;*/
-/*    width: 80%;*/
-/*    margin: auto;*/
-/*    height: 1px;*/
-/*    background: #48A06A;*/
-/*}*/
-
-/*.timeline .year span .year--end:before {*/
-/*    content: "";*/
-/*    display: block;*/
-/*    width: 80%;*/
-/*    margin: auto;*/
-/*    height: 1px;*/
-/*    background: #48A06A;*/
-/*}*/
-
-/*.timeline .year span.year--end :after {*/
-/*    content: none;*/
-/*}*/
-
-/*.timeline .days {*/
-/*    list-style-type: none;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
-
-/*.timeline .days .day {*/
-/*    width: 100%;*/
-/*    float: left;*/
-/*}*/
-
-/*.timeline .days .events {*/
-/*    position: relative;*/
-/*    float: left;*/
-/*    border-right: 1px solid #48A06A;*/
-/*    padding: 30px;*/
-/*    text-align: right;*/
-/*    width: 50%;*/
-/*}*/
-
-/*.timeline .days .day .events:after {*/
-/*    content: "";*/
-/*    width: 40%;*/
-/*    display: inline-block;*/
-/*    height: 1px;*/
-
-/*    position: absolute;*/
-/*    right: 0;*/
-/*}*/
-
-/*.timeline .days .day .events:nth-child(odd):after {*/
-/*    content: "";*/
-/*    width: 40%;*/
-/*    display: inline-block;*/
-/*    height: 1px;*/
-
-/*    position: absolute;*/
-/*    !*right: 0;*!*/
-/*}*/
-
-/*.timeline .days .day .events .date {*/
-/*    position: absolute;*/
-/*    top: 50%;*/
-/*    left: 100%;*/
-/*    transform: translateY(-50%);*/
-
-/*    padding: 20px;*/
-/*    text-align: left;*/
-
-/*    color: #48A06A;*/
-/*    white-space: nowrap;*/
-/*}*/
-
-/*.timeline .days .day .events .day__img {*/
-/*    margin-right: -30px;*/
-/*    position: relative;*/
-/*    overflow: hidden;*/
-/*}*/
-
-/*.timeline .days .day .events .day__img img {*/
-/*    display: block;*/
-/*    float: right;*/
-/*}*/
-
-/*.timeline .days .day .events .day__img .caption {*/
-/*    position: absolute;*/
-/*    margin: 0;*/
-
-/*    bottom: 0;*/
-/*    right: 0;*/
-/*    padding: 20px;*/
-/*    background: #48A06A;*/
-/*    color: #fff;*/
-/*}*/
-
-/*.timeline .days .day:nth-child(odd) .events {*/
-/*    width: calc(50% + 1px);*/
-/*    float: right;*/
-/*    border-right: 0;*/
-/*    border-left: 1px solid #48A06A;*/
-/*    text-align: left;*/
-/*}*/
-
-/*.timeline .days .day:nth-child(odd) .events:after {*/
-/*    right: auto;*/
-/*    left: 0;*/
-/*}*/
-
-/*.timeline .days .day:nth-child(odd) .events .date {*/
-/*    left: auto;*/
-/*    right: 100%;*/
-/*    text-align: right;*/
-/*}*/
-
-/*.timeline .days .day:nth-child(odd) .events .day__img {*/
-/*    margin-right: auto;*/
-/*    margin-left: -30px;*/
-/*}*/
-
-/*.timeline .days .day:nth-child(odd) .events .day__img img {*/
-/*    float: left;*/
-/*}*/
-
-/*.timeline .days .day:nth-child(odd) .events .day__img .caption {*/
-/*    right: auto;*/
-/*    left: 0;*/
-/*}*/
-
-/*.facebook-comment {*/
-/*    text-align: center;*/
-/*}*/
-
-/*.border-footer {*/
-/*    border: 1px solid #e9e4e3;*/
-/*    margin: 10px 0;*/
-/*    width: 50%;*/
-/*    margin: auto;*/
-/*}*/
-
 /* --------------------------------
 
 Primary style
@@ -382,6 +216,7 @@ Primary style
     -ms-transform: translateY(-50%) rotate(180deg);
     -o-transform: translateY(-50%) rotate(180deg);
     transform: translateY(-50%) rotate(180deg);
+    transform-origin: unset;
 }
 
 .cd-timeline-navigation a.next {
@@ -481,10 +316,6 @@ Primary style
     display: block;
     font-style: italic;
     margin: 10px auto;
-}
-
-.cd-horizontal-timeline .events-content em::before {
-    content: '- ';
 }
 
 .cd-horizontal-timeline .events-content p {
@@ -592,3 +423,6 @@ Primary style
     }
 }
 
+li {
+    list-style: none;
+}

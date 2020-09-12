@@ -3,19 +3,22 @@
     Adoption Detail
 @endsection
 @section('specific_css')
-    <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">
+    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
     <style>
         .page {
             padding-bottom: unset;
         }
-
-        li {
-            list-style: none;
-        }
     </style>
 @endsection
 @section('specific_js')
-    <script src="{{asset('assets/user/js/timeline.js')}}"></script>
+    <script src="{{asset('assets/user/js/timeline.js')}}" rel="stylesheet"></script>
+    <script>
+        $(function () {
+            $('ol li:first-child').addClass('selected');
+            $('ol li:first-child a').addClass('selected');
+            $('span.filling-line').css('transform', 'scaleX(0.18739)')
+        });
+    </script>
 @endsection
 @section('content')
     <!-- Jumbotron -->
@@ -31,7 +34,7 @@
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="{{route('pet_list_adoption')}}">Nhận nuôi</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><a
-                            href="#">Chi
+                                href="#">Chi
                             tiết</a></li>
                 </ol>
             </nav>
@@ -121,7 +124,7 @@
                             {{$single_pet->Description}}
                         </p>
 
-                    @if($single_pet->Status == 1)
+                    @if($single_pet->Status == 2)
                         <!-- timeline start -->
                             <h3>Timeline</h3>
                             <section class="cd-horizontal-timeline" style="background-color: #f8f8f8">
@@ -129,44 +132,40 @@
                                     <div class="events-wrapper">
                                         <div class="events">
                                             <ol>
-                                                <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a>
-                                                </li>
-                                                <li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
-                                                <li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
-                                                <li><a href="#0" data-date="20/05/2014">20 May</a></li>
-                                                <li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
-                                                <li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
-                                                <li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
-                                                <li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
-                                                <li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
-                                                <li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
-                                                <li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
+                                                @foreach($single_pet->timelines as $timeline)
+                                                <li>
+                                                        <a href="#"
+                                                           data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
+                                                    </li>
+                                                @endforeach
                                             </ol>
-
                                             <span class="filling-line" aria-hidden="true"></span>
                                         </div> <!-- .events -->
                                     </div> <!-- .events-wrapper -->
 
                                     <ul class="cd-timeline-navigation">
-                                        <li><a href="#0" class="prev inactive">Prev</a></li>
-                                        <li><a href="#0" class="next">Next</a></li>
+                                        <li><a href="#" class="prev inactive">Prev</a></li>
+                                        <li><a href="#" class="next">Next</a></li>
                                     </ul> <!-- .cd-timeline-navigation -->
                                 </div> <!-- .timeline -->
 
                                 <div class="events-content">
                                     <ol>
-                                        <li class="selected" data-date="16/01/2014">
-                                            <h5 style="color: #808080">Horizontal Timeline</h5>
-                                            <em>January 16th, 2014</em>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                                praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                                adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                                dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                                reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                                quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                            </p>
-                                        </li>
+                                        @foreach($single_pet->timelines as $timeline)
+                                            <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
+                                                <h5 style="color: #808080">Cuộc sống của {{$single_pet->Name}}</h5>
+                                                <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
+                                                <div class="row">
+                                                    <img
+                                                            src="{{$timeline->FirstThumbnail}}"
+                                                            class="col-lg-5"
+                                                            alt="">
+                                                    <p class="col-lg-7">
+                                                        {{$timeline->Content}}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ol>
                                 </div> <!-- .events-content -->
                             </section>
@@ -188,11 +187,11 @@
              style="background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598789854/PetCasa/AdoptionPage/cat_fkhckl.jpg)">
             <div class="container block-padding">
                 <div
-                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                        class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
                     <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
                 </div>
                 <div
-                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                        class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
                     <a href="{{route('get_involed')}}" class="btn btn-primary"
                        aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
                 </div>
