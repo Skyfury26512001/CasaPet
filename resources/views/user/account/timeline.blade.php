@@ -9,11 +9,14 @@
         #upload_widget {
             margin: unset;
         }
+
+        :not(svg) {
+            transform-origin: unset;
+        }
     </style>
     <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
 @endsection
 @section('specific_js')
-    <script src="{{asset('assets/user/js/timeline.js')}}"></script>
     <!-- Boostrap Datepicker -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <script>
@@ -90,7 +93,14 @@
             let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
+
+        $(function () {
+            $('ol li:first-child').addClass('selected');
+            $('ol li:first-child a').addClass('selected');
+            $('span.filling-line').css('transform', 'scaleX(0.18739)')
+        });
     </script>
+    <script src="{{asset('assets/user/js/timeline.js')}}"></script>
 @endsection
 @section('content')
     <!-- ==== Page Content ==== -->
@@ -261,22 +271,10 @@
                                 <div class="events-wrapper">
                                     <div class="events">
                                         <ol>
-                                            {{--                                            <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a>--}}
-                                            {{--                                            </li>--}}
-                                            {{--                                            <li><a href="#0" data-date="28/02/2014">28 Feb</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="20/04/2014">20 Mar</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="20/05/2014">20 May</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="09/07/2014">09 Jul</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="30/08/2014">30 Aug</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="15/09/2014">15 Sep</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="01/11/2014">01 Nov</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="10/12/2014">10 Dec</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="19/01/2015">29 Jan</a></li>--}}
-                                            {{--                                            <li><a href="#0" data-date="03/03/2015">3 Mar</a></li>--}}
                                             @foreach($pet->timelines as $timeline)
                                                 <li>
                                                     <a href="#"
-                                                       data-date="{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
+                                                       data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
                                                 </li>
                                             @endforeach
                                         </ol>
@@ -294,9 +292,9 @@
                             <div class="events-content">
                                 <ol>
                                     @foreach($pet->timelines as $timeline)
-                                        <li class="selected" data-date="16/01/2014">
-                                            <h5 style="color: #808080">{{$pet->Name}}</h5>
-                                            <em>{{$timeline->Date}}</em>
+                                        <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
+                                            <h5 style="color: #808080">Cuộc sống của {{$pet->Name}}</h5>
+                                            <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
                                             <div class="row">
                                                 <img
                                                     src="{{$timeline->FirstThumbnail}}"
