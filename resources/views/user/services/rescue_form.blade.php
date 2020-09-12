@@ -74,6 +74,10 @@
             <div class="container bg-light-custom border-irregular1 block-padding">
                 <form id="rescue_form" class="form-group" method="POST" action="{{route('report_send')}}">
                     @csrf
+                    <div class="col-md-12">
+                        <p style="color: darkred">*Hãy điền thông tin vào form dưới đây hoặc gọi điện qua hotline 0123
+                            456 789 để được hỗ trợ kịp thời</p>
+                    </div>
                     <div class="row">
                         <div class="col-md-6" style="display: none">
                             <label>Loại đơn<span class="require"></span></label>
