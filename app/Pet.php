@@ -18,7 +18,7 @@ class Pet extends Model
 
     public function News()
     {
-        return $this->belongsToMany(Report::class, 'pet_new', 'pet_id', 'new_id');
+        return $this->belongsToMany(News::class, 'pet_new', 'Pet_id', 'New_id');
     }
 
     public function getArrayThumbnails450x450Attribute()
@@ -30,7 +30,7 @@ class Pet extends Model
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
-                array_push($list_photos, self::$link.$single);
+                array_push($list_photos, self::$link . $single);
             }
         }
         return $list_photos;

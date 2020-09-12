@@ -1,3 +1,4 @@
+Hoang, 8:10 PM
 @extends('user.layouts.master')
 @section('title')
     Adoption
@@ -97,7 +98,7 @@
             <div class="page col-sm-10 col-md-10 col-lg-10" data-aos="zoom-in">
                 <div class="pt-0 aos-init aos-animate">
                     <!-- First row: Adopt a pet -->
-                    <div class="row isotope" id="gallery-isotope">
+                    <div class="row">
                         <!-- Pet  -->
                         @foreach($pets as $pet)
                             <div class="{{$pet->Species}} col-md-6 col-xl-4 isotope-item" style="margin-top: 10px">

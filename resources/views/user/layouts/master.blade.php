@@ -8,8 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="We are woof">
     <meta name="author" content="PetCasa">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- page title -->
     <title>PetsCasa</title>
@@ -68,7 +66,7 @@
             right: 42px;
             transition: all 0.2s ease-in-out;
             z-index: 9999;
-            padding: 22px 10px;
+            padding: 10px 10px;
         }
 
         .button-sos:after {
@@ -89,6 +87,9 @@
             color: #ff8500;
         }
 
+        iframe {
+            width: 0;
+        }
     </style>
 
     @yield('specific_css')

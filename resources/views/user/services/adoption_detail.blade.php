@@ -116,81 +116,10 @@
                             {{$single_pet->Description}}
                         </p>
 
-                        @if($single_pet->Status == 1)
-                            <h3>Timeline</h3>
-                            {{--                            <div class="timeline">--}}
-                            {{--                                <div class="year">--}}
-                            {{--                                    <div class="inner">--}}
-                            {{--                                        <span>2016</span>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-
-                            {{--                                <ul class="days">--}}
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-                            {{--                                </ul>--}}
-
-                            {{--                                <div class="year year--end">--}}
-                            {{--                                    <div class="inner">--}}
-                            {{--                                        <span>2017</span>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="border-footer"></div>--}}
-                        @endif
+                        <h3>Các tin tức liên quan đến bé</h3>
+                        @foreach($single_pet->News as $new)
+                            <a href="{{route('single_new',$new->Slug)}}">{{$new->Title}}</a>
+                        @endforeach
                         <p class="custom-link"><a href="{{route('pet_list_adoption')}}">« Quay lại danh sách nhận
                                 nuôi</a>
                         </p>
