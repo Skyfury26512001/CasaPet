@@ -31,7 +31,9 @@
             if (this.value === 'Null') {
                 $('.tl').hide();
             } else {
-                $('.tl').show();
+                $('.tl').hide();
+                var id = this.value;
+                $(`#${id}`).show();
             }
         });
     </script>
@@ -266,49 +268,51 @@
                             </div>
                         </div>
                         <!-- timeline start -->
-                        <section class="cd-horizontal-timeline tl" style="background-color: #f8f8f8; display: none">
-                            <div class="timeline">
-                                <div class="events-wrapper">
-                                    <div class="events">
-                                        <ol>
-                                            @foreach($pet->timelines as $timeline)
-                                                <li>
-                                                    <a href="#"
-                                                       data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
-                                                </li>
-                                            @endforeach
-                                        </ol>
+                        @foreach($pets as $pet)
+                            <section class="cd-horizontal-timeline tl" style="background-color: #f8f8f8; display: none" id="{{$pet->id}}">
+                                <div class="timeline">
+                                    <div class="events-wrapper">
+                                        <div class="events">
+                                            <ol>
+                                                @foreach($pet->timelines as $timeline)
+                                                    <li>
+                                                        <a href="#"
+                                                           data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ol>
 
-                                        <span class="filling-line" aria-hidden="true"></span>
-                                    </div> <!-- .events -->
-                                </div> <!-- .events-wrapper -->
+                                            <span class="filling-line" aria-hidden="true"></span>
+                                        </div> <!-- .events -->
+                                    </div> <!-- .events-wrapper -->
 
-                                <ul class="cd-timeline-navigation">
-                                    <li><a href="#" class="prev inactive">Prev</a></li>
-                                    <li><a href="#" class="next">Next</a></li>
-                                </ul> <!-- .cd-timeline-navigation -->
-                            </div> <!-- .timeline -->
+                                    <ul class="cd-timeline-navigation">
+                                        <li><a href="#" class="prev inactive">Prev</a></li>
+                                        <li><a href="#" class="next">Next</a></li>
+                                    </ul> <!-- .cd-timeline-navigation -->
+                                </div> <!-- .timeline -->
 
-                            <div class="events-content">
-                                <ol>
-                                    @foreach($pet->timelines as $timeline)
-                                        <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
-                                            <h5 style="color: #808080">Cuộc sống của {{$pet->Name}}</h5>
-                                            <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
-                                            <div class="row">
-                                                <img
-                                                    src="{{$timeline->FirstThumbnail}}"
-                                                    class="col-lg-5"
-                                                    alt="">
-                                                <p class="col-lg-7">
-                                                    {{$timeline->Content}}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ol>
-                            </div> <!-- .events-content -->
-                        </section>
+                                <div class="events-content">
+                                    <ol>
+                                        @foreach($pet->timelines as $timeline)
+                                            <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
+                                                <h5 style="color: #808080">Cuộc sống của {{$pet->Name}}</h5>
+                                                <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
+                                                <div class="row">
+                                                    <img
+                                                            src="{{$timeline->FirstThumbnail}}"
+                                                            class="col-lg-5"
+                                                            alt="">
+                                                    <p class="col-lg-7">
+                                                        {{$timeline->Content}}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </div> <!-- .events-content -->
+                            </section>
+                        @endforeach
                         <!-- timeline end -->
                     </div>
                 </div>

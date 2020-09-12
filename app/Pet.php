@@ -66,6 +66,6 @@ class Pet extends Model
 
     public function timelines()
     {
-        return $this->hasMany(Timeline::class, "PetID", 'id');
+        return $this->hasMany(Timeline::class, "PetID", 'id')->orderBy('Date');
     }
 }
