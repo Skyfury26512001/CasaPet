@@ -21,10 +21,10 @@ class NewSeeder extends Seeder
         }
         $news = array(
             array(
-                'Slug'        => 'Cuu_ho_be_cun_bi_bo_roi_o_ha_noi',
-                'Title'       => 'Cứu hộ bé cún ghẻ bị bỏ rơi ở Hà Nội',
+                'Slug' => 'Cuu_ho_be_cun_bi_bo_roi_o_ha_noi',
+                'Title' => 'Cứu hộ bé cún ghẻ bị bỏ rơi ở Hà Nội',
                 'Category_id' => 1,
-                'Content'     => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.
+                'Content' => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.
                 <br>
                 <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/2_cljiwi.jpg" alt="">
                 <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/3_p2gcwj.jpg" alt="">
@@ -39,171 +39,144 @@ class NewSeeder extends Seeder
                 <br>
                 <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/6_fjrhdk.jpg" alt="">
                 ',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/1_aqok2f.jpg,PetCasa/NewThumbnails/2_cljiwi.jpg,PetCasa/NewThumbnails/3_p2gcwj.jpg,PetCasa/NewThumbnails/4_q7gufw.jpg,PetCasa/NewThumbnails/5_zpnmfg,PetCasa/NewThumbnails/6_fjrhdk.jpg',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/1_aqok2f.jpg,PetCasa/NewThumbnails/2_cljiwi.jpg,PetCasa/NewThumbnails/3_p2gcwj.jpg,PetCasa/NewThumbnails/4_q7gufw.jpg,PetCasa/NewThumbnails/5_zpnmfg,PetCasa/NewThumbnails/6_fjrhdk.jpg',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'Cuu_ho_be_cun_bi_bo_roi_o_ha_noi',
-                'Title'       => 'Cứu hộ bé cún ghẻ bị bỏ rơi ở Hà Nội',
+                'Slug' => 'Cuu_ho_chu_meo_muop_bi_co_doc_trong_doi_ret',
+                'Title' => 'Cứu hộ chú Mèo Mướp Bị Cô Độc Trong Đói Rét',
                 'Category_id' => 1,
-                'Content'     => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.
-                <br>
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/2_cljiwi.jpg" alt="">
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/3_p2gcwj.jpg" alt="">
-                <br>
-                Ngày ý tưởng ko cứu được nó. Nửa đêm nhờ tnv chạy ô tô lên Phú Thọ bắt chó vì sợ nó lang thang ngoài đường chết lạnh. 1h sáng đến nơi thì em báo tin ngủ quên. Mình ngồi nhà mò google map với gọi đt loạn lên mà ko biết địa điểm cụ thể ở đâu. Bạn tnv thang lang ko tìm được đường đành đi về. Chiều hôm sau 2h nhờ em Như với Nhung hai đứa đèo nhau bằng xe máy lên Phú Thọ bắt chó.. Lên đến nơi thì em chó nhát người, thế là 3 đứa chơi trò đuổi bắt nhau trên đó chắc cả tiếng đồng hồ. Bắt được thì kẹp 3 đi về đến Hn lúc 10h tối...! Cái Nhung ở trọ trong ký túc xá, về muộn quá ktx đóng cửa nên phải trèo tường vào  vừa buồn cười vừa thương....
-                <br>
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/5_zpnmfg.jpg" alt="">
-                <br>
-                Nhưng cuối cùng thì Thor nó cũng ko phụ công anh chị! Giờ vừa béo vừa đẹp trai, chỉ hiểu lệnh tiếng Anh chứ ko biết tiếng Việt sắp thành Việt kiều đến nơi rồi... Ước gì đứa nào cũng sướng được như nó..
-                <br>
-                Cùng xem thành quả của cả một tập thể, những tnv, các bác sĩ và mạnh thường quân nhé!! Chúng ta đã làm được!! Dù không nhiều nhưng sẽ luôn cố gắng!!
-                <br>
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/6_fjrhdk.jpg" alt="">
-                ',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/1_aqok2f.jpg,PetCasa/NewThumbnails/2_cljiwi.jpg,PetCasa/NewThumbnails/3_p2gcwj.jpg,PetCasa/NewThumbnails/4_q7gufw.jpg,PetCasa/NewThumbnails/5_zpnmfg,PetCasa/NewThumbnails/6_fjrhdk.jpg',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Content' => 'Trái tim bạn có xao động khi nhìn thấy vẻ mặt bi thương của chú mèo mướp Lionel bên trái không? Ngay cả khi đã được an toàn trong tay của những người yêu động vật, chú ta vẫn chưa hết lo sợ, hoảng hốt. Nhưng giờ thì sao nào, chàng đã được nuôi nấng ở trong một gia đình mới tràn đầy hạnh phúc, nơi mà cu cậu có thể thoải mái tận hưởng những giây phút an bình, không lo bị đánh đập, đói rét. Rồi thì bộ dạng ốm yếu ngày nào đã bị che lấp bởi mỡ và bộ lông dài dày mượt, thấy là muốn nựng liền!',
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/chu_meo_muop_bi_co_doc_trong_doi_ret_1_oyj1ee.png',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'Cuu_ho_be_cun_bi_bo_roi_o_ha_noi',
-                'Title'       => 'Cứu hộ bé cún ghẻ bị bỏ rơi ở Hà Nội',
+                'Slug' => 'Cuu_ho_be_meo_den_bi_bo_roi',
+                'Title' => 'Cứu hộ bé Mèo Đen Bị Bỏ Rơi',
                 'Category_id' => 1,
-                'Content'     => 'Hôm trước mình có đi lượn qua và thấy chú chó này đang bới rác để tìm thứ lót dạ. Lúc đầu nhìn thấy nó mình giật mình, bề ngoài đen thui, lông rụng gần hết, gầy gò ốm yếu, trên người còn có những vết thương nữa như kiểu bị chủ đánh đập rồi đem vứt đi vậy. Mình không nuôi thêm nó đc nên đành về nhà lấy đồ ăn rồi đem ra cho nó. Chiều ngay hôm đó đi ra xem tình hình chú chó thế nào thì không thấy nó đâu, chỉ thấy thêm 1 túi cơm nữa và mấy cái bánh bên cạnh nên Ngọc nghĩ có người đem nó về rồi. Ai ngờ hôm nay đi qua lại thấy chú chó nằm co rúm bên lề đường, người run rẩy. Ngọc với em họ lại về nhà lấy đồ ăn cho nó, còn không bt nếu tối nay trời mưa thì nó sẽ thế nào.
-                <br>
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/2_cljiwi.jpg" alt="">
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/3_p2gcwj.jpg" alt="">
-                <br>
-                Ngày ý tưởng ko cứu được nó. Nửa đêm nhờ tnv chạy ô tô lên Phú Thọ bắt chó vì sợ nó lang thang ngoài đường chết lạnh. 1h sáng đến nơi thì em báo tin ngủ quên. Mình ngồi nhà mò google map với gọi đt loạn lên mà ko biết địa điểm cụ thể ở đâu. Bạn tnv thang lang ko tìm được đường đành đi về. Chiều hôm sau 2h nhờ em Như với Nhung hai đứa đèo nhau bằng xe máy lên Phú Thọ bắt chó.. Lên đến nơi thì em chó nhát người, thế là 3 đứa chơi trò đuổi bắt nhau trên đó chắc cả tiếng đồng hồ. Bắt được thì kẹp 3 đi về đến Hn lúc 10h tối...! Cái Nhung ở trọ trong ký túc xá, về muộn quá ktx đóng cửa nên phải trèo tường vào  vừa buồn cười vừa thương....
-                <br>
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614318/PetCasa/NewThumbnails/5_zpnmfg.jpg" alt="">
-                <br>
-                Nhưng cuối cùng thì Thor nó cũng ko phụ công anh chị! Giờ vừa béo vừa đẹp trai, chỉ hiểu lệnh tiếng Anh chứ ko biết tiếng Việt sắp thành Việt kiều đến nơi rồi... Ước gì đứa nào cũng sướng được như nó..
-                <br>
-                Cùng xem thành quả của cả một tập thể, những tnv, các bác sĩ và mạnh thường quân nhé!! Chúng ta đã làm được!! Dù không nhiều nhưng sẽ luôn cố gắng!!
-                <br>
-                <img src="https://res.cloudinary.com/dwarrion/image/upload/c_scale,h_450,w_450/v1598614317/PetCasa/NewThumbnails/6_fjrhdk.jpg" alt="">
-                ',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/1_aqok2f.jpg,PetCasa/NewThumbnails/2_cljiwi.jpg,PetCasa/NewThumbnails/3_p2gcwj.jpg,PetCasa/NewThumbnails/4_q7gufw.jpg,PetCasa/NewThumbnails/5_zpnmfg,PetCasa/NewThumbnails/6_fjrhdk.jpg',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Content' => 'Người ta thường bỏ những chú tiểu hổ con vào thùng cạc-tông và lén để ở những nhà kho, bãi đất trống. Thường thì mấy bé sẽ bị chết do thiếu sữa mẹ, thức ăn, do lạnh, cóng, hiếm lắm mới có người nhìn thấy chúng và nhận nuôi. Thế nên việc chú thợ săn chuột tên Utopia trong ảnh trên là một trường hợp đặc biệt giữa rất nhiều đồng loại xấu số.
+<br>Ngày nào chú ta còn teo tóp, bé choắt, lông lá bết dính lại vì dầm mưa, mặt mũi thì tèm lem, may sao lại lọt vào tay một người chủ tốt bụng. Người ấy xem chú là một thành viên trong gia đình, tắm táp sạch sẽ, cho ăn uống đầy đủ. Giờ thì nhìn xem, béo tròn mũm mĩm đúng chuẩn hot boy luôn nhé!',
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/be_meo_den_bi_bo_roi_1_dc21z8.png',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'Gap_go_chu_meo_gay_bao_cong_dong_mang',
-                'Title'       => 'Gặp gỡ chú mèo gây bão cộng đồng mạng',
+                'Slug' => 'Gap_go_chu_meo_gay_bao_cong_dong_mang',
+                'Title' => 'Gặp gỡ chú mèo gây bão cộng đồng mạng',
                 'Category_id' => 2,
-                'Content'     => 'Thời gian qua nổi lên hình ảnh chú mèo tinh nghịch gây bão cộng đồng mang.
+                'Content' => 'Thời gian qua nổi lên hình ảnh chú mèo tinh nghịch gây bão cộng đồng mang.
                 Chủ của Carrot chia sẻ: “Một người bạn thân của tôi làm việc ở phòng khám thú y.
                 Vào một ngày nọ, có người tìm thấy Carrot ở ga tàu và mang nó đến phòng khám.
                 Carrot từng sống ở phòng khám thú y đó trong vài tuần, và bạn chúng tôi – người đang làm việc tại phòng khám – đã mang nó về căn hộ vào cuối tuần để có thể chăm sóc nó kĩ càng hơn.”',
-                'Author'      => 'Minh Chau',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/B-I9iTbHFY4-png__700_slg2pr.jpg,PetCasa/NewThumbnails/B_c0yQTHYMv-png__700_rotukv,PetCasa/NewThumbnails/B8pPj2dn1VN-png__700_bdbdjb',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'Minh Chau',
+                'Thumbnails' => 'PetCasa/NewThumbnails/B-I9iTbHFY4-png__700_slg2pr.jpg,PetCasa/NewThumbnails/B_c0yQTHYMv-png__700_rotukv,PetCasa/NewThumbnails/B8pPj2dn1VN-png__700_bdbdjb',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
 
             ),
             array(
-                'Slug'        => 'nhung_boss_meo_voi_nhung_chiec_dem_cua_chung',
-                'Title'       => 'Những Boss Mèo Cùng Chiếc Đệm Đáng Yêu Của Chúng',
+                'Slug' => 'nhung_boss_meo_voi_nhung_chiec_dem_cua_chung',
+                'Title' => 'Những Boss Mèo Cùng Chiếc Đệm Đáng Yêu Của Chúng',
                 'Category_id' => 2,
-                'Content'     => 'Có rất nhiều trò giải trí thú vị trong thời gian giãn cách xã hội: một số người sẽ dành thời gian xem Netflix, một số người lại dùng thời gian đó để theo đuổi những sở thích của họ hoặc thử sức làm những đồ thủ công mới. Và cũng trong khoảng thời gian này, mọi người nhận ra rằng họ có thể làm được rất nhiều thứ chỉ với vài cuộn len và trí tưởng tượng bay xa. Nếu bạn có niềm đam mê may vá hay bạn là fan hâm mộ của những chú mèo, hãy xem những bức ảnh dưới đây và thử sức may những chiếc đệm xinh xắn cho chúng nhé!
+                'Content' => 'Có rất nhiều trò giải trí thú vị trong thời gian giãn cách xã hội: một số người sẽ dành thời gian xem Netflix, một số người lại dùng thời gian đó để theo đuổi những sở thích của họ hoặc thử sức làm những đồ thủ công mới. Và cũng trong khoảng thời gian này, mọi người nhận ra rằng họ có thể làm được rất nhiều thứ chỉ với vài cuộn len và trí tưởng tượng bay xa. Nếu bạn có niềm đam mê may vá hay bạn là fan hâm mộ của những chú mèo, hãy xem những bức ảnh dưới đây và thử sức may những chiếc đệm xinh xắn cho chúng nhé!
 Những tác phẩm mà câu lạc bộ “may vá” chia sẻ đã thu hút sự chú ý của cộng đồng mạng trong thời gian gần đây. Mời các sen cùng ngắm nhìn những chiếc đệm này và lên ý tưởng may chiếc giường mới cho các boss nhà mình nhé!”',
-                'Author'      => 'Minh Chau',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai2-2_f7xkh4,PetCasa/NewThumbnails/bai2-4_joianb,PetCasa/NewThumbnails/bai2-3_ylxokm,PetCasa/NewThumbnails/bai2-1_qvmhrb',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'Minh Chau',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai2-2_f7xkh4,PetCasa/NewThumbnails/bai2-4_joianb,PetCasa/NewThumbnails/bai2-3_ylxokm,PetCasa/NewThumbnails/bai2-1_qvmhrb',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
 
             ),
             array(
-                'Slug'        => 'chuyen_gia_phan_bac_kha_nang_cho_nhiem_nCov',
-                'Title'       => 'Chuyên gia phản bác khả năng chó nhiễm nCov',
+                'Slug' => 'chuyen_gia_phan_bac_kha_nang_cho_nhiem_nCov',
+                'Title' => 'Chuyên gia phản bác khả năng chó nhiễm nCov',
                 'Category_id' => 2,
-                'Content'     => 'Các chuyên gia bác bỏ thông tin thú cưng có thể nhiễm virus corona và truyền sang người, cho rằng hiện chưa có đủ bằng chứng để kết luận điều này.
+                'Content' => 'Các chuyên gia bác bỏ thông tin thú cưng có thể nhiễm virus corona và truyền sang người, cho rằng hiện chưa có đủ bằng chứng để kết luận điều này.
 Các báo cáo tuần trước cho thấy một chú chó cưng ở Hong Kong dương tính yếu với virus corona. Chú chó thuộc giống chó phốc sóc Pomeranian được coi là một bệnh nhân nhiễm Covid-19. Chú chó sau đó xét nghiệm thêm vào ngày 29/2 để xem liệu có thực sự bị nhiễm bệnh hay không.
 Tổ chức Y tế Thế giới (WHO) và chính quyền Hong Kong tiến hành hợp tác ngay sau khi cơ quan y tế đặc khu đưa ra cảnh báo vào ngày 28/2, chó mèo hoặc bất cứ động vật có vú nào khác, gọi chung là thú cưng của bệnh nhân nhiễm Covid-19 đều cần được kiểm dịch.
 Trước thông tin đó, các chuyên gia ở Anh cho biết, chó cưng không thể nào bị nhiễm Covid-19. Lời giải thích cho vấn đề này là có thể chú chó đã có kết quả \'dương tính giả\' do tiếp xúc gần gũi với người nhiễm Covid-19 hoặc từng chạm vào virus corona.
 Giới chức y tế Hong Kong cũng cho biết không có triệu chứng nào cho thấy chú chó đã nhiễm nCoV. Do đó nhận định thú cưng có khả năng nhiễm Covid-19 được coi là chưa đủ căn cứ xác thực. Cục Nông nghiệp, Ngư nghiệp và Bảo tồn đặc khu cũng cho biết hiện không bằng chứng nào cho thấy chó có thể bị nhiễm hoặc truyền virus corona sang người.
 Tuy vậy, một phát ngôn viên của Cục Nông nghiệp, Ngư nghiệp và Bảo tồn Hong Kong (AFCD) nhận định: "Để đảm bảo bảo sức khỏe cộng đồng và động vật nói chung, thú cưng của bệnh nhân Covid-19 cần được cách ly, kiểm tra chặt chẽ bởi AFCD".
 WHO cũng cho biết, họ đang làm việc với các cơ quan đối tác về sức khỏe con người và động vật, chờ đợi kết quả các cuộc xét nghiệm tiếp theo trên thú cưng từ Hong Kong. Tổng giám đốc WHO, ông Tedros Adhanom Ghebreyesus cho biết vật nuôi ở trong gia đình không thể truyền bệnh cho con người.',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai5-3_pxarye',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai5-3_pxarye',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'so-huu-luot-nguoi-theo-doi-khung-tren-mxh--meo-mat-lac-gay-quy-tu-thien-gan-300-trieu-chi-nho-ban-hinh-anh-cua-minh',
-                'Title'       => 'Sở hữu lượt người theo dõi khủng trên MXH, \'mèo mắt lác\' gây quỹ từ thiện gần 300 triệu chỉ nhờ bán hình ảnh của mình',
+                'Slug' => 'so-huu-luot-nguoi-theo-doi-khung-tren-mxh--meo-mat-lac-gay-quy-tu-thien-gan-300-trieu-chi-nho-ban-hinh-anh-cua-minh',
+                'Title' => 'Sở hữu lượt người theo dõi khủng trên MXH, \'mèo mắt lác\' gây quỹ từ thiện gần 300 triệu chỉ nhờ bán hình ảnh của mình',
                 'Category_id' => 2,
-                'Content'     => 'Chú mèo giống Nebelung tên là Belarus này mắc phải hội chứng strabismus hay lé mắt, điều khiến nó có một đôi mắt đặc biệt hết sức. Và hơn hết, chính nhờ vẻ ngoài này mà Belarus đã "đánh cắp" trái tim của nhiều người yêu mèo trên toàn thế giới. Tài khoản Instagram của chú mèo này lên tới hơn 254.000 người theo dõi.
+                'Content' => 'Chú mèo giống Nebelung tên là Belarus này mắc phải hội chứng strabismus hay lé mắt, điều khiến nó có một đôi mắt đặc biệt hết sức. Và hơn hết, chính nhờ vẻ ngoài này mà Belarus đã "đánh cắp" trái tim của nhiều người yêu mèo trên toàn thế giới. Tài khoản Instagram của chú mèo này lên tới hơn 254.000 người theo dõi.
                 Sau khi, bức ảnh của Belarus tại Trung tâm kiểm soát và chăm sóc động vật ở San Francisco (SFACC) trở nên nổi tiếng vào tháng 6 năm 2018. Rachel đã đến nhận nuôi nó. "Khi lần đầu tiên nhìn thấy nó, tôi chắc chắn rằng đây là con mèo hài hước, đáng yêu nhất mà tôi từng thấy. Dù chưa từng là một người yêu mèo, nhưng tôi nghĩ đây là một chú mèo tuyệt vời. Sau đó, tôi đã cho gia đình của mình xem ảnh và phản ứng của họ cũng như vậy. Họ nói tôi nên đến nhận nuôi chú mèo này." - Rachel chia sẻ, cô cho biết Belarus có sở thích chơi với bóng, ngồi chờ đồ ăn và nhìn 2 hướng cùng một lúc.
                 Rachel lớn lên trong một ngôi nhà có đủ các loài động vật, bao gồm thỏ, vẹt, chuột hamster. Tuy nhiên, cô đã quyết định đưa chú chó của mình đến sống cùng với gia đình mình sau đó nhận nuôi Belarus. Được biết, chú mèo này đã bị bỏ lại ở SFACC vì chủ cũ của nó gặp vấn đề với chủ cho thuê nhà.
 Ngoài việc mắc chứng mắt lé, Belarus có rất ít vấn đề về thị lực, thỉnh thoảng nó có nhúng chân vào bát nước uống. "Nó không khác những con mèo bình thường khác là bao. Luôn tò mò và thích khám phá không gian sống của mình." - Rachel nói. Đồ chơi yêu thích của nó là bóng và nơ, đặc biệt nó có thói quen chôn cà phê và một số thứ "nặng mùi" khác.
 Và cũng nhờ chính vẻ ngoài kỳ lạ của Belarus mà nó đã gây quỹ được 12.000 đô la Mỹ (khoảng 277 triệu VNĐ) nhờ việc bán áo in hình ảnh của mình trên mạng. Số tiền này được ủng hộ đến các quỹ từ thiện. "Năm ngoái chúng tôi đã ủng hộ được 6.000 đô la Mỹ cho các nơi chăm sóc, trong đó 4.000 đô la Mỹ được gửi cho SFACC - nơi đã cưu mang Belarus, 1.000 đô la Mỹ cho nhóm phản ứng cộng đồng động vật Sonoma vì những nỗ lực giải cứu động vật của họ. Và 1.000 đô la Mỹ cho thị trấn mèo ở Oakland." - Rachel cho biết, cô cũng nói thêm rằng toàn bộ lợi nhuận từ việc kinh doanh hình ảnh đều được ủng hộ cho các tổ chức cứu trợ.',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai6-2_z0bt6l,
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai6-2_z0bt6l,
 PetCasa/NewThumbnails/bai6-1_lv8xgo,
 PetCasa/NewThumbnails/bai6-3_fq0kzs',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'vi_sao_meo_khong_ngu_ve_dem',
-                'Title'       => 'Vì Sao Mèo Không Ngủ Về Đêm?',
+                'Slug' => 'vi_sao_meo_khong_ngu_ve_dem',
+                'Title' => 'Vì Sao Mèo Không Ngủ Về Đêm?',
                 'Category_id' => 2,
-                'Content'     => 'Các chú mèo hay có thói quen kì quặc là rất hay phá phách, thậm chí đánh thức bạn trong đêm. Có một số lí do và cả giải pháp để giải quyết vấn đề có vẻ nan giải này!
+                'Content' => 'Các chú mèo hay có thói quen kì quặc là rất hay phá phách, thậm chí đánh thức bạn trong đêm. Có một số lí do và cả giải pháp để giải quyết vấn đề có vẻ nan giải này!
                 Sử dụng các hình phạt hay la mắng chỉ khiến chú mèo kém nghe lời hơn. Thay vào đó, bạn có thể dành năng lượng để đầu tư vào các hoạt động thường ngày và tình cảm dành cho chúng. Chắc hẳn các em mèo sẽ không còn nỡ quấy rối giấc ngủ của một người chủ dễ thương và tâm lí như bạn!',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai7-1_nnrcc9.jpg,PetCasa/NewThumbnails/bai7_rcmbrx',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai7-1_nnrcc9.jpg,PetCasa/NewThumbnails/bai7_rcmbrx',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
 
             ),
             array(
-                'Slug'        => 'chuyen_gia_phan_bac_kha_nang_cho_nhiem_nCov',
-                'Title'       => 'Chuyên gia phản bác khả năng chó nhiễm nCov',
+                'Slug' => 'chuyen_gia_phan_bac_kha_nang_cho_nhiem_nCov',
+                'Title' => 'Chuyên gia phản bác khả năng chó nhiễm nCov',
                 'Category_id' => 2,
-                'Content'     => 'Các chuyên gia bác bỏ thông tin thú cưng có thể nhiễm virus corona và truyền sang người, cho rằng hiện chưa có đủ bằng chứng để kết luận điều này.
+                'Content' => 'Các chuyên gia bác bỏ thông tin thú cưng có thể nhiễm virus corona và truyền sang người, cho rằng hiện chưa có đủ bằng chứng để kết luận điều này.
 Các báo cáo tuần trước cho thấy một chú chó cưng ở Hong Kong dương tính yếu với virus corona. Chú chó thuộc giống chó phốc sóc Pomeranian được coi là một bệnh nhân nhiễm Covid-19. Chú chó sau đó xét nghiệm thêm vào ngày 29/2 để xem liệu có thực sự bị nhiễm bệnh hay không.
 Tổ chức Y tế Thế giới (WHO) và chính quyền Hong Kong tiến hành hợp tác ngay sau khi cơ quan y tế đặc khu đưa ra cảnh báo vào ngày 28/2, chó mèo hoặc bất cứ động vật có vú nào khác, gọi chung là thú cưng của bệnh nhân nhiễm Covid-19 đều cần được kiểm dịch.
 Trước thông tin đó, các chuyên gia ở Anh cho biết, chó cưng không thể nào bị nhiễm Covid-19. Lời giải thích cho vấn đề này là có thể chú chó đã có kết quả \'dương tính giả\' do tiếp xúc gần gũi với người nhiễm Covid-19 hoặc từng chạm vào virus corona.
 Giới chức y tế Hong Kong cũng cho biết không có triệu chứng nào cho thấy chú chó đã nhiễm nCoV. Do đó nhận định thú cưng có khả năng nhiễm Covid-19 được coi là chưa đủ căn cứ xác thực. Cục Nông nghiệp, Ngư nghiệp và Bảo tồn đặc khu cũng cho biết hiện không bằng chứng nào cho thấy chó có thể bị nhiễm hoặc truyền virus corona sang người.
 Tuy vậy, một phát ngôn viên của Cục Nông nghiệp, Ngư nghiệp và Bảo tồn Hong Kong (AFCD) nhận định: "Để đảm bảo bảo sức khỏe cộng đồng và động vật nói chung, thú cưng của bệnh nhân Covid-19 cần được cách ly, kiểm tra chặt chẽ bởi AFCD".
 WHO cũng cho biết, họ đang làm việc với các cơ quan đối tác về sức khỏe con người và động vật, chờ đợi kết quả các cuộc xét nghiệm tiếp theo trên thú cưng từ Hong Kong. Tổng giám đốc WHO, ông Tedros Adhanom Ghebreyesus cho biết vật nuôi ở trong gia đình không thể truyền bệnh cho con người.',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai5-3_pxarye',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai5-3_pxarye',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => '10_su_that_it_ai_biet_ve_meo',
-                'Title'       => '10 sự thật ít ai biết về mèo',
+                'Slug' => '10_su_that_it_ai_biet_ve_meo',
+                'Title' => '10 sự thật ít ai biết về mèo',
                 'Category_id' => 3,
-                'Content'     => 'Hiện nay có rất nhiều bạn nuôi và yêu quý vật nuôi như thành viên trong gia đình. Bài viết này chúng tôi sẽ cung cấp cho các bạn 10 sự thật thú vị về loài mèo',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai5-1_etkt2x.jpg,PetCasa/NewThumbnails/bai5_vyywfi',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Content' => 'Hiện nay có rất nhiều bạn nuôi và yêu quý vật nuôi như thành viên trong gia đình. Bài viết này chúng tôi sẽ cung cấp cho các bạn 10 sự thật thú vị về loài mèo',
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai5-1_etkt2x.jpg,PetCasa/NewThumbnails/bai5_vyywfi',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
 
             ),
             array(
-                'Slug'        => 'cham_soc_dinh_duong_cho_cho_husky',
-                'Title'       => 'Chăm Sóc Dinh Dưỡng Cho Chó Husky',
+                'Slug' => 'cham_soc_dinh_duong_cho_cho_husky',
+                'Title' => 'Chăm Sóc Dinh Dưỡng Cho Chó Husky',
                 'Category_id' => 3,
-                'Content'     => 'Husky là giống chó lao động nên cần nhiều năng lượng để tiêu thụ mỗi ngày. Vì vậy việc thiết lập cho cún một chế độ dinh dưỡng khoa học là rất cần thiết. Những kinh nghiệm dưới đây sẽ giúp bạn hiểu vấn đề ăn uống của Husky để chăm sóc cún một cách toàn diện.<br>
+                'Content' => 'Husky là giống chó lao động nên cần nhiều năng lượng để tiêu thụ mỗi ngày. Vì vậy việc thiết lập cho cún một chế độ dinh dưỡng khoa học là rất cần thiết. Những kinh nghiệm dưới đây sẽ giúp bạn hiểu vấn đề ăn uống của Husky để chăm sóc cún một cách toàn diện.<br>
 <h3><strong>Thói quen ăn uống của chó Husky</strong></h3><br>
 Husky thường để mắt đến lượng thức ăn trong bát. Nhưng cún sẽ không ăn nếu không đói, ngay cả khi đồ ăn trước mặt có hấp dẫn đến đâu. Tuy nhiên, nếu cường độ tập thể dục nhiều hơn thì cún sẽ có xu hướng ăn nhiều hơn. Cơ thể Husky có sự trao đổi chất cao và biết cách sử dụng chất dinh dưỡng. Cho cún ăn thức ăn chất lượng trong khoảng từ 2 đến 9 tháng tuổi là rất quan trọng. Bạn cần lưu ý đây là giai đoạn tăng trưởng chính của loài chó này. <br>
 <h3><strong>Tần suất bữa ăn của Husky</strong></h3><br>
@@ -214,58 +187,58 @@ Tốt nhất, các món ăn nên chứa protein, carbohydrate, vitamin và chấ
 <h3><strong>Phải làm gì nếu Husky chán thức ăn?</strong></h3><br>
 Có nhiều lý do đằng sau vấn đề chán ăn của Husky. Có thể bạn đang cho cún ăn cùng một loại thức ăn trong các bữa ăn hàng ngày, khiến cún thấy nhàm chán. Bạn nên thay đổi đa dạng các món ăn để hấp dẫn vị giác của Husky. Thỉnh thoảng, cung cấp cho cún vài miếng thịt hoặc pho mát. Đồng thời, bổ sung thêm bữa phụ để kích thích tiêu hoá, giúp cún ăn ngon hơn. <br>
 ',
-                'Author'      => 'Hoang Tran',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/dinh-duong-husky-1_hl3sua,PetCasa/NewThumbnails/dinh-duong-husky-2_x7undo,PetCasa/NewThumbnails/dinh-duong-husky-3_q28k30,PetCasa/NewThumbnails/dinh-duong-husky-4_gon9om,PetCasa/NewThumbnails/dinh-duong-husky-5_srphhq',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'Hoang Tran',
+                'Thumbnails' => 'PetCasa/NewThumbnails/dinh-duong-husky-1_hl3sua,PetCasa/NewThumbnails/dinh-duong-husky-2_x7undo,PetCasa/NewThumbnails/dinh-duong-husky-3_q28k30,PetCasa/NewThumbnails/dinh-duong-husky-4_gon9om,PetCasa/NewThumbnails/dinh-duong-husky-5_srphhq',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'vi_sao_meo_khong_ngu_ve_dem',
-                'Title'       => 'Vì Sao Mèo Không Ngủ Về Đêm?',
+                'Slug' => 'vi_sao_meo_khong_ngu_ve_dem',
+                'Title' => 'Vì Sao Mèo Không Ngủ Về Đêm?',
                 'Category_id' => 3,
-                'Content'     => 'Các chú mèo hay có thói quen kì quặc là rất hay phá phách, thậm chí đánh thức bạn trong đêm. Có một số lí do và cả giải pháp để giải quyết vấn đề có vẻ nan giải này!
+                'Content' => 'Các chú mèo hay có thói quen kì quặc là rất hay phá phách, thậm chí đánh thức bạn trong đêm. Có một số lí do và cả giải pháp để giải quyết vấn đề có vẻ nan giải này!
                 Sử dụng các hình phạt hay la mắng chỉ khiến chú mèo kém nghe lời hơn. Thay vào đó, bạn có thể dành năng lượng để đầu tư vào các hoạt động thường ngày và tình cảm dành cho chúng. Chắc hẳn các em mèo sẽ không còn nỡ quấy rối giấc ngủ của một người chủ dễ thương và tâm lí như bạn!',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai7-1_nnrcc9.jpg,PetCasa/NewThumbnails/bai7_rcmbrx',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai7-1_nnrcc9.jpg,PetCasa/NewThumbnails/bai7_rcmbrx',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'vi_sao_meo_khong_ngu_ve_dem',
-                'Title'       => 'Vì Sao Mèo Không Ngủ Về Đêm?',
+                'Slug' => 'vi_sao_meo_khong_ngu_ve_dem',
+                'Title' => 'Vì Sao Mèo Không Ngủ Về Đêm?',
                 'Category_id' => 3,
-                'Content'     => 'Các chú mèo hay có thói quen kì quặc là rất hay phá phách, thậm chí đánh thức bạn trong đêm. Có một số lí do và cả giải pháp để giải quyết vấn đề có vẻ nan giải này!
+                'Content' => 'Các chú mèo hay có thói quen kì quặc là rất hay phá phách, thậm chí đánh thức bạn trong đêm. Có một số lí do và cả giải pháp để giải quyết vấn đề có vẻ nan giải này!
                 Sử dụng các hình phạt hay la mắng chỉ khiến chú mèo kém nghe lời hơn. Thay vào đó, bạn có thể dành năng lượng để đầu tư vào các hoạt động thường ngày và tình cảm dành cho chúng. Chắc hẳn các em mèo sẽ không còn nỡ quấy rối giấc ngủ của một người chủ dễ thương và tâm lí như bạn!',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai7-1_nnrcc9.jpg,PetCasa/NewThumbnails/bai7_rcmbrx',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai7-1_nnrcc9.jpg,PetCasa/NewThumbnails/bai7_rcmbrx',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'chuyen_gia_phan_bac_kha_nang_cho_nhiem_nCov',
-                'Title'       => 'Chuyên gia phản bác khả năng chó nhiễm nCov',
+                'Slug' => 'chuyen_gia_phan_bac_kha_nang_cho_nhiem_nCov',
+                'Title' => 'Chuyên gia phản bác khả năng chó nhiễm nCov',
                 'Category_id' => 3,
-                'Content'     => 'Các chuyên gia bác bỏ thông tin thú cưng có thể nhiễm virus corona và truyền sang người, cho rằng hiện chưa có đủ bằng chứng để kết luận điều này.
+                'Content' => 'Các chuyên gia bác bỏ thông tin thú cưng có thể nhiễm virus corona và truyền sang người, cho rằng hiện chưa có đủ bằng chứng để kết luận điều này.
 Các báo cáo tuần trước cho thấy một chú chó cưng ở Hong Kong dương tính yếu với virus corona. Chú chó thuộc giống chó phốc sóc Pomeranian được coi là một bệnh nhân nhiễm Covid-19. Chú chó sau đó xét nghiệm thêm vào ngày 29/2 để xem liệu có thực sự bị nhiễm bệnh hay không.
 Tổ chức Y tế Thế giới (WHO) và chính quyền Hong Kong tiến hành hợp tác ngay sau khi cơ quan y tế đặc khu đưa ra cảnh báo vào ngày 28/2, chó mèo hoặc bất cứ động vật có vú nào khác, gọi chung là thú cưng của bệnh nhân nhiễm Covid-19 đều cần được kiểm dịch.
 Trước thông tin đó, các chuyên gia ở Anh cho biết, chó cưng không thể nào bị nhiễm Covid-19. Lời giải thích cho vấn đề này là có thể chú chó đã có kết quả \'dương tính giả\' do tiếp xúc gần gũi với người nhiễm Covid-19 hoặc từng chạm vào virus corona.
 Giới chức y tế Hong Kong cũng cho biết không có triệu chứng nào cho thấy chú chó đã nhiễm nCoV. Do đó nhận định thú cưng có khả năng nhiễm Covid-19 được coi là chưa đủ căn cứ xác thực. Cục Nông nghiệp, Ngư nghiệp và Bảo tồn đặc khu cũng cho biết hiện không bằng chứng nào cho thấy chó có thể bị nhiễm hoặc truyền virus corona sang người.
 Tuy vậy, một phát ngôn viên của Cục Nông nghiệp, Ngư nghiệp và Bảo tồn Hong Kong (AFCD) nhận định: "Để đảm bảo bảo sức khỏe cộng đồng và động vật nói chung, thú cưng của bệnh nhân Covid-19 cần được cách ly, kiểm tra chặt chẽ bởi AFCD".
 WHO cũng cho biết, họ đang làm việc với các cơ quan đối tác về sức khỏe con người và động vật, chờ đợi kết quả các cuộc xét nghiệm tiếp theo trên thú cưng từ Hong Kong. Tổng giám đốc WHO, ông Tedros Adhanom Ghebreyesus cho biết vật nuôi ở trong gia đình không thể truyền bệnh cho con người.',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai5-3_pxarye',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai5-3_pxarye',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'co_nen_nuoi_cho_hay_khong_khi_ban_qua_ban_ron',
-                'Title'       => 'Có Nên Nuôi Chó Hay Không Khi Bạn Quá Bận Rộn?',
+                'Slug' => 'co_nen_nuoi_cho_hay_khong_khi_ban_qua_ban_ron',
+                'Title' => 'Có Nên Nuôi Chó Hay Không Khi Bạn Quá Bận Rộn?',
                 'Category_id' => 3,
-                'Content'     => 'Chó là một trong những loại động vật có đặc tính xã hội, vì vậy theo quy luật chung, chúng sẽ cảm thấy vui vẻ, hạnh phúc nhất chính là khi được ở cạnh bên những thành viên thân thiết trong gia đình của mình. Rất nhiều chú chó đã hình thành một sợi dây gắn bó tình cảm sâu sắc với người chủ đến nỗi chúng trở nên đặc biệt lo lắng, sợ hãi và cảm thấy không an toàn khi người chủ ra khỏi nhà. Hơn nữa, các cún cưng cũng sẽ cảm thấy rất buồn chán, nhất là khi chúng phải ở một mình trong khoảng thời gian quá dài. Và điều này có thể dẫn đến một số vấn đề khiến bạn phải lo lắng.
+                'Content' => 'Chó là một trong những loại động vật có đặc tính xã hội, vì vậy theo quy luật chung, chúng sẽ cảm thấy vui vẻ, hạnh phúc nhất chính là khi được ở cạnh bên những thành viên thân thiết trong gia đình của mình. Rất nhiều chú chó đã hình thành một sợi dây gắn bó tình cảm sâu sắc với người chủ đến nỗi chúng trở nên đặc biệt lo lắng, sợ hãi và cảm thấy không an toàn khi người chủ ra khỏi nhà. Hơn nữa, các cún cưng cũng sẽ cảm thấy rất buồn chán, nhất là khi chúng phải ở một mình trong khoảng thời gian quá dài. Và điều này có thể dẫn đến một số vấn đề khiến bạn phải lo lắng.
 <br>Bạn có nên nhận nuôi một chú chó hay không?
 <br>Trước khi đưa ra một quyết định khá quan trọng là nhận nuôi một chú chó, bạn cần cân nhắc về mong muốn cũng như điều kiện của bản thân mình và cũng không thể bỏ qua việc xem xét tới nhu cầu thiết yếu của các chú chó. Bạn nên suy nghĩ thật kỹ xem liệu mình có thể chăm sóc tốt cho chú cún của mình và có được những khoảng thời gian vui vẻ, hạnh phúc cho cả bạn lẫn chó cưng hay không.
 <br>Hầu hết các chú cún đều có nhu cầu được bầu bạn và như vậy chúng mới cảm thấy vui vẻ, thoải mái. Do đó, việc bạn để chó cưng ở lại một mình trong thời gian dài không phải là một điều tốt cho chúng. Một số giống chó có nhu cầu bầu bạn lớn hoặc ưa thích hoạt động sẽ cảm thấy quãng thời gian một mình đấy vô cùng khó khăn và căng thẳng. Ngoài ra, bạn cũng không thể quên rằng phần lớn các chú chó cứ cách khoảng 4 giờ lại cần đi vệ sinh. Nếu cún cưng của bạn không thể ra ngoài để tới khu vực quy định, chúng sẽ buộc phải “giải quyết” trong nhà hoặc cố gắng nhịn và việc này có thể gây ra những ảnh hưởng về mặt sức khỏe của cún.
@@ -295,17 +268,17 @@ WHO cũng cho biết, họ đang làm việc với các cơ quan đối tác v�
 <br>-  Chia nhỏ bữa ăn của cún thành nhiều phần và giấu ở những nơi khác nhau trước khi bạn rời đi. Chó cưng chắc chắn sẽ có khoảng thời gian thú vị khi tìm kiếm đồ ăn của mình trong lúc bạn đi làm. Bạn hãy cố gắng làm mới trò chơi này bằng cách mỗi ngày sẽ giấu đồ ăn ở những nơi khác nhau hoặc ở một vài chỗ đặc biệt. Điều này sẽ hấp dẫn hầu hết các chú chó và khiến chúng vui vẻ.
 <br>-  Chuẩn bị sẵn đồ chơi gặm nhấm cho cún cưng. Các chú chó ở bất kỳ độ tuổi nào cũng đều thích nhai đồ, dù là những chú chó hoang hay những cún cưng nuôi trong các gia đình. Hành động này giúp bộ hàm của chúng cứng cáp hơn và làm sạch răng. Ngoài ra, việc gặm nhấm cũng khiến chúng cảm thấy vui vẻ và làm giảm những căng thẳng, lo âu. Dù chú chó của bạn còn nhỏ hay đã nhiều tuổi, việc cung cấp cho chúng một số loại đồ chơi gặm nhấm phù hợp luôn là một vấn đề quan trọng mà bạn nên chú ý.
 ',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai3_vwgyve',
-                'Status'      => 1,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai3_vwgyve',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'co_nen_nuoi_cho_hay_khong_khi_ban_qua_ban_ron',
-                'Title'       => 'Có Nên Nuôi Chó Hay Không Khi Bạn Quá Bận Rộn?',
+                'Slug' => 'co_nen_nuoi_cho_hay_khong_khi_ban_qua_ban_ron',
+                'Title' => 'Có Nên Nuôi Chó Hay Không Khi Bạn Quá Bận Rộn?',
                 'Category_id' => 3,
-                'Content'     => 'Chó là một trong những loại động vật có đặc tính xã hội, vì vậy theo quy luật chung, chúng sẽ cảm thấy vui vẻ, hạnh phúc nhất chính là khi được ở cạnh bên những thành viên thân thiết trong gia đình của mình. Rất nhiều chú chó đã hình thành một sợi dây gắn bó tình cảm sâu sắc với người chủ đến nỗi chúng trở nên đặc biệt lo lắng, sợ hãi và cảm thấy không an toàn khi người chủ ra khỏi nhà. Hơn nữa, các cún cưng cũng sẽ cảm thấy rất buồn chán, nhất là khi chúng phải ở một mình trong khoảng thời gian quá dài. Và điều này có thể dẫn đến một số vấn đề khiến bạn phải lo lắng.
+                'Content' => 'Chó là một trong những loại động vật có đặc tính xã hội, vì vậy theo quy luật chung, chúng sẽ cảm thấy vui vẻ, hạnh phúc nhất chính là khi được ở cạnh bên những thành viên thân thiết trong gia đình của mình. Rất nhiều chú chó đã hình thành một sợi dây gắn bó tình cảm sâu sắc với người chủ đến nỗi chúng trở nên đặc biệt lo lắng, sợ hãi và cảm thấy không an toàn khi người chủ ra khỏi nhà. Hơn nữa, các cún cưng cũng sẽ cảm thấy rất buồn chán, nhất là khi chúng phải ở một mình trong khoảng thời gian quá dài. Và điều này có thể dẫn đến một số vấn đề khiến bạn phải lo lắng.
 <br>Bạn có nên nhận nuôi một chú chó hay không?
 <br>Trước khi đưa ra một quyết định khá quan trọng là nhận nuôi một chú chó, bạn cần cân nhắc về mong muốn cũng như điều kiện của bản thân mình và cũng không thể bỏ qua việc xem xét tới nhu cầu thiết yếu của các chú chó. Bạn nên suy nghĩ thật kỹ xem liệu mình có thể chăm sóc tốt cho chú cún của mình và có được những khoảng thời gian vui vẻ, hạnh phúc cho cả bạn lẫn chó cưng hay không.
 <br>Hầu hết các chú cún đều có nhu cầu được bầu bạn và như vậy chúng mới cảm thấy vui vẻ, thoải mái. Do đó, việc bạn để chó cưng ở lại một mình trong thời gian dài không phải là một điều tốt cho chúng. Một số giống chó có nhu cầu bầu bạn lớn hoặc ưa thích hoạt động sẽ cảm thấy quãng thời gian một mình đấy vô cùng khó khăn và căng thẳng. Ngoài ra, bạn cũng không thể quên rằng phần lớn các chú chó cứ cách khoảng 4 giờ lại cần đi vệ sinh. Nếu cún cưng của bạn không thể ra ngoài để tới khu vực quy định, chúng sẽ buộc phải “giải quyết” trong nhà hoặc cố gắng nhịn và việc này có thể gây ra những ảnh hưởng về mặt sức khỏe của cún.
@@ -335,17 +308,17 @@ WHO cũng cho biết, họ đang làm việc với các cơ quan đối tác v�
 <br>-  Chia nhỏ bữa ăn của cún thành nhiều phần và giấu ở những nơi khác nhau trước khi bạn rời đi. Chó cưng chắc chắn sẽ có khoảng thời gian thú vị khi tìm kiếm đồ ăn của mình trong lúc bạn đi làm. Bạn hãy cố gắng làm mới trò chơi này bằng cách mỗi ngày sẽ giấu đồ ăn ở những nơi khác nhau hoặc ở một vài chỗ đặc biệt. Điều này sẽ hấp dẫn hầu hết các chú chó và khiến chúng vui vẻ.
 <br>-  Chuẩn bị sẵn đồ chơi gặm nhấm cho cún cưng. Các chú chó ở bất kỳ độ tuổi nào cũng đều thích nhai đồ, dù là những chú chó hoang hay những cún cưng nuôi trong các gia đình. Hành động này giúp bộ hàm của chúng cứng cáp hơn và làm sạch răng. Ngoài ra, việc gặm nhấm cũng khiến chúng cảm thấy vui vẻ và làm giảm những căng thẳng, lo âu. Dù chú chó của bạn còn nhỏ hay đã nhiều tuổi, việc cung cấp cho chúng một số loại đồ chơi gặm nhấm phù hợp luôn là một vấn đề quan trọng mà bạn nên chú ý.
 ',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai3_vwgyve',
-                'Status'      => 0,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai3_vwgyve',
+                'Status' => 0,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
             array(
-                'Slug'        => 'co_nen_nuoi_cho_hay_khong_khi_ban_qua_ban_ron',
-                'Title'       => 'Có Nên Nuôi Chó Hay Không Khi Bạn Quá Bận Rộn?',
+                'Slug' => 'co_nen_nuoi_cho_hay_khong_khi_ban_qua_ban_ron',
+                'Title' => 'Có Nên Nuôi Chó Hay Không Khi Bạn Quá Bận Rộn?',
                 'Category_id' => 3,
-                'Content'     => 'Chó là một trong những loại động vật có đặc tính xã hội, vì vậy theo quy luật chung, chúng sẽ cảm thấy vui vẻ, hạnh phúc nhất chính là khi được ở cạnh bên những thành viên thân thiết trong gia đình của mình. Rất nhiều chú chó đã hình thành một sợi dây gắn bó tình cảm sâu sắc với người chủ đến nỗi chúng trở nên đặc biệt lo lắng, sợ hãi và cảm thấy không an toàn khi người chủ ra khỏi nhà. Hơn nữa, các cún cưng cũng sẽ cảm thấy rất buồn chán, nhất là khi chúng phải ở một mình trong khoảng thời gian quá dài. Và điều này có thể dẫn đến một số vấn đề khiến bạn phải lo lắng.
+                'Content' => 'Chó là một trong những loại động vật có đặc tính xã hội, vì vậy theo quy luật chung, chúng sẽ cảm thấy vui vẻ, hạnh phúc nhất chính là khi được ở cạnh bên những thành viên thân thiết trong gia đình của mình. Rất nhiều chú chó đã hình thành một sợi dây gắn bó tình cảm sâu sắc với người chủ đến nỗi chúng trở nên đặc biệt lo lắng, sợ hãi và cảm thấy không an toàn khi người chủ ra khỏi nhà. Hơn nữa, các cún cưng cũng sẽ cảm thấy rất buồn chán, nhất là khi chúng phải ở một mình trong khoảng thời gian quá dài. Và điều này có thể dẫn đến một số vấn đề khiến bạn phải lo lắng.
 <br>Bạn có nên nhận nuôi một chú chó hay không?
 <br>Trước khi đưa ra một quyết định khá quan trọng là nhận nuôi một chú chó, bạn cần cân nhắc về mong muốn cũng như điều kiện của bản thân mình và cũng không thể bỏ qua việc xem xét tới nhu cầu thiết yếu của các chú chó. Bạn nên suy nghĩ thật kỹ xem liệu mình có thể chăm sóc tốt cho chú cún của mình và có được những khoảng thời gian vui vẻ, hạnh phúc cho cả bạn lẫn chó cưng hay không.
 <br>Hầu hết các chú cún đều có nhu cầu được bầu bạn và như vậy chúng mới cảm thấy vui vẻ, thoải mái. Do đó, việc bạn để chó cưng ở lại một mình trong thời gian dài không phải là một điều tốt cho chúng. Một số giống chó có nhu cầu bầu bạn lớn hoặc ưa thích hoạt động sẽ cảm thấy quãng thời gian một mình đấy vô cùng khó khăn và căng thẳng. Ngoài ra, bạn cũng không thể quên rằng phần lớn các chú chó cứ cách khoảng 4 giờ lại cần đi vệ sinh. Nếu cún cưng của bạn không thể ra ngoài để tới khu vực quy định, chúng sẽ buộc phải “giải quyết” trong nhà hoặc cố gắng nhịn và việc này có thể gây ra những ảnh hưởng về mặt sức khỏe của cún.
@@ -375,11 +348,11 @@ WHO cũng cho biết, họ đang làm việc với các cơ quan đối tác v�
 <br>-  Chia nhỏ bữa ăn của cún thành nhiều phần và giấu ở những nơi khác nhau trước khi bạn rời đi. Chó cưng chắc chắn sẽ có khoảng thời gian thú vị khi tìm kiếm đồ ăn của mình trong lúc bạn đi làm. Bạn hãy cố gắng làm mới trò chơi này bằng cách mỗi ngày sẽ giấu đồ ăn ở những nơi khác nhau hoặc ở một vài chỗ đặc biệt. Điều này sẽ hấp dẫn hầu hết các chú chó và khiến chúng vui vẻ.
 <br>-  Chuẩn bị sẵn đồ chơi gặm nhấm cho cún cưng. Các chú chó ở bất kỳ độ tuổi nào cũng đều thích nhai đồ, dù là những chú chó hoang hay những cún cưng nuôi trong các gia đình. Hành động này giúp bộ hàm của chúng cứng cáp hơn và làm sạch răng. Ngoài ra, việc gặm nhấm cũng khiến chúng cảm thấy vui vẻ và làm giảm những căng thẳng, lo âu. Dù chú chó của bạn còn nhỏ hay đã nhiều tuổi, việc cung cấp cho chúng một số loại đồ chơi gặm nhấm phù hợp luôn là một vấn đề quan trọng mà bạn nên chú ý.
 ',
-                'Author'      => 'PetsCasa',
-                'Thumbnails'  => 'PetCasa/NewThumbnails/bai3_vwgyve',
-                'Status'      => 0,
-                'created_at'  => \Carbon\Carbon::now(),
-                'updated_at'  => \Carbon\Carbon::now(),
+                'Author' => 'PetsCasa',
+                'Thumbnails' => 'PetCasa/NewThumbnails/bai3_vwgyve',
+                'Status' => 0,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ),
         );
         News::insert($news);

@@ -12,7 +12,7 @@ class NewController extends Controller
 {
     public function list(Request $request)
     {
-        $news      = News::query();
+        $news = News::query();
         $condition = [];
         if ($request->has('start') && $request->has('end')) {
             array_push($condition, ['created_at', '>', $request->start]);
@@ -34,7 +34,7 @@ class NewController extends Controller
         } else {
             $news->orderBy('created_at', "DESC");
         }
-        $news       = $news->where($condition)->paginate(5)->appends($request->query());
+        $news = $news->where($condition)->paginate(5)->appends($request->query());
         $categories = Category::where("Status", "=", "1")->get();
 //        dd($news);
         return view('admin.news.list', compact('news', 'categories'));
@@ -50,17 +50,17 @@ class NewController extends Controller
     {
         $request->validate(
             [
-                'Title'       => 'required',
-                'Content'     => 'required',
-                'Author'      => 'required',
-                'thumbnails'  => 'required',
+                'Title' => 'required',
+                'Content' => 'required',
+                'Author' => 'required',
+                'thumbnails' => 'required',
                 'Category_id' => 'required',
             ]
         );
         $new = DB::transaction(function () use ($request) {
-            $new           = new News($request->all());
+            $new = new News($request->all());
             $new['Status'] = 1;
-            $new['Slug']   = to_slug($request->input('Title'));
+            $new['Slug'] = to_slug($request->input('Title'));
             foreach ($request->thumbnails as $thumb) {
                 $new['Thumbnails'] .= $thumb . ",";
             }
@@ -74,7 +74,7 @@ class NewController extends Controller
 
     public function edit($id)
     {
-        $new        = News::find($id);
+        $new = News::find($id);
         $categories = Category::where('Status', '=', '1')->get();
         $new_pet_id = collect($new->Pets)->map(function ($item) {
             return $item->id;
@@ -90,16 +90,16 @@ class NewController extends Controller
     {
         $new = News::find($id);
         if (isset($new)) {
-            $new->Title      = $request->Title;
-            $new->Content    = $request->Content;
-            $new->Author     = $request->Author;
+            $new->Title = $request->Title;
+            $new->Content = $request->Content;
+            $new->Author = $request->Author;
             $new->Thumbnails = null;
             foreach ($request->thumbnails as $thumb) {
                 $new->Thumbnails .= $thumb . ",";
             }
-            $new->Thumbnails  = substr($new['Thumbnails'], 0, -1);
+            $new->Thumbnails = substr($new['Thumbnails'], 0, -1);
             $new->Category_id = $request->Category_id;
-            $new->Status      = $request->Status;
+            $new->Status = $request->Status;
             $new->update();
 
             $new->Pets()->detach();
@@ -148,7 +148,7 @@ class NewController extends Controller
     public function deactive_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
         if (isset($ids_array) && $ids_array != null) {
             News::whereIn('id', $ids_array)->update(['status' => 0]);
@@ -159,7 +159,7 @@ class NewController extends Controller
 
     public function active(Request $request)
     {
-        $id  = $request->id;
+        $id = $request->id;
         $new = News::find($id);
         if (isset($new) && $new != null) {
             News::where('id', '=', $id)->update(['status' => 1]);
@@ -171,7 +171,7 @@ class NewController extends Controller
     public function active_multi(Request $request)
     {
         $ids_array = new Array_();
-        $ids       = $request->ids;
+        $ids = $request->ids;
         $ids_array = explode(',', $ids);
 //        return response()->json(['success'=>$ids_array]);
         if (isset($ids_array) && $ids_array != null) {
@@ -189,12 +189,12 @@ class NewController extends Controller
             $news = $news->where("Category_id", '=', $request->Category);
         }
         if (isset($request->Keyword) && $request->Keyword != Null) {
-            $news_title_search  = News::query()->where("Title", 'LIKE', '%' . $request->Keyword . '%')->paginate(3);
-            $news_author_search = News::query()->where("Author", 'LIKE', '%' . $request->Keyword . '%')->paginate(3);
+            $news_title_search = News::query()->where("Title", 'LIKE', '%' . $request->Keyword . '%')->paginate(4);
+            $news_author_search = News::query()->where("Author", 'LIKE', '%' . $request->Keyword . '%')->paginate(4);
         }
-        $news = $news->where('Status', '=', 1)->orderBy('created_at', "DESC")->paginate(3);
+        $news = $news->where('Status', '=', 1)->orderBy('created_at', "DESC")->paginate(4)->appends(request()->all());
         if (isset($request->Keyword) && $request->Keyword != Null) {
-            $news = $news->merge($news_title_search, $news_author_search)->paginate(3)->appends(request()->all());
+            $news = $news->merge($news_title_search, $news_author_search)->paginate(4)->appends(request()->all());
         }
 //        dd($news);
         return view('user.blog.news', compact('news'));
@@ -202,7 +202,7 @@ class NewController extends Controller
 
     public function single_new_data($Slug)
     {
-        $single_new  = News::where('Slug', '=', $Slug)->first();
+        $single_new = News::where('Slug', '=', $Slug)->first();
         $include_pet = $single_new->Pets;
         return view('user.blog.single_new', compact('single_new', 'include_pet'));
     }

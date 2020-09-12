@@ -41,17 +41,17 @@ Hoang, 8:10 PM
 
     <ul class="nav nav-pills category-isotope center-nav" data-aos="zoom-in">
         <li class="nav-item">
-            <a class="nav-link all active"
+            <a class="nav-link all @if (Request::get('Species') == "All")active @endif"
                href="{{route('pet_list_adoption',["Species" => "All"])}}"
                aria-label="Tất cả" aria-labelledby="Tất cả">Tất cả</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link dog"
+            <a class="nav-link dog @if (Request::get('Species') == "Chó") active @endif"
                href="{{route('pet_list_adoption',["Species" => "Chó"])}}"
                aria-label="Chó" aria-labelledby="Chó">Chó</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link cat"
+            <a class="nav-link cat @if (Request::get('Species') == "Mèo") active @endif"
                href="{{route('pet_list_adoption',["Species" => "Mèo"])}}"
                aria-label="Mèo" aria-labelledby="Mèo">Mèo</a>
         </li>
@@ -60,31 +60,33 @@ Hoang, 8:10 PM
     <section class="container" style="padding-top: unset">
         <div class="row">
             <div class="aos-init aos-animate col-sm-2 col-md-2 col-lg-2" data-aos="zoom-in">
-                <div class="pt-4" style="margin-top: 40px">
+                <form action="{{route('pet_list_adoption')}}" class="pt-4" style="margin-top: 40px">
                     <h3>Bộ Lọc</h3>
                     <div class="form-group">
                         <label>Giới tính</label>
-                        <select id="gender" class="form-control">
-                            <option value="">Tất cả</option>
-                            <option value="">Đực</option>
-                            <option value="">Cái</option>
+                        <select name="Sex" id="gender" class="form-control">
+                            <option value="All">Tất cả</option>
+                            <option value="Đực">Đực</option>
+                            <option value="Cái">Cái</option>
                         </select>
                     </div>
                     <div class="">
                         <div class="form-group">
                             <label>Độ tuổi</label>
-                            <select id="age" class="form-control">
-                                <option value="">Tất cả</option>
-                                <option value="">Trẻ</option>
-                                <option value="">Trưởng thành</option>
-                                <option value="">Già</option>
+                            <?php $current_Time = Carbon\Carbon::now(); ?>
+                            <select name="Age" id="age" class="form-control">
+                                <option value="All">Tất cả</option>
+                                <option value="Young">Trẻ</option>
+                                <option value="Mature">Trưởng thành</option>
+                                <option value="Old">Già</option>
                             </select>
                         </div>
                     </div>
+                    <input type="hidden" name="Species" value="{{request()->Species}}">
                     <div class="">
                         <div class="form-group">
                             <label>Tên</label>
-                            <input type="text" id="name" class="form-control">
+                            <input name="Name" type="text" id="name" class="form-control">
                         </div>
                     </div>
                     <div class=" justify-content-center align-self-center text-center">
@@ -94,7 +96,7 @@ Hoang, 8:10 PM
                             </button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="page col-sm-10 col-md-10 col-lg-10" data-aos="zoom-in">
                 <div class="pt-0 aos-init aos-animate">

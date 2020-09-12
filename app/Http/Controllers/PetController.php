@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Array_;
 
@@ -153,16 +154,32 @@ class PetController extends Controller
     {
         $pets = Pet::query();
         if (isset($request->Species)) {
-            if ($request->Species == "All") {
-                $pets = Pet::where('Status', '=', '1')->get();
-            } else {
+            if ($request->Species != "All") {
                 $pets = $pets->where("Species", '=', $request->Species);
             }
         }
-        $pets = $pets->paginate(6);
-        if ($pets == null || count($pets) == 0) {
-            return redirect(route('404'));
+        $YoungStart  = Carbon::now()->addDays(-180);  // 6 tháng trước
+        $MatureStart = Carbon::now()->addDays(-730);  // 2 năm trước
+        $OldStart    = Carbon::now()->addDays(-7300); // 20 năm trước
+        $now         = Carbon::now();
+        if (isset($request->Age)) {
+            if ($request->Age == "Young") {
+                $pets = $pets->whereBetween('Age', [$YoungStart . " 00:00:00", $now . " 23:59:59"]);
+            }
+            if ($request->Age == "Mature") {
+                $pets = $pets->whereBetween('Age', [$MatureStart . " 00:00:00", $YoungStart . " 23:59:59"]);
+            }
+            if ($request->Age == "Old") {
+                $pets = $pets->whereBetween('Age', [$OldStart . " 00:00:00", $MatureStart . " 23:59:59"]);
+            }
         }
+        if (isset($request->Name)) {
+            $pets = $pets->where('Name', "LIKE", '%' . $request->Name . '%');
+        }
+        $pets = $pets->paginate(6);
+//        if ($pets == null || count($pets) == 0) {
+//            return redirect(route('404'));
+//        }
         $pets = $pets->appends($request->all());
         return view('user.services.adoption', compact('pets'));
     }

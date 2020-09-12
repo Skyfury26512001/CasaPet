@@ -18,7 +18,7 @@ class News extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('PetCasa/noimages_aaqvrt_opnyoy.png');
         }
-        $list_photos  = array();
+        $list_photos = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
@@ -33,7 +33,7 @@ class News extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('PetCasa/noimages_aaqvrt_opnyoy.png');
         }
-        $list_photos  = array();
+        $list_photos = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
@@ -57,6 +57,15 @@ class News extends Model
         $thumbnail[] = explode(',', $this->Thumbnails);
         foreach ($thumbnail as $thumbnailValue) {
             return self::$link . 'c_scale,h_800,w_500/' . $thumbnailValue[0];
+        }
+    }
+
+    public function getLastThumbnailAttribute()
+    {
+        $thumbnail[] = explode(',', $this->Thumbnails);
+        foreach ($thumbnail as $thumbnailValue) {
+            $last = count($thumbnailValue);
+            return self::$link . 'c_scale,h_450,w_450/' . $thumbnailValue[$last - 1];
         }
     }
 

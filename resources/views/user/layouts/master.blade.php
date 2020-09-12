@@ -66,7 +66,7 @@
             right: 42px;
             transition: all 0.2s ease-in-out;
             z-index: 9999;
-            padding: 10px 10px;
+            padding: 15px 10px;
         }
 
         .button-sos:after {
