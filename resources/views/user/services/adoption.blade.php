@@ -66,8 +66,8 @@ Hoang, 8:10 PM
                         <label>Giới tính</label>
                         <select id="gender" class="form-control">
                             <option value="">Tất cả</option>
-                            <option value="69">Đực</option>
-                            <option value="70">Cái</option>
+                            <option value="">Đực</option>
+                            <option value="">Cái</option>
                         </select>
                     </div>
                     <div class="">
@@ -75,8 +75,9 @@ Hoang, 8:10 PM
                             <label>Độ tuổi</label>
                             <select id="age" class="form-control">
                                 <option value="">Tất cả</option>
-                                <option value="1">Dưới 6 tháng</option>
-                                <option value="2">6 tháng - 2 năm</option>
+                                <option value="">Trẻ</option>
+                                <option value="">Trưởng thành</option>
+                                <option value="">Già</option>
                             </select>
                         </div>
                     </div>

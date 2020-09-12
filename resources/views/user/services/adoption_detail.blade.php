@@ -4,11 +4,11 @@
 @endsection
 @section('specific_css')
     {{--    <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">--}}
-    {{--    <style>--}}
-    {{--        .page {--}}
-    {{--            padding-bottom: unset;--}}
-    {{--        }--}}
-    {{--    </style>--}}
+    <style>
+        .page {
+            padding-bottom: unset;
+        }
+    </style>
 @endsection
 @section('specific_js')
 @endsection
@@ -26,7 +26,7 @@
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="{{route('pet_list_adoption')}}">Nhận nuôi</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><a
-                                href="#">Chi
+                            href="#">Chi
                             tiết</a></li>
                 </ol>
             </nav>
@@ -116,10 +116,88 @@
                             {{$single_pet->Description}}
                         </p>
 
+<<<<<<< HEAD
                         <h3>Các tin tức liên quan đến bé</h3>
                         @foreach($single_pet->News as $new)
                             <a href="{{route('single_new',$new->Slug)}}">{{$new->Title}}</a>
                         @endforeach
+=======
+                        @if($single_pet->Status == 1)
+                            {{--                            <h3>Timeline</h3>--}}
+                            {{--                            <div class="timeline">--}}
+                            {{--                                <div class="year">--}}
+                            {{--                                    <div class="inner">--}}
+                            {{--                                        <span>2016</span>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+
+                            {{--                                <ul class="days">--}}
+                            {{--                                    <li class="day">--}}
+                            {{--                                        <div class="events">--}}
+                            {{--                                            <div class="day__img">--}}
+                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
+                            {{--                                                <p class="caption">--}}
+                            {{--                                                    Caption--}}
+                            {{--                                                </p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                            <div class="date">18 October (Monday)--}}
+                            {{--                                                <p>Description</p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </li>--}}
+
+                            {{--                                    <li class="day">--}}
+                            {{--                                        <div class="events">--}}
+                            {{--                                            <div class="day__img">--}}
+                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
+                            {{--                                                <p class="caption">--}}
+                            {{--                                                    Caption--}}
+                            {{--                                                </p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                            <div class="date">18 October (Monday)--}}
+                            {{--                                                <p>Description</p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </li>--}}
+
+                            {{--                                    <li class="day">--}}
+                            {{--                                        <div class="events">--}}
+                            {{--                                            <div class="day__img">--}}
+                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
+                            {{--                                                <p class="caption">--}}
+                            {{--                                                    Caption--}}
+                            {{--                                                </p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                            <div class="date">18 October (Monday)--}}
+                            {{--                                                <p>Description</p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </li>--}}
+
+                            {{--                                    <li class="day">--}}
+                            {{--                                        <div class="events">--}}
+                            {{--                                            <div class="day__img">--}}
+                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
+                            {{--                                                <p class="caption">--}}
+                            {{--                                                    Caption--}}
+                            {{--                                                </p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                            <div class="date">18 October (Monday)--}}
+                            {{--                                                <p>Description</p>--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </li>--}}
+                            {{--                                </ul>--}}
+
+                            {{--                                <div class="year year--end">--}}
+                            {{--                                    <div class="inner">--}}
+                            {{--                                        <span>2017</span>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                            {{--                            <div class="border-footer"></div>--}}
+                        @endif
+>>>>>>> 2b9b9f0129b403055472b1e2a27ee1744434ee2a
                         <p class="custom-link"><a href="{{route('pet_list_adoption')}}">« Quay lại danh sách nhận
                                 nuôi</a>
                         </p>
@@ -136,11 +214,11 @@
              style="background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598789854/PetCasa/AdoptionPage/cat_fkhckl.jpg)">
             <div class="container block-padding">
                 <div
-                        class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
                     <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
                 </div>
                 <div
-                        class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
                     <a href="{{route('get_involed')}}" class="btn btn-primary"
                        aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
                 </div>
