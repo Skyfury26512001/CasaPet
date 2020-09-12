@@ -8,10 +8,30 @@
         .page {
             padding-bottom: unset;
         }
+
+        :not(svg) {
+            transform-origin: unset;
+        }
+
+        .img-timeline {
+            border: 3px outset #ff8500;
+        }
+
+        .pattern3 {
+            background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1599840532/PetCasa/pattern3_j3hofh.png);
+            background-position: center bottom;
+            background-repeat: repeat-x;
+        }
     </style>
 @endsection
 @section('specific_js')
     <script src="{{asset('assets/user/js/timeline.js')}}"></script>
+    <script>
+        $(function () {
+            $('ol li:first-child').addClass('selected');
+            $('ol li:first-child a').addClass('selected');
+        });
+    </script>
 @endsection
 @section('content')
     <!-- Jumbotron -->
@@ -117,26 +137,21 @@
                             {{$single_pet->Description}}
                         </p>
 
-                    @if($single_pet->Status == 1)
+                    @if($single_pet->Status == 2)
                         <!-- timeline start -->
                             <h3>Timeline</h3>
-                            <section class="cd-horizontal-timeline" style="background-color: #f8f8f8">
+                            <section class="cd-horizontal-timeline tl pattern3"
+                                     style="background-color: #f8f8f8">
                                 <div class="timeline">
                                     <div class="events-wrapper">
                                         <div class="events">
                                             <ol>
-                                                <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a>
-                                                </li>
-                                                <li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
-                                                <li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
-                                                <li><a href="#0" data-date="20/05/2014">20 May</a></li>
-                                                <li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
-                                                <li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
-                                                <li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
-                                                <li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
-                                                <li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
-                                                <li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
-                                                <li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
+                                                @foreach($single_pet->timelines as $timeline)
+                                                    <li>
+                                                        <a href="#"
+                                                           data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
+                                                    </li>
+                                                @endforeach
                                             </ol>
 
                                             <span class="filling-line" aria-hidden="true"></span>
@@ -151,18 +166,21 @@
 
                                 <div class="events-content">
                                     <ol>
-                                        <li class="selected" data-date="16/01/2014">
-                                            <h5 style="color: #808080">Horizontal Timeline</h5>
-                                            <em>January 16th, 2014</em>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                                praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                                adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                                dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                                reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                                quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                            </p>
-                                        </li>
+                                        @foreach($single_pet->timelines as $timeline)
+                                            <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
+                                                <h5 style="color: #808080">Cuộc sống của {{$single_pet->Name}}</h5>
+                                                <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
+                                                <div class="row">
+                                                    <img
+                                                        src="{{$timeline->FirstThumbnail}}"
+                                                        class="col-lg-5 img-timeline"
+                                                        alt="">
+                                                    <p class="col-lg-7">
+                                                        {{$timeline->Content}}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ol>
                                 </div> <!-- .events-content -->
                             </section>

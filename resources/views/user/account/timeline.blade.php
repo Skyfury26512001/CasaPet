@@ -3,6 +3,7 @@
     Timeline Update
 @endsection
 @section('specific_css')
+    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
     <style>
@@ -13,8 +14,17 @@
         :not(svg) {
             transform-origin: unset;
         }
+
+        .img-timeline {
+            border: 3px outset #ff8500;
+        }
+
+        .pattern3 {
+            background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1599840532/PetCasa/pattern3_j3hofh.png);
+            background-position: center bottom;
+            background-repeat: repeat-x;
+        }
     </style>
-    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
 @endsection
 @section('specific_js')
     <!-- Boostrap Datepicker -->
@@ -97,7 +107,6 @@
         $(function () {
             $('ol li:first-child').addClass('selected');
             $('ol li:first-child a').addClass('selected');
-            $('span.filling-line').css('transform', 'scaleX(0.18739)')
         });
     </script>
     <script src="{{asset('assets/user/js/timeline.js')}}"></script>
@@ -266,7 +275,8 @@
                             </div>
                         </div>
                         <!-- timeline start -->
-                        <section class="cd-horizontal-timeline tl" style="background-color: #f8f8f8; display: none">
+                        <section class="cd-horizontal-timeline tl pattern3"
+                                 style="background-color: #f8f8f8; display: none">
                             <div class="timeline">
                                 <div class="events-wrapper">
                                     <div class="events">
@@ -298,7 +308,7 @@
                                             <div class="row">
                                                 <img
                                                     src="{{$timeline->FirstThumbnail}}"
-                                                    class="col-lg-5"
+                                                    class="col-lg-5 img-timeline"
                                                     alt="">
                                                 <p class="col-lg-7">
                                                     {{$timeline->Content}}
