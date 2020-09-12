@@ -27,6 +27,7 @@ class CreatePetsTable extends Migration
             $table->string('Sex');
             $table->string('Neutered');
             $table->integer('Status'); // 0 : Không hoạt động ; 1 : Hoạt động ; 2 : Đã nhượng nuôi
+            $table->unsignedBigInteger('AccountID')->nullable();
             $table->timestamps();
         });
     }

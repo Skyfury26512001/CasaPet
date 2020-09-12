@@ -8,10 +8,6 @@
         .page {
             padding-bottom: unset;
         }
-
-        li {
-            list-style: none;
-        }
     </style>
 @endsection
 @section('specific_js')
@@ -148,8 +144,8 @@
                                     </div> <!-- .events-wrapper -->
 
                                     <ul class="cd-timeline-navigation">
-                                        <li><a href="#0" class="prev inactive">Prev</a></li>
-                                        <li><a href="#0" class="next">Next</a></li>
+                                        <li><a href="#" class="prev inactive">Prev</a></li>
+                                        <li><a href="#" class="next">Next</a></li>
                                     </ul> <!-- .cd-timeline-navigation -->
                                 </div> <!-- .timeline -->
 
