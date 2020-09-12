@@ -10,7 +10,6 @@ class PetController extends Controller
 {
     public function list(Request $request)
     {
-//        dd($request);
         $orderBy = "DESC";
         $pets = Pet::query();
         $condition = [];
@@ -74,13 +73,18 @@ class PetController extends Controller
     public function edit($slug)
     {
         $pet = Pet::where('Slug', '=', $slug)->first();
-//        dd($pet);
+        if (!isset($pet)) {
+            return redirect(route('admin_404'));
+        }
         return view('admin.pets.edit', compact('pet'));
     }
 
     public function detail($slug)
     {
         $pet = Pet::where('Slug', '=', $slug)->first();
+        if (!isset($pet)) {
+            return redirect(route('admin_404'));
+        }
         return view('admin.pets.detail_pet', compact('pet'));
     }
 
@@ -95,6 +99,7 @@ class PetController extends Controller
         $pet['Species'] = $request->Species;
         $pet['Age'] = $request->Age;
         $pet['Vaccinated'] = $request->Vaccinated;
+        $pet['Neutered'] = $request->Neutered;
         if ($request->has('thumbnails')) {
             $pet['Thumbnails'] = null;
             foreach ($request->thumbnails as $thumb) {
@@ -144,22 +149,69 @@ class PetController extends Controller
         return response()->json(['success' => "Pet Active successfully."]);
     }
 
-    public function pet_list_adoption()
+    public function pet_list_adoption(Request $request)
     {
-        $pets = Pet::where('Status', '=', '1')->paginate(8);
+        $pets = Pet::query();
+        if (isset($request->Species)) {
+            if ($request->Species == "All") {
+                $pets = Pet::where('Status', '=', '1')->get();
+            } else {
+                $pets = $pets->where("Species", '=', $request->Species);
+            }
+        }
+        $pets = $pets->paginate(6);
+        if ($pets == null || count($pets) == 0) {
+            return redirect(route('404'));
+        }
+        $pets = $pets->appends($request->all());
         return view('user.services.adoption', compact('pets'));
     }
 
     public function pet_detail_adoption($Slug)
     {
         $single_pet = Pet::where('Slug', '=', $Slug)->first();
-        return view('user.services.adoption_detail', compact('single_pet'));
+        if (isset($single_pet) && $single_pet != null) {
+            return view('user.services.adoption_detail', compact('single_pet'));
+        }
+        return redirect(route('404'));
     }
 
     public function adoption_form_fill($Slug)
     {
         $pet_info = Pet::where('Slug', '=', $Slug)->first();
         return view('user.services.adoption_form', compact('pet_info'));
+    }
+
+    public function pet_store(Request $request)
+    {
+
+        $request->validate([
+            'Name' => 'required',
+            'CertifiedPedigree' => 'required',
+            'Description' => 'required',
+            'Species' => 'required',
+            'Breed' => 'required',
+            'Age' => 'required',
+            'petthumbnails' => 'required',
+            'Sex' => 'required',
+            'Neutered' => 'required',
+            'Vaccinated' => 'required',
+        ]);
+        $pet = $request->all();
+        $slug_begin = generateRandomString(8);
+        $Slug = to_slug($slug_begin . ' ' . $pet['Name']);
+        $pet['Slug'] = $Slug;
+        $pet['Status'] = 1;
+        $pet['Thumbnails'] = null;
+//        dd($request->thumbnails);
+        foreach ($request->petthumbnails as $thumb) {
+            $pet['Thumbnails'] .= $thumb . ",";
+        }
+        $pet['Thumbnails'] = substr($pet['Thumbnails'], 0, -1);
+//        dd($pet);
+        Pet::create($pet);
+//        dd($request);
+        return back()->with('created_pet', 'true');
     }
 }
 

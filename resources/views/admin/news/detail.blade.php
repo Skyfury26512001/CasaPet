@@ -10,7 +10,7 @@
                 uploadPreset: 'rdjyel16',
                 multiple: false,
                 form: '#product_form',
-                folder: 'PetCasa/UserAvatar',
+                folder: 'PetCasa/NewThumbnails',
                 fieldName: 'avatar',
                 thumbnails: '.avatar'
             }, function (error, result) {

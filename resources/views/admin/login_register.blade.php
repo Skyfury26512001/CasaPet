@@ -8,7 +8,8 @@
     <meta content="Coderthemes" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Login-Register</title>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{secure_asset('assets/admin/css/login_register.css')}}">
     <link rel="stylesheet" href="{{asset('assets/admin/css/login_register.css')}}">
     <link rel="stylesheet" href="https://maxcdn.boostrapcdn.com/font-awesome/4.7.0/css/format-awesome.min.css">
 </head>
@@ -133,5 +134,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{asset('assets/admin/js/login_register.js')}}"></script>
+@include('sweetalert::alert')
 </body>
 </html>

@@ -293,7 +293,16 @@
                                             <td></td>
                                             <td>{{$pet->Species}}</td>
                                             <td>{{$pet->Breed}}</td>
-                                            <td>{{$pet->Age}}</td>
+                                            <?php $current_Time = Carbon\Carbon::now(); ?>
+                                            <td>
+                                                @if ($current_Time->addDays(-180) <  $pet->Age)
+                                                    Dưới 6 tháng
+                                                @elseif ($current_Time->addDays(-720) <  $pet->Age)
+                                                    Từ 6 tháng đến 2 năm
+                                                @elseif ($current_Time->addDays(-720) >  $pet->Age)
+                                                    Từ 2 năm trở lên
+                                                @endif
+                                            </td>
                                             <td>{{$pet->Sex}}</td>
                                             <td>{{$pet->Neutered}}</td>
                                             <td>{{$pet->Vaccinated}}</td>

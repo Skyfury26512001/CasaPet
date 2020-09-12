@@ -188,6 +188,14 @@
                                     </select>
                                 </div>
                                 <div class="form-filter">
+                                    Lọc theo danh mục
+                                    <select class="form-control select-form-control" name="category_id">
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->Name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-filter">
                                     Lọc theo trạng thái
                                     <select class="form-control select-form-control" name="Status">
                                         <option value="All"
@@ -366,7 +374,7 @@
                             <div class="media mb-3">
                                 <div class="media-body">
                                     <h5 class="media-heading mb-1 mt-0">Tiêu dề
-                                        : <h5 class="badge badge-success" style="font-size: 15px">{{$new->Title}}</h5>
+                                        : <h5 class="custom-detail-title">{{$new->Title}}</h5>
                                     </h5>
 
                                 </div>

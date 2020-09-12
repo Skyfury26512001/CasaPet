@@ -38,7 +38,7 @@
     <!-- Datepicker -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- SPECIFIC CSS -->
-
+    <link href={{asset('assets/user/css/custom.css')}} rel="stylesheet">
     <!-- Custom CSS -->
     <style>
         .fb_dialog_content > iframe {
@@ -61,9 +61,14 @@
 
         .button-sos {
             margin-bottom: 120px;
-            background: #ff7600;
+            background: #000000;
             border-radius: 50%;
-            padding: 15px 11px;
+            position: fixed;
+            bottom: 80px;
+            right: 42px;
+            transition: all 0.2s ease-in-out;
+            z-index: 9999;
+            padding: 22px 10px;
         }
 
         .button-sos:after {
@@ -75,6 +80,15 @@
             z-index: 0;
             text-shadow: 0px 4px 17px rgba(255, 255, 255, 0.6);
         }
+
+        a:hover {
+            color: #ff8500;
+        }
+
+        .blog-card .post-info:before, .color1, a:hover, a:focus, .dog-elements:after, .cat-elements:after, .bg-secondary a, .header-text:before, ul.social-media li:hover i {
+            color: #ff8500;
+        }
+
     </style>
 
     @yield('specific_css')
@@ -156,8 +170,6 @@
                     <i class="flaticon-dog-20"></i><span>PetsCasa</span>
                 </a>
                 <!-- Main service -->
-                <a class="navbar-brand fast-link" href="{{route('rescue_form')}}"><strong>Cứu Hộ Khẩn
-                        Cấp!</strong></a>
                 <!-- Navbartoggler -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -232,12 +244,16 @@
                                          alt="">{{$current_account->FullName}}</a>
                                 <div class="dropdown-menu" aria-labelledby="about-dropdown">
                                     <a class="dropdown-item" href="{{route('personal_info')}}">Hồ sơ cá nhân</a>
-                                    <a class="dropdown-item" href="">Thay đổi mật khẩu</a>
+                                    <a class="dropdown-item"
+                                       href="{{route('user_account_change_password', $current_account->Slug)}}">Thay đổi
+                                        mật khẩu</a>
+                                    <a class="dropdown-item"
+                                       href="{{route('user_account_update_timeline', $current_account->Slug)}}">Cập nhập
+                                        Timeline</a>
                                     <a class="dropdown-item"
                                        href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"
-                                    >Đăng
-                                        xuất</a>
+                                    >Đăng xuất</a>
                                     <form id="frm-logout" action="{{ route('logout') }}" method="POST"
                                           style="display: none;">
                                         @csrf
@@ -266,6 +282,7 @@
 
 <!-- content start -->
 @yield('content')
+<!-- content end -->
 <!-- content end -->
 
 <!-- ==== footer ==== -->
@@ -309,7 +326,7 @@
     <!-- container -->
     <!-- SOS -->
     <div class="page-scroll hidden-sm hidden-xs">
-        <a class="button-sos back-to-top" href="{{route('rescue_form')}}"><strong>SOS</strong></a>
+        <a class="button-sos" href="{{route('rescue_form')}}"><strong>SOS</strong></a>
     </div>
     <!-- End SOS -->
     <!-- Go To Top Link -->
@@ -326,7 +343,6 @@
                 version: 'v8.0'
             });
         };
-
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -346,6 +362,7 @@
     </div>
 </footer>
 <!-- footer-->
+
 <!-- Bootstrap core & Jquery -->
 <script src={{asset('assets/user/vendor/jquery/jquery.min.js')}}></script>
 <script src={{asset('assets/user/vendor/bootstrap/js/bootstrap.min.js')}}></script>
@@ -360,7 +377,6 @@
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.transitions.js')}}></script>
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js')}}></script>
 <script src={{asset('assets/user/vendor/layerslider/js/layerslider.load.js')}}></script>
-<!-- SPECIFIC SCRIPTS -->
 @yield('specific_js')
 </body>
 </html>

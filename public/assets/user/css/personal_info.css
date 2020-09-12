@@ -223,7 +223,7 @@
     transition: border-color .1s ease;
 }
 
-.input-with-validator input {
+.input-with-validator input, textarea {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -moz-box-flex: 1;
@@ -722,8 +722,8 @@ button, input, optgroup, select, textarea {
     -moz-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
     line-height: 22px;
     text-align: center;
     border-radius: 50%;
@@ -774,6 +774,7 @@ button, input, optgroup, select, textarea {
 }
 
 .userpage-sidebar-menu-entry__text:hover,
+.userpage-sidebar-menu-entry:hover,
 .user-page-brief__edit:hover {
     color: black !important;
 }
@@ -872,7 +873,7 @@ button, input, optgroup, select, textarea {
     display: inline-flex;
 }
 
-input {
+input, textarea {
     -webkit-writing-mode: horizontal-tb !important;
     text-rendering: auto;
     letter-spacing: normal;

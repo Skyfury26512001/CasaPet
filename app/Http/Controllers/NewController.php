@@ -26,14 +26,18 @@ class NewController extends Controller
         if ($request->has('keyword')) {
             array_push($condition, ['Title', 'Like', '%' . $request->keyword . '%']);
         }
+        if ($request->has('category_id')) {
+            array_push($condition, ['Category_id', '=', $request->category_id]);
+        }
         if ($request->has('orderBy')) {
             $news->orderBy('created_at', $request->orderBy);
         } else {
             $news->orderBy('created_at', "DESC");
         }
-        $news = $news->where($condition)->paginate(5)->appends($request->query());
+        $news       = $news->where($condition)->paginate(5)->appends($request->query());
+        $categories = Category::where("Status", "=", "1")->get();
 //        dd($news);
-        return view('admin.news.list', compact('news'));
+        return view('admin.news.list', compact('news', 'categories'));
     }
 
     public function create()
@@ -97,6 +101,10 @@ class NewController extends Controller
             $new->Category_id = $request->Category_id;
             $new->Status      = $request->Status;
             $new->update();
+
+            $new->Pets()->detach();
+            $new->Pets()->attach($request->PetIds);
+//            dd($request);
             return redirect(route('admin_new_list'));
         }
         return redirect(route('admin_404'));

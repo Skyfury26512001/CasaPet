@@ -23,10 +23,10 @@ class CreatePetsTable extends Migration
             $table->string('Species');
             $table->string('Breed');
             $table->string('Vaccinated');
-            $table->string('Age');
+            $table->dateTime('Age');
             $table->string('Sex');
             $table->string('Neutered');
-            $table->integer('Status'); // 0 : Không hoạt động ; 1 : Hoạt động
+            $table->integer('Status'); // 0 : Không hoạt động ; 1 : Hoạt động ; 2 : Đã nhượng nuôi
             $table->timestamps();
         });
     }

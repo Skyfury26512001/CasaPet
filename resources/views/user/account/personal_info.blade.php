@@ -3,10 +3,12 @@
     Personal Info
 @endsection
 @section('specific_css')
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
 @endsection
 @section('specific_js')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script type="text/javascript">
         var myWidget = cloudinary.createUploadWidget(
@@ -67,6 +69,56 @@
         });
 
     </script>
+    @if(isset($error))
+        <script>
+            $(document).ready(function () {
+                toastr["error"]("Cập nhập thông tin cá nhân không thành công!")
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            })
+        </script>
+    @endif
+    @if(isset($success))
+        <script>
+            $(document).ready(function () {
+                toastr["success"]("Cập nhập thông tin cá nhân thành công!")
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            })
+        </script>
+    @endif
 @endsection
 @section('content')
     {{--    {{dd($current_account)}}--}}
@@ -110,28 +162,38 @@
                             </div>
                         </div>
                         <div class="userpage-sidebar-menu">
-                            <div class="stardust-dropdown stardust-dropdown--open">
-                                <div class="stardust-dropdown__item-header">
-                                    <a class="userpage-sidebar-menu-entry"
-                                       href="{{route('personal_info')}}">
-                                        <div class="userpage-sidebar-menu-entry__icon"
-                                             style="background-color: #48A06A;">
-                                            <svg class="petscasa-svg-icon user-page-sidebar-icon icon-headshot"
-                                                 enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0">
-                                                <g>
-                                                    <circle cx="7.5" cy="4.5" fill="none" r="3.8"
-                                                            stroke-miterlimit="10"></circle>
-                                                    <path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none"
-                                                          stroke-linecap="round" stroke-miterlimit="10"></path>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="userpage-sidebar-menu-entry__text" style="color: #48A06A">
-                                            Tài khoản của tôi
-                                        </div>
-                                    </a>
+                            <a class="userpage-sidebar-menu-entry"
+                               href="{{route('personal_info')}}">
+                                <div class="userpage-sidebar-menu-entry__icon"
+                                     style="background-color: #48A06A;">
+                                    <i class="fa fa-user"></i>
                                 </div>
-                            </div>
+                                <div class="userpage-sidebar-menu-entry__text" style="color: #48A06A">
+                                    Tài khoản của tôi
+                                </div>
+                            </a>
+                        </div>
+                        <div class="userpage-sidebar-menu">
+                            <a class="userpage-sidebar-menu-entry"
+                               href="{{route('user_account_change_password', $current_account->Slug)}}">
+                                <div class="userpage-sidebar-menu-entry__icon" style="background-color: black">
+                                    <i class="fa fa-key"></i>
+                                </div>
+                                <div class="userpage-sidebar-menu-entry__text" style="color: black">
+                                    Thay đổi mật khẩu
+                                </div>
+                            </a>
+                        </div>
+                        <div class="userpage-sidebar-menu">
+                            <a class="userpage-sidebar-menu-entry"
+                               href="{{route('user_account_update_timeline', $current_account->Slug)}}">
+                                <div class="userpage-sidebar-menu-entry__icon" style="background-color: black">
+                                    <i class="fa fa-clock"></i>
+                                </div>
+                                <div class="userpage-sidebar-menu-entry__text" style="color: black">
+                                    Cập nhập Timeline
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -180,7 +242,8 @@
                                     </div>
                                     <div class="input-with-label">
                                         <div class="input-with-label__wrapper">
-                                            <div class="input-with-label__label"><label for="password">Mật khẩu</label>
+                                            <div class="input-with-label__label"><label for="password">Mật khẩu mã
+                                                    hoá</label>
                                             </div>
                                             <div class="input-with-label__content">
                                                 <div class="input-with-validator-wrapper">

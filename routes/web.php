@@ -29,6 +29,10 @@ Route::get('/success', function () {
     return view('user.sub_pages.success');
 })->name('success');
 
+Route::get('/success', function () {
+    return view('user.sub_pages.success_2');
+})->name('success2');
+
 Route::get('/get-involved', function () {
     return view('user.sub_pages.get_involved');
 })->name('get_involed');
@@ -52,13 +56,11 @@ Route::get('/adoption/adoption-form/{slug}', 'PetController@adoption_form_fill')
 
 Route::post('/adoption/adoption-form/{slug}', 'OrderController@form_send')->name('adoption_form_send');
 
-Route::get('/concession', function () {
-    return view('user.services.concession');
-})->name('concession');
-
 Route::get('/concession-form', function () {
     return view('user.services.concession_form');
 })->name('concession_form');
+
+Route::post('/concession-form', 'PageController@concessionP')->name('concession_formP');
 
 Route::get('/volunteer', function () {
     return view('user.services.volunteer');
@@ -88,7 +90,6 @@ Route::get('/team', function () {
     return view('user.about.team');
 })->name('team');
 
-
 /* 5.Contact */
 Route::get('/contact', function () {
     return view('user.contact.contact');
@@ -106,10 +107,12 @@ Route::get('/donation', function () {
 Route::post('/donation', 'DonationController@store')->name('donation');
 
 Route::get('/foster', function () {
-    return view('user.foster');
+    $news = \App\News::all()->take(3);
+//    dd($news);
+    return view('user.foster', compact('news'));
 })->name('foster');
 
-/* 7.Login-Register */
+/* 7.Account */
 
 Route::get('/login-register', function () {
     return view('user.account.login_register');
@@ -121,10 +124,21 @@ Route::post('/logout', 'AccountController@logOut')->name('logout');
 
 Route::post('/register', 'AccountController@registerP')->name('register');
 
+/* 404 */
+
+Route::get('/404-page', function () {
+    return view('user.sub_pages.error');
+})->name('404');
+
 Route::group(['prefix' => '/account'], function () {
     Route::get('/personal-info', 'PersonalInfoController@account_data')->name('personal_info');
     Route::post('/personal-info-update', 'PersonalInfoController@account_update')->name('personal_info_update');
+    Route::get('/{Slug}/change-password', 'PersonalInfoController@change_password')->name('user_account_change_password');
+    Route::put('/{Slug}/change-password', 'PersonalInfoController@change_passwordP')->name('user_change_password');
+    Route::get('/{Slug}/update-timeline', 'PersonalInfoController@update_timeline')->name('user_account_update_timeline');
+    Route::post('/{Slug}/update-timeline', 'PersonalInfoController@update_timelineP')->name('user_update_timeline');
 });
+
 //Route::get('/regist', 'AccountController@regist');
 //Route::post('/regist', 'AccountController@registP');
 
@@ -137,9 +151,11 @@ Route::post('/admin-login', 'AccountController@admin_loginP')->name('logIn');
 Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () {
 
     Route::get('/', 'AdminController@dashboard')->name('admin_home');
+
     Route::get('/404', function () {
         return view('admin.404-admin');
     })->name('admin_404');
+
     Route::group(['prefix' => '/accounts'], function () {
         Route::get('/', 'AccountController@list')->name('admin_account_list');
         Route::get('/create', 'AccountController@create')->name('admin_account_create');
@@ -154,6 +170,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::get('/password/{slug}', 'AccountController@change_password')->name('admin_account_change_password');
         Route::put('/password/{slug}', 'AccountController@change_passwordP')->name('admin_change_password');
     });
+
     Route::group(['prefix' => '/pets'], function () {
         Route::get('/', 'PetController@list')->name('admin_pet_list');
         Route::get('/create', 'PetController@create')->name('admin_pet_create');
@@ -166,6 +183,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/deactiveAll', 'PetController@deactive_multi')->name('admin_pet_deactive_multi');
         Route::put('/activeAll', 'PetController@active_multi')->name('admin_pet_active_multi');
     });
+
     Route::group(['prefix' => '/contracts'], function () {
         Route::get('/', 'ContractController@list')->name('admin_contract_list');
         Route::get('/create', 'ContractController@create')->name('admin_contract_create');
@@ -178,6 +196,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
 //        Route::put('/deactiveAll', 'ContractController@deactive_multi')->name('admin_contract_deactive_multi');
 //        Route::put('/activeAll', 'ContractController@active_multi')->name('admin_contract_active_multi');
     });
+
     Route::group(['prefix' => '/orders'], function () {
         Route::get('/', 'OrderController@list')->name('admin_order_list');
         Route::get('/create', 'OrderController@create')->name('admin_order_create');
@@ -190,6 +209,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
 //        Route::put('/deactiveAll', 'OrderController@deactive_multi')->name('admin_order_deactive_multi');
 //        Route::put('/activeAll', 'OrderController@active_multi')->name('admin_order_active_multi');
     });
+
     Route::group(['prefix' => '/news'], function () {
         Route::get('/', 'NewController@list')->name('admin_new_list');
         Route::get('/create', 'NewController@create')->name('admin_new_create');
@@ -202,6 +222,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/deactiveAll', 'NewController@deactive_multi')->name('admin_new_deactive_multi');
         Route::put('/activeAll', 'NewController@active_multi')->name('admin_new_active_multi');
     });
+
     Route::group(['prefix' => '/reports'], function () {
         Route::get('/', 'ReportController@list')->name('admin_report_list');
         Route::get('/create', 'ReportController@create')->name('admin_report_create');
@@ -216,6 +237,7 @@ Route::group(['middleware' => ['role_check'], 'prefix' => 'admin'], function () 
         Route::put('/aceptAll', 'ReportController@acept_multi')->name('admin_report_acept_multi');
         Route::put('/declineAll', 'ReportController@decline_multi')->name('admin_report_decline_multi');
         Route::put('/doneAll', 'ReportController@done_multi')->name('admin_report_done_multi');
+        Route::post('/edit/pet-store', 'PetController@pet_store')->name('admin_report_pet_store');
     });
 });
 
@@ -227,6 +249,9 @@ Route::get('checking_page', function () {
     return view('session_checking');
 });
 Route::get('/test-sms-Nexom', 'SmsController@Nexom_SmS');
+Route::get('/test-toaster', function () {
+    return view('test-toaster');
+});
 /* Admin Login */
 Route::get('/admin-login', function () {
     return view('admin.login_register');

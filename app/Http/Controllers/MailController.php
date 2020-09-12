@@ -20,8 +20,7 @@ class MailController extends Controller
             $mail['Email'] = $request->Email;
             $mail['Status'] = 1;
             $mail->save();
-            return redirect(route('home'))->withErrors(['Email' => 'Chúng mình đã lưu email của bạn ^^']);
-        } else return redirect(route('home'))->withErrors(['Email' => 'Chúng mình đã lưu email của bạn ^^']);
-        //đ được
+            return redirect(route('success'));
+        } else return redirect(route('error'));
     }
 }
