@@ -3,14 +3,19 @@
     Adoption Detail
 @endsection
 @section('specific_css')
-    {{--    <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">--}}
+    <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">
     <style>
         .page {
             padding-bottom: unset;
         }
+
+        li {
+            list-style: none;
+        }
     </style>
 @endsection
 @section('specific_js')
+    <script src="{{asset('assets/user/js/timeline.js')}}"></script>
 @endsection
 @section('content')
     <!-- Jumbotron -->
@@ -116,80 +121,56 @@
                             {{$single_pet->Description}}
                         </p>
 
-                        @if($single_pet->Status == 1)
-                            {{--                            <h3>Timeline</h3>--}}
-                            {{--                            <div class="timeline">--}}
-                            {{--                                <div class="year">--}}
-                            {{--                                    <div class="inner">--}}
-                            {{--                                        <span>2016</span>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
+                    @if($single_pet->Status == 1)
+                        <!-- timeline start -->
+                            <h3>Timeline</h3>
+                            <section class="cd-horizontal-timeline" style="background-color: #f8f8f8">
+                                <div class="timeline">
+                                    <div class="events-wrapper">
+                                        <div class="events">
+                                            <ol>
+                                                <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a>
+                                                </li>
+                                                <li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
+                                                <li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
+                                                <li><a href="#0" data-date="20/05/2014">20 May</a></li>
+                                                <li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
+                                                <li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
+                                                <li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
+                                                <li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
+                                                <li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
+                                                <li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
+                                                <li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
+                                            </ol>
 
-                            {{--                                <ul class="days">--}}
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
+                                            <span class="filling-line" aria-hidden="true"></span>
+                                        </div> <!-- .events -->
+                                    </div> <!-- .events-wrapper -->
 
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
+                                    <ul class="cd-timeline-navigation">
+                                        <li><a href="#0" class="prev inactive">Prev</a></li>
+                                        <li><a href="#0" class="next">Next</a></li>
+                                    </ul> <!-- .cd-timeline-navigation -->
+                                </div> <!-- .timeline -->
 
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-                            {{--                                </ul>--}}
-
-                            {{--                                <div class="year year--end">--}}
-                            {{--                                    <div class="inner">--}}
-                            {{--                                        <span>2017</span>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="border-footer"></div>--}}
+                                <div class="events-content">
+                                    <ol>
+                                        <li class="selected" data-date="16/01/2014">
+                                            <h5 style="color: #808080">Horizontal Timeline</h5>
+                                            <em>January 16th, 2014</em>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
+                                                praesentium officia, fugit recusandae ipsa, quia velit nulla
+                                                adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
+                                                dicta consequatur quae, ut harum ipsam molestias maxime non nisi
+                                                reiciendis eligendi! Doloremque quia pariatur harum ea amet
+                                                quibusdam quisquam, quae, temporibus dolores porro doloribus.
+                                            </p>
+                                        </li>
+                                    </ol>
+                                </div> <!-- .events-content -->
+                            </section>
+                            <!-- timeline end -->
                         @endif
                         <p class="custom-link"><a href="{{route('pet_list_adoption')}}">« Quay lại danh sách nhận
                                 nuôi</a>
