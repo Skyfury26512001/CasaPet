@@ -26,11 +26,11 @@ class Pet extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('PetCasa/noimages_aaqvrt_opnyoy.png');
         }
-        $list_photos  = array();
+        $list_photos = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
-                array_push($list_photos, self::$link.$single);
+                array_push($list_photos, self::$link . $single);
             }
         }
         return $list_photos;
@@ -41,7 +41,7 @@ class Pet extends Model
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
             return array('PetCasa/noimages_aaqvrt_opnyoy.png');
         }
-        $list_photos  = array();
+        $list_photos = array();
         $single_thumb = explode(',', $this->Thumbnails);
         foreach ($single_thumb as $single) {
             if (strlen($single) > 0) {
