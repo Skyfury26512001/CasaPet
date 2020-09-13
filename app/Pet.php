@@ -21,6 +21,12 @@ class Pet extends Model
         return $this->belongsToMany(News::class, 'pet_new', 'Pet_id', 'New_id');
     }
 
+
+    public function timelines()
+    {
+        return $this->hasMany(Timeline::class, "PetID", 'id')->orderBy('Date');
+    }
+
     public function getArrayThumbnails450x450Attribute()
     {
         if ($this->Thumbnails == null || strlen($this->Thumbnails) == 0) {
@@ -62,10 +68,5 @@ class Pet extends Model
     public function getLinkThumbnailAttribute($id_thumbnail)
     {
         return $id_thumbnail . self::$link;
-    }
-
-    public function timelines()
-    {
-        return $this->hasMany(Timeline::class, "PetID", 'id')->orderBy('Date');
     }
 }

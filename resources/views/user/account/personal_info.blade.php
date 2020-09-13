@@ -26,7 +26,6 @@
                     var thumbnail = document.querySelector('.avatar-uploader__avatar-image');
                     var thumbnail1 = document.querySelector('.petscasa-avatar__img');
                     var urlString = 'url(' + result.info.secure_url + ')';
-                    console.log(123);
                     thumbnail.style.backgroundImage = urlString;
                     // var thumbnailInput = document.querySelector('input[name="avatar"]');
                     // thumbnailInput.value = thumbnailInput.getAttribute('data-cloudinary-public-id');

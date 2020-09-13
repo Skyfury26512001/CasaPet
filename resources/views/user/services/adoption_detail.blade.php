@@ -8,6 +8,16 @@
         .page {
             padding-bottom: unset;
         }
+
+        :not(svg) {
+            transform-origin: unset;
+        }
+
+        .pattern3 {
+            background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1599840532/PetCasa/pattern3_j3hofh.png);
+            background-position: center bottom;
+            background-repeat: repeat-x;
+        }
     </style>
 @endsection
 @section('specific_js')
@@ -16,7 +26,6 @@
         $(function () {
             $('ol li:first-child').addClass('selected');
             $('ol li:first-child a').addClass('selected');
-            $('span.filling-line').css('transform', 'scaleX(0.18739)')
         });
     </script>
 @endsection
@@ -34,7 +43,7 @@
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="{{route('pet_list_adoption')}}">Nhận nuôi</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><a
-                                href="#">Chi
+                            href="#">Chi
                             tiết</a></li>
                 </ol>
             </nav>
@@ -127,13 +136,14 @@
                     @if($single_pet->Status == 2)
                         <!-- timeline start -->
                             <h3>Timeline</h3>
-                            <section class="cd-horizontal-timeline" style="background-color: #f8f8f8">
+                            <section class="cd-horizontal-timeline tl pattern3"
+                                     style="background-color: #f8f8f8">
                                 <div class="timeline">
                                     <div class="events-wrapper">
                                         <div class="events">
                                             <ol>
                                                 @foreach($single_pet->timelines as $timeline)
-                                                <li>
+                                                    <li>
                                                         <a href="#"
                                                            data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
                                                     </li>
@@ -157,9 +167,9 @@
                                                 <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
                                                 <div class="row">
                                                     <img
-                                                            src="{{$timeline->FirstThumbnail}}"
-                                                            class="col-lg-5"
-                                                            alt="">
+                                                        src="{{$timeline->FirstThumbnail}}"
+                                                        class="col-lg-5 img-timeline"
+                                                        alt="">
                                                     <p class="col-lg-7">
                                                         {{$timeline->Content}}
                                                     </p>
@@ -187,11 +197,11 @@
              style="background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598789854/PetCasa/AdoptionPage/cat_fkhckl.jpg)">
             <div class="container block-padding">
                 <div
-                        class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
                     <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
                 </div>
                 <div
-                        class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
                     <a href="{{route('get_involed')}}" class="btn btn-primary"
                        aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
                 </div>

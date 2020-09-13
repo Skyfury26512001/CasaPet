@@ -3,6 +3,8 @@
     Timeline Update
 @endsection
 @section('specific_css')
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>s
+    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
     <style>
@@ -13,10 +15,20 @@
         :not(svg) {
             transform-origin: unset;
         }
+
+        .pattern3 {
+            background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1599840532/PetCasa/pattern3_j3hofh.png);
+            background-position: center bottom;
+            background-repeat: repeat-x;
+        }
     </style>
-    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
 @endsection
 @section('specific_js')
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
     <!-- Boostrap Datepicker -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <script>
@@ -38,6 +50,7 @@
         });
     </script>
     <!-- Toast Message -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @if(isset($success))
         <script>
             $(document).ready(function () {
@@ -78,10 +91,8 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
-                    for (let i = 0; i < arrayThumnailInputs.length; i++) {
-                        arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
-                    }
+                    var ThumnailInputs = document.querySelector('input[name="thumbnails"]');
+                    ThumnailInputs.value = ThumnailInputs.getAttribute('data-cloudinary-public-id');
                     console.log(arrayThumnailInputs)
                 }
             }
@@ -95,11 +106,11 @@
             let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
-
+    </script>
+    <script>
         $(function () {
             $('ol li:first-child').addClass('selected');
             $('ol li:first-child a').addClass('selected');
-            $('span.filling-line').css('transform', 'scaleX(0.18739)')
         });
     </script>
     <script src="{{asset('assets/user/js/timeline.js')}}"></script>
@@ -235,7 +246,8 @@
                                             <div class="input-with-label__content">
                                                 <input id="datepicker" width="50%"
                                                        placeholder="d/m/Y"
-                                                       name="Date"/>
+                                                       name="Date"
+                                                       autocomplete="off"/>
                                                 @if ($errors->has('Date'))
                                                     <label
                                                         class="alert-warning">{{$errors->first('Date')}}</label>
@@ -269,7 +281,9 @@
                         </div>
                         <!-- timeline start -->
                         @foreach($pets as $pet)
-                            <section class="cd-horizontal-timeline tl" style="background-color: #f8f8f8; display: none" id="{{$pet->id}}">
+                            <section class="cd-horizontal-timeline tl pattern3"
+                                     style="background-color: #f8f8f8; display: none"
+                                     id="{{$pet->id}}">
                                 <div class="timeline">
                                     <div class="events-wrapper">
                                         <div class="events">
@@ -281,7 +295,6 @@
                                                     </li>
                                                 @endforeach
                                             </ol>
-
                                             <span class="filling-line" aria-hidden="true"></span>
                                         </div> <!-- .events -->
                                     </div> <!-- .events-wrapper -->
@@ -291,7 +304,6 @@
                                         <li><a href="#" class="next">Next</a></li>
                                     </ul> <!-- .cd-timeline-navigation -->
                                 </div> <!-- .timeline -->
-
                                 <div class="events-content">
                                     <ol>
                                         @foreach($pet->timelines as $timeline)
@@ -300,20 +312,18 @@
                                                 <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
                                                 <div class="row">
                                                     <img
-                                                            src="{{$timeline->FirstThumbnail}}"
-                                                            class="col-lg-5"
-                                                            alt="">
-                                                    <p class="col-lg-7">
-                                                        {{$timeline->Content}}
-                                                    </p>
+                                                        src="{{$timeline->FirstThumbnail}}"
+                                                        class="col-lg-5"
+                                                        alt="">
+                                                    <p class="col-lg-7">{{$timeline->Content}}</p>
                                                 </div>
                                             </li>
                                         @endforeach
                                     </ol>
                                 </div> <!-- .events-content -->
                             </section>
-                        @endforeach
-                        <!-- timeline end -->
+                    @endforeach
+                    <!-- timeline end -->
                     </div>
                 </div>
             </div>
