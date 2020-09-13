@@ -95,7 +95,7 @@ class PersonalInfoController extends Controller
             $timeline_info->Date = Carbon::createFromFormat('d/m/Y', $request->Date)->format('Y-m-d');
             $timeline_info->Image = $request->thumbnails;
             $timeline_info->save();
-            return redirect(route('user_account_update_timeline', $account->Slug))->with('success', 'Gửi thành công!');
+            return redirect(route('user_account_update_timeline', $account->Slug))->with('success', 'success');
         }
         return view('user.sub_pages.error');
     }

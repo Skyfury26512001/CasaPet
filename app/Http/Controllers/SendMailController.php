@@ -54,7 +54,9 @@ class SendMailController extends Controller
 //            dd("Start send notification");
             /* Start Send notification to admin */
             /* Gmail */
-            $data = array('name' => "$request->FullName", 'contact_message' => "$request->Messenger", 'transaction' => 'as');
+            $Messenger = "Có một yêu cầu báo cáo mới ! Yêu cầu quản lý vào kiểm tra";
+            $Name      = "Yêu cầu hỗ trợ";
+            $data      = array('name' => "$Name", 'contact_message' => "$Messenger", 'transaction' => 'as');
             Mail::send('user.contact.email', $data, function ($message) use ($request) {
                 $message->to("petscasavn@gmail.com", "Pet Casa")->subject("Báo cáo yêu cầu hỗ trợ");
                 $message->from("t1908e@gmail.com", "$request->FullName");

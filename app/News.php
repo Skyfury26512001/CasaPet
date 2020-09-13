@@ -46,6 +46,7 @@ class News extends Model
     public function getFirstThumbnailAttribute()
     {
         $thumbnail[] = explode(',', $this->Thumbnails);
+
         foreach ($thumbnail as $thumbnailValue) {
             return self::$link . 'c_scale,h_450,w_450/' . $thumbnailValue[0];
         }

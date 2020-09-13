@@ -216,6 +216,7 @@ Primary style
     -ms-transform: translateY(-50%) rotate(180deg);
     -o-transform: translateY(-50%) rotate(180deg);
     transform: translateY(-50%) rotate(180deg);
+    transform-origin: unset;
 }
 
 .cd-timeline-navigation a.next {

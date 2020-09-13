@@ -18,7 +18,13 @@ class Pet extends Model
 
     public function News()
     {
-        return $this->belongsToMany(Report::class, 'pet_new', 'pet_id', 'new_id');
+        return $this->belongsToMany(News::class, 'pet_new', 'Pet_id', 'New_id');
+    }
+
+
+    public function timelines()
+    {
+        return $this->hasMany(Timeline::class, "PetID", 'id')->orderBy('Date');
     }
 
     public function getArrayThumbnails450x450Attribute()
@@ -62,10 +68,5 @@ class Pet extends Model
     public function getLinkThumbnailAttribute($id_thumbnail)
     {
         return $id_thumbnail . self::$link;
-    }
-
-    public function timelines()
-    {
-        return $this->hasMany(Timeline::class, "PetID", 'id');
     }
 }

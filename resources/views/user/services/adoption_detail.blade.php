@@ -25,7 +25,7 @@
     </style>
 @endsection
 @section('specific_js')
-    <script src="{{asset('assets/user/js/timeline.js')}}"></script>
+    <script src="{{asset('assets/user/js/timeline.js')}}" rel="stylesheet"></script>
     <script>
         $(function () {
             $('ol li:first-child').addClass('selected');
@@ -153,7 +153,6 @@
                                                     </li>
                                                 @endforeach
                                             </ol>
-
                                             <span class="filling-line" aria-hidden="true"></span>
                                         </div> <!-- .events -->
                                     </div> <!-- .events-wrapper -->

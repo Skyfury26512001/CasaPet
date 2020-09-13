@@ -519,7 +519,14 @@
                                         <li><strong>Giới tính: </strong> {{$pet->Sex}}</li>
                                         <li><strong>Triệt sản: </strong> @if ($pet->Neutered == "Có") Đã triệt
                                             sản @elseif ($pet->Neutered == "Không") Chưa triệt sản @endif</li>
-                                        <li><strong>Tuổi: </strong>{{$pet->Age}}</li>
+                                        <li><?php $current_Time = Carbon\Carbon::now(); ?>
+                                            <strong>Tuổi: </strong> @if ($current_Time->addDays(-180) <  $pet->Age)
+                                                Dưới 6 tháng
+                                            @elseif ($current_Time->addDays(-720) <  $pet->Age)
+                                                Từ 6 tháng đến 2 năm
+                                            @elseif ($current_Time->addDays(-720) >  $pet->Age)
+                                                Từ 2 năm trở lên
+                                            @endif</li>
                                     </ul>
                                     <!-- Buttons -->
                                     <div class="text-center">
@@ -643,7 +650,8 @@
                         <div class="contact-icon-info">
                             <h5>Theo dõi chúng tôi trên MXH</h5>
                             <ul class="social-media">
-                                <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                                <li><a href="https://www.facebook.com/Pet-Casa-107245207763414"><i
+                                                class="fab fa-facebook-square"></i></a></li>
                                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>

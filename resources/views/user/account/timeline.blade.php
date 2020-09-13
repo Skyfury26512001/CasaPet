@@ -15,10 +15,6 @@
             transform-origin: unset;
         }
 
-        .img-timeline {
-            border: 3px outset #ff8500;
-        }
-
         .pattern3 {
             background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1599840532/PetCasa/pattern3_j3hofh.png);
             background-position: center bottom;
@@ -41,11 +37,14 @@
             if (this.value === 'Null') {
                 $('.tl').hide();
             } else {
-                $('.tl').show();
+                $('.tl').hide();
+                var id = this.value;
+                $(`#${id}`).show();
             }
         });
     </script>
     <!-- Toast Message -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @if(isset($success))
         <script>
             $(document).ready(function () {
@@ -86,10 +85,8 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
-                    for (let i = 0; i < arrayThumnailInputs.length; i++) {
-                        arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
-                    }
+                    var ThumnailInputs = document.querySelector('input[name="thumbnails"]');
+                    ThumnailInputs.value = ThumnailInputs.getAttribute('data-cloudinary-public-id');
                     console.log(arrayThumnailInputs)
                 }
             }
@@ -98,12 +95,16 @@
             myWidget.open();
         })
 
+        let value = $('input.thumbnails').getAttribute('data-cloudinary-public-id');
+        $('input.thumbnails').val("value");
+
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
             let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
-
+    </script>
+    <script>
         $(function () {
             $('ol li:first-child').addClass('selected');
             $('ol li:first-child a').addClass('selected');
@@ -275,51 +276,50 @@
                             </div>
                         </div>
                         <!-- timeline start -->
-                        <section class="cd-horizontal-timeline tl pattern3"
-                                 style="background-color: #f8f8f8; display: none">
-                            <div class="timeline">
-                                <div class="events-wrapper">
-                                    <div class="events">
-                                        <ol>
-                                            @foreach($pet->timelines as $timeline)
-                                                <li>
-                                                    <a href="#"
-                                                       data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
-                                                </li>
-                                            @endforeach
-                                        </ol>
+                        @foreach($pets as $pet)
+                            <section class="cd-horizontal-timeline tl pattern3"
+                                     style="background-color: #f8f8f8; display: none"
+                                     id="{{$pet->id}}">
+                                <div class="timeline">
+                                    <div class="events-wrapper">
+                                        <div class="events">
+                                            <ol>
+                                                @foreach($pet->timelines as $timeline)
+                                                    <li>
+                                                        <a href="#"
+                                                           data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ol>
+                                            <span class="filling-line" aria-hidden="true"></span>
+                                        </div> <!-- .events -->
+                                    </div> <!-- .events-wrapper -->
 
-                                        <span class="filling-line" aria-hidden="true"></span>
-                                    </div> <!-- .events -->
-                                </div> <!-- .events-wrapper -->
-
-                                <ul class="cd-timeline-navigation">
-                                    <li><a href="#" class="prev inactive">Prev</a></li>
-                                    <li><a href="#" class="next">Next</a></li>
-                                </ul> <!-- .cd-timeline-navigation -->
-                            </div> <!-- .timeline -->
-
-                            <div class="events-content">
-                                <ol>
-                                    @foreach($pet->timelines as $timeline)
-                                        <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
-                                            <h5 style="color: #808080">Cuộc sống của {{$pet->Name}}</h5>
-                                            <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
-                                            <div class="row">
-                                                <img
-                                                    src="{{$timeline->FirstThumbnail}}"
-                                                    class="col-lg-5 img-timeline"
-                                                    alt="">
-                                                <p class="col-lg-7">
-                                                    {{$timeline->Content}}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ol>
-                            </div> <!-- .events-content -->
-                        </section>
-                        <!-- timeline end -->
+                                    <ul class="cd-timeline-navigation">
+                                        <li><a href="#" class="prev inactive">Prev</a></li>
+                                        <li><a href="#" class="next">Next</a></li>
+                                    </ul> <!-- .cd-timeline-navigation -->
+                                </div> <!-- .timeline -->
+                                <div class="events-content">
+                                    <ol>
+                                        @foreach($pet->timelines as $timeline)
+                                            <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
+                                                <h5 style="color: #808080">Cuộc sống của {{$pet->Name}}</h5>
+                                                <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
+                                                <div class="row">
+                                                    <img
+                                                        src="{{$timeline->FirstThumbnail}}"
+                                                        class="col-lg-5"
+                                                        alt="">
+                                                    <p class="col-lg-7">{{$timeline->Content}}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </div> <!-- .events-content -->
+                            </section>
+                    @endforeach
+                    <!-- timeline end -->
                     </div>
                 </div>
             </div>
