@@ -95,7 +95,9 @@ class PersonalInfoController extends Controller
             $timeline_info->Date = Carbon::createFromFormat('d/m/Y', $request->Date)->format('Y-m-d');
             $timeline_info->Image = $request->thumbnails;
             $timeline_info->save();
-            return redirect(route('user_account_update_timeline', $account->Slug))->with('success', 'success');
+            $cr_account_id = Account::where('id', '=', session('current_account')->id)->where('Status', '=', '1')->first()->id;
+            $pets = Pet::where('AccountID', '=', $cr_account_id)->get();
+            return view('user.account.timeline', compact('account', 'pets'))->with('success', 'success');
         }
         return view('user.sub_pages.error');
     }

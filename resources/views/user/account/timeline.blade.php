@@ -3,6 +3,7 @@
     Timeline Update
 @endsection
 @section('specific_css')
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>s
     <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
     <link href="{{asset('assets/user/css/personal_info.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
@@ -23,6 +24,11 @@
     </style>
 @endsection
 @section('specific_js')
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
     <!-- Boostrap Datepicker -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <script>
@@ -94,9 +100,6 @@
         $('#upload_widget').click(function () {
             myWidget.open();
         })
-
-        let value = $('input.thumbnails').getAttribute('data-cloudinary-public-id');
-        $('input.thumbnails').val("value");
 
         // xử lý js trên dynamic content.
         $('body').on('click', '.cloudinary-delete', function () {
@@ -243,7 +246,8 @@
                                             <div class="input-with-label__content">
                                                 <input id="datepicker" width="50%"
                                                        placeholder="d/m/Y"
-                                                       name="Date"/>
+                                                       name="Date"
+                                                       autocomplete="off"/>
                                                 @if ($errors->has('Date'))
                                                     <label
                                                         class="alert-warning">{{$errors->first('Date')}}</label>
