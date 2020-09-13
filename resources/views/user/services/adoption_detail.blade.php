@@ -13,10 +13,6 @@
             transform-origin: unset;
         }
 
-        .img-timeline {
-            border: 3px outset #ff8500;
-        }
-
         .pattern3 {
             background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1599840532/PetCasa/pattern3_j3hofh.png);
             background-position: center bottom;
