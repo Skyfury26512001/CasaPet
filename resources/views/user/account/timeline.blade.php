@@ -91,8 +91,8 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var ThumnailInputs = document.querySelector('input[name="thumbnails"]');
-                    ThumnailInputs.value = ThumnailInputs.getAttribute('data-cloudinary-public-id');
+                    var ThumnailInputs = document.querySelector('input[name="thumbnails"]')
+                        ThumnailInputs.value = ThumnailInputs.getAttribute('data-cloudinary-public-id');
                     console.log(arrayThumnailInputs)
                 }
             }
