@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReportSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(NewSeeder::class);
+        $this->call(TimelineSeeder::class);
     }
 }

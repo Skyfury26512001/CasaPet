@@ -3,7 +3,7 @@
     Adoption Detail
 @endsection
 @section('specific_css')
-    {{--    <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">--}}
+    <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
     <style>
         .page {
             padding-bottom: unset;
@@ -11,6 +11,13 @@
     </style>
 @endsection
 @section('specific_js')
+    <script src="{{asset('assets/user/js/timeline.js')}}" rel="stylesheet"></script>
+    <script>
+        $(function () {
+            $('ol li:first-child').addClass('selected');
+            $('ol li:first-child a').addClass('selected');
+        });
+    </script>
 @endsection
 @section('content')
     <!-- Jumbotron -->
@@ -26,7 +33,7 @@
                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="{{route('pet_list_adoption')}}">Nhận nuôi</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><a
-                            href="#">Chi
+                                href="#">Chi
                             tiết</a></li>
                 </ol>
             </nav>
@@ -116,80 +123,52 @@
                             {{$single_pet->Description}}
                         </p>
 
-                        @if($single_pet->Status == 1)
-                            {{--                            <h3>Timeline</h3>--}}
-                            {{--                            <div class="timeline">--}}
-                            {{--                                <div class="year">--}}
-                            {{--                                    <div class="inner">--}}
-                            {{--                                        <span>2016</span>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
+                    @if($single_pet->Status == 2)
+                        <!-- timeline start -->
+                            <h3>Timeline</h3>
+                            <section class="cd-horizontal-timeline" style="background-color: #f8f8f8">
+                                <div class="timeline">
+                                    <div class="events-wrapper">
+                                        <div class="events">
+                                            <ol>
+                                                @foreach($single_pet->timelines as $timeline)
+                                                <li>
+                                                        <a href="#"
+                                                           data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ol>
+                                            <span class="filling-line" aria-hidden="true"></span>
+                                        </div> <!-- .events -->
+                                    </div> <!-- .events-wrapper -->
 
-                            {{--                                <ul class="days">--}}
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
+                                    <ul class="cd-timeline-navigation">
+                                        <li><a href="#" class="prev inactive">Prev</a></li>
+                                        <li><a href="#" class="next">Next</a></li>
+                                    </ul> <!-- .cd-timeline-navigation -->
+                                </div> <!-- .timeline -->
 
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-
-                            {{--                                    <li class="day">--}}
-                            {{--                                        <div class="events">--}}
-                            {{--                                            <div class="day__img">--}}
-                            {{--                                                <img src="http://placehold.it/400x300" alt=""/>--}}
-                            {{--                                                <p class="caption">--}}
-                            {{--                                                    Caption--}}
-                            {{--                                                </p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="date">18 October (Monday)--}}
-                            {{--                                                <p>Description</p>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </li>--}}
-                            {{--                                </ul>--}}
-
-                            {{--                                <div class="year year--end">--}}
-                            {{--                                    <div class="inner">--}}
-                            {{--                                        <span>2017</span>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="border-footer"></div>--}}
+                                <div class="events-content">
+                                    <ol>
+                                        @foreach($single_pet->timelines as $timeline)
+                                            <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
+                                                <h5 style="color: #808080">Cuộc sống của {{$single_pet->Name}}</h5>
+                                                <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
+                                                <div class="row">
+                                                    <img
+                                                            src="{{$timeline->FirstThumbnail}}"
+                                                            class="col-lg-5"
+                                                            alt="">
+                                                    <p class="col-lg-7">
+                                                        {{$timeline->Content}}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </div> <!-- .events-content -->
+                            </section>
+                            <!-- timeline end -->
                         @endif
                         <p class="custom-link"><a href="{{route('pet_list_adoption')}}">« Quay lại danh sách nhận
                                 nuôi</a>
@@ -207,11 +186,11 @@
              style="background-image: url(https://res.cloudinary.com/dwarrion/image/upload/v1598789854/PetCasa/AdoptionPage/cat_fkhckl.jpg)">
             <div class="container block-padding">
                 <div
-                    class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
+                        class="col-12 col-sm-8 col-md-8 col-lg-8 justify-content-center align-self-center text-center text-sm-left text-md-left text-lg-left">
                     <h4 style="color: white">Bạn đã sẵn sàng để hỗ trợ?</h4>
                 </div>
                 <div
-                    class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
+                        class="col-12 col-sm-4 col-md-4 col-lg-4 justify-content-center align-self-center text-center">
                     <a href="{{route('get_involed')}}" class="btn btn-primary"
                        aria-label="Ủng hộ ngay" aria-labelledby="Ủng hộ ngay">Ủng hộ ngay</a>
                 </div>

@@ -4,6 +4,13 @@
 @endsection
 @section('specific_css')
     <link href={{asset('assets/user/css/timeline.css')}} rel="stylesheet">
+    <style>
+        .page {
+            padding-bottom: unset;
+        }
+
+
+    </style>
 @endsection
 @section('content')
     <h3>Timeline</h3>

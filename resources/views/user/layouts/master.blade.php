@@ -8,8 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="We are woof">
     <meta name="author" content="PetCasa">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- page title -->
     <title>PetsCasa</title>
@@ -64,11 +62,11 @@
             background: #000000;
             border-radius: 50%;
             position: fixed;
-            bottom: 80px;
-            right: 42px;
+            bottom: 55px;
+            right: 22px;
             transition: all 0.2s ease-in-out;
             z-index: 9999;
-            padding: 22px 10px;
+            padding: 10px 10px;
         }
 
         .button-sos:after {
@@ -89,6 +87,9 @@
             color: #ff8500;
         }
 
+        iframe {
+            width: 0;
+        }
     </style>
 
     @yield('specific_css')
@@ -119,7 +120,7 @@
 <div class="fb-customerchat"
      attribution=setup_tool
      page_id="107245207763414"
-     theme_color="#F9BE4F"
+     theme_color="#ff8500"
      logged_in_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?"
      logged_out_greeting="Xin chào! Chúng tôi có thể giúp gì cho bạn?">
 </div>
@@ -177,6 +178,9 @@
                   <i class="fas fa-bars"></i>
                   </span>
                 </button>
+                @php
+                            $current_account = session()->get('current_account');
+                        @endphp
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <!-- menu item -->
@@ -184,11 +188,13 @@
                             <a class="nav-link dropdown-toggle" href="{{route('services')}}" id="services-dropdown"
                                data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                Dịch vụ
+                                Hoạt động
                             </a>
                             <div class="dropdown-menu" aria-labelledby="services-dropdown">
                                 <a class="dropdown-item" href="{{route('rescue_form')}}">Cứu hộ chó mèo</a>
+                                @if(isset($current_account) && $current_account != null)
                                 <a class="dropdown-item" href="{{route('pet_list_adoption')}}">Nhận nuôi thú cưng</a>
+                                @endif
                                 <a class="dropdown-item" href="{{route('concession_form')}}">Nhượng thú cưng</a>
                                 {{--                                <a class="dropdown-item" href="{{route('volunteer')}}">Tình nguyện</a>--}}
                             </div>
@@ -232,9 +238,6 @@
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
-                        @php
-                            $current_account = session()->get('current_account');
-                        @endphp
                         <!-- menu item -->
                             @if(isset($current_account) && $current_account != null)
                                 <a href="{{route('personal_info')}}" class="nav-link dropdown-toggle"

@@ -85,6 +85,7 @@ class OrderController extends Controller
                     $pet->Status = 0;
                 } else {
                     $pet->Status = 2;
+                    $pet->AccountID = session('current_account')->id;
                 }
                 $pet->update();
                 $declineOrders = Order::where('id', '!=', $id)->where('PetId', $pet->id)->where('Status', '!=', 1)->get();
@@ -98,7 +99,7 @@ class OrderController extends Controller
                         $message->from("petcasa@gmail.com", "Pet Casa");
                     });
                 }
-                $pet  = Pet::find($order->id);
+                $pet  = Pet::find($order_cur->PetId);
                 $data = array('order' => $order_cur, 'pet' => $pet);
                 Mail::send('user.contact.acept_mail', $data, function ($message) use ($order_cur) {
                     $message->to("$order_cur->Email", "$order_cur->FullName")->subject("Thông báo về đơn xin nhận nuôi");

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Pet;
+use App\Timeline;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -66,12 +68,34 @@ class PersonalInfoController extends Controller
         return view('user.account.change_password', compact('account'))->with('toast_error1', 'Mật khẩu cũ sai!');
     }
 
-    public
-    function update_timeline($Slug)
+    public function update_timeline($Slug)
     {
         $account = Account::where('Slug', '=', $Slug)->get()->first();
+        $cr_account_id = Account::where('id', '=', session('current_account')->id)->where('Status', '=', '1')->first()->id;
+        $pets = Pet::where('AccountID', '=', $cr_account_id)->get();
         if (isset($account) && $account != null) {
-            return view('user.account.timeline', compact('account'));
+            return view('user.account.timeline', compact('account', 'pets'));
+        }
+        return view('user.sub_pages.error');
+    }
+
+    public function update_timelineP($Slug, Request $request)
+    {
+        $request->validate([
+            'PetID' => 'required',
+            'Content' => 'required',
+            'Date' => 'required',
+            'thumbnails' => 'required',
+        ]);
+        $account = Account::where('Slug', '=', $Slug)->get()->first();
+        if (isset($account) && $account != null) {
+            $timeline_info = new Timeline();
+            $timeline_info->PetID = $request->PetID;
+            $timeline_info->Content = $request->Content;
+            $timeline_info->Date = Carbon::createFromFormat('d/m/Y', $request->Date)->format('Y-m-d');
+            $timeline_info->Image = $request->thumbnails;
+            $timeline_info->save();
+            return redirect(route('user_account_update_timeline', $account->Slug))->with('success', 'Gửi thành công!');
         }
         return view('user.sub_pages.error');
     }

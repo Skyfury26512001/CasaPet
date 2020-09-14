@@ -9,11 +9,14 @@
         #upload_widget {
             margin: unset;
         }
+
+        :not(svg) {
+            transform-origin: unset;
+        }
     </style>
     <link href="{{asset('assets/user/css/timeline.css')}}" rel="stylesheet">
 @endsection
 @section('specific_js')
-    {{--    <script src="{{asset('assets/user/js/timeline.js')}}"></script>--}}
     <!-- Boostrap Datepicker -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <script>
@@ -22,7 +25,44 @@
             format: 'dd/mm/yyyy'
         });
     </script>
+    <!-- Timeline show/hide -->
+    <script>
+        $('select').change(function () {
+            if (this.value === 'Null') {
+                $('.tl').hide();
+            } else {
+                $('.tl').hide();
+                var id = this.value;
+                $(`#${id}`).show();
+            }
+        });
+    </script>
+    <!-- Toast Message -->
+    @if(isset($success))
+        <script>
+            $(document).ready(function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
 
+                toastr["success"]("Gửi thành công!")
+            })
+        </script>
+    @endif
     <!-- Widget Cloudinary -->
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -30,18 +70,16 @@
             {
                 cloudName: 'dwarrion',
                 uploadPreset: 'rdjyel16',
-                multiple: true,
-                form: '#product_form',
-                folder: 'PetCasa/PetThumbnails',
-                fieldName: 'thumbnails[]',
+                multiple: false,
+                form: '#update_timeline_form',
+                folder: 'PetCasa/Timeline',
+                fieldName: 'thumbnails',
                 thumbnails: '.thumbnails'
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
-                    for (let i = 0; i < arrayThumnailInputs.length; i++) {
-                        arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
-                    }
+                    var ThumnailInputs = document.querySelector('input[name="thumbnails"]');
+                        ThumnailInputs.value = ThumnailInputs.getAttribute('data-cloudinary-public-id');
                     console.log(arrayThumnailInputs)
                 }
             }
@@ -55,7 +93,13 @@
             let publicId = JSON.parse($(this).parent().attr('data-cloudinary')).public_id;
             $(`input[data-cloudinary-public-id="${publicId}"]`).remove();
         });
+
+        $(function () {
+            $('ol li:first-child').addClass('selected');
+            $('ol li:first-child a').addClass('selected');
+        });
     </script>
+    <script src="{{asset('assets/user/js/timeline.js')}}"></script>
 @endsection
 @section('content')
     <!-- ==== Page Content ==== -->
@@ -146,7 +190,8 @@
                         </div>
                         <div class="my-account-profile">
                             <div class="my-account-profile__left">
-                                <form id="account_form" action="{{route('personal_info_update')}}" method="POST"
+                                <form id="update_timeline_form"
+                                      action="{{route('user_update_timeline',$account->Slug)}}" method="POST"
                                       style="width: 100%">
                                     @csrf
                                     <div class="input-with-label">
@@ -154,11 +199,13 @@
                                             <div class="input-with-label__label"><label>Tên Pet</label></div>
                                             <div class="input-with-label__content">
                                                 <div class="input-with-validator-wrapper">
-                                                    <div class="input-with-validator"><input type="text"
-                                                                                             placeholder=""
-                                                                                             value="{{$account->FullName}}"
-                                                                                             name="PetName">
-                                                    </div>
+                                                    <select name="PetID" id="" class="input-with-validator"
+                                                            style="width: 100%">
+                                                        <option value="Null"></option>
+                                                        @foreach($pets as $pet)
+                                                            <option value="{{$pet->id}}">{{$pet->Name}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,7 +216,12 @@
                                             <div class="input-with-label__content">
                                                 <div class="input-with-validator-wrapper">
                                                     <textarea class="input-with-validator" name="Content"
-                                                              rows="5" style="width: 100%; height: unset"></textarea>
+                                                              rows="5" style="width: 100%; height: unset"
+                                                              placeholder="Sức khoẻ bé như nào? Hành động của bé trong ảnh là gì? ..."></textarea>
+                                                    @if ($errors->has('Content'))
+                                                        <label
+                                                            class="alert-warning">{{$errors->first('Content')}}</label>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -179,8 +231,12 @@
                                             <div class="input-with-label__label"><label>Ngày đăng</label></div>
                                             <div class="input-with-label__content">
                                                 <input id="datepicker" width="50%"
-                                                       value="{{date("d/m/Y", strtotime($account->DateOfBirth))}}"
+                                                       placeholder="d/m/Y"
                                                        name="Date"/>
+                                                @if ($errors->has('Date'))
+                                                    <label
+                                                        class="alert-warning">{{$errors->first('Date')}}</label>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -209,182 +265,51 @@
                             </div>
                         </div>
                         <!-- timeline start -->
-                        <section class="cd-horizontal-timeline">
-                            <div class="timeline">
-                                <div class="events-wrapper">
-                                    <div class="events">
-                                        <ol>
-                                            <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a>
+                        @foreach($pets as $pet)
+                            <section class="cd-horizontal-timeline tl" style="background-color: #f8f8f8; display: none" id="{{$pet->id}}">
+                                <div class="timeline">
+                                    <div class="events-wrapper">
+                                        <div class="events">
+                                            <ol>
+                                                @foreach($pet->timelines as $timeline)
+                                                    <li>
+                                                        <a href="#"
+                                                           data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">{{\Carbon\Carbon::parse($timeline->Date)->isoFormat('DD MMM')}}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ol>
+
+                                            <span class="filling-line" aria-hidden="true"></span>
+                                        </div> <!-- .events -->
+                                    </div> <!-- .events-wrapper -->
+
+                                    <ul class="cd-timeline-navigation">
+                                        <li><a href="#" class="prev inactive">Prev</a></li>
+                                        <li><a href="#" class="next">Next</a></li>
+                                    </ul> <!-- .cd-timeline-navigation -->
+                                </div> <!-- .timeline -->
+
+                                <div class="events-content">
+                                    <ol>
+                                        @foreach($pet->timelines as $timeline)
+                                            <li data-date="{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}">
+                                                <h5 style="color: #808080">Cuộc sống của {{$pet->Name}}</h5>
+                                                <em>{{\Carbon\Carbon::parse($timeline->Date)->format('d/m/Y')}}</em>
+                                                <div class="row">
+                                                    <img
+                                                            src="{{$timeline->FirstThumbnail}}"
+                                                            class="col-lg-5"
+                                                            alt="">
+                                                    <p class="col-lg-7">
+                                                        {{$timeline->Content}}
+                                                    </p>
+                                                </div>
                                             </li>
-                                            <li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
-                                            <li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
-                                            <li><a href="#0" data-date="20/05/2014">20 May</a></li>
-                                            <li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
-                                            <li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
-                                            <li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
-                                            <li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
-                                            <li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
-                                            <li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
-                                            <li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
-                                        </ol>
-
-                                        <span class="filling-line" aria-hidden="true"></span>
-                                    </div> <!-- .events -->
-                                </div> <!-- .events-wrapper -->
-
-                                <ul class="cd-timeline-navigation">
-                                    <li><a href="#0" class="prev inactive">Prev</a></li>
-                                    <li><a href="#0" class="next">Next</a></li>
-                                </ul> <!-- .cd-timeline-navigation -->
-                            </div> <!-- .timeline -->
-
-                            <div class="events-content">
-                                <ol>
-                                    <li class="selected" data-date="16/01/2014">
-                                        <h2>Horizontal Timeline</h2>
-                                        <em>January 16th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="28/02/2014">
-                                        <h2>Event title here</h2>
-                                        <em>February 28th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="20/04/2014">
-                                        <h2>Event title here</h2>
-                                        <em>March 20th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="20/05/2014">
-                                        <h2>Event title here</h2>
-                                        <em>May 20th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="09/07/2014">
-                                        <h2>Event title here</h2>
-                                        <em>July 9th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="30/08/2014">
-                                        <h2>Event title here</h2>
-                                        <em>August 30th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="15/09/2014">
-                                        <h2>Event title here</h2>
-                                        <em>September 15th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="01/11/2014">
-                                        <h2>Event title here</h2>
-                                        <em>November 1st, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="10/12/2014">
-                                        <h2>Event title here</h2>
-                                        <em>December 10th, 2014</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="19/01/2015">
-                                        <h2>Event title here</h2>
-                                        <em>January 19th, 2015</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-
-                                    <li data-date="03/03/2015">
-                                        <h2>Event title here</h2>
-                                        <em>March 3rd, 2015</em>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                            praesentium officia, fugit recusandae ipsa, quia velit nulla
-                                            adipisci? Consequuntur aspernatur at, eaque hic repellendus sit
-                                            dicta consequatur quae, ut harum ipsam molestias maxime non nisi
-                                            reiciendis eligendi! Doloremque quia pariatur harum ea amet
-                                            quibusdam quisquam, quae, temporibus dolores porro doloribus.
-                                        </p>
-                                    </li>
-                                </ol>
-                            </div> <!-- .events-content -->
-                        </section>
+                                        @endforeach
+                                    </ol>
+                                </div> <!-- .events-content -->
+                            </section>
+                        @endforeach
                         <!-- timeline end -->
                     </div>
                 </div>
