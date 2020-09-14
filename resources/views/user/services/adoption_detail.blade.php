@@ -16,7 +16,6 @@
         $(function () {
             $('ol li:first-child').addClass('selected');
             $('ol li:first-child a').addClass('selected');
-            $('span.filling-line').css('transform', 'scaleX(0.18739)')
         });
     </script>
 @endsection

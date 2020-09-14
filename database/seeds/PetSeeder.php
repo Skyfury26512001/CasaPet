@@ -21,6 +21,22 @@ class PetSeeder extends Seeder
         }
         $pets = array(
             array(
+                'Slug' => 'chó_corgi_99',
+                'Name' => 'Ban',
+                'CertifiedPedigree' => 'Có',
+                'Description' => 'Chú chó chân ngắn đáng yêu năng động giống corgi này rất phù hợp với một gia đình cần tìm thêm một người bạn làm cho gia đình thêm vui vẻ nhộn nhịp',
+                'Species' => 'Chó',
+                'Breed' => 'Chó Corgi',
+                'Vaccinated' => 'Có',
+                'Thumbnails' => 'PetCasa/PetThumbnails/ban1_a79xln.png',
+                'Age' => \Carbon\Carbon::now()->addDays(-150),
+                'Sex' => 'Đực',
+                'Neutered' => 'Có',
+                'Status' => 1,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ),
+            array(
                 'Slug' => 'cho_charlie_02',
                 'Name' => 'Charlie',
                 'CertifiedPedigree' => 'Không',

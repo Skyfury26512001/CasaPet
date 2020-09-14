@@ -78,10 +78,8 @@
             }, function (error, result) {
                 if (!error && result && result.event === "success") {
                     console.log('Done! Here is the image info: ', result.info.url);
-                    var arrayThumnailInputs = document.querySelectorAll('input[name="thumbnails[]"]');
-                    for (let i = 0; i < arrayThumnailInputs.length; i++) {
-                        arrayThumnailInputs[i].value = arrayThumnailInputs[i].getAttribute('data-cloudinary-public-id');
-                    }
+                    var ThumnailInputs = document.querySelector('input[name="thumbnails"]');
+                        ThumnailInputs.value = ThumnailInputs.getAttribute('data-cloudinary-public-id');
                     console.log(arrayThumnailInputs)
                 }
             }
@@ -99,7 +97,6 @@
         $(function () {
             $('ol li:first-child').addClass('selected');
             $('ol li:first-child a').addClass('selected');
-            $('span.filling-line').css('transform', 'scaleX(0.18739)')
         });
     </script>
     <script src="{{asset('assets/user/js/timeline.js')}}"></script>

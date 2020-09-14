@@ -66,7 +66,7 @@
             right: 22px;
             transition: all 0.2s ease-in-out;
             z-index: 9999;
-            padding: 15px 10px;
+            padding: 10px 10px;
         }
 
         .button-sos:after {
@@ -178,6 +178,9 @@
                   <i class="fas fa-bars"></i>
                   </span>
                 </button>
+                @php
+                            $current_account = session()->get('current_account');
+                        @endphp
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <!-- menu item -->
@@ -185,11 +188,13 @@
                             <a class="nav-link dropdown-toggle" href="{{route('services')}}" id="services-dropdown"
                                data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                Dịch vụ
+                                Hoạt động
                             </a>
                             <div class="dropdown-menu" aria-labelledby="services-dropdown">
                                 <a class="dropdown-item" href="{{route('rescue_form')}}">Cứu hộ chó mèo</a>
+                                @if(isset($current_account) && $current_account != null)
                                 <a class="dropdown-item" href="{{route('pet_list_adoption')}}">Nhận nuôi thú cưng</a>
+                                @endif
                                 <a class="dropdown-item" href="{{route('concession_form')}}">Nhượng thú cưng</a>
                                 {{--                                <a class="dropdown-item" href="{{route('volunteer')}}">Tình nguyện</a>--}}
                             </div>
@@ -233,9 +238,6 @@
                         </li>
                         <!-- menu item -->
                         <li class="nav-item dropdown">
-                        @php
-                            $current_account = session()->get('current_account');
-                        @endphp
                         <!-- menu item -->
                             @if(isset($current_account) && $current_account != null)
                                 <a href="{{route('personal_info')}}" class="nav-link dropdown-toggle"
