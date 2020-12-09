@@ -115,11 +115,11 @@
                                 </div>
                                 <div class="form-group" style="width: 200%">
                                     <label for="Content">Nội dung<span class="text-danger">*</span></label>
-                                    <textarea id="editor" name="Content" class="form-control"
-                                              placeholder="">{{$new->Content}}</textarea>
                                     @if ($errors->has('Content'))
                                         <label class="alert-warning">{{$errors->first('Content')}}</label>
                                     @endif
+                                    <textarea id="editor" name="Content" class="form-control"
+                                              placeholder="">{{$new->Content}}</textarea>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -127,7 +127,7 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="Category_id">Chọn chuyên mục<span
-                                                        class="text-danger">*</span></label>
+                                                    class="text-danger">*</span></label>
                                             <select class="form-control" id="select-7" name="Category_id">
                                                 @foreach($categories as $category)
                                                     <option value="{{$category->id}}"
@@ -139,7 +139,7 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="Status">Trạng thái bài viết<span
-                                                        class="text-danger">*</span></label>
+                                                    class="text-danger">*</span></label>
                                             <select class="form-control" id="select-7" name="Status">
                                                 <option value="0" @if ($new->Status == 0) selected @endif>Không hoạt
                                                     động
